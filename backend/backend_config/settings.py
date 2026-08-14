@@ -2,7 +2,10 @@ import os
 from pathlib import Path
 from datetime import timedelta
 
+from dotenv import load_dotenv
+
 BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(BASE_DIR / '.env')
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'science-hub-dev-key-change-in-production')
 DEBUG = os.environ.get('DJANGO_DEBUG', 'True').lower() == 'true'
 ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
@@ -45,12 +48,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend_config.wsgi.application'
 
-# No relational database - the entire project runs on MongoDB (MongoDB Atlas)
+# No SQL database — all persistence is via MongoDB (mongoengine).
 DATABASES = {}
 
 import mongoengine
 MONGO_DB_NAME = os.environ.get('MONGO_DB_NAME', 'science_hub')
-MONGO_URI = os.environ.get('MONGO_URI', 'mongodb://localhost:27017')
+MONGO_URI = os.environ.get('MONGO_URI') or os.environ.get('MONGODB_URI', 'mongodb://localhost:27017')
 mongoengine.connect(db=MONGO_DB_NAME, host=MONGO_URI)
 
 LANGUAGE_CODE = 'en-us'

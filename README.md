@@ -24,8 +24,8 @@ Open http://localhost:3000
 ```bash
 cd backend
 python -m venv .venv
+.\.venv\Scripts\Activate.ps1   # Windows
 pip install -r requirements.txt
 cp .env.example .env
-python manage.py migrate
 python manage.py runserver
 ```
