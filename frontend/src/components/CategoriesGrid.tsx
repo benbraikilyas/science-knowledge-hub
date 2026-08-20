@@ -1,43 +1,132 @@
+'use client';
+
+import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import CategoryCard from './CategoryCard';
-import FadeIn from './FadeIn';
 import type { Category } from '@/lib/types';
+import { gsap } from '@/lib/gsap';
 
 interface CategoriesGridProps {
   categories: Category[];
 }
 
 export default function CategoriesGrid({ categories }: CategoriesGridProps) {
+  const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const footerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        headerRef.current,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: headerRef.current,
+            start: 'top 85%',
+            once: true,
+          },
+        }
+      );
+
+      const cards = gridRef.current?.querySelectorAll('.category-card-wrap');
+      if (cards && cards.length > 0) {
+        gsap.fromTo(
+          cards,
+          { opacity: 0, y: 40, scale: 0.95 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.75,
+            stagger: 0.08,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: gridRef.current,
+              start: 'top 82%',
+              once: true,
+            },
+          }
+        );
+      }
+
+      if (footerRef.current) {
+        gsap.fromTo(
+          footerRef.current,
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: footerRef.current,
+              start: 'top 90%',
+              once: true,
+            },
+          }
+        );
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, [categories]);
+
   if (!categories || categories.length === 0) return null;
 
   return (
-    <section className="border-t border-[var(--border-color)] bg-[var(--bg-secondary)] py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <FadeIn className="text-center">
-          <h2 className="text-2xl font-bold text-[var(--text-primary)] sm:text-3xl" style={{ fontFamily: 'var(--font-heading)' }}>
+    <section
+      ref={sectionRef}
+      className="relative border-t border-white/[0.06] bg-[#000d1f] py-20 sm:py-28"
+    >
+      {/* Background radial glow */}
+      <div className="pointer-events-none absolute right-1/4 top-1/3 h-80 w-80 rounded-full bg-gold-500/8 blur-[140px]" />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div ref={headerRef} className="text-center max-w-2xl mx-auto">
+          <div className="inline-flex items-center gap-2 rounded-full border border-gold-500/30 bg-gold-500/10 px-3.5 py-1 text-xs font-semibold text-gold-300 backdrop-blur-md">
+            <span className="h-1.5 w-1.5 rounded-full bg-gold-400 animate-pulse" />
+            Scientific Disciplines
+          </div>
+          <h2
+            className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl"
+            style={{ fontFamily: 'var(--font-heading)' }}
+          >
             Explore by Category
           </h2>
-          <p className="mt-2 text-[var(--text-secondary)]">
-            Dive deep into any scientific field that sparks your curiosity
+          <p className="mt-3 text-base text-slate-300">
+            Dive deep into the specialized fields decoding the universe, from quantum particles to cosmic galaxies
           </p>
-        </FadeIn>
+        </div>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {categories.map((category, i) => (
-            <FadeIn key={category.id} delay={(i % 3) * 0.08}>
+        {/* Categories Grid */}
+        <div ref={gridRef} className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {categories.map((category) => (
+            <div key={category.id} className="category-card-wrap">
               <CategoryCard category={category} />
-            </FadeIn>
+            </div>
           ))}
         </div>
 
-        <FadeIn className="mt-10 text-center" delay={0.15}>
+        {/* Bottom CTA */}
+        <div ref={footerRef} className="mt-14 text-center">
           <Link
             href="/categories"
-            className="inline-flex h-11 items-center gap-2 rounded-xl border border-[var(--border-color)] bg-[var(--bg-glass)] px-6 text-sm font-medium text-[var(--text-primary)] transition-all hover:bg-[var(--bg-card)] hover:shadow-[var(--shadow-glow)]"
+            className="inline-flex h-12 items-center gap-2 rounded-xl border border-white/15 bg-white/[0.04] px-8 text-sm font-semibold text-white backdrop-blur-md transition-all duration-200 hover:border-gold-500/40 hover:bg-white/[0.08] hover:shadow-[0_0_25px_rgba(255,195,0,0.15)]"
           >
-            Browse All Categories &rarr;
+            <span>Browse All Categories</span>
+            <span className="text-lg">&rarr;</span>
           </Link>
-        </FadeIn>
+        </div>
       </div>
     </section>
   );
