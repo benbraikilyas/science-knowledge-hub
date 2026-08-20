@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     'articles',
     'scientists',
     'authentication',
+    'newsletter',
 ]
 
 MIDDLEWARE = [
@@ -88,6 +89,14 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
     ),
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '200/hour',
+        'auth': '20/hour',
+        'like': '30/hour',
+    },
 }
 
 SIMPLE_JWT = {

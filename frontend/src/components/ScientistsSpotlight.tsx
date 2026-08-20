@@ -66,7 +66,7 @@ export default function ScientistsSpotlight({ scientists }: ScientistsSpotlightP
   return (
     <section
       ref={sectionRef}
-      className="relative border-t border-white/[0.06] bg-[#000814] py-20 sm:py-28"
+      className="relative border-t border-[var(--border-color)] bg-[var(--bg-primary)] py-20 sm:py-28"
     >
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -77,12 +77,12 @@ export default function ScientistsSpotlight({ scientists }: ScientistsSpotlightP
               Scientific Giants
             </div>
             <h2
-              className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl"
+              className="mt-3 text-3xl font-bold tracking-tight text-[var(--text-primary)] sm:text-4xl"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
               Meet the Scientists
             </h2>
-            <p className="mt-2 text-base text-slate-300">
+            <p className="mt-2 text-base text-[var(--text-secondary)]">
               The brilliant minds whose curiosity decoded the laws of reality
             </p>
           </div>
@@ -111,7 +111,7 @@ export default function ScientistsSpotlight({ scientists }: ScientistsSpotlightP
         <div className="mt-10 text-center sm:hidden">
           <Link
             href="/scientists"
-            className="inline-flex h-12 w-full items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] px-6 text-sm font-semibold text-white backdrop-blur-md hover:bg-white/[0.08]"
+            className="inline-flex h-12 w-full items-center justify-center rounded-xl border border-[var(--border-color)] bg-white/[0.04] px-6 text-sm font-semibold text-[var(--text-primary)] backdrop-blur-md hover:bg-white/[0.08]"
           >
             Explore all scientists &rarr;
           </Link>

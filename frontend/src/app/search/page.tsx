@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import ArticleCard from '@/components/ArticleCard';
 import ScientistCard from '@/components/ScientistCard';
+import { fetchArticles, fetchScientists } from '@/lib/api';
 import type { ArticleListItem, ScientistListItem } from '@/lib/types';
 import { Search, Sparkles, BookOpen, Users } from 'lucide-react';
 
@@ -8,39 +9,31 @@ interface SearchPageProps {
   searchParams: Promise<{ q?: string }>;
 }
 
-async function fetchJson<T>(url: string): Promise<T | null> {
-  try {
-    const res = await fetch(url, { next: { revalidate: 30 } });
-    if (!res.ok) return null;
-    return res.json() as Promise<T>;
-  } catch {
-    return null;
-  }
-}
-
 async function getSearchResults(query: string) {
-  const api = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1';
-  const [articles, scientists] = await Promise.all([
-    fetchJson<ArticleListItem[]>(`${api}/articles/?search=${encodeURIComponent(query)}`),
-    fetchJson<ScientistListItem[]>(`${api}/scientists/?search=${encodeURIComponent(query)}`),
-  ]);
+  try {
+    const [rawArticles, rawScientists] = await Promise.all([
+      fetchArticles({ search: query }),
+      fetchScientists({ search: query }),
+    ]);
 
-  if (articles !== null && scientists !== null) {
+    const articles = rawArticles as ArticleListItem[];
+    const scientists = rawScientists as ScientistListItem[];
+
     return { articles, scientists };
+  } catch {
+    const { DEMO_ARTICLES, DEMO_SCIENTISTS } = await import('@/lib/constants');
+    const q = query.toLowerCase();
+    const demoArticles = DEMO_ARTICLES.filter(
+      (a) => a.title.toLowerCase().includes(q) || a.excerpt.toLowerCase().includes(q) || a.tags.some((t) => t.toLowerCase().includes(q))
+    );
+    const demoScientists = DEMO_SCIENTISTS.filter(
+      (s) => s.name.toLowerCase().includes(q) || s.field.toLowerCase().includes(q)
+    );
+    return {
+      articles: demoArticles,
+      scientists: demoScientists,
+    };
   }
-
-  const { DEMO_ARTICLES, DEMO_SCIENTISTS } = await import('@/lib/constants');
-  const q = query.toLowerCase();
-  const demoArticles = DEMO_ARTICLES.filter(
-    (a) => a.title.toLowerCase().includes(q) || a.excerpt.toLowerCase().includes(q) || a.tags.some((t) => t.toLowerCase().includes(q))
-  );
-  const demoScientists = DEMO_SCIENTISTS.filter(
-    (s) => s.name.toLowerCase().includes(q) || s.field.toLowerCase().includes(q)
-  );
-  return {
-    articles: articles ?? demoArticles,
-    scientists: scientists ?? demoScientists,
-  };
 }
 
 export async function generateMetadata({ searchParams }: SearchPageProps) {
@@ -67,9 +60,9 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   const totalResults = articles.length + scientists.length;
 
   return (
-    <div className="min-h-screen bg-[#000814] pb-24 text-slate-200">
+    <div className="min-h-screen bg-[var(--bg-primary)] pb-24 text-[var(--text-secondary)]">
       {/* Header Banner */}
-      <div className="relative overflow-hidden border-b border-white/[0.08] bg-gradient-to-b from-[#001d3d] via-[#000d1f] to-[#000814] py-16 sm:py-20">
+      <div className="relative overflow-hidden border-b border-[var(--border-color)] bg-gradient-to-b from-[var(--bg-card)] via-[var(--bg-secondary)] to-[var(--bg-primary)] py-16 sm:py-20">
         <div className="pointer-events-none absolute left-1/2 top-0 h-96 w-96 -translate-x-1/2 rounded-full bg-gold-500/10 blur-[140px]" />
 
         <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6">
@@ -79,7 +72,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
           </div>
 
           <h1
-            className="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl"
+            className="mt-4 text-3xl font-extrabold tracking-tight text-[var(--text-primary)] sm:text-4xl lg:text-5xl"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             Search the{' '}
@@ -91,13 +84,13 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
           {/* Search Form */}
           <form action="/search" method="GET" className="mt-8 flex gap-3">
             <div className="relative flex-1">
-              <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
+              <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[var(--text-secondary)]" />
               <input
                 type="text"
                 name="q"
                 defaultValue={query}
                 placeholder="Search articles, equations, scientists, cosmic topics..."
-                className="w-full rounded-2xl border border-gold-500/30 bg-[#001d3d] py-3.5 pl-12 pr-4 text-sm text-white placeholder-slate-400 outline-none backdrop-blur-xl transition-all focus:border-gold-400 focus:ring-2 focus:ring-gold-500/20"
+                className="w-full rounded-2xl border border-gold-500/30 bg-[var(--bg-card)] py-3.5 pl-12 pr-4 text-sm text-[var(--text-primary)] placeholder-[var(--text-secondary)] outline-none backdrop-blur-xl transition-all focus:border-gold-400 focus:ring-2 focus:ring-gold-500/20"
                 autoFocus
               />
             </div>
@@ -110,13 +103,13 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
           </form>
 
           {/* Search suggestions */}
-          <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-slate-400 font-mono">
+          <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-[var(--text-secondary)] font-mono">
             <span>Popular:</span>
             {['James Webb', 'Quantum Physics', 'Einstein', 'Black Holes', 'CRISPR', 'Relativity'].map((term) => (
               <Link
                 key={term}
                 href={`/search?q=${encodeURIComponent(term)}`}
-                className="rounded-lg border border-white/10 bg-white/[0.04] px-2.5 py-1 text-slate-300 transition-colors hover:border-gold-500/40 hover:bg-gold-500/10 hover:text-gold-200"
+                className="rounded-lg border border-[var(--border-color)] bg-white/[0.04] px-2.5 py-1 text-[var(--text-secondary)] transition-colors hover:border-gold-500/40 hover:bg-gold-500/10 hover:text-gold-200"
               >
                 {term}
               </Link>
@@ -129,15 +122,15 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
       <div className="mx-auto max-w-7xl px-4 pt-12 sm:px-6 lg:px-8">
         {query ? (
           <div>
-            <div className="mb-8 flex items-center justify-between text-xs text-slate-400 font-mono">
+            <div className="mb-8 flex items-center justify-between text-xs text-[var(--text-secondary)] font-mono">
               <span>Found {totalResults} result{totalResults !== 1 ? 's' : ''} for &ldquo;{query}&rdquo;</span>
             </div>
 
             {totalResults === 0 && (
-              <div className="rounded-3xl border border-white/[0.08] bg-[#001d3d]/60 p-16 text-center backdrop-blur-xl">
+              <div className="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)]/60 p-16 text-center backdrop-blur-xl">
                 <Sparkles className="mx-auto h-12 w-12 text-slate-500" />
-                <h3 className="mt-4 text-xl font-bold text-white">No cosmic matches found</h3>
-                <p className="mt-2 text-sm text-slate-400 max-w-md mx-auto">
+                <h3 className="mt-4 text-xl font-bold text-[var(--text-primary)]">No cosmic matches found</h3>
+                <p className="mt-2 text-sm text-[var(--text-secondary)] max-w-md mx-auto">
                   We couldn&apos;t find any articles or scientists matching &ldquo;{query}&rdquo;. Try another term or explore all categories.
                 </p>
                 <div className="mt-6 flex justify-center gap-3">
@@ -149,7 +142,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
                   </Link>
                   <Link
                     href="/categories"
-                    className="inline-flex h-11 items-center gap-2 rounded-xl border border-white/15 bg-white/[0.04] px-6 text-sm font-semibold text-white hover:bg-white/[0.08]"
+                    className="inline-flex h-11 items-center gap-2 rounded-xl border border-[var(--border-color)] bg-white/[0.04] px-6 text-sm font-semibold text-[var(--text-primary)] hover:bg-white/[0.08]"
                   >
                     Browse Categories
                   </Link>
@@ -160,7 +153,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
             {/* Scientists Results */}
             {scientists.length > 0 && (
               <div className="mb-14">
-                <div className="flex items-center gap-2 text-lg font-bold text-white mb-6">
+                <div className="flex items-center gap-2 text-lg font-bold text-[var(--text-primary)] mb-6">
                   <Users className="h-5 w-5 text-gold-400" />
                   <span>Matching Scientists ({scientists.length})</span>
                 </div>
@@ -175,7 +168,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
             {/* Articles Results */}
             {articles.length > 0 && (
               <div>
-                <div className="flex items-center gap-2 text-lg font-bold text-white mb-6">
+                <div className="flex items-center gap-2 text-lg font-bold text-[var(--text-primary)] mb-6">
                   <BookOpen className="h-5 w-5 text-gold-300" />
                   <span>Matching Articles ({articles.length})</span>
                 </div>
@@ -188,10 +181,10 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
             )}
           </div>
         ) : (
-          <div className="rounded-3xl border border-white/[0.08] bg-[#001d3d]/60 p-16 text-center backdrop-blur-xl">
+          <div className="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)]/60 p-16 text-center backdrop-blur-xl">
             <Search className="mx-auto h-12 w-12 text-gold-400/60" />
-            <h3 className="mt-4 text-xl font-bold text-white">Start Your Exploration</h3>
-            <p className="mt-2 text-sm text-slate-400 max-w-md mx-auto">
+            <h3 className="mt-4 text-xl font-bold text-[var(--text-primary)]">Start Your Exploration</h3>
+            <p className="mt-2 text-sm text-[var(--text-secondary)] max-w-md mx-auto">
               Type keywords above to search through our database of articles, research topics, and pioneering scientists.
             </p>
           </div>

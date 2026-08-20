@@ -331,7 +331,7 @@ export default function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-[#000814] min-h-[92vh] flex items-center justify-center"
+      className="relative overflow-hidden bg-[var(--bg-primary)] min-h-[92vh] flex items-center justify-center"
       style={{
         background:
           'radial-gradient(ellipse 90% 70% at 50% -15%, #001d3d 0%, #000d1f 50%, #000814 100%)',
@@ -351,7 +351,7 @@ export default function HeroSection() {
       <div className="pointer-events-none absolute left-1/3 bottom-8 h-[24rem] w-[24rem] rounded-full bg-gold-400/8 blur-[130px]" />
 
       {/* Bottom fade transition */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#000814] z-[1]" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[var(--bg-primary)] z-[1]" />
 
       {/* Floating Equations */}
       {EQUATIONS.map((eq) => (
@@ -361,7 +361,7 @@ export default function HeroSection() {
           style={{ animationDuration: `${eq.duration}s`, animationDelay: `${eq.delay}s` }}
         >
           <span
-            className="rounded-xl border border-white/10 bg-navy-950/70 px-4 py-2 font-mono text-xs sm:text-sm text-slate-300/80 backdrop-blur-md shadow-[0_4px_24px_rgba(0,0,0,0.6)]"
+            className="rounded-xl border border-[var(--border-color)] bg-[var(--bg-primary)]/70 px-4 py-2 font-mono text-xs sm:text-sm text-[var(--text-secondary)]/80 backdrop-blur-md shadow-[0_4px_24px_rgba(0,0,0,0.6)]"
             style={{ fontFamily: 'var(--font-mono)' }}
           >
             {eq.tex}
@@ -387,7 +387,7 @@ export default function HeroSection() {
 
             <h1
               ref={titleRef}
-              className="text-4xl font-extrabold leading-[1.12] tracking-tight text-white sm:text-5xl lg:text-6xl"
+              className="text-4xl font-extrabold leading-[1.12] tracking-tight text-[var(--text-primary)] sm:text-5xl lg:text-6xl"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
               Explore the{' '}
@@ -399,7 +399,7 @@ export default function HeroSection() {
 
             <p
               ref={descRef}
-              className="mt-6 text-base leading-relaxed text-slate-300 sm:text-lg lg:text-xl font-light"
+              className="mt-6 text-base leading-relaxed text-[var(--text-secondary)] sm:text-lg lg:text-xl font-light"
             >
               From the quantum realm to the cosmic horizon — your gateway to the equations,
               experiments, and discoveries that decoded the laws of nature.
@@ -418,7 +418,7 @@ export default function HeroSection() {
               </Link>
               <Link
                 href="/categories"
-                className="inline-flex h-12 items-center gap-2 rounded-xl border border-white/15 bg-white/[0.06] px-8 text-sm font-semibold text-slate-100 backdrop-blur-md transition-all duration-200 hover:bg-white/[0.12] hover:border-white/25 hover:-translate-y-0.5"
+                className="inline-flex h-12 items-center gap-2 rounded-xl border border-[var(--border-color)] bg-white/[0.06] px-8 text-sm font-semibold text-[var(--text-primary)] backdrop-blur-md transition-all duration-200 hover:bg-white/[0.12] hover:border-white/25 hover:-translate-y-0.5"
               >
                 Browse Categories
               </Link>
@@ -432,7 +432,7 @@ export default function HeroSection() {
                 <Link
                   key={chip.slug}
                   href={`/categories/${chip.slug}`}
-                  className="rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5 font-mono text-xs text-slate-400 backdrop-blur-sm transition-all duration-200 hover:border-gold-400/50 hover:bg-gold-500/10 hover:text-gold-300"
+                  className="rounded-full border border-[var(--border-color)] bg-white/[0.04] px-3.5 py-1.5 font-mono text-xs text-[var(--text-secondary)] backdrop-blur-sm transition-all duration-200 hover:border-gold-400/50 hover:bg-gold-500/10 hover:text-gold-300"
                   style={{ fontFamily: 'var(--font-mono)' }}
                 >
                   {chip.label}

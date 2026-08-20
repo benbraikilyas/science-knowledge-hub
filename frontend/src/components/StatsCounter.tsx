@@ -97,7 +97,7 @@ export default function StatsCounter() {
   return (
     <section
       ref={sectionRef}
-      className="relative border-t border-white/[0.06] bg-[#000814] py-20"
+      className="relative border-t border-[var(--border-color)] bg-[var(--bg-primary)] py-20"
     >
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -106,11 +106,11 @@ export default function StatsCounter() {
             return (
               <div
                 key={stat.label}
-                className="stat-card group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-[#001d3d]/50 p-7 text-center backdrop-blur-xl transition-all duration-300 hover:border-gold-500/40 hover:shadow-[0_8px_30px_rgba(255,195,0,0.1)] hover:-translate-y-1"
+                className="stat-card group relative overflow-hidden rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)]/50 p-7 text-center backdrop-blur-xl transition-all duration-300 hover:border-gold-500/40 hover:shadow-[0_8px_30px_rgba(255,195,0,0.1)] hover:-translate-y-1"
               >
                 {/* Subtle icon badge */}
                 <div
-                  className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 shadow-inner"
+                  className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl border border-[var(--border-color)] shadow-inner"
                   style={{
                     backgroundColor: `${stat.color}15`,
                     color: stat.color,
@@ -121,7 +121,7 @@ export default function StatsCounter() {
 
                 {/* Number */}
                 <div
-                  className="mt-5 text-4xl font-extrabold tracking-tight text-white sm:text-5xl"
+                  className="mt-5 text-4xl font-extrabold tracking-tight text-[var(--text-primary)] sm:text-5xl"
                   style={{ fontFamily: 'var(--font-heading)' }}
                 >
                   <span
@@ -135,7 +135,7 @@ export default function StatsCounter() {
                 </div>
 
                 {/* Label */}
-                <p className="mt-2 text-sm font-medium text-slate-300">
+                <p className="mt-2 text-sm font-medium text-[var(--text-secondary)]">
                   {stat.label}
                 </p>
               </div>

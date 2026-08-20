@@ -27,6 +27,10 @@ class Scientist(me.Document):
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kwargs):
+        self.updated_at = datetime.now(timezone.utc)
+        return super().save(*args, **kwargs)
+
     def to_list_dict(self):
         return {
             'id': str(self.id),

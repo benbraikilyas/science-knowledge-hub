@@ -1,16 +1,16 @@
 import Link from 'next/link';
 import ArticleCard from '@/components/ArticleCard';
+import { fetchArticles } from '@/lib/api';
 import type { ArticleListItem } from '@/lib/types';
 import { Sparkles, BookOpen, Layers } from 'lucide-react';
 
-async function getArticles(searchParams: Record<string, string | undefined>) {
+async function getArticles(searchParams: Record<string, string | undefined>): Promise<ArticleListItem[]> {
   try {
-    const api = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1';
-    const params = new URLSearchParams();
-    if (searchParams.category) params.set('category', searchParams.category);
-    if (searchParams.tag) params.set('tag', searchParams.tag);
-    const res = await fetch(`${api}/articles/?${params}`, { next: { revalidate: 60 } });
-    return await res.json();
+    const raw = await fetchArticles({
+      category: searchParams.category,
+      tag: searchParams.tag,
+    });
+    return raw as ArticleListItem[];
   } catch {
     const { DEMO_ARTICLES } = await import('@/lib/constants');
     let filtered = [...DEMO_ARTICLES];
@@ -45,9 +45,9 @@ export default async function ArticlesPage({
   const articles: ArticleListItem[] = await getArticles(params);
 
   return (
-    <div className="min-h-screen bg-[#000814] pb-24">
+    <div className="min-h-screen bg-[var(--bg-primary)] pb-24">
       {/* Header Banner */}
-      <div className="relative overflow-hidden border-b border-white/[0.08] bg-gradient-to-b from-[#001d3d] via-[#000d1f] to-[#000814] py-16 sm:py-24">
+      <div className="relative overflow-hidden border-b border-[var(--border-color)] bg-gradient-to-b from-[var(--bg-card)] via-[var(--bg-secondary)] to-[var(--bg-primary)] py-16 sm:py-24">
         <div className="pointer-events-none absolute left-1/2 top-0 h-96 w-96 -translate-x-1/2 rounded-full bg-gold-500/10 blur-[140px]" />
 
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -57,7 +57,7 @@ export default async function ArticlesPage({
           </div>
 
           <h1
-            className="mt-4 text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl"
+            className="mt-4 text-4xl font-extrabold tracking-tight text-[var(--text-primary)] sm:text-5xl lg:text-6xl"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             Scientific{' '}
@@ -66,7 +66,7 @@ export default async function ArticlesPage({
             </span>
           </h1>
 
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-[var(--text-secondary)] sm:text-lg">
             Explore curated analyses, historical breakthroughs, and bleeding-edge scientific discoveries.
           </p>
 
@@ -82,7 +82,7 @@ export default async function ArticlesPage({
                   className={`rounded-xl px-4 py-2 text-xs font-semibold backdrop-blur-md transition-all duration-200 ${
                     isActive
                       ? 'bg-gold-500 text-white shadow-[0_0_20px_rgba(255,195,0,0.35)] border border-gold-400'
-                      : 'border border-white/10 bg-white/[0.04] text-slate-300 hover:border-gold-500/40 hover:bg-white/[0.08] hover:text-white'
+                      : 'border border-[var(--border-color)] bg-white/[0.04] text-[var(--text-secondary)] hover:border-gold-500/40 hover:bg-white/[0.08] hover:text-[var(--text-primary)]'
                   }`}
                 >
                   {cat.name}
@@ -95,7 +95,7 @@ export default async function ArticlesPage({
 
       {/* Articles Grid */}
       <div className="mx-auto max-w-7xl px-4 pt-12 sm:px-6 lg:px-8">
-        <div className="mb-6 flex items-center justify-between text-xs text-slate-400 font-mono">
+        <div className="mb-6 flex items-center justify-between text-xs text-[var(--text-secondary)] font-mono">
           <div className="flex items-center gap-2">
             <Layers className="h-4 w-4 text-gold-400" />
             <span>Showing {articles.length} articles</span>
@@ -109,10 +109,10 @@ export default async function ArticlesPage({
             ))}
           </div>
         ) : (
-          <div className="rounded-3xl border border-white/[0.08] bg-[#001d3d]/60 p-16 text-center backdrop-blur-xl">
+          <div className="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)]/60 p-16 text-center backdrop-blur-xl">
             <Sparkles className="mx-auto h-10 w-10 text-slate-500" />
-            <p className="mt-4 text-lg font-semibold text-white">No articles found in this category.</p>
-            <p className="mt-1 text-sm text-slate-400">Try selecting another topic or browse all articles.</p>
+            <p className="mt-4 text-lg font-semibold text-[var(--text-primary)]">No articles found in this category.</p>
+            <p className="mt-1 text-sm text-[var(--text-secondary)]">Try selecting another topic or browse all articles.</p>
             <Link
               href="/articles"
               className="mt-6 inline-flex h-11 items-center gap-2 rounded-xl bg-gold-500 px-6 text-sm font-semibold text-white shadow-lg transition-all hover:bg-gold-400"

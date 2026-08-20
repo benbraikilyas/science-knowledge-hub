@@ -22,9 +22,9 @@ export default async function CategoriesPage() {
   const categories: Category[] = await getCategories();
 
   return (
-    <div className="min-h-screen bg-[#000814] pb-24">
+    <div className="min-h-screen bg-[var(--bg-primary)] pb-24">
       {/* Header Banner */}
-      <div className="relative overflow-hidden border-b border-white/[0.08] bg-gradient-to-b from-[#001d3d] via-[#000d1f] to-[#000814] py-16 sm:py-24">
+      <div className="relative overflow-hidden border-b border-[var(--border-color)] bg-gradient-to-b from-[var(--bg-card)] via-[var(--bg-secondary)] to-[var(--bg-primary)] py-16 sm:py-24">
         <div className="pointer-events-none absolute left-1/2 top-0 h-96 w-96 -translate-x-1/2 rounded-full bg-gold-500/10 blur-[140px]" />
 
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -34,7 +34,7 @@ export default async function CategoriesPage() {
           </div>
 
           <h1
-            className="mt-4 text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl"
+            className="mt-4 text-4xl font-extrabold tracking-tight text-[var(--text-primary)] sm:text-5xl lg:text-6xl"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             Explore by{' '}
@@ -43,7 +43,7 @@ export default async function CategoriesPage() {
             </span>
           </h1>
 
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-[var(--text-secondary)] sm:text-lg">
             Journey into astrophysics, quantum states, biological evolution, and cognitive machine systems.
           </p>
         </div>
@@ -58,8 +58,8 @@ export default async function CategoriesPage() {
             ))}
           </div>
         ) : (
-          <div className="rounded-3xl border border-white/[0.08] bg-[#001d3d]/60 p-16 text-center backdrop-blur-xl">
-            <p className="text-lg text-slate-400">No categories available at the moment.</p>
+          <div className="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)]/60 p-16 text-center backdrop-blur-xl">
+            <p className="text-lg text-[var(--text-secondary)]">No categories available at the moment.</p>
           </div>
         )}
       </div>

@@ -1,13 +1,13 @@
 import Link from 'next/link';
 import ScientistCard from '@/components/ScientistCard';
+import { fetchScientists } from '@/lib/api';
 import type { ScientistListItem } from '@/lib/types';
 import { Users } from 'lucide-react';
 
-async function getScientists() {
+async function getScientists(): Promise<ScientistListItem[]> {
   try {
-    const api = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1';
-    const res = await fetch(`${api}/scientists/`, { next: { revalidate: 60 } });
-    return await res.json();
+    const raw = await fetchScientists();
+    return raw as ScientistListItem[];
   } catch {
     const { DEMO_SCIENTISTS } = await import('@/lib/constants');
     return DEMO_SCIENTISTS;
@@ -26,19 +26,18 @@ export default async function ScientistsPage({
 }) {
   const params = await searchParams;
   const currentField = params.field || '';
-  let scientists: ScientistListItem[] = await getScientists();
-
-  if (currentField) {
-    scientists = scientists.filter((s) => s.field.toLowerCase() === currentField.toLowerCase());
-  }
-
   const allScientists: ScientistListItem[] = await getScientists();
-  const fields: string[] = Array.from(new Set(allScientists.map((s: ScientistListItem) => s.field)));
+
+  const fields: string[] = Array.from(new Set(allScientists.map((s) => s.field)));
+
+  const scientists = currentField
+    ? allScientists.filter((s) => s.field.toLowerCase() === currentField.toLowerCase())
+    : allScientists;
 
   return (
-    <div className="min-h-screen bg-[#000814] pb-24">
+    <div className="min-h-screen bg-[var(--bg-primary)] pb-24">
       {/* Header Banner */}
-      <div className="relative overflow-hidden border-b border-white/[0.08] bg-gradient-to-b from-[#001d3d] via-[#000d1f] to-[#000814] py-16 sm:py-24">
+      <div className="relative overflow-hidden border-b border-[var(--border-color)] bg-gradient-to-b from-[var(--bg-card)] via-[var(--bg-secondary)] to-[var(--bg-primary)] py-16 sm:py-24">
         <div className="pointer-events-none absolute left-1/2 top-0 h-96 w-96 -translate-x-1/2 rounded-full bg-gold-500/10 blur-[140px]" />
 
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -48,7 +47,7 @@ export default async function ScientistsPage({
           </div>
 
           <h1
-            className="mt-4 text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl"
+            className="mt-4 text-4xl font-extrabold tracking-tight text-[var(--text-primary)] sm:text-5xl lg:text-6xl"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             Scientists &amp;{' '}
@@ -57,7 +56,7 @@ export default async function ScientistsPage({
             </span>
           </h1>
 
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-[var(--text-secondary)] sm:text-lg">
             Explore the lives, breakthroughs, and legacies of the thinkers who shaped modern scientific knowledge.
           </p>
 
@@ -68,7 +67,7 @@ export default async function ScientistsPage({
               className={`rounded-xl px-4 py-2 text-xs font-semibold backdrop-blur-md transition-all duration-200 ${
                 !currentField
                   ? 'bg-gold-500 text-slate-950 shadow-[0_0_20px_rgba(255,195,0,0.3)] font-bold'
-                  : 'border border-white/10 bg-white/[0.04] text-slate-300 hover:border-gold-500/40 hover:bg-white/[0.08] hover:text-white'
+                  : 'border border-[var(--border-color)] bg-white/[0.04] text-[var(--text-secondary)] hover:border-gold-500/40 hover:bg-white/[0.08] hover:text-[var(--text-primary)]'
               }`}
             >
               All Fields
@@ -82,7 +81,7 @@ export default async function ScientistsPage({
                   className={`rounded-xl px-4 py-2 text-xs font-semibold backdrop-blur-md transition-all duration-200 ${
                     isActive
                       ? 'bg-gold-500 text-slate-950 shadow-[0_0_20px_rgba(255,195,0,0.3)] font-bold'
-                      : 'border border-white/10 bg-white/[0.04] text-slate-300 hover:border-gold-500/40 hover:bg-white/[0.08] hover:text-white'
+                      : 'border border-[var(--border-color)] bg-white/[0.04] text-[var(--text-secondary)] hover:border-gold-500/40 hover:bg-white/[0.08] hover:text-[var(--text-primary)]'
                   }`}
                 >
                   {field}
@@ -95,7 +94,7 @@ export default async function ScientistsPage({
 
       {/* Scientists Grid */}
       <div className="mx-auto max-w-7xl px-4 pt-12 sm:px-6 lg:px-8">
-        <div className="mb-6 flex items-center justify-between text-xs text-slate-400 font-mono">
+        <div className="mb-6 flex items-center justify-between text-xs text-[var(--text-secondary)] font-mono">
           <span>Showing {scientists.length} scientists</span>
         </div>
 
@@ -106,8 +105,8 @@ export default async function ScientistsPage({
             ))}
           </div>
         ) : (
-          <div className="rounded-3xl border border-white/[0.08] bg-[#001d3d]/60 p-16 text-center backdrop-blur-xl">
-            <p className="text-lg text-slate-400">No scientists found matching this filter.</p>
+          <div className="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)]/60 p-16 text-center backdrop-blur-xl">
+            <p className="text-lg text-[var(--text-secondary)]">No scientists found matching this filter.</p>
             <Link
               href="/scientists"
               className="mt-6 inline-flex h-11 items-center gap-2 rounded-xl bg-gold-500 px-6 text-sm font-semibold text-white hover:bg-gold-400"

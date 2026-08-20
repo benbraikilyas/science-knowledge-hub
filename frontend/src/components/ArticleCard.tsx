@@ -71,7 +71,7 @@ export default function ArticleCard({ article, featured }: ArticleCardProps) {
     <Link
       ref={cardRef}
       href={`/articles/${article.slug}`}
-      className={`group relative flex flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-[#001d3d]/60 backdrop-blur-xl transition-all duration-300 hover:border-gold-500/50 hover:shadow-[0_10px_35px_rgba(255,195,0,0.12)] ${featured ? 'lg:flex-row' : ''
+      className={`group relative flex flex-col overflow-hidden rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)]/60 backdrop-blur-xl transition-all duration-300 hover:border-gold-500/50 hover:shadow-[0_10px_35px_rgba(255,195,0,0.12)] ${featured ? 'lg:flex-row' : ''
         }`}
       style={{ transformStyle: 'preserve-3d' }}
     >
@@ -87,14 +87,14 @@ export default function ArticleCard({ article, featured }: ArticleCardProps) {
       {/* Visual / Icon Thumbnail */}
       <div className={`relative overflow-hidden ${featured ? 'lg:w-2/5' : ''}`}>
         <div
-          className={`flex items-center justify-center bg-gradient-to-br from-[#001d3d] to-[#000814] ${featured ? 'aspect-video lg:h-full' : 'aspect-[16/9]'
+          className={`flex items-center justify-center bg-gradient-to-br from-[var(--bg-card)] to-[var(--bg-primary)] ${featured ? 'aspect-video lg:h-full' : 'aspect-[16/9]'
             }`}
         >
           <span className="text-5xl transition-transform duration-500 group-hover:scale-125">
             {article.category.icon}
           </span>
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-[#001d3d] via-transparent to-transparent opacity-60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-card)] via-transparent to-transparent opacity-60" />
       </div>
 
       {/* Details */}
@@ -112,29 +112,29 @@ export default function ArticleCard({ article, featured }: ArticleCardProps) {
               <span>{article.category.icon}</span>
               <span>{article.category.name}</span>
             </span>
-            <span className="text-xs text-slate-400 font-mono">{article.readTime} min read</span>
+            <span className="text-xs text-[var(--text-secondary)] font-mono">{article.readTime} min read</span>
           </div>
 
           <h3
-            className={`mt-4 font-bold leading-snug text-white transition-colors duration-200 group-hover:text-gold-300 ${featured ? 'text-2xl lg:text-3xl' : 'text-lg'
+            className={`mt-4 font-bold leading-snug text-[var(--text-primary)] transition-colors duration-200 group-hover:text-gold-300 ${featured ? 'text-2xl lg:text-3xl' : 'text-lg'
               }`}
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             {article.title}
           </h3>
 
-          <p className="mt-2.5 line-clamp-2 text-sm leading-relaxed text-slate-300">
+          <p className="mt-2.5 line-clamp-2 text-sm leading-relaxed text-[var(--text-secondary)]">
             {article.excerpt}
           </p>
         </div>
 
         {/* Footer Meta */}
-        <div className="mt-6 flex items-center justify-between border-t border-white/[0.06] pt-4 text-xs text-slate-400">
+        <div className="mt-6 flex items-center justify-between border-t border-[var(--border-color)] pt-4 text-xs text-[var(--text-secondary)]">
           <div className="flex items-center gap-2">
-            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-tr from-gold-500 to-navy-600 text-[11px] font-bold text-white shadow-[0_0_10px_rgba(255,195,0,0.3)]">
+            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-tr from-gold-500 to-navy-600 text-[11px] font-bold text-[var(--text-primary)] shadow-[0_0_10px_rgba(255,195,0,0.3)]">
               {article.author.displayName.charAt(0)}
             </div>
-            <span className="font-medium text-slate-300">{article.author.displayName}</span>
+            <span className="font-medium text-[var(--text-secondary)]">{article.author.displayName}</span>
           </div>
 
           <div className="flex items-center gap-3 font-mono text-[11px]">

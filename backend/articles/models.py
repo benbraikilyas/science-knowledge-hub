@@ -15,6 +15,10 @@ class Author(me.Document):
     def __str__(self):
         return self.display_name
 
+    def save(self, *args, **kwargs):
+        self.updated_at = datetime.now(timezone.utc)
+        return super().save(*args, **kwargs)
+
     def to_dict(self):
         return {
             'id': str(self.id),
@@ -47,6 +51,7 @@ class Article(me.Document):
     is_featured = me.BooleanField(default=False)
     views_count = me.IntField(default=0)
     likes_count = me.IntField(default=0)
+    liked_by = me.ListField(me.StringField())
     meta_title = me.StringField(max_length=500)
     meta_description = me.StringField(max_length=1000)
     created_at = me.DateTimeField(default=lambda: datetime.now(timezone.utc))
@@ -61,6 +66,10 @@ class Article(me.Document):
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        self.updated_at = datetime.now(timezone.utc)
+        return super().save(*args, **kwargs)
 
     def to_list_dict(self):
         return {

@@ -4,9 +4,10 @@ import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
-import { Menu, X, Search, Moon, Sun, Sparkles } from 'lucide-react';
+import { Menu, X, Search, Moon, Sun, Sparkles, LogOut, User, ChevronDown } from 'lucide-react';
 import { NAV_ITEMS } from '@/lib/constants';
 import { gsap } from '@/lib/gsap';
+import { useAuth } from '@/context/AuthContext';
 
 const emptySubscribe = () => () => { };
 
@@ -14,7 +15,9 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
   const pathname = usePathname();
+  const { user, isAuthenticated, logout } = useAuth();
   const { theme, setTheme } = useTheme();
   const headerRef = useRef<HTMLElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
@@ -81,18 +84,18 @@ export default function Header() {
   return (
     <header
       ref={headerRef}
-      className="sticky top-0 z-50 w-full border-b border-white/[0.06] bg-[#000814]/40 backdrop-blur-xl transition-colors duration-300"
+      className="sticky top-0 z-50 w-full border-b border-[var(--border-color)] bg-[var(--bg-primary)]/40 backdrop-blur-xl transition-colors duration-300"
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Brand Logo */}
         <Link href="/" className="group flex items-center gap-2.5">
           <div className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-gold-500 via-gold-400 to-navy-600 p-[1px] shadow-[0_0_20px_rgba(255,195,0,0.3)] transition-transform duration-300 group-hover:scale-105">
-            <div className="flex h-full w-full items-center justify-center rounded-[11px] bg-[#000814]">
+            <div className="flex h-full w-full items-center justify-center rounded-[11px] bg-[var(--bg-primary)]">
               <Sparkles className="h-4 w-4 text-gold-400 transition-transform duration-300 group-hover:rotate-12" />
             </div>
           </div>
           <span
-            className="text-lg font-bold tracking-tight text-white"
+            className="text-lg font-bold tracking-tight text-[var(--text-primary)]"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             Science<span className="bg-gradient-to-r from-gold-400 to-gold-300 bg-clip-text text-transparent">Hub</span>
@@ -108,8 +111,8 @@ export default function Header() {
                 key={item.href}
                 href={item.href}
                 className={`relative rounded-xl px-3.5 py-2 text-sm font-medium transition-all duration-200 ${isActive
-                    ? 'text-white font-semibold'
-                    : 'text-slate-300 hover:text-white hover:bg-white/[0.06]'
+                    ? 'text-[var(--text-primary)] font-semibold'
+                    : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-white/[0.06]'
                   }`}
               >
                 {isActive && (
@@ -125,12 +128,12 @@ export default function Header() {
         <div className="flex items-center gap-2">
           <button
             onClick={() => setSearchOpen(!searchOpen)}
-            className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-medium text-slate-300 backdrop-blur-md transition-all duration-200 hover:border-gold-500/40 hover:bg-white/[0.08] hover:text-white"
+            className="flex items-center gap-2 rounded-xl border border-[var(--border-color)] bg-white/[0.04] px-3 py-1.5 text-xs font-medium text-[var(--text-secondary)] backdrop-blur-md transition-all duration-200 hover:border-gold-500/40 hover:bg-white/[0.08] hover:text-[var(--text-primary)]"
             aria-label="Search"
           >
-            <Search className="h-4 w-4 text-slate-400" />
-            <span className="hidden sm:inline text-slate-400">Search</span>
-            <kbd className="hidden sm:inline-flex items-center rounded bg-white/10 px-1.5 py-0.5 font-mono text-[10px] text-slate-400">
+            <Search className="h-4 w-4 text-[var(--text-secondary)]" />
+            <span className="hidden sm:inline text-[var(--text-secondary)]">Search</span>
+            <kbd className="hidden sm:inline-flex items-center rounded bg-[var(--border-color)] px-1.5 py-0.5 font-mono text-[10px] text-[var(--text-secondary)]">
               ⌘K
             </kbd>
           </button>
@@ -138,16 +141,72 @@ export default function Header() {
           {mounted && (
             <button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="rounded-xl border border-white/10 bg-white/[0.04] p-2 text-slate-300 transition-all duration-200 hover:border-gold-500/40 hover:bg-white/[0.08] hover:text-white"
+              className="rounded-xl border border-[var(--border-color)] bg-white/[0.04] p-2 text-[var(--text-secondary)] transition-all duration-200 hover:border-gold-500/40 hover:bg-white/[0.08] hover:text-[var(--text-primary)]"
               aria-label="Toggle theme"
             >
               {theme === 'dark' ? <Sun className="h-4 w-4 text-gold-400" /> : <Moon className="h-4 w-4 text-navy-600" />}
             </button>
           )}
 
+          {mounted && isAuthenticated ? (
+            <div className="relative">
+              <button
+                onClick={() => setUserMenuOpen(!userMenuOpen)}
+                className="flex items-center gap-2 rounded-xl border border-[var(--border-color)] bg-white/[0.04] px-3 py-1.5 text-sm text-[var(--text-secondary)] transition-all duration-200 hover:border-gold-500/40 hover:bg-white/[0.08] hover:text-[var(--text-primary)]"
+              >
+                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-gold-500/20 text-gold-400">
+                  <User className="h-3.5 w-3.5" />
+                </div>
+                <span className="hidden sm:inline">{user?.username}</span>
+                <ChevronDown className={`h-3.5 w-3.5 text-[var(--text-secondary)] transition-transform ${userMenuOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {userMenuOpen && (
+                <>
+                  <div className="fixed inset-0 z-40" onClick={() => setUserMenuOpen(false)} />
+                  <div className="absolute right-0 top-full z-50 mt-2 w-48 rounded-xl border border-[var(--border-color)] bg-[var(--bg-secondary)]/95 p-1.5 shadow-2xl backdrop-blur-xl animate-fade-in-down">
+                    <div className="border-b border-[var(--border-color)] px-3 py-2 mb-1">
+                      <p className="text-sm font-medium text-[var(--text-primary)] truncate">{user?.username}</p>
+                      <p className="text-xs text-[var(--text-secondary)] truncate">{user?.email}</p>
+                    </div>
+                    <Link
+                      href="/profile"
+                      onClick={() => setUserMenuOpen(false)}
+                      className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-[var(--text-secondary)] transition-colors hover:bg-white/[0.06] hover:text-[var(--text-primary)]"
+                    >
+                      <User className="h-4 w-4" />
+                      Profile
+                    </Link>
+                    <button
+                      onClick={() => { logout(); setUserMenuOpen(false); }}
+                      className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm text-[var(--text-secondary)] transition-colors hover:bg-red-500/10 hover:text-red-400"
+                    >
+                      <LogOut className="h-4 w-4" />
+                      Sign Out
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
+          ) : mounted ? (
+            <div className="flex items-center gap-2">
+              <Link
+                href="/login"
+                className="rounded-xl border border-[var(--border-color)] bg-white/[0.04] px-3 py-1.5 text-sm font-medium text-[var(--text-secondary)] transition-all duration-200 hover:border-gold-500/40 hover:bg-white/[0.08] hover:text-[var(--text-primary)]"
+              >
+                Sign In
+              </Link>
+              <Link
+                href="/register"
+                className="rounded-xl bg-gold-500 px-3 py-1.5 text-sm font-semibold text-[var(--bg-primary)] shadow-[0_0_15px_rgba(255,195,0,0.25)] transition-all hover:bg-gold-400"
+              >
+                Register
+              </Link>
+            </div>
+          ) : null}
+
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="rounded-xl border border-white/10 bg-white/[0.04] p-2 text-slate-300 transition-colors hover:bg-white/[0.08] hover:text-white md:hidden"
+            className="rounded-xl border border-[var(--border-color)] bg-white/[0.04] p-2 text-[var(--text-secondary)] transition-colors hover:bg-white/[0.08] hover:text-[var(--text-primary)] md:hidden"
             aria-label="Menu"
           >
             {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -157,17 +216,17 @@ export default function Header() {
 
       {/* Search Drawer */}
       {searchOpen && (
-        <div className="border-t border-gold-500/20 bg-[#000d1f]/95 px-4 py-4 backdrop-blur-2xl shadow-2xl animate-fade-in-down">
+        <div className="border-t border-gold-500/20 bg-[var(--bg-secondary)]/95 px-4 py-4 backdrop-blur-2xl shadow-2xl animate-fade-in-down">
           <form onSubmit={handleSearch} className="mx-auto flex max-w-3xl items-center gap-3">
             <div className="relative flex-1">
-              <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+              <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--text-secondary)]" />
               <input
                 ref={searchInputRef}
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search articles, scientists, equations, cosmos..."
-                className="w-full rounded-xl border border-gold-500/30 bg-[#000814] py-2.5 pl-10 pr-4 text-sm text-white placeholder-slate-500 outline-none transition-all focus:border-gold-400 focus:ring-2 focus:ring-gold-500/20"
+                className="w-full rounded-xl border border-gold-500/30 bg-[var(--bg-primary)] py-2.5 pl-10 pr-4 text-sm text-[var(--text-primary)] placeholder-slate-500 outline-none transition-all focus:border-gold-400 focus:ring-2 focus:ring-gold-500/20"
               />
             </div>
             <button
@@ -179,12 +238,12 @@ export default function Header() {
             <button
               type="button"
               onClick={() => setSearchOpen(false)}
-              className="rounded-xl border border-white/10 p-2.5 text-slate-400 hover:text-white"
+              className="rounded-xl border border-[var(--border-color)] p-2.5 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
             >
               <X className="h-4 w-4" />
             </button>
           </form>
-          <div className="mx-auto mt-3 flex max-w-3xl flex-wrap items-center gap-2 text-xs text-slate-400">
+          <div className="mx-auto mt-3 flex max-w-3xl flex-wrap items-center gap-2 text-xs text-[var(--text-secondary)]">
             <span>Trending:</span>
             {['James Webb Telescope', 'Quantum Entanglement', 'Black Holes', 'Dark Matter', 'CRISPR'].map((tag) => (
               <button
@@ -193,7 +252,7 @@ export default function Header() {
                 onClick={() => {
                   window.location.href = `/search?q=${encodeURIComponent(tag)}`;
                 }}
-                className="rounded-lg border border-white/10 bg-white/[0.04] px-2.5 py-1 text-slate-300 transition-colors hover:border-gold-500/40 hover:bg-gold-500/10 hover:text-gold-300"
+                className="rounded-lg border border-[var(--border-color)] bg-white/[0.04] px-2.5 py-1 text-[var(--text-secondary)] transition-colors hover:border-gold-500/40 hover:bg-gold-500/10 hover:text-gold-300"
               >
                 {tag}
               </button>
@@ -204,7 +263,7 @@ export default function Header() {
 
       {/* Mobile Drawer */}
       {menuOpen && (
-        <div className="border-t border-white/10 bg-[#000d1f]/98 px-4 py-4 backdrop-blur-2xl md:hidden">
+        <div className="border-t border-[var(--border-color)] bg-[var(--bg-secondary)]/98 px-4 py-4 backdrop-blur-2xl md:hidden">
           <nav className="flex flex-col space-y-1.5">
             {NAV_ITEMS.map((item) => {
               const isActive = pathname === item.href;
@@ -215,7 +274,7 @@ export default function Header() {
                   onClick={() => setMenuOpen(false)}
                   className={`rounded-xl px-4 py-3 text-sm font-medium transition-colors ${isActive
                       ? 'bg-gold-500/15 text-gold-400 font-semibold border border-gold-500/30'
-                      : 'text-slate-300 hover:bg-white/[0.06] hover:text-white'
+                      : 'text-[var(--text-secondary)] hover:bg-white/[0.06] hover:text-[var(--text-primary)]'
                     }`}
                 >
                   {item.label}

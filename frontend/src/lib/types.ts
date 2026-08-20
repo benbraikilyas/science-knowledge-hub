@@ -116,8 +116,9 @@ export interface SearchResult {
 // --- Pagination ---
 export interface PaginatedResponse<T> {
   count: number;
-  next: string | null;
-  previous: string | null;
+  page: number;
+  pageSize: number;
+  totalPages: number;
   results: T[];
 }
 

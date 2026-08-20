@@ -68,7 +68,7 @@ export default function FeaturedArticles({ articles }: FeaturedArticlesProps) {
   const rest = articles.slice(3, 7);
 
   return (
-    <section ref={sectionRef} className="relative py-20 sm:py-28 bg-[#000814]">
+    <section ref={sectionRef} className="relative py-20 sm:py-28 bg-[var(--bg-primary)]">
       {/* Background ambient glow */}
       <div className="pointer-events-none absolute left-1/2 top-10 h-72 w-72 -translate-x-1/2 rounded-full bg-gold-500/8 blur-[130px]" />
 
@@ -81,12 +81,12 @@ export default function FeaturedArticles({ articles }: FeaturedArticlesProps) {
               Editor&apos;s Selection
             </div>
             <h2
-              className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl"
+              className="mt-3 text-3xl font-bold tracking-tight text-[var(--text-primary)] sm:text-4xl"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
               Featured Articles
             </h2>
-            <p className="mt-2 text-base text-slate-300">
+            <p className="mt-2 text-base text-[var(--text-secondary)]">
               Handpicked breakthroughs, deep dives, and scientific discoveries
             </p>
           </div>
@@ -131,7 +131,7 @@ export default function FeaturedArticles({ articles }: FeaturedArticlesProps) {
         <div className="mt-10 text-center sm:hidden">
           <Link
             href="/articles"
-            className="inline-flex h-12 w-full items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] px-6 text-sm font-semibold text-white backdrop-blur-md hover:bg-white/[0.08]"
+            className="inline-flex h-12 w-full items-center justify-center rounded-xl border border-[var(--border-color)] bg-white/[0.04] px-6 text-sm font-semibold text-[var(--text-primary)] backdrop-blur-md hover:bg-white/[0.08]"
           >
             View all articles &rarr;
           </Link>

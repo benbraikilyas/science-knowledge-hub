@@ -18,6 +18,10 @@ class User(me.Document):
     def __str__(self):
         return self.username
 
+    def save(self, *args, **kwargs):
+        self.updated_at = datetime.now(timezone.utc)
+        return super().save(*args, **kwargs)
+
     @property
     def is_authenticated(self):
         return True
@@ -49,3 +53,7 @@ class UserProfile(me.Document):
 
     def __str__(self):
         return self.display_name or str(self.user_id)
+
+    def save(self, *args, **kwargs):
+        self.updated_at = datetime.now(timezone.utc)
+        return super().save(*args, **kwargs)

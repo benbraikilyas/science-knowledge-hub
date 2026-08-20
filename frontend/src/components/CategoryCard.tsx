@@ -51,7 +51,7 @@ export default function CategoryCard({ category }: CategoryCardProps) {
     <Link
       ref={cardRef}
       href={`/categories/${category.slug}`}
-      className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/[0.08] bg-[#001d3d]/60 p-6 backdrop-blur-xl transition-all duration-300 hover:border-gold-500/50 hover:shadow-[0_12px_40px_rgba(255,195,0,0.12)] hover:-translate-y-1.5"
+      className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)]/60 p-6 backdrop-blur-xl transition-all duration-300 hover:border-gold-500/50 hover:shadow-[0_12px_40px_rgba(255,195,0,0.12)] hover:-translate-y-1.5"
     >
       {/* Dynamic Hover Spotlight */}
       <div
@@ -71,7 +71,7 @@ export default function CategoryCard({ category }: CategoryCardProps) {
       <div className="relative z-10">
         <div className="flex items-center justify-between">
           <div
-            className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 text-3xl shadow-inner transition-transform duration-300 group-hover:scale-110"
+            className="flex h-14 w-14 items-center justify-center rounded-2xl border border-[var(--border-color)] text-3xl shadow-inner transition-transform duration-300 group-hover:scale-110"
             style={{
               backgroundColor: `${category.color}15`,
               boxShadow: `0 0 20px ${category.color}25`,
@@ -79,24 +79,24 @@ export default function CategoryCard({ category }: CategoryCardProps) {
           >
             {category.icon}
           </div>
-          <span className="font-mono text-xs text-slate-400">
+          <span className="font-mono text-xs text-[var(--text-secondary)]">
             {category.articleCount} articles
           </span>
         </div>
 
         <h3
-          className="mt-5 text-xl font-bold tracking-tight text-white transition-colors duration-200 group-hover:text-gold-300"
+          className="mt-5 text-xl font-bold tracking-tight text-[var(--text-primary)] transition-colors duration-200 group-hover:text-gold-300"
           style={{ fontFamily: 'var(--font-heading)' }}
         >
           {category.name}
         </h3>
 
-        <p className="mt-2.5 line-clamp-2 text-sm leading-relaxed text-slate-300">
+        <p className="mt-2.5 line-clamp-2 text-sm leading-relaxed text-[var(--text-secondary)]">
           {category.description}
         </p>
       </div>
 
-      <div className="relative z-10 mt-6 flex items-center justify-between border-t border-white/[0.06] pt-4 text-xs font-semibold text-gold-400">
+      <div className="relative z-10 mt-6 flex items-center justify-between border-t border-[var(--border-color)] pt-4 text-xs font-semibold text-gold-400">
         <span>Explore Topics</span>
         <span className="transition-transform duration-200 group-hover:translate-x-1.5">&rarr;</span>
       </div>

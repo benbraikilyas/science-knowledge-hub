@@ -49,7 +49,7 @@ export default function ScientistCard({ scientist }: ScientistCardProps) {
     <Link
       ref={cardRef}
       href={`/scientists/${scientist.slug}`}
-      className="group relative flex flex-col items-center overflow-hidden rounded-2xl border border-white/[0.08] bg-[#001d3d]/60 p-6 text-center backdrop-blur-xl transition-all duration-300 hover:border-gold-500/50 hover:shadow-[0_12px_40px_rgba(255,195,0,0.12)] hover:-translate-y-1.5"
+      className="group relative flex flex-col items-center overflow-hidden rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)]/60 p-6 text-center backdrop-blur-xl transition-all duration-300 hover:border-gold-500/50 hover:shadow-[0_12px_40px_rgba(255,195,0,0.12)] hover:-translate-y-1.5"
     >
       {/* Ambient background glow */}
       <div className="pointer-events-none absolute -top-12 h-32 w-32 rounded-full bg-gold-500/12 blur-2xl transition-opacity duration-300 group-hover:opacity-100" />
@@ -59,14 +59,14 @@ export default function ScientistCard({ scientist }: ScientistCardProps) {
         ref={avatarRef}
         className="relative flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-tr from-gold-500 via-navy-600 to-gold-400 p-[1.5px] shadow-[0_0_25px_rgba(255,195,0,0.25)]"
       >
-        <div className="flex h-full w-full items-center justify-center rounded-[14px] bg-[#000d1f] text-3xl font-bold text-white">
+        <div className="flex h-full w-full items-center justify-center rounded-[14px] bg-[var(--bg-secondary)] text-3xl font-bold text-[var(--text-primary)]">
           {scientist.name.charAt(0)}
         </div>
       </div>
 
       {/* Name & Field */}
       <h3
-        className="mt-5 text-lg font-bold tracking-tight text-white transition-colors duration-200 group-hover:text-gold-300"
+        className="mt-5 text-lg font-bold tracking-tight text-[var(--text-primary)] transition-colors duration-200 group-hover:text-gold-300"
         style={{ fontFamily: 'var(--font-heading)' }}
       >
         {scientist.name}
@@ -75,7 +75,7 @@ export default function ScientistCard({ scientist }: ScientistCardProps) {
       <p className="mt-1 text-sm font-medium text-gold-400/90">{scientist.field}</p>
 
       {/* Era & Origin */}
-      <div className="mt-3 flex items-center gap-2 text-xs text-slate-400 font-mono">
+      <div className="mt-3 flex items-center gap-2 text-xs text-[var(--text-secondary)] font-mono">
         <span>{scientist.nationality}</span>
         <span>·</span>
         <span>{scientist.era}</span>

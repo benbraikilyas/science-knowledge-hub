@@ -85,7 +85,7 @@ export default function CategoriesGrid({ categories }: CategoriesGridProps) {
   return (
     <section
       ref={sectionRef}
-      className="relative border-t border-white/[0.06] bg-[#000d1f] py-20 sm:py-28"
+      className="relative border-t border-[var(--border-color)] bg-[var(--bg-secondary)] py-20 sm:py-28"
     >
       {/* Background radial glow */}
       <div className="pointer-events-none absolute right-1/4 top-1/3 h-80 w-80 rounded-full bg-gold-500/8 blur-[140px]" />
@@ -98,12 +98,12 @@ export default function CategoriesGrid({ categories }: CategoriesGridProps) {
             Scientific Disciplines
           </div>
           <h2
-            className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl"
+            className="mt-3 text-3xl font-bold tracking-tight text-[var(--text-primary)] sm:text-4xl"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             Explore by Category
           </h2>
-          <p className="mt-3 text-base text-slate-300">
+          <p className="mt-3 text-base text-[var(--text-secondary)]">
             Dive deep into the specialized fields decoding the universe, from quantum particles to cosmic galaxies
           </p>
         </div>
@@ -121,7 +121,7 @@ export default function CategoriesGrid({ categories }: CategoriesGridProps) {
         <div ref={footerRef} className="mt-14 text-center">
           <Link
             href="/categories"
-            className="inline-flex h-12 items-center gap-2 rounded-xl border border-white/15 bg-white/[0.04] px-8 text-sm font-semibold text-white backdrop-blur-md transition-all duration-200 hover:border-gold-500/40 hover:bg-white/[0.08] hover:shadow-[0_0_25px_rgba(255,195,0,0.15)]"
+            className="inline-flex h-12 items-center gap-2 rounded-xl border border-[var(--border-color)] bg-white/[0.04] px-8 text-sm font-semibold text-[var(--text-primary)] backdrop-blur-md transition-all duration-200 hover:border-gold-500/40 hover:bg-white/[0.08] hover:shadow-[0_0_25px_rgba(255,195,0,0.15)]"
           >
             <span>Browse All Categories</span>
             <span className="text-lg">&rarr;</span>
