@@ -5,7 +5,7 @@ export default function NotFound() {
     <div className="flex min-h-[80vh] flex-col items-center justify-center px-4 text-center">
       <div className="relative">
         <h1
-          className="text-[10rem] font-extrabold leading-none tracking-tighter"
+          className="text-[clamp(6rem,28vw,10rem)] font-extrabold leading-none tracking-tighter"
           style={{
             fontFamily: 'var(--font-heading)',
             background: 'linear-gradient(135deg, #ffc300 0%, #ffd60a 50%, #ffe066 100%)',

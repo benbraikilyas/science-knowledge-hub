@@ -331,7 +331,7 @@ export default function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-[var(--bg-primary)] min-h-[92vh] flex items-center justify-center"
+      className="relative overflow-hidden bg-[var(--bg-primary)] min-h-svh flex items-center justify-center"
       style={{
         background:
           'radial-gradient(ellipse 90% 70% at 50% -15%, #001d3d 0%, #000d1f 50%, #000814 100%)',

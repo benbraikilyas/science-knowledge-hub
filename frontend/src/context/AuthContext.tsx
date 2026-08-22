@@ -2,7 +2,27 @@
 
 import { createContext, useCallback, useContext, useEffect, useState } from 'react';
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8000';
+// Empty string = relative URL → requests go through the Next.js /api proxy (next.config.ts rewrites).
+// This avoids cross-origin fetch errors caused by browser extensions intercepting window.fetch.
+const API_BASE = '';
+
+/**
+ * Extracts a human-readable error message from a DRF error response.
+ * Handles: { detail }, { error }, field-level { field: ["msg"] }, and fallbacks.
+ */
+function extractError(data: Record<string, unknown>, fallback: string): string {
+  if (typeof data.detail === 'string') return data.detail;
+  if (typeof data.error === 'string') return data.error;
+  // Field-level errors: { username: ["already exists"], email: [...] }
+  const fieldErrors = Object.entries(data)
+    .filter(([, v]) => Array.isArray(v) || typeof v === 'string')
+    .map(([field, msgs]) => {
+      const msg = Array.isArray(msgs) ? msgs[0] : msgs;
+      return `${field}: ${msg}`;
+    });
+  if (fieldErrors.length > 0) return fieldErrors.join(' | ');
+  return fallback;
+}
 
 interface User {
   id: number | string;
@@ -74,7 +94,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     });
     if (!res.ok) {
       const data = await res.json().catch(() => ({}));
-      throw new Error(data.detail || data.error || 'Login failed');
+      throw new Error(extractError(data, 'Login failed'));
     }
     const data = await res.json();
     storeAuth(data.access, data.refresh, data.user);
@@ -90,7 +110,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     });
     if (!res.ok) {
       const data = await res.json().catch(() => ({}));
-      throw new Error(data.detail || data.error || 'Registration failed');
+      throw new Error(extractError(data, 'Registration failed'));
     }
     const data = await res.json();
     storeAuth(data.access, data.refresh, data.user);

@@ -4,10 +4,9 @@ import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
-import { Menu, X, Search, Moon, Sun, Sparkles, LogOut, User, ChevronDown } from 'lucide-react';
+import { Menu, X, Search, Moon, Sun, Sparkles } from 'lucide-react';
 import { NAV_ITEMS } from '@/lib/constants';
 import { gsap } from '@/lib/gsap';
-import { useAuth } from '@/context/AuthContext';
 
 const emptySubscribe = () => () => { };
 
@@ -15,9 +14,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [userMenuOpen, setUserMenuOpen] = useState(false);
   const pathname = usePathname();
-  const { user, isAuthenticated, logout } = useAuth();
   const { theme, setTheme } = useTheme();
   const headerRef = useRef<HTMLElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
@@ -147,62 +144,6 @@ export default function Header() {
               {theme === 'dark' ? <Sun className="h-4 w-4 text-gold-400" /> : <Moon className="h-4 w-4 text-navy-600" />}
             </button>
           )}
-
-          {mounted && isAuthenticated ? (
-            <div className="relative">
-              <button
-                onClick={() => setUserMenuOpen(!userMenuOpen)}
-                className="flex items-center gap-2 rounded-xl border border-[var(--border-color)] bg-white/[0.04] px-3 py-1.5 text-sm text-[var(--text-secondary)] transition-all duration-200 hover:border-gold-500/40 hover:bg-white/[0.08] hover:text-[var(--text-primary)]"
-              >
-                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-gold-500/20 text-gold-400">
-                  <User className="h-3.5 w-3.5" />
-                </div>
-                <span className="hidden sm:inline">{user?.username}</span>
-                <ChevronDown className={`h-3.5 w-3.5 text-[var(--text-secondary)] transition-transform ${userMenuOpen ? 'rotate-180' : ''}`} />
-              </button>
-              {userMenuOpen && (
-                <>
-                  <div className="fixed inset-0 z-40" onClick={() => setUserMenuOpen(false)} />
-                  <div className="absolute right-0 top-full z-50 mt-2 w-48 rounded-xl border border-[var(--border-color)] bg-[var(--bg-secondary)]/95 p-1.5 shadow-2xl backdrop-blur-xl animate-fade-in-down">
-                    <div className="border-b border-[var(--border-color)] px-3 py-2 mb-1">
-                      <p className="text-sm font-medium text-[var(--text-primary)] truncate">{user?.username}</p>
-                      <p className="text-xs text-[var(--text-secondary)] truncate">{user?.email}</p>
-                    </div>
-                    <Link
-                      href="/profile"
-                      onClick={() => setUserMenuOpen(false)}
-                      className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-[var(--text-secondary)] transition-colors hover:bg-white/[0.06] hover:text-[var(--text-primary)]"
-                    >
-                      <User className="h-4 w-4" />
-                      Profile
-                    </Link>
-                    <button
-                      onClick={() => { logout(); setUserMenuOpen(false); }}
-                      className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm text-[var(--text-secondary)] transition-colors hover:bg-red-500/10 hover:text-red-400"
-                    >
-                      <LogOut className="h-4 w-4" />
-                      Sign Out
-                    </button>
-                  </div>
-                </>
-              )}
-            </div>
-          ) : mounted ? (
-            <div className="flex items-center gap-2">
-              <Link
-                href="/login"
-                className="rounded-xl border border-[var(--border-color)] bg-white/[0.04] px-3 py-1.5 text-sm font-medium text-[var(--text-secondary)] transition-all duration-200 hover:border-gold-500/40 hover:bg-white/[0.08] hover:text-[var(--text-primary)]"
-              >
-                Sign In
-              </Link>
-              <Link
-                href="/register"
-                className="rounded-xl bg-gold-500 px-3 py-1.5 text-sm font-semibold text-[var(--bg-primary)] shadow-[0_0_15px_rgba(255,195,0,0.25)] transition-all hover:bg-gold-400"
-              >
-                Register
-              </Link>
-            </div>
-          ) : null}
 
           <button
             onClick={() => setMenuOpen(!menuOpen)}

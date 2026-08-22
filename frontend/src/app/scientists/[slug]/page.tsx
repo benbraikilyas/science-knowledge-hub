@@ -61,7 +61,7 @@ export default async function ScientistDetailPage({ params }: ScientistDetailPro
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] pb-24 text-[var(--text-secondary)]">
       {/* Header Banner */}
-      <div className="relative border-b border-[var(--border-color)] bg-gradient-to-b from-[var(--bg-card)] via-[var(--bg-secondary)] to-[var(--bg-primary)] py-14 sm:py-20">
+      <div className="relative overflow-hidden border-b border-[var(--border-color)] bg-gradient-to-b from-[var(--bg-card)] via-[var(--bg-secondary)] to-[var(--bg-primary)] py-14 sm:py-20">
         <div className="pointer-events-none absolute left-1/2 top-0 h-96 w-96 -translate-x-1/2 rounded-full bg-gold-500/10 blur-[140px]" />
 
         <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6">

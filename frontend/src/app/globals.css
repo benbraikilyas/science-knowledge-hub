@@ -322,6 +322,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
@@ -330,7 +331,7 @@ body {
   font-family: var(--font-body);
   line-height: 1.7;
   transition: background-color var(--transition-base), color var(--transition-base);
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* ========================================

@@ -129,12 +129,12 @@ export default function ArticleCard({ article, featured }: ArticleCardProps) {
         </div>
 
         {/* Footer Meta */}
-        <div className="mt-6 flex items-center justify-between border-t border-[var(--border-color)] pt-4 text-xs text-[var(--text-secondary)]">
-          <div className="flex items-center gap-2">
-            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-tr from-gold-500 to-navy-600 text-[11px] font-bold text-[var(--text-primary)] shadow-[0_0_10px_rgba(255,195,0,0.3)]">
+        <div className="mt-6 flex flex-wrap items-center justify-between gap-x-3 gap-y-1 border-t border-[var(--border-color)] pt-4 text-xs text-[var(--text-secondary)]">
+          <div className="flex min-w-0 items-center gap-2">
+            <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-tr from-gold-500 to-navy-600 text-[11px] font-bold text-[var(--text-primary)] shadow-[0_0_10px_rgba(255,195,0,0.3)]">
               {article.author.displayName.charAt(0)}
             </div>
-            <span className="font-medium text-[var(--text-secondary)]">{article.author.displayName}</span>
+            <span className="truncate font-medium text-[var(--text-secondary)]">{article.author.displayName}</span>
           </div>
 
           <div className="flex items-center gap-3 font-mono text-[11px]">

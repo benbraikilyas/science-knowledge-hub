@@ -46,8 +46,8 @@ export default function NewsletterSection() {
     setError('');
 
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1';
-      const res = await fetch(`${apiUrl}/newsletter/subscribe/`, {
+      // Relative URL → proxied by Next.js to Django (avoids cross-origin extension interference)
+      const res = await fetch(`/api/v1/newsletter/subscribe/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email.trim() }),
