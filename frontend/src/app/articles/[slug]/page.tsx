@@ -4,7 +4,10 @@ import { fetchArticle, fetchRelatedArticles } from '@/lib/api';
 import type { ArticleListItem } from '@/lib/types';
 import ArticleReadingProgress from '@/components/ArticleReadingProgress';
 import ArticleCard from '@/components/ArticleCard';
-import { Clock, Eye, Share2, Bookmark, ArrowLeft, Sparkles } from 'lucide-react';
+import SafeImage from '@/components/SafeImage';
+import { getPublicArticleAuthor } from '@/lib/article-author';
+import { absoluteUrl } from '@/lib/site';
+import { Clock, Eye, ArrowLeft, Sparkles } from 'lucide-react';
 
 interface ArticleDetailProps {
   params: Promise<{ slug: string }>;
@@ -33,15 +36,33 @@ export async function generateMetadata({ params }: ArticleDetailProps) {
   const { slug } = await params;
   const article = await getArticle(slug) as Record<string, unknown> | null;
   if (!article) return { title: 'Article Not Found' };
+  const hasOriginalContent = typeof article.content === 'string' && article.content.trim().length > 0;
+  const image = typeof article.featuredImage === 'string' && article.featuredImage
+    ? absoluteUrl(article.featuredImage)
+    : undefined;
+  const publicAuthor = getPublicArticleAuthor(article.author as { displayName?: string; avatar?: string } | undefined);
   return {
-    title: `${(article.metaTitle as string) || article.title} | Science Knowledge Hub`,
+    title: (article.metaTitle as string) || (article.title as string),
     description: (article.metaDescription as string) || (article.excerpt as string),
+    alternates: { canonical: `/articles/${slug}` },
+    authors: [publicAuthor.href
+      ? { name: publicAuthor.displayName, url: publicAuthor.href }
+      : { name: publicAuthor.displayName }],
+    robots: { index: hasOriginalContent, follow: true },
     openGraph: {
       title: article.title as string,
       description: article.excerpt as string,
       type: 'article',
+      url: absoluteUrl(`/articles/${slug}`),
       publishedTime: article.publishedAt as string,
       tags: article.tags as string[],
+      images: image ? [{ url: image, alt: article.title as string }] : [],
+    },
+    twitter: {
+      card: image ? 'summary_large_image' : 'summary',
+      title: article.title as string,
+      description: article.excerpt as string,
+      images: image ? [image] : [],
     },
   };
 }
@@ -70,8 +91,11 @@ export default async function ArticleDetailPage({ params }: ArticleDetailProps) 
   }
 
   const category = article.category as { slug: string; color: string; icon: string; name: string };
-  const author = article.author as { displayName: string };
+  const author = article.author as { displayName?: string; avatar?: string };
   const articleTags = article.tags as string[] | undefined;
+  const featuredImage = (article.featuredImage as string) || '';
+  const publicAuthor = getPublicArticleAuthor(author);
+  const authorName = publicAuthor.displayName;
 
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] pb-24 text-[var(--text-secondary)]">
@@ -120,12 +144,33 @@ export default async function ArticleDetailPage({ params }: ArticleDetailProps) 
           {/* Author & Stats Bar */}
           <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-[var(--border-color)] pt-6">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-gold-500 to-navy-600 text-sm font-bold text-[var(--text-primary)] shadow-[0_0_15px_rgba(255,195,0,0.25)]">
-                {author.displayName?.charAt(0) || 'A'}
-              </div>
+              {publicAuthor.avatar ? (
+                <SafeImage
+                  src={publicAuthor.avatar}
+                  alt={authorName}
+                  width={40}
+                  height={40}
+                  className="h-10 w-10 rounded-xl object-cover shadow-[0_0_15px_rgba(255,195,0,0.25)]"
+                  fallback={
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-gold-500 to-navy-600 text-sm font-bold text-[var(--text-primary)] shadow-[0_0_15px_rgba(255,195,0,0.25)]">
+                      {authorName.charAt(0)}
+                    </div>
+                  }
+                />
+              ) : (
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-gold-500 to-navy-600 text-sm font-bold text-[var(--text-primary)] shadow-[0_0_15px_rgba(255,195,0,0.25)]">
+                  {authorName.charAt(0)}
+                </div>
+              )}
               <div>
-                <p className="text-sm font-semibold text-[var(--text-primary)]">{author.displayName}</p>
-                <p className="text-xs text-[var(--text-secondary)]">Scientific Contributor</p>
+                {publicAuthor.href ? (
+                  <Link href={publicAuthor.href} className="text-sm font-semibold text-[var(--text-primary)] hover:text-gold-300">
+                    {authorName}
+                  </Link>
+                ) : (
+                  <p className="text-sm font-semibold text-[var(--text-primary)]">{authorName}</p>
+                )}
+                <p className="text-xs text-[var(--text-secondary)]">Editorial byline</p>
               </div>
             </div>
 
@@ -143,6 +188,28 @@ export default async function ArticleDetailPage({ params }: ArticleDetailProps) 
           </div>
         </div>
       </div>
+
+      {/* Featured Image */}
+      {featuredImage && (
+        <div className="mx-auto max-w-4xl px-4 pt-12 sm:px-6">
+          <div className="relative aspect-[16/9] overflow-hidden rounded-3xl border border-[var(--border-color)] shadow-2xl">
+            <SafeImage
+              src={featuredImage}
+              alt={article.title as string}
+              sizes="(max-width: 896px) 100vw, 896px"
+              className="object-cover"
+              fallback={
+                <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[var(--bg-card)] to-[var(--bg-primary)] text-6xl">
+                  {category.icon}
+                </div>
+              }
+            />
+          </div>
+          <p className="mt-2 text-right text-[11px] text-[var(--text-secondary)]">
+            <Link href="/sources#image-credits" className="hover:text-gold-300">Image source and license</Link>
+          </p>
+        </div>
+      )}
 
       {/* Article Body */}
       <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6">

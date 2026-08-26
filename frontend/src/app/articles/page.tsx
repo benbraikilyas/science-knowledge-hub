@@ -21,10 +21,18 @@ async function getArticles(searchParams: Record<string, string | undefined>): Pr
   }
 }
 
-export const metadata = {
-  title: 'Articles | Science Knowledge Hub',
-  description: 'Browse thousands of scientific articles on space, physics, biology, AI, technology, and more.',
-};
+export async function generateMetadata() {
+  const { DEMO_ARTICLES } = await import('@/lib/constants');
+  const hasPublishableArticles = (
+    DEMO_ARTICLES as Array<(typeof DEMO_ARTICLES)[number] & { content?: string }>
+  ).some((article) => article.content?.trim());
+
+  return {
+    title: 'Articles',
+    description: 'Browse developing science explainers on space, physics, biology, AI, technology, and more.',
+    robots: { index: Boolean(hasPublishableArticles), follow: true },
+  };
+}
 
 const CATEGORIES = [
   { name: 'All Topics', slug: '' },

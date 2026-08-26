@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Sparkles } from 'lucide-react';
 
 export const metadata = {
-  title: 'Sitemap | Science Knowledge Hub',
+  title: 'Sitemap',
   description: 'Sitemap for Science Knowledge Hub - find all pages and sections.',
 };
 
@@ -23,7 +23,13 @@ const CATEGORY_LINKS = [
 ];
 
 const FOOTER_LINKS = [
+  { label: 'About Us', href: '/about' },
+  { label: 'Editorial Policy', href: '/editorial-policy' },
+  { label: 'Editorial Team', href: '/authors/sciencehub-editorial-team' },
+  { label: 'Sources & Image Credits', href: '/sources' },
+  { label: 'Contact', href: '/contact' },
   { label: 'Privacy Policy', href: '/privacy' },
+  { label: 'Cookie Policy', href: '/cookies' },
   { label: 'Terms of Service', href: '/terms' },
 ];
 

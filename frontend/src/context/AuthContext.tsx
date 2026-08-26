@@ -117,13 +117,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, [storeAuth]);
 
   useEffect(() => {
-    const storedToken = localStorage.getItem('access_token');
-    const storedUser = localStorage.getItem('user');
-    if (storedToken && storedUser) {
-      setToken(storedToken);
-      setUser(JSON.parse(storedUser));
-      refreshToken();
-    }
+    let active = true;
+    queueMicrotask(() => {
+      if (!active) return;
+      const storedToken = localStorage.getItem('access_token');
+      const storedUser = localStorage.getItem('user');
+      if (storedToken && storedUser) {
+        setToken(storedToken);
+        setUser(JSON.parse(storedUser));
+        refreshToken();
+      }
+    });
+    return () => {
+      active = false;
+    };
   }, [refreshToken]);
 
   return (

@@ -29,3 +29,7 @@ class AuthThrottle(ConditionalThrottle):
 
 class NewsletterThrottle(ConditionalThrottle):
     scope = 'newsletter'
+
+
+class ContactThrottle(ConditionalThrottle):
+    scope = 'contact'

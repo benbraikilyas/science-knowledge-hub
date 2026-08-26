@@ -31,11 +31,13 @@ async function getCategoryData(slug: string) {
 
 export async function generateMetadata({ params }: CategoryDetailProps) {
   const { slug } = await params;
-  const { category } = await getCategoryData(slug);
+  const { category, articles } = await getCategoryData(slug);
   if (!category) return { title: 'Category Not Found' };
   return {
-    title: `${category.name} | Science Knowledge Hub`,
+    title: category.name,
     description: category.description,
+    alternates: { canonical: `/categories/${slug}` },
+    robots: { index: articles.length > 0, follow: true },
   };
 }
 

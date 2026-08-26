@@ -14,7 +14,7 @@ async function getCategories() {
 }
 
 export const metadata = {
-  title: 'Categories | Science Knowledge Hub',
+  title: 'Categories',
   description: 'Explore scientific categories from Space and Astronomy to Quantum Physics and AI.',
 };
 

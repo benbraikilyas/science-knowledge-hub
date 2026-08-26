@@ -1,10 +1,12 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { formatCompactNumber, getRelativeTime } from '@/lib/utils';
 import type { ArticleListItem } from '@/lib/types';
 import { gsap } from '@/lib/gsap';
+import { getPublicArticleAuthor } from '@/lib/article-author';
 
 interface ArticleCardProps {
   article: ArticleListItem;
@@ -14,6 +16,12 @@ interface ArticleCardProps {
 export default function ArticleCard({ article, featured }: ArticleCardProps) {
   const cardRef = useRef<HTMLAnchorElement>(null);
   const glowRef = useRef<HTMLDivElement>(null);
+  const [imgFailed, setImgFailed] = useState(false);
+  const [avatarFailed, setAvatarFailed] = useState(false);
+
+  const showImage = Boolean(article.featuredImage) && !imgFailed;
+  const publicAuthor = getPublicArticleAuthor(article.author);
+  const showAvatar = Boolean(publicAuthor.avatar) && !avatarFailed;
 
   useEffect(() => {
     const card = cardRef.current;
@@ -86,14 +94,27 @@ export default function ArticleCard({ article, featured }: ArticleCardProps) {
 
       {/* Visual / Icon Thumbnail */}
       <div className={`relative overflow-hidden ${featured ? 'lg:w-2/5' : ''}`}>
-        <div
-          className={`flex items-center justify-center bg-gradient-to-br from-[var(--bg-card)] to-[var(--bg-primary)] ${featured ? 'aspect-video lg:h-full' : 'aspect-[16/9]'
-            }`}
-        >
-          <span className="text-5xl transition-transform duration-500 group-hover:scale-125">
-            {article.category.icon}
-          </span>
-        </div>
+        {showImage ? (
+          <div className={`relative ${featured ? 'aspect-video lg:h-full' : 'aspect-[16/9]'}`}>
+            <Image
+              src={article.featuredImage}
+              alt={article.title}
+              fill
+              sizes={featured ? '(max-width: 1024px) 100vw, 40vw' : '(max-width: 640px) 100vw, 33vw'}
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              onError={() => setImgFailed(true)}
+            />
+          </div>
+        ) : (
+          <div
+            className={`flex items-center justify-center bg-gradient-to-br from-[var(--bg-card)] to-[var(--bg-primary)] ${featured ? 'aspect-video lg:h-full' : 'aspect-[16/9]'
+              }`}
+          >
+            <span className="text-5xl transition-transform duration-500 group-hover:scale-125">
+              {article.category.icon}
+            </span>
+          </div>
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-card)] via-transparent to-transparent opacity-60" />
       </div>
 
@@ -131,10 +152,21 @@ export default function ArticleCard({ article, featured }: ArticleCardProps) {
         {/* Footer Meta */}
         <div className="mt-6 flex flex-wrap items-center justify-between gap-x-3 gap-y-1 border-t border-[var(--border-color)] pt-4 text-xs text-[var(--text-secondary)]">
           <div className="flex min-w-0 items-center gap-2">
-            <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-tr from-gold-500 to-navy-600 text-[11px] font-bold text-[var(--text-primary)] shadow-[0_0_10px_rgba(255,195,0,0.3)]">
-              {article.author.displayName.charAt(0)}
-            </div>
-            <span className="truncate font-medium text-[var(--text-secondary)]">{article.author.displayName}</span>
+            {showAvatar ? (
+              <Image
+                src={publicAuthor.avatar as string}
+                alt={publicAuthor.displayName}
+                width={24}
+                height={24}
+                className="h-6 w-6 shrink-0 rounded-full object-cover shadow-[0_0_10px_rgba(255,195,0,0.3)]"
+                onError={() => setAvatarFailed(true)}
+              />
+            ) : (
+              <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-tr from-gold-500 to-navy-600 text-[11px] font-bold text-[var(--text-primary)] shadow-[0_0_10px_rgba(255,195,0,0.3)]">
+                {publicAuthor.displayName.charAt(0)}
+              </div>
+            )}
+            <span className="truncate font-medium text-[var(--text-secondary)]">{publicAuthor.displayName}</span>
           </div>
 
           <div className="flex items-center gap-3 font-mono text-[11px]">

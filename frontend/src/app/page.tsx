@@ -6,6 +6,7 @@ import StatsCounter from '@/components/StatsCounter';
 import ScientistsSpotlight from '@/components/ScientistsSpotlight';
 import NewsletterSection from '@/components/NewsletterSection';
 import { fetchFeaturedArticles, fetchCategories, fetchFeaturedScientists } from '@/lib/api';
+import { DEMO_SCIENTISTS, mergeScientistProfiles } from '@/lib/scientists';
 import type { ArticleListItem, Category, ScientistListItem } from '@/lib/types';
 
 async function getHomepageData() {
@@ -18,18 +19,20 @@ async function getHomepageData() {
 
     const articles = rawArticles as ArticleListItem[];
     const categories = rawCategories as Category[];
-    const scientists = rawScientists as ScientistListItem[];
+    const scientists = mergeScientistProfiles(rawScientists as ScientistListItem[])
+      .filter((scientist) => scientist.isFeatured)
+      .slice(0, 8);
 
     if (articles.length && categories.length && scientists.length) {
       return { articles, categories, scientists };
     }
   } catch {}
 
-  const { DEMO_ARTICLES, DEMO_CATEGORIES, DEMO_SCIENTISTS } = await import('@/lib/constants');
+  const { DEMO_ARTICLES, DEMO_CATEGORIES } = await import('@/lib/constants');
   return {
     articles: DEMO_ARTICLES as ArticleListItem[],
     categories: DEMO_CATEGORIES as Category[],
-    scientists: DEMO_SCIENTISTS as ScientistListItem[],
+    scientists: DEMO_SCIENTISTS.filter((scientist) => scientist.isFeatured).slice(0, 8),
   };
 }
 

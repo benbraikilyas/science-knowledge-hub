@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Sparkles, Heart, CheckCircle2, AlertCircle } from 'lucide-react';
 import { SITE_NAME, NAV_ITEMS } from '@/lib/constants';
+import CookieSettingsButton from '@/components/CookieSettingsButton';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -20,8 +21,7 @@ export default function Footer() {
     setError('');
 
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1';
-      const res = await fetch(`${apiUrl}/newsletter/subscribe/`, {
+      const res = await fetch('/api/v1/newsletter/subscribe/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email.trim() }),
@@ -47,7 +47,7 @@ export default function Footer() {
       <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/40 to-transparent" />
 
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-6">
           {/* Brand Col */}
           <div className="lg:col-span-2">
             <Link href="/" className="group flex items-center gap-2.5">
@@ -64,13 +64,35 @@ export default function Footer() {
               </span>
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-[var(--text-secondary)]">
-              The premier open science knowledge platform exploring the cosmos, quantum physics, biology, and artificial intelligence.
+              An independent educational project connecting scientific ideas, discoveries, and the people who changed how we understand the world.
             </p>
             <div className="mt-6 flex items-center gap-2 text-xs text-[var(--text-secondary)]">
               <span>Made with</span>
               <Heart className="h-3.5 w-3.5 text-gold-500 fill-gold-500 animate-pulse" />
               <span>for curious minds worldwide</span>
             </div>
+          </div>
+
+          {/* Project transparency */}
+          <div>
+            <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--text-primary)]">
+              The Project
+            </h3>
+            <ul className="mt-4 space-y-2.5 text-sm">
+              {[
+                { label: 'About Us', href: '/about' },
+                { label: 'Editorial Policy', href: '/editorial-policy' },
+                { label: 'Editorial Team', href: '/authors/sciencehub-editorial-team' },
+                { label: 'Sources & Credits', href: '/sources' },
+                { label: 'Contact', href: '/contact' },
+              ].map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="transition-colors duration-200 hover:text-gold-300">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Navigation */}
@@ -123,7 +145,7 @@ export default function Footer() {
               Quick Connect
             </h3>
             <p className="mt-4 text-xs leading-relaxed text-[var(--text-secondary)]">
-              Weekly curated science digest directly in your inbox.
+              Occasional project updates when new material is published.
             </p>
 
             {subscribed ? (
@@ -162,16 +184,23 @@ export default function Footer() {
                 </form>
               </>
             )}
+            <p className="mt-3 text-[11px] leading-relaxed text-[var(--text-secondary)]">
+              By subscribing, you agree to our <Link href="/privacy" className="text-gold-300 hover:underline">Privacy Policy</Link>.{' '}
+              <Link href="/unsubscribe" className="text-gold-300 hover:underline">Unsubscribe</Link> anytime.
+            </p>
           </div>
         </div>
 
         {/* Bottom copyright */}
         <div className="mt-14 border-t border-[var(--border-color)] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-secondary)] font-mono">
           <p>&copy; {currentYear} {SITE_NAME}. Decoding the Universe.</p>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
             <Link href="/privacy" className="hover:text-[var(--text-primary)] transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-[var(--text-primary)] transition-colors">Terms of Use</Link>
+            <Link href="/cookies" className="hover:text-[var(--text-primary)] transition-colors">Cookie Policy</Link>
+            <Link href="/sources" className="hover:text-[var(--text-primary)] transition-colors">Sources</Link>
             <Link href="/sitemap" className="hover:text-[var(--text-primary)] transition-colors">Sitemap</Link>
+            <CookieSettingsButton className="hover:text-[var(--text-primary)] transition-colors" />
           </div>
         </div>
       </div>

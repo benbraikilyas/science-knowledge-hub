@@ -1,17 +1,30 @@
 import Link from 'next/link';
 import { fetchScientist } from '@/lib/api';
-import { ArrowLeft, Award, Quote, Sparkles, BookOpen } from 'lucide-react';
+import SafeImage from '@/components/SafeImage';
+import { DEMO_SCIENTISTS } from '@/lib/scientists';
+import { ArrowLeft, Award, Quote, Sparkles, BookOpen, ExternalLink, Lightbulb } from 'lucide-react';
+import { absoluteUrl } from '@/lib/site';
 
 interface ScientistDetailProps {
   params: Promise<{ slug: string }>;
 }
 
+export function generateStaticParams() {
+  return DEMO_SCIENTISTS.map((scientist) => ({ slug: scientist.slug }));
+}
+
 async function getScientist(slug: string) {
+  const demoProfile = DEMO_SCIENTISTS.find((scientist) => scientist.slug === slug) || null;
+
+  // Curated profiles are complete local records, so they should never depend on
+  // the API being online in order to render.
+  if (demoProfile) return demoProfile;
+
   try {
-    return await fetchScientist(slug);
+    const remoteProfile = await fetchScientist(slug);
+    return remoteProfile && typeof remoteProfile === 'object' ? remoteProfile : null;
   } catch {
-    const { DEMO_SCIENTISTS } = await import('@/lib/constants');
-    return DEMO_SCIENTISTS.find((s: { slug: string }) => s.slug === slug) || null;
+    return null;
   }
 }
 
@@ -19,9 +32,27 @@ export async function generateMetadata({ params }: ScientistDetailProps) {
   const { slug } = await params;
   const scientist = (await getScientist(slug)) as Record<string, unknown> | null;
   if (!scientist) return { title: 'Scientist Not Found' };
+  const description = `Discover the life and achievements of ${scientist.name}, pioneer in ${scientist.field}.`;
+  const image = typeof scientist.portraitImage === 'string' && scientist.portraitImage
+    ? absoluteUrl(scientist.portraitImage)
+    : undefined;
   return {
-    title: `${scientist.name} | Science Knowledge Hub`,
-    description: `Discover the life and achievements of ${scientist.name}, pioneer in ${scientist.field}.`,
+    title: scientist.name as string,
+    description,
+    alternates: { canonical: `/scientists/${slug}` },
+    openGraph: {
+      type: 'profile',
+      url: absoluteUrl(`/scientists/${slug}`),
+      title: scientist.name as string,
+      description,
+      images: image ? [{ url: image, alt: scientist.name as string }] : [],
+    },
+    twitter: {
+      card: image ? 'summary_large_image' : 'summary',
+      title: scientist.name as string,
+      description,
+      images: image ? [image] : [],
+    },
   };
 }
 
@@ -53,6 +84,10 @@ export default async function ScientistDetailPage({ params }: ScientistDetailPro
   const nationality = scientist.nationality as string;
   const birthDate = scientist.birthDate as string;
   const deathDate = scientist.deathDate as string | undefined;
+  const portraitImage = (scientist.portraitImage as string) || '';
+  const group = scientist.group as string | undefined;
+  const breakthrough = scientist.breakthrough as string | undefined;
+  const sourceUrl = scientist.sourceUrl as string | undefined;
   const biography = scientist.biography as string | undefined;
   const keyContributions = (scientist.keyContributions as string[]) || [];
   const famousQuotes = (scientist.famousQuotes as string[]) || [];
@@ -74,10 +109,19 @@ export default async function ScientistDetailPage({ params }: ScientistDetailPro
           </Link>
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
-            <div className="flex h-28 w-28 shrink-0 items-center justify-center rounded-3xl bg-gradient-to-tr from-gold-500 via-navy-600 to-gold-400 p-[2px] shadow-[0_0_40px_rgba(255,195,0,0.25)]">
-              <div className="flex h-full w-full items-center justify-center rounded-[22px] bg-[var(--bg-secondary)] text-5xl font-extrabold text-[var(--text-primary)]">
-                {name?.charAt(0) || '?'}
-              </div>
+            <div className="flex h-28 w-28 shrink-0 items-center justify-center overflow-hidden rounded-3xl bg-gradient-to-tr from-gold-500 via-navy-600 to-gold-400 p-[2px] shadow-[0_0_40px_rgba(255,195,0,0.25)]">
+              <SafeImage
+                src={portraitImage}
+                alt={name}
+                width={224}
+                height={224}
+                className="h-full w-full rounded-[22px] object-cover object-top"
+                fallback={
+                  <div className="flex h-full w-full items-center justify-center rounded-[22px] bg-[var(--bg-secondary)] text-5xl font-extrabold text-[var(--text-primary)]">
+                    {name?.charAt(0) || '?'}
+                  </div>
+                }
+              />
             </div>
 
             <div>
@@ -105,6 +149,12 @@ export default async function ScientistDetailPage({ params }: ScientistDetailPro
                   </>
                 )}
               </div>
+
+              {group && (
+                <p className="mt-4 text-xs font-semibold uppercase tracking-[0.18em] text-gold-300/80">
+                  {group}
+                </p>
+              )}
             </div>
           </div>
         </div>
@@ -115,6 +165,20 @@ export default async function ScientistDetailPage({ params }: ScientistDetailPro
         <div className="grid gap-10 lg:grid-cols-12">
           {/* Biography & Key Contributions */}
           <div className="lg:col-span-8 space-y-10">
+            {breakthrough && (
+              <div className="rounded-3xl border border-gold-500/30 bg-gradient-to-br from-gold-500/12 to-transparent p-7 backdrop-blur-xl">
+                <div className="flex items-start gap-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-gold-500/20 text-gold-300">
+                    <Lightbulb className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-gold-300">Why this changed the world</p>
+                    <p className="mt-2 text-lg font-semibold leading-relaxed text-[var(--text-primary)]">{breakthrough}</p>
+                  </div>
+                </div>
+              </div>
+            )}
+
             {biography && (
               <div className="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)]/60 p-8 backdrop-blur-xl">
                 <h2 className="text-xl font-bold text-[var(--text-primary)] mb-4 flex items-center gap-2">
@@ -192,6 +256,32 @@ export default async function ScientistDetailPage({ params }: ScientistDetailPro
                 </ul>
               </div>
             )}
+
+            {sourceUrl && (
+              <a
+                href={sourceUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="group flex items-center justify-between rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)]/60 p-5 text-sm font-semibold text-[var(--text-primary)] transition-colors hover:border-gold-500/40 hover:text-gold-300"
+              >
+                <span>
+                  <span className="block text-[10px] uppercase tracking-[0.16em] text-[var(--text-secondary)]">Reference</span>
+                  Read the source profile
+                </span>
+                <ExternalLink className="h-4 w-4 text-gold-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </a>
+            )}
+
+            <Link
+              href="/sources#image-credits"
+              className="group flex items-center justify-between rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)]/60 p-5 text-sm font-semibold text-[var(--text-primary)] transition-colors hover:border-gold-500/40 hover:text-gold-300"
+            >
+              <span>
+                <span className="block text-[10px] uppercase tracking-[0.16em] text-[var(--text-secondary)]">Transparency</span>
+                Portrait source &amp; license
+              </span>
+              <ExternalLink className="h-4 w-4 text-gold-400" />
+            </Link>
           </div>
         </div>
       </div>

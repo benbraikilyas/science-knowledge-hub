@@ -1,21 +1,28 @@
 import Link from 'next/link';
 import ScientistCard from '@/components/ScientistCard';
 import { fetchScientists } from '@/lib/api';
-import type { ScientistListItem } from '@/lib/types';
+import { DEMO_SCIENTISTS, mergeScientistProfiles } from '@/lib/scientists';
+import type { ScientistGroup, ScientistListItem } from '@/lib/types';
 import { Users } from 'lucide-react';
+
+const SCIENTIST_GROUPS: { label: ScientistGroup; icon: string }[] = [
+  { label: 'Arab & Muslim Pioneers', icon: '✦' },
+  { label: 'Computing & Algorithms', icon: '⌘' },
+  { label: 'Physical Sciences', icon: '⚛' },
+  { label: 'Life Sciences', icon: '✧' },
+];
 
 async function getScientists(): Promise<ScientistListItem[]> {
   try {
     const raw = await fetchScientists();
-    return raw as ScientistListItem[];
+    return mergeScientistProfiles(raw as ScientistListItem[]);
   } catch {
-    const { DEMO_SCIENTISTS } = await import('@/lib/constants');
     return DEMO_SCIENTISTS;
   }
 }
 
 export const metadata = {
-  title: 'Scientists Directory | Science Knowledge Hub',
+  title: 'Scientists Directory',
   description: 'Discover the brilliant minds who shaped our understanding of the universe.',
 };
 
@@ -25,13 +32,11 @@ export default async function ScientistsPage({
   searchParams: Promise<{ [key: string]: string | undefined }>;
 }) {
   const params = await searchParams;
-  const currentField = params.field || '';
+  const currentGroup = params.group || '';
   const allScientists: ScientistListItem[] = await getScientists();
 
-  const fields: string[] = Array.from(new Set(allScientists.map((s) => s.field)));
-
-  const scientists = currentField
-    ? allScientists.filter((s) => s.field.toLowerCase() === currentField.toLowerCase())
+  const scientists = currentGroup
+    ? allScientists.filter((scientist) => scientist.group === currentGroup)
     : allScientists;
 
   return (
@@ -57,34 +62,42 @@ export default async function ScientistsPage({
           </h1>
 
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-[var(--text-secondary)] sm:text-lg">
-            Explore the lives, breakthroughs, and legacies of the thinkers who shaped modern scientific knowledge.
+            From the House of Wisdom to the digital age, explore the breakthroughs that changed how humanity understands and builds the world.
           </p>
 
-          {/* Fields Filter */}
+          <div className="mt-7 flex flex-wrap gap-5 text-xs font-mono text-[var(--text-secondary)]">
+            <span><strong className="text-gold-300">{allScientists.length}</strong> world-changing minds</span>
+            <span><strong className="text-gold-300">{allScientists.filter((scientist) => scientist.group === 'Arab & Muslim Pioneers').length}</strong> Arab &amp; Muslim pioneers</span>
+            <span><strong className="text-gold-300">{allScientists.filter((scientist) => scientist.group === 'Computing & Algorithms').length}</strong> computing pioneers</span>
+          </div>
+
+          {/* Legacy group filters */}
           <div className="mt-8 flex flex-wrap gap-2">
             <Link
               href="/scientists"
               className={`rounded-xl px-4 py-2 text-xs font-semibold backdrop-blur-md transition-all duration-200 ${
-                !currentField
+                !currentGroup
                   ? 'bg-gold-500 text-slate-950 shadow-[0_0_20px_rgba(255,195,0,0.3)] font-bold'
                   : 'border border-[var(--border-color)] bg-white/[0.04] text-[var(--text-secondary)] hover:border-gold-500/40 hover:bg-white/[0.08] hover:text-[var(--text-primary)]'
               }`}
             >
-              All Fields
+              All Pioneers
             </Link>
-            {fields.map((field) => {
-              const isActive = currentField.toLowerCase() === field.toLowerCase();
+            {SCIENTIST_GROUPS.map(({ label, icon }) => {
+              const isActive = currentGroup === label;
+              const count = allScientists.filter((scientist) => scientist.group === label).length;
               return (
                 <Link
-                  key={field}
-                  href={`/scientists?field=${encodeURIComponent(field)}`}
+                  key={label}
+                  href={`/scientists?group=${encodeURIComponent(label)}`}
                   className={`rounded-xl px-4 py-2 text-xs font-semibold backdrop-blur-md transition-all duration-200 ${
                     isActive
                       ? 'bg-gold-500 text-slate-950 shadow-[0_0_20px_rgba(255,195,0,0.3)] font-bold'
                       : 'border border-[var(--border-color)] bg-white/[0.04] text-[var(--text-secondary)] hover:border-gold-500/40 hover:bg-white/[0.08] hover:text-[var(--text-primary)]'
                   }`}
                 >
-                  {field}
+                  <span className="mr-1.5" aria-hidden="true">{icon}</span>
+                  {label} <span className="ml-1 opacity-70">{count}</span>
                 </Link>
               );
             })}

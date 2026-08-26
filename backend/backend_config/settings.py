@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     'scientists',
     'authentication',
     'newsletter',
+    'contact',
 ]
 
 MIDDLEWARE = [
@@ -101,6 +102,8 @@ REST_FRAMEWORK = {
         'anon': '200/hour',
         'auth': '20/hour',
         'like': '30/hour',
+        'newsletter': '20/hour',
+        'contact': '10/hour',
     },
     'EXCEPTION_HANDLER': 'backend_config.exceptions.custom_exception_handler',
 }

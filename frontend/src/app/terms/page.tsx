@@ -1,61 +1,29 @@
 import Link from 'next/link';
+import InfoPageShell from '@/components/InfoPageShell';
 
 export const metadata = {
-  title: 'Terms of Service | Science Knowledge Hub',
-  description: 'Terms of Service for Science Knowledge Hub.',
+  title: 'Terms of Use',
+  description: 'Terms governing use of Science Knowledge Hub.',
 };
 
 export default function TermsPage() {
   return (
-    <div className="min-h-screen bg-[var(--bg-primary)] pb-24">
-      <div className="relative overflow-hidden border-b border-[var(--border-color)] bg-gradient-to-b from-[var(--bg-card)] via-[var(--bg-secondary)] to-[var(--bg-primary)] py-16 sm:py-24">
-        <div className="pointer-events-none absolute left-1/2 top-0 h-96 w-96 -translate-x-1/2 rounded-full bg-gold-500/10 blur-[140px]" />
-        <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <h1
-            className="text-4xl font-extrabold tracking-tight text-[var(--text-primary)] sm:text-5xl"
-            style={{ fontFamily: 'var(--font-heading)' }}
-          >
-            Terms of Service
-          </h1>
-          <p className="mt-3 text-base text-[var(--text-secondary)]">Last updated: August 2026</p>
-        </div>
+    <InfoPageShell
+      eyebrow="Legal"
+      title="Terms of Use"
+      description="These terms govern access to and use of Science Knowledge Hub."
+      updated="August 2026"
+    >
+      <div className="space-y-9 text-[var(--text-secondary)]">
+        <section><h2 className="text-xl font-bold text-[var(--text-primary)]">Acceptance</h2><p className="mt-3 leading-relaxed">By using this site, you agree to these terms and our Privacy Policy. If you do not agree, please stop using the service.</p></section>
+        <section><h2 className="text-xl font-bold text-[var(--text-primary)]">Educational purpose</h2><p className="mt-3 leading-relaxed">Content is provided for general educational and informational use. It is not professional medical, legal, financial, safety, or engineering advice and should not replace qualified guidance or original scientific sources.</p></section>
+        <section><h2 className="text-xl font-bold text-[var(--text-primary)]">Accuracy and availability</h2><p className="mt-3 leading-relaxed">We work to improve accuracy but cannot guarantee that every page is complete, current, or error-free. Scientific understanding changes, and parts of this early-stage project may be updated, moved, or removed. Report suspected errors through our <Link href="/contact" className="text-gold-300 hover:underline">contact form</Link>.</p></section>
+        <section><h2 className="text-xl font-bold text-[var(--text-primary)]">Accounts and acceptable use</h2><p className="mt-3 leading-relaxed">You are responsible for your credentials and activity. Do not attempt unauthorized access, interfere with the service, submit malicious code, scrape the site in a way that disrupts it, impersonate others, or use the service unlawfully.</p></section>
+        <section><h2 className="text-xl font-bold text-[var(--text-primary)]">Copyright, sources, and third-party material</h2><p className="mt-3 leading-relaxed">Original site text and design may not be republished as your own. Images, quotations, scientific papers, and other third-party material remain subject to their respective rights and licenses. See <Link href="/sources" className="text-gold-300 hover:underline">Sources & Image Credits</Link> for attribution information.</p></section>
+        <section><h2 className="text-xl font-bold text-[var(--text-primary)]">External links and advertising</h2><p className="mt-3 leading-relaxed">Links and advertisements may lead to third-party services with their own terms and privacy practices. Their inclusion does not automatically constitute an endorsement, and we are not responsible for third-party content or transactions.</p></section>
+        <section><h2 className="text-xl font-bold text-[var(--text-primary)]">Disclaimer and limitation</h2><p className="mt-3 leading-relaxed">The service is provided on an “as available” basis to the extent permitted by law. We are not liable for indirect or consequential losses arising from reliance on site content, service interruptions, or third-party services.</p></section>
+        <section><h2 className="text-xl font-bold text-[var(--text-primary)]">Changes</h2><p className="mt-3 leading-relaxed">We may update these terms as the project changes. The updated date identifies the current version. Continued use after an update means you accept the revised terms.</p></section>
       </div>
-
-      <div className="mx-auto max-w-4xl px-4 pt-12 sm:px-6 lg:px-8">
-        <div className="space-y-10 text-[var(--text-secondary)]">
-          <section>
-            <h2 className="text-xl font-bold text-[var(--text-primary)]" style={{ fontFamily: 'var(--font-heading)' }}>Acceptance of Terms</h2>
-            <p className="mt-3 leading-relaxed">
-              By accessing or using Science Knowledge Hub, you agree to be bound by these Terms of Service. If you do not agree, please do not use our platform.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-bold text-[var(--text-primary)]" style={{ fontFamily: 'var(--font-heading)' }}>Use of Content</h2>
-            <p className="mt-3 leading-relaxed">
-              All scientific articles, research summaries, and educational content on this platform are provided for informational and educational purposes. Content is curated by our editorial team and sourced from publicly available scientific literature.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-bold text-[var(--text-primary)]" style={{ fontFamily: 'var(--font-heading)' }}>User Accounts</h2>
-            <p className="mt-3 leading-relaxed">
-              You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. You agree to notify us immediately of any unauthorized use.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-bold text-[var(--text-primary)]" style={{ fontFamily: 'var(--font-heading)' }}>Limitation of Liability</h2>
-            <p className="mt-3 leading-relaxed">
-              Science Knowledge Hub strives for accuracy but makes no warranties about the completeness or reliability of information. We are not liable for any damages arising from the use of our platform.
-            </p>
-          </section>
-        </div>
-
-        <div className="mt-16 border-t border-[var(--border-color)] pt-8 text-center text-sm text-[var(--text-secondary)]">
-          <Link href="/" className="text-gold-400 hover:text-gold-300 transition-colors">&larr; Back to Home</Link>
-        </div>
-      </div>
-    </div>
+    </InfoPageShell>
   );
 }

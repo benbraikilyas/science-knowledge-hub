@@ -9,6 +9,7 @@ export interface Category {
   slug: string;
   description: string;
   icon: string;
+  image?: string;
   color: string;
   articleCount: number;
   parentId?: string;
@@ -70,6 +71,12 @@ export interface ArticleListItem {
 }
 
 // --- Scientist ---
+export type ScientistGroup =
+  | 'Arab & Muslim Pioneers'
+  | 'Computing & Algorithms'
+  | 'Physical Sciences'
+  | 'Life Sciences';
+
 export interface Scientist {
   id: string;
   name: string;
@@ -80,6 +87,9 @@ export interface Scientist {
   nationality: string;
   era: string;
   field: string;
+  group?: ScientistGroup;
+  breakthrough?: string;
+  sourceUrl?: string;
   biography: string;
   keyContributions: string[];
   famousQuotes: string[];
@@ -99,7 +109,17 @@ export interface ScientistListItem {
   nationality: string;
   era: string;
   field: string;
+  group?: ScientistGroup;
+  breakthrough?: string;
+  sourceUrl?: string;
   isFeatured: boolean;
+}
+
+export interface ScientistProfile extends ScientistListItem {
+  biography: string;
+  keyContributions: string[];
+  famousQuotes: string[];
+  awards: string[];
 }
 
 // --- Search ---

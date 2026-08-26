@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Mail, CheckCircle2, AlertCircle, Sparkles } from 'lucide-react';
 import { gsap } from '@/lib/gsap';
+import Link from 'next/link';
 
 export default function NewsletterSection() {
   const [email, setEmail] = useState('');
@@ -95,7 +96,7 @@ export default function NewsletterSection() {
             </h2>
 
             <p className="mt-4 text-base leading-relaxed text-[var(--text-secondary)] sm:text-lg">
-              Get the latest breakthroughs in astrophysics, quantum mechanics, and AI delivered straight to your inbox every Sunday.
+              Join the project newsletter for occasional updates when new explainers, scientist profiles, and collections are published.
             </p>
 
             {subscribed ? (
@@ -138,7 +139,8 @@ export default function NewsletterSection() {
             )}
 
             <p className="mt-4 text-xs text-[var(--text-secondary)] font-mono">
-              Zero spam. Unsubscribe anytime with one click.
+              No spam. You can unsubscribe at any time from our{' '}
+              <Link href="/unsubscribe" className="text-gold-300 hover:underline">unsubscribe page</Link>.
             </p>
           </div>
         </div>

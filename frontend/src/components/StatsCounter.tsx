@@ -1,36 +1,37 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { BookOpen, Users, Compass, Globe } from 'lucide-react';
+import { BookOpen, Users, Compass, LibraryBig } from 'lucide-react';
 import { gsap } from '@/lib/gsap';
+import { PLATFORM_STATS } from '@/lib/constants';
 
 const STATS = [
   {
-    label: 'Published Articles',
-    value: 2500,
-    suffix: '+',
+    label: 'Articles in Progress',
+    value: PLATFORM_STATS.articlesCount,
+    suffix: '',
     icon: BookOpen,
     color: '#ffc300',
   },
   {
     label: 'Pioneering Scientists',
-    value: 500,
-    suffix: '+',
+    value: PLATFORM_STATS.scientistsCount,
+    suffix: '',
     icon: Users,
     color: '#38bdf8',
   },
   {
     label: 'Scientific Fields',
-    value: 15,
+    value: PLATFORM_STATS.categoriesCount,
     suffix: '',
     icon: Compass,
     color: '#ffd60a',
   },
   {
-    label: 'Monthly Explorers',
-    value: 150000,
-    suffix: '+',
-    icon: Globe,
+    label: 'Curated Collections',
+    value: PLATFORM_STATS.collectionsCount,
+    suffix: '',
+    icon: LibraryBig,
     color: '#34d399',
   },
 ];

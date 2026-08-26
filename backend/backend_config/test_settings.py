@@ -18,6 +18,7 @@ INSTALLED_APPS = [
     'scientists',
     'authentication',
     'newsletter',
+    'contact',
 ]
 
 MIDDLEWARE = [

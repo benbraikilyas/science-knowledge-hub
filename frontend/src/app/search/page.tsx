@@ -2,11 +2,27 @@ import Link from 'next/link';
 import ArticleCard from '@/components/ArticleCard';
 import ScientistCard from '@/components/ScientistCard';
 import { fetchArticles, fetchScientists } from '@/lib/api';
+import { DEMO_SCIENTISTS, mergeScientistProfiles } from '@/lib/scientists';
 import type { ArticleListItem, ScientistListItem } from '@/lib/types';
 import { Search, Sparkles, BookOpen, Users } from 'lucide-react';
 
 interface SearchPageProps {
   searchParams: Promise<{ q?: string }>;
+}
+
+function scientistMatches(scientist: ScientistListItem, query: string) {
+  const searchable = [
+    scientist.name,
+    scientist.field,
+    scientist.nationality,
+    scientist.group,
+    scientist.breakthrough,
+  ]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase();
+
+  return searchable.includes(query.toLowerCase());
 }
 
 async function getSearchResults(query: string) {
@@ -17,18 +33,18 @@ async function getSearchResults(query: string) {
     ]);
 
     const articles = rawArticles as ArticleListItem[];
-    const scientists = rawScientists as ScientistListItem[];
+    const scientists = mergeScientistProfiles(rawScientists as ScientistListItem[]).filter((scientist) =>
+      scientistMatches(scientist, query)
+    );
 
     return { articles, scientists };
   } catch {
-    const { DEMO_ARTICLES, DEMO_SCIENTISTS } = await import('@/lib/constants');
+    const { DEMO_ARTICLES } = await import('@/lib/constants');
     const q = query.toLowerCase();
     const demoArticles = DEMO_ARTICLES.filter(
       (a) => a.title.toLowerCase().includes(q) || a.excerpt.toLowerCase().includes(q) || a.tags.some((t) => t.toLowerCase().includes(q))
     );
-    const demoScientists = DEMO_SCIENTISTS.filter(
-      (s) => s.name.toLowerCase().includes(q) || s.field.toLowerCase().includes(q)
-    );
+    const demoScientists = DEMO_SCIENTISTS.filter((scientist) => scientistMatches(scientist, q));
     return {
       articles: demoArticles,
       scientists: demoScientists,
@@ -39,8 +55,9 @@ async function getSearchResults(query: string) {
 export async function generateMetadata({ searchParams }: SearchPageProps) {
   const { q } = await searchParams;
   return {
-    title: q ? `Search results for "${q}" | Science Knowledge Hub` : 'Cosmic Search | Science Knowledge Hub',
+    title: q ? `Search results for "${q}"` : 'Search',
     description: q ? `Search results for "${q}" on Science Knowledge Hub` : 'Search scientific articles, scientists, and topics',
+    robots: { index: false, follow: true },
   };
 }
 
@@ -105,7 +122,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
           {/* Search suggestions */}
           <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-[var(--text-secondary)] font-mono">
             <span>Popular:</span>
-            {['James Webb', 'Quantum Physics', 'Einstein', 'Black Holes', 'CRISPR', 'Relativity'].map((term) => (
+            {['Al-Khwarizmi', 'Algorithms', 'Einstein', 'Black Holes', 'CRISPR', 'Relativity'].map((term) => (
               <Link
                 key={term}
                 href={`/search?q=${encodeURIComponent(term)}`}

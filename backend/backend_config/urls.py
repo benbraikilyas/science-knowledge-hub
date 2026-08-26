@@ -11,6 +11,7 @@ def api_root(request):
             'scientists': '/api/v1/scientists/',
             'auth': '/api/v1/auth/',
             'newsletter': '/api/v1/newsletter/',
+            'contact': '/api/v1/contact/',
         },
     })
 
@@ -21,4 +22,5 @@ urlpatterns = [
     path('api/v1/scientists/', include('scientists.urls')),
     path('api/v1/auth/', include('authentication.urls')),
     path('api/v1/newsletter/', include('newsletter.urls')),
+    path('api/v1/contact/', include('contact.urls')),
 ]
