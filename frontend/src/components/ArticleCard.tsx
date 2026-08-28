@@ -137,7 +137,7 @@ export default function ArticleCard({ article, featured }: ArticleCardProps) {
           </div>
 
           <h3
-            className={`mt-4 font-bold leading-snug text-[var(--text-primary)] transition-colors duration-200 group-hover:text-gold-300 ${featured ? 'text-2xl lg:text-3xl' : 'text-lg'
+            className={`mt-4 font-bold leading-snug text-[var(--text-primary)] transition-colors duration-200 group-hover:text-[var(--accent-readable)] ${featured ? 'text-2xl lg:text-3xl' : 'text-lg'
               }`}
             style={{ fontFamily: 'var(--font-heading)' }}
           >

@@ -36,65 +36,79 @@ export default function ContactForm() {
     }
   };
 
-  if (status === 'sent') {
-    return (
-      <div className="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-6 text-emerald-200" role="status">
+  return (
+    <div dir="ltr" translate="no" suppressHydrationWarning>
+      <div
+        hidden={status !== 'sent'}
+        className="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-6 text-emerald-200"
+        role="status"
+        aria-live="polite"
+      >
         <div className="flex items-center gap-3">
-          <CheckCircle2 className="h-5 w-5 shrink-0" />
+          <CheckCircle2 className="h-5 w-5 shrink-0" aria-hidden="true" />
           <p className="font-semibold">Message received. The editorial team will review it as soon as possible.</p>
         </div>
         <button type="button" onClick={() => setStatus('idle')} className="mt-4 text-sm text-emerald-100 underline underline-offset-4">
           Send another message
         </button>
       </div>
-    );
-  }
 
-  return (
-    <form onSubmit={handleSubmit} className="space-y-5 rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)]/60 p-6 backdrop-blur-xl sm:p-8">
-      <div className="grid gap-5 sm:grid-cols-2">
-        <label className="text-sm font-medium text-[var(--text-primary)]">
-          Name
-          <input name="name" type="text" required maxLength={120} autoComplete="name" className="mt-2 w-full rounded-xl border border-[var(--border-color)] bg-white/[0.04] px-4 py-3 text-sm text-[var(--text-primary)] outline-none focus:border-gold-500" />
-        </label>
-        <label className="text-sm font-medium text-[var(--text-primary)]">
-          Email
-          <input name="email" type="email" required maxLength={254} autoComplete="email" className="mt-2 w-full rounded-xl border border-[var(--border-color)] bg-white/[0.04] px-4 py-3 text-sm text-[var(--text-primary)] outline-none focus:border-gold-500" />
-        </label>
-      </div>
-      <label className="block text-sm font-medium text-[var(--text-primary)]">
-        Subject
-        <select name="subject" required defaultValue="" className="mt-2 w-full rounded-xl border border-[var(--border-color)] bg-[var(--bg-secondary)] px-4 py-3 text-sm text-[var(--text-primary)] outline-none focus:border-gold-500">
-          <option value="" disabled>Select a subject</option>
-          <option value="editorial-correction">Editorial correction</option>
-          <option value="source-or-credit">Source or image credit</option>
-          <option value="privacy-request">Privacy request</option>
-          <option value="technical-issue">Technical issue</option>
-          <option value="general">General question</option>
-        </select>
-      </label>
-      <label className="block text-sm font-medium text-[var(--text-primary)]">
-        Message
-        <textarea name="message" required minLength={10} maxLength={5000} rows={7} className="mt-2 w-full resize-y rounded-xl border border-[var(--border-color)] bg-white/[0.04] px-4 py-3 text-sm text-[var(--text-primary)] outline-none focus:border-gold-500" />
-      </label>
-      <label className="sr-only" aria-hidden="true">
-        Website
-        <input name="website" type="text" tabIndex={-1} autoComplete="off" />
-      </label>
-      <label className="flex items-start gap-3 text-xs leading-relaxed text-[var(--text-secondary)]">
-        <input name="privacyAccepted" type="checkbox" value="true" required className="mt-0.5 h-4 w-4 accent-[#ffc300]" />
-        <span>I agree that Science Knowledge Hub may store this message and my contact details to respond to my request.</span>
-      </label>
-      {status === 'error' && (
-        <div className="flex items-start gap-2 rounded-xl border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-300" role="alert">
-          <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
-          {error}
+      <form
+        onSubmit={handleSubmit}
+        hidden={status === 'sent'}
+        className="space-y-5 rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)]/60 p-6 backdrop-blur-xl sm:p-8"
+      >
+        <div className="grid gap-5 sm:grid-cols-2">
+          <label className="text-sm font-medium text-[var(--text-primary)]">
+            Name
+            <input name="name" type="text" required maxLength={120} autoComplete="name" className="mt-2 w-full rounded-xl border border-[var(--border-color)] bg-white/[0.04] px-4 py-3 text-sm text-[var(--text-primary)] outline-none focus:border-gold-500" />
+          </label>
+          <label className="text-sm font-medium text-[var(--text-primary)]">
+            Email
+            <input name="email" type="email" required maxLength={254} autoComplete="email" className="mt-2 w-full rounded-xl border border-[var(--border-color)] bg-white/[0.04] px-4 py-3 text-sm text-[var(--text-primary)] outline-none focus:border-gold-500" />
+          </label>
         </div>
-      )}
-      <button type="submit" disabled={status === 'sending'} className="inline-flex items-center gap-2 rounded-xl bg-gold-500 px-6 py-3 text-sm font-semibold text-navy-950 hover:bg-gold-400 disabled:cursor-not-allowed disabled:opacity-60">
-        {status === 'sending' ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
-        {status === 'sending' ? 'Sending...' : 'Send message'}
-      </button>
-    </form>
+        <label className="block text-sm font-medium text-[var(--text-primary)]">
+          Subject
+          <select name="subject" required defaultValue="" className="mt-2 w-full rounded-xl border border-[var(--border-color)] bg-[var(--bg-secondary)] px-4 py-3 text-sm text-[var(--text-primary)] outline-none focus:border-gold-500">
+            <option value="" disabled>Select a subject</option>
+            <option value="editorial-correction">Editorial correction</option>
+            <option value="source-or-credit">Source or image credit</option>
+            <option value="privacy-request">Privacy request</option>
+            <option value="technical-issue">Technical issue</option>
+            <option value="general">General question</option>
+          </select>
+        </label>
+        <label className="block text-sm font-medium text-[var(--text-primary)]">
+          Message
+          <textarea name="message" required minLength={10} maxLength={5000} rows={7} className="mt-2 w-full resize-y rounded-xl border border-[var(--border-color)] bg-white/[0.04] px-4 py-3 text-sm text-[var(--text-primary)] outline-none focus:border-gold-500" />
+        </label>
+        <label className="sr-only" aria-hidden="true">
+          Website
+          <input name="website" type="text" tabIndex={-1} autoComplete="off" />
+        </label>
+        <label className="flex items-start gap-3 text-xs leading-relaxed text-[var(--text-secondary)]">
+          <input name="privacyAccepted" type="checkbox" value="true" required className="mt-0.5 h-4 w-4 accent-[#ffc300]" />
+          <span>I agree that Science Knowledge Hub may store this message and my contact details to respond to my request.</span>
+        </label>
+        <div
+          hidden={status !== 'error'}
+          className="flex items-start gap-2 rounded-xl border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-300"
+          role="alert"
+          aria-live="assertive"
+        >
+          <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+          <span>{error || 'Your message could not be sent.'}</span>
+        </div>
+        <button type="submit" disabled={status === 'sending'} className="inline-flex items-center gap-2 rounded-xl bg-gold-500 px-6 py-3 text-sm font-semibold text-navy-950 hover:bg-gold-400 disabled:cursor-not-allowed disabled:opacity-60">
+          <span className="relative h-4 w-4 shrink-0" aria-hidden="true">
+            <Send className={`absolute inset-0 h-4 w-4 ${status === 'sending' ? 'invisible' : 'visible'}`} />
+            <Loader2 className={`absolute inset-0 h-4 w-4 ${status === 'sending' ? 'visible animate-spin' : 'invisible'}`} />
+          </span>
+          <span className={status === 'sending' ? 'hidden' : 'inline'}>Send message</span>
+          <span className={status === 'sending' ? 'inline' : 'hidden'}>Sending...</span>
+        </button>
+      </form>
+    </div>
   );
 }

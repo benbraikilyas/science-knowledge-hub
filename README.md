@@ -2,6 +2,8 @@
 
 A modern scientific knowledge platform covering Space, Astronomy, Physics, Quantum Mechanics, Biology, AI, Technology, and more.
 
+Project priorities, launch requirements, content standards, and AdSense preparation are tracked in [NEXT_STEPS.md](NEXT_STEPS.md).
+
 ## Tech Stack
 
 | Layer | Technology |

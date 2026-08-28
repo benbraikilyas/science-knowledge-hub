@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import Script from 'next/script';
 import { ThemeProvider } from '@/context/ThemeProvider';
 import { AuthProvider } from '@/context/AuthContext';
 import Header from '@/components/Header';
@@ -80,12 +81,18 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html
       lang="en"
+      dir="ltr"
       suppressHydrationWarning
       data-scroll-behavior="smooth"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[var(--bg-primary)] text-[var(--text-primary)]" suppressHydrationWarning>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+        <Script
+          id="sciencehub-website-structured-data"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
         <ThemeProvider>
           <AuthProvider>
             <CursorGlow />

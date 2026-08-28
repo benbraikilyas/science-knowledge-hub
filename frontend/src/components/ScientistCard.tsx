@@ -81,13 +81,13 @@ export default function ScientistCard({ scientist }: ScientistCardProps) {
 
       {/* Name & Field */}
       <h3
-        className="mt-5 flex min-h-12 items-center text-lg font-bold tracking-tight text-[var(--text-primary)] transition-colors duration-200 group-hover:text-gold-300"
+        className="mt-5 flex min-h-12 items-center text-lg font-bold tracking-tight text-[var(--text-primary)] transition-colors duration-200 group-hover:text-[var(--accent-readable)]"
         style={{ fontFamily: 'var(--font-heading)' }}
       >
         {scientist.name}
       </h3>
 
-      <p className="mt-1 text-sm font-medium text-gold-400/90">{scientist.field}</p>
+      <p className="mt-1 text-sm font-medium text-[var(--accent-readable)]">{scientist.field}</p>
 
       {scientist.breakthrough && (
         <p className="mt-3 line-clamp-2 min-h-10 text-xs leading-relaxed text-[var(--text-secondary)]">
@@ -103,13 +103,13 @@ export default function ScientistCard({ scientist }: ScientistCardProps) {
       </div>
 
       {scientist.group && (
-        <span className="mt-3 rounded-full border border-gold-500/20 bg-gold-500/8 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-gold-300/80">
+        <span className="mt-3 rounded-full border border-gold-500/20 bg-gold-500/8 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-[var(--accent-readable)]">
           {scientist.group}
         </span>
       )}
 
       {/* Action CTA */}
-      <div className="mt-auto inline-flex items-center gap-1.5 pt-5 text-xs font-semibold text-gold-400 opacity-80 transition-all duration-200 group-hover:opacity-100">
+      <div className="mt-auto inline-flex items-center gap-1.5 pt-5 text-xs font-semibold text-[var(--accent-readable)] opacity-80 transition-all duration-200 group-hover:opacity-100">
         <span>Explore Discoveries</span>
         <span className="transition-transform duration-200 group-hover:translate-x-1">&rarr;</span>
       </div>

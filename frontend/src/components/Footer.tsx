@@ -42,7 +42,13 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative border-t border-[var(--border-color)] bg-[var(--bg-primary)] text-[var(--text-secondary)]">
+    <footer
+      lang="en"
+      dir="ltr"
+      translate="no"
+      suppressHydrationWarning
+      className="notranslate relative border-t border-[var(--border-color)] bg-[var(--bg-primary)] text-[var(--text-secondary)]"
+    >
       {/* Soft top gradient line */}
       <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-gold-500/40 to-transparent" />
 
@@ -57,6 +63,9 @@ export default function Footer() {
                 </div>
               </div>
               <span
+                dir="ltr"
+                translate="no"
+                suppressHydrationWarning
                 className="text-lg font-bold tracking-tight text-[var(--text-primary)]"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >

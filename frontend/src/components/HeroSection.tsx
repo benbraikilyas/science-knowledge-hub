@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { useTheme } from 'next-themes';
 import { gsap } from '@/lib/gsap';
 
 const EQUATIONS = [
@@ -32,7 +33,13 @@ interface Star {
   color: string;
 }
 
-function Starfield({ canvasRef }: { canvasRef: React.RefObject<HTMLCanvasElement | null> }) {
+function Starfield({
+  canvasRef,
+  isLight,
+}: {
+  canvasRef: React.RefObject<HTMLCanvasElement | null>;
+  isLight: boolean;
+}) {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -43,13 +50,15 @@ function Starfield({ canvasRef }: { canvasRef: React.RefObject<HTMLCanvasElement
     let height = 0;
     let stars: Star[] = [];
 
-    const STAR_COLORS = [
-      '255, 255, 255',
-      '255, 243, 176',
-      '255, 224, 102',
-      '224, 231, 255',
-      '255, 214, 10',
-    ];
+    const STAR_COLORS = isLight
+      ? ['0, 53, 102', '0, 29, 61', '181, 132, 0', '71, 85, 105', '0, 102, 179']
+      : [
+          '255, 255, 255',
+          '255, 243, 176',
+          '255, 224, 102',
+          '224, 231, 255',
+          '255, 214, 10',
+        ];
 
     const initStars = (w: number, h: number) => {
       const count = Math.min(320, Math.max(150, Math.floor((w * h) / 4200)));
@@ -58,17 +67,17 @@ function Starfield({ canvasRef }: { canvasRef: React.RefObject<HTMLCanvasElement
       for (let i = 0; i < count; i++) {
         const rand = Math.random();
         let size = 0.5 + Math.random() * 0.9;
-        let baseAlpha = 0.25 + Math.random() * 0.35;
-        let twinkleAmp = 0.12 + Math.random() * 0.2;
+        let baseAlpha = (isLight ? 0.12 : 0.25) + Math.random() * (isLight ? 0.18 : 0.35);
+        let twinkleAmp = (isLight ? 0.06 : 0.12) + Math.random() * (isLight ? 0.1 : 0.2);
 
         if (rand > 0.72 && rand <= 0.93) {
           size = 1.3 + Math.random() * 0.7;
-          baseAlpha = 0.45 + Math.random() * 0.35;
-          twinkleAmp = 0.18 + Math.random() * 0.25;
+          baseAlpha = (isLight ? 0.25 : 0.45) + Math.random() * (isLight ? 0.22 : 0.35);
+          twinkleAmp = (isLight ? 0.1 : 0.18) + Math.random() * (isLight ? 0.14 : 0.25);
         } else if (rand > 0.93) {
           size = 1.9 + Math.random() * 0.9;
-          baseAlpha = 0.7 + Math.random() * 0.3;
-          twinkleAmp = 0.22 + Math.random() * 0.25;
+          baseAlpha = (isLight ? 0.4 : 0.7) + Math.random() * (isLight ? 0.25 : 0.3);
+          twinkleAmp = (isLight ? 0.12 : 0.22) + Math.random() * (isLight ? 0.16 : 0.25);
         }
 
         const color = STAR_COLORS[Math.floor(Math.random() * STAR_COLORS.length)];
@@ -149,7 +158,7 @@ function Starfield({ canvasRef }: { canvasRef: React.RefObject<HTMLCanvasElement
       resizeObserver.disconnect();
       window.removeEventListener('resize', resize);
     };
-  }, [canvasRef]);
+  }, [canvasRef, isLight]);
 
   return (
     <canvas
@@ -248,6 +257,8 @@ function AtomVisual() {
 }
 
 export default function HeroSection() {
+  const { resolvedTheme } = useTheme();
+  const isLight = resolvedTheme === 'light';
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const heroContentRef = useRef<HTMLDivElement>(null);
@@ -331,13 +342,9 @@ export default function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-[var(--bg-primary)] min-h-svh flex items-center justify-center"
-      style={{
-        background:
-          'radial-gradient(ellipse 90% 70% at 50% -15%, #001d3d 0%, #000d1f 50%, #000814 100%)',
-      }}
+      className="relative overflow-hidden bg-[image:var(--gradient-hero)] min-h-svh flex items-center justify-center transition-colors duration-500"
     >
-      <Starfield canvasRef={canvasRef} />
+      <Starfield canvasRef={canvasRef} isLight={isLight} />
 
       {/* Atmospheric Soft Nebula Glows */}
       <div
@@ -361,7 +368,7 @@ export default function HeroSection() {
           style={{ animationDuration: `${eq.duration}s`, animationDelay: `${eq.delay}s` }}
         >
           <span
-            className="rounded-xl border border-[var(--border-color)] bg-[var(--bg-primary)]/70 px-4 py-2 font-mono text-xs sm:text-sm text-[var(--text-secondary)]/80 backdrop-blur-md shadow-[0_4px_24px_rgba(0,0,0,0.6)]"
+            className="rounded-xl border border-[var(--border-color)] bg-[var(--bg-glass)] px-4 py-2 font-mono text-xs sm:text-sm text-[var(--text-secondary)]/80 backdrop-blur-md shadow-[var(--shadow-card)]"
             style={{ fontFamily: 'var(--font-mono)' }}
           >
             {eq.tex}
@@ -379,7 +386,7 @@ export default function HeroSection() {
           <div className="lg:col-span-7 text-left mx-auto max-w-2xl lg:mx-0">
             <div
               ref={badgeRef}
-              className="mb-6 inline-flex items-center gap-2 rounded-full border border-gold-500/30 bg-gold-500/10 px-4 py-1.5 text-xs font-medium text-gold-300 backdrop-blur-md shadow-[0_0_20px_rgba(255,195,0,0.1)]"
+              className="mb-6 inline-flex items-center gap-2 rounded-full border border-gold-500/30 bg-gold-500/10 px-4 py-1.5 text-xs font-medium text-[var(--hero-accent-text)] backdrop-blur-md shadow-[0_0_20px_rgba(255,195,0,0.1)]"
             >
               <span className="h-1.5 w-1.5 rounded-full bg-gold-400 animate-pulse" />
               15+ Scientific Categories
@@ -391,7 +398,10 @@ export default function HeroSection() {
               style={{ fontFamily: 'var(--font-heading)' }}
             >
               Explore the{' '}
-              <span className="bg-gradient-to-r from-gold-400 via-gold-300 to-gold-500 bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(255,195,0,0.3)]">
+              <span
+                className="bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(255,195,0,0.3)]"
+                style={{ backgroundImage: 'var(--hero-accent-gradient)' }}
+              >
                 Universe
               </span>{' '}
               of Knowledge
@@ -418,7 +428,7 @@ export default function HeroSection() {
               </Link>
               <Link
                 href="/categories"
-                className="inline-flex h-12 items-center gap-2 rounded-xl border border-[var(--border-color)] bg-white/[0.06] px-8 text-sm font-semibold text-[var(--text-primary)] backdrop-blur-md transition-all duration-200 hover:bg-white/[0.12] hover:border-white/25 hover:-translate-y-0.5"
+                className="inline-flex h-12 items-center gap-2 rounded-xl border border-[var(--border-color)] bg-[var(--bg-glass)] px-8 text-sm font-semibold text-[var(--text-primary)] backdrop-blur-md transition-all duration-200 hover:bg-[var(--bg-elevated)] hover:border-[var(--border-hover)] hover:-translate-y-0.5"
               >
                 Browse Categories
               </Link>
@@ -432,7 +442,7 @@ export default function HeroSection() {
                 <Link
                   key={chip.slug}
                   href={`/categories/${chip.slug}`}
-                  className="rounded-full border border-[var(--border-color)] bg-white/[0.04] px-3.5 py-1.5 font-mono text-xs text-[var(--text-secondary)] backdrop-blur-sm transition-all duration-200 hover:border-gold-400/50 hover:bg-gold-500/10 hover:text-gold-300"
+                  className="rounded-full border border-[var(--border-color)] bg-[var(--bg-glass)] px-3.5 py-1.5 font-mono text-xs text-[var(--text-secondary)] backdrop-blur-sm transition-all duration-200 hover:border-gold-400/50 hover:bg-gold-500/10 hover:text-[var(--hero-accent-text)]"
                   style={{ fontFamily: 'var(--font-mono)' }}
                 >
                   {chip.label}

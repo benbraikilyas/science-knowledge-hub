@@ -19,4 +19,9 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        # Ctrl+C is an intentional shutdown, not an application failure.
+        print('\nDjango command stopped.')
+        raise SystemExit(130) from None

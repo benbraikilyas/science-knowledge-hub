@@ -93,7 +93,7 @@ export default function CategoriesGrid({ categories }: CategoriesGridProps) {
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div ref={headerRef} className="text-center max-w-2xl mx-auto">
-          <div className="inline-flex items-center gap-2 rounded-full border border-gold-500/30 bg-gold-500/10 px-3.5 py-1 text-xs font-semibold text-gold-300 backdrop-blur-md">
+          <div className="inline-flex items-center gap-2 rounded-full border border-gold-500/30 bg-gold-500/10 px-3.5 py-1 text-xs font-semibold text-[var(--accent-readable)] backdrop-blur-md">
             <span className="h-1.5 w-1.5 rounded-full bg-gold-400 animate-pulse" />
             Scientific Disciplines
           </div>
@@ -121,7 +121,7 @@ export default function CategoriesGrid({ categories }: CategoriesGridProps) {
         <div ref={footerRef} className="mt-14 text-center">
           <Link
             href="/categories"
-            className="inline-flex h-12 items-center gap-2 rounded-xl border border-[var(--border-color)] bg-white/[0.04] px-8 text-sm font-semibold text-[var(--text-primary)] backdrop-blur-md transition-all duration-200 hover:border-gold-500/40 hover:bg-white/[0.08] hover:shadow-[0_0_25px_rgba(255,195,0,0.15)]"
+            className="inline-flex h-12 items-center gap-2 rounded-xl border border-[var(--border-color)] bg-[var(--bg-glass)] px-8 text-sm font-semibold text-[var(--text-primary)] backdrop-blur-md transition-all duration-200 hover:border-gold-500/40 hover:bg-[var(--bg-elevated)] hover:shadow-[0_0_25px_rgba(255,195,0,0.15)]"
           >
             <span>Browse All Categories</span>
             <span className="text-lg">&rarr;</span>

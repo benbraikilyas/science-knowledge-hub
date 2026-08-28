@@ -72,7 +72,7 @@ export default function ScientistsSpotlight({ scientists }: ScientistsSpotlightP
         {/* Header */}
         <div ref={headerRef} className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-gold-500/30 bg-gold-500/10 px-3 py-1 text-xs font-semibold text-gold-300 backdrop-blur-md">
+            <div className="inline-flex items-center gap-2 rounded-full border border-gold-500/30 bg-gold-500/10 px-3 py-1 text-xs font-semibold text-[var(--accent-readable)] backdrop-blur-md">
               <span className="h-1.5 w-1.5 rounded-full bg-gold-400" />
               Scientific Giants
             </div>
@@ -88,7 +88,7 @@ export default function ScientistsSpotlight({ scientists }: ScientistsSpotlightP
           </div>
           <Link
             href="/scientists"
-            className="group hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-gold-400 transition-colors hover:text-gold-300"
+            className="group hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-[var(--accent-readable)] transition-opacity hover:opacity-75"
           >
             <span>Explore all scientists</span>
             <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
@@ -111,7 +111,7 @@ export default function ScientistsSpotlight({ scientists }: ScientistsSpotlightP
         <div className="mt-10 text-center sm:hidden">
           <Link
             href="/scientists"
-            className="inline-flex h-12 w-full items-center justify-center rounded-xl border border-[var(--border-color)] bg-white/[0.04] px-6 text-sm font-semibold text-[var(--text-primary)] backdrop-blur-md hover:bg-white/[0.08]"
+            className="inline-flex h-12 w-full items-center justify-center rounded-xl border border-[var(--border-color)] bg-[var(--bg-glass)] px-6 text-sm font-semibold text-[var(--text-primary)] backdrop-blur-md hover:bg-[var(--bg-elevated)]"
           >
             Explore all scientists &rarr;
           </Link>

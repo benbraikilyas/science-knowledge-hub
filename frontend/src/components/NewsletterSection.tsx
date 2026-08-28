@@ -76,14 +76,14 @@ export default function NewsletterSection() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div
           ref={cardRef}
-          className="relative overflow-hidden rounded-3xl border border-gold-500/30 bg-gradient-to-b from-[var(--bg-card)] to-[var(--bg-secondary)] p-8 sm:p-14 shadow-[0_20px_60px_rgba(0,0,0,0.6),0_0_50px_rgba(255,195,0,0.1)]"
+          className="relative overflow-hidden rounded-3xl border border-gold-500/30 bg-gradient-to-b from-[var(--bg-card)] to-[var(--bg-secondary)] p-8 sm:p-14 shadow-[var(--shadow-newsletter)]"
         >
           {/* Nebula Backdrops */}
           <div className="pointer-events-none absolute -right-16 -top-16 h-72 w-72 rounded-full bg-gold-500/15 blur-[120px]" />
           <div className="pointer-events-none absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-navy-500/25 blur-[120px]" />
 
           <div className="relative z-10 mx-auto max-w-2xl text-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-gold-500/30 bg-gold-500/10 px-4 py-1.5 text-xs font-semibold text-gold-300 backdrop-blur-md shadow-[0_0_15px_rgba(255,195,0,0.12)]">
+            <div className="inline-flex items-center gap-2 rounded-full border border-gold-500/30 bg-gold-500/10 px-4 py-1.5 text-xs font-semibold text-[var(--accent-readable)] backdrop-blur-md shadow-[0_0_15px_rgba(255,195,0,0.12)]">
               <Sparkles className="h-3.5 w-3.5 text-gold-400" />
               Cosmic Newsletter
             </div>
@@ -124,7 +124,7 @@ export default function NewsletterSection() {
                       placeholder="Enter your email address"
                       required
                       disabled={loading}
-                      className="w-full rounded-xl border border-[var(--border-color)] bg-black/40 py-3.5 pl-12 pr-4 text-sm text-[var(--text-primary)] placeholder-[var(--text-secondary)] outline-none backdrop-blur-md transition-all focus:border-gold-400 focus:ring-2 focus:ring-gold-500/20 disabled:opacity-50"
+                      className="w-full rounded-xl border border-[var(--border-color)] bg-[var(--bg-glass-heavy)] py-3.5 pl-12 pr-4 text-sm text-[var(--text-primary)] placeholder-[var(--text-secondary)] outline-none backdrop-blur-md transition-all focus:border-gold-400 focus:ring-2 focus:ring-gold-500/20 disabled:opacity-50"
                     />
                   </div>
                   <button
@@ -140,7 +140,7 @@ export default function NewsletterSection() {
 
             <p className="mt-4 text-xs text-[var(--text-secondary)] font-mono">
               No spam. You can unsubscribe at any time from our{' '}
-              <Link href="/unsubscribe" className="text-gold-300 hover:underline">unsubscribe page</Link>.
+              <Link href="/unsubscribe" className="text-[var(--accent-readable)] hover:underline">unsubscribe page</Link>.
             </p>
           </div>
         </div>

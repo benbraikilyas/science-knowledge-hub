@@ -15,7 +15,7 @@ export default function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const pathname = usePathname();
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const headerRef = useRef<HTMLElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
@@ -31,12 +31,13 @@ export default function Header() {
 
     const handleScroll = () => {
       const scrolled = window.scrollY > 20;
+      const rootStyles = getComputedStyle(document.documentElement);
+      const themeValue = (name: string) => rootStyles.getPropertyValue(name).trim();
+
       gsap.to(header, {
-        backgroundColor: scrolled ? 'rgba(0, 13, 31, 0.92)' : 'rgba(0, 8, 20, 0.45)',
-        borderColor: scrolled ? 'rgba(255, 195, 0, 0.25)' : 'rgba(255, 255, 255, 0.06)',
-        boxShadow: scrolled
-          ? '0 10px 30px -10px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 195, 0, 0.1)'
-          : 'none',
+        backgroundColor: themeValue(scrolled ? '--header-bg-scrolled' : '--header-bg-top'),
+        borderColor: themeValue(scrolled ? '--header-border-scrolled' : '--header-border-top'),
+        boxShadow: scrolled ? themeValue('--header-shadow-scrolled') : 'none',
         duration: 0.35,
         ease: 'power2.out',
       });
@@ -46,7 +47,7 @@ export default function Header() {
     handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [resolvedTheme]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -81,7 +82,11 @@ export default function Header() {
   return (
     <header
       ref={headerRef}
-      className="sticky top-0 z-50 w-full border-b border-[var(--border-color)] bg-[var(--bg-primary)]/40 backdrop-blur-xl transition-colors duration-300"
+      lang="en"
+      dir="ltr"
+      translate="no"
+      suppressHydrationWarning
+      className="notranslate sticky top-0 z-50 w-full border-b border-[var(--border-color)] bg-[var(--bg-primary)]/40 backdrop-blur-xl transition-colors duration-300"
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Brand Logo */}
@@ -92,21 +97,37 @@ export default function Header() {
             </div>
           </div>
           <span
+            dir="ltr"
+            translate="no"
+            suppressHydrationWarning
             className="text-lg font-bold tracking-tight text-[var(--text-primary)]"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            Science<span className="bg-gradient-to-r from-gold-400 to-gold-300 bg-clip-text text-transparent">Hub</span>
+            Science
+            <span
+              className="bg-clip-text text-transparent"
+              style={{ backgroundImage: 'var(--hero-accent-gradient)' }}
+            >
+              Hub
+            </span>
           </span>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden items-center gap-1.5 md:flex">
+        <nav
+          aria-label="Primary navigation"
+          translate="no"
+          suppressHydrationWarning
+          className="notranslate hidden items-center gap-1.5 md:flex"
+        >
           {NAV_ITEMS.map((item) => {
             const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href));
             return (
               <Link
                 key={item.href}
                 href={item.href}
+                translate="no"
+                suppressHydrationWarning
                 className={`relative rounded-xl px-3.5 py-2 text-sm font-medium transition-all duration-200 ${isActive
                     ? 'text-[var(--text-primary)] font-semibold'
                     : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-white/[0.06]'
@@ -115,7 +136,9 @@ export default function Header() {
                 {isActive && (
                   <span className="absolute inset-0 rounded-xl bg-gold-500/15 border border-gold-500/30 shadow-[0_0_15px_rgba(255,195,0,0.15)]" />
                 )}
-                <span className="relative z-10">{item.label}</span>
+                <span translate="no" suppressHydrationWarning className="notranslate relative z-10">
+                  {item.label}
+                </span>
               </Link>
             );
           })}
@@ -137,11 +160,11 @@ export default function Header() {
 
           {mounted && (
             <button
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
               className="rounded-xl border border-[var(--border-color)] bg-white/[0.04] p-2 text-[var(--text-secondary)] transition-all duration-200 hover:border-gold-500/40 hover:bg-white/[0.08] hover:text-[var(--text-primary)]"
               aria-label="Toggle theme"
             >
-              {theme === 'dark' ? <Sun className="h-4 w-4 text-gold-400" /> : <Moon className="h-4 w-4 text-navy-600" />}
+              {resolvedTheme === 'dark' ? <Sun className="h-4 w-4 text-gold-400" /> : <Moon className="h-4 w-4 text-navy-600" />}
             </button>
           )}
 
@@ -205,7 +228,12 @@ export default function Header() {
       {/* Mobile Drawer */}
       {menuOpen && (
         <div className="border-t border-[var(--border-color)] bg-[var(--bg-secondary)]/98 px-4 py-4 backdrop-blur-2xl md:hidden">
-          <nav className="flex flex-col space-y-1.5">
+          <nav
+            aria-label="Mobile navigation"
+            translate="no"
+            suppressHydrationWarning
+            className="notranslate flex flex-col space-y-1.5"
+          >
             {NAV_ITEMS.map((item) => {
               const isActive = pathname === item.href;
               return (
@@ -213,12 +241,14 @@ export default function Header() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setMenuOpen(false)}
+                  translate="no"
+                  suppressHydrationWarning
                   className={`rounded-xl px-4 py-3 text-sm font-medium transition-colors ${isActive
                       ? 'bg-gold-500/15 text-gold-400 font-semibold border border-gold-500/30'
                       : 'text-[var(--text-secondary)] hover:bg-white/[0.06] hover:text-[var(--text-primary)]'
                     }`}
                 >
-                  {item.label}
+                  <span translate="no" suppressHydrationWarning>{item.label}</span>
                 </Link>
               );
             })}

@@ -104,7 +104,7 @@ export default function CategoryCard({ category }: CategoryCardProps) {
       <div className="relative z-10 flex flex-1 flex-col justify-between gap-6 p-6">
         <div>
           <h3
-            className="text-xl font-bold tracking-tight text-[var(--text-primary)] transition-colors duration-200 group-hover:text-gold-300"
+            className="text-xl font-bold tracking-tight text-[var(--text-primary)] transition-colors duration-200 group-hover:text-[var(--accent-readable)]"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             {category.name}
@@ -115,7 +115,7 @@ export default function CategoryCard({ category }: CategoryCardProps) {
           </p>
         </div>
 
-        <div className="flex items-center justify-between border-t border-[var(--border-color)] pt-4 text-xs font-semibold text-gold-400">
+        <div className="flex items-center justify-between border-t border-[var(--border-color)] pt-4 text-xs font-semibold text-[var(--accent-readable)]">
           <span>Explore Topics</span>
           <span className="transition-transform duration-200 group-hover:translate-x-1.5">&rarr;</span>
         </div>
