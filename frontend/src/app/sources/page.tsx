@@ -63,12 +63,24 @@ export default function SourcesPage() {
       eyebrow="Transparency"
       title="Sources & Image Credits"
       description="Where our information and visual material come from, and how to report a missing or incorrect credit."
-      updated="August 2026"
+      updated="September 2026"
     >
       <div className="space-y-12 text-[var(--text-secondary)]">
         <section>
           <h2 className="text-xl font-bold text-[var(--text-primary)]">Information sources</h2>
-          <p className="mt-3 leading-relaxed">Individual scientist profiles link to a primary reference profile. Articles should list their references when published. Our preferred sources include peer-reviewed journals, official scientific agencies, universities, museums, professional societies, and primary historical documents.</p>
+          <p className="mt-3 leading-relaxed">Individual scientist profiles link to a named reference profile. Articles list their references when published. Our preferred sources include peer-reviewed journals, official scientific agencies, universities, museums, professional societies, and primary historical documents.</p>
+        </section>
+        <section>
+          <h2 className="text-xl font-bold text-[var(--text-primary)]">How editorial content is prepared</h2>
+          <p className="mt-3 leading-relaxed">Research tools help collect and organize material from multiple named sources. Drafts are written as original explanations rather than copied summaries, checked for source coverage and unsupported claims, and kept out of the production database until an editor approves them. Automation supports the research process; it does not replace source verification or editorial responsibility.</p>
+        </section>
+        <section>
+          <h2 className="text-xl font-bold text-[var(--text-primary)]">Free book editions</h2>
+          <p className="mt-3 leading-relaxed">Book records link to the official Project Gutenberg or Internet Archive catalog page used for access. Project Gutenberg identifies its editions as public domain in the United States and advises readers elsewhere to check local law. ScienceHub provides original introductions and links to the archive; it does not sell or repackage the book files.</p>
+          <div className="mt-4 flex flex-wrap gap-3 text-sm">
+            <a href="https://www.gutenberg.org/" target="_blank" rel="noreferrer" className="font-semibold text-gold-300 hover:text-gold-200">Project Gutenberg &rarr;</a>
+            <a href="https://archive.org/" target="_blank" rel="noreferrer" className="font-semibold text-gold-300 hover:text-gold-200">Internet Archive &rarr;</a>
+          </div>
         </section>
         <section id="image-credits" className="scroll-mt-24">
           <h2 className="text-xl font-bold text-[var(--text-primary)]">Scientist image credits</h2>
@@ -78,6 +90,10 @@ export default function SourcesPage() {
         <section>
           <h2 className="text-xl font-bold text-[var(--text-primary)]">Article image credits</h2>
           <CreditList entries={ARTICLE_CREDITS} />
+          <div className="mt-5 rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)]/50 p-5">
+            <h3 className="font-semibold text-[var(--text-primary)]">Original ScienceHub visualizations</h3>
+            <p className="mt-2 text-sm leading-relaxed">Eight additional article illustrations were generated specifically for this project with OpenAI image generation: stellar evolution, team science, relativity and GPS, Bell tests, semiconductors, scientific instruments, mathematical proof, and quantum computing. They were reviewed for subject fit and contain no third-party logos or copied artwork.</p>
+          </div>
         </section>
         <section className="rounded-2xl border border-gold-500/25 bg-gold-500/8 p-6">
           <h2 className="text-xl font-bold text-[var(--text-primary)]">Is a credit incomplete?</h2>

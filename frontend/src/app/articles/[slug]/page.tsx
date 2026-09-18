@@ -4,10 +4,11 @@ import { fetchArticle, fetchRelatedArticles } from '@/lib/api';
 import type { ArticleListItem } from '@/lib/types';
 import ArticleReadingProgress from '@/components/ArticleReadingProgress';
 import ArticleCard from '@/components/ArticleCard';
+import ArticleContent from '@/components/ArticleContent';
 import SafeImage from '@/components/SafeImage';
 import { getPublicArticleAuthor } from '@/lib/article-author';
 import { absoluteUrl } from '@/lib/site';
-import { Clock, Eye, ArrowLeft, Sparkles } from 'lucide-react';
+import { Clock, Eye, ArrowLeft, Sparkles, BookOpen, Download, FileText, Smartphone, ExternalLink, ShieldCheck } from 'lucide-react';
 
 interface ArticleDetailProps {
   params: Promise<{ slug: string }>;
@@ -96,6 +97,20 @@ export default async function ArticleDetailPage({ params }: ArticleDetailProps) 
   const featuredImage = (article.featuredImage as string) || '';
   const publicAuthor = getPublicArticleAuthor(author);
   const authorName = publicAuthor.displayName;
+
+  const bookDetails = article.bookDetails as {
+    originalAuthor?: string;
+    firstPublished?: number | string;
+    pages?: number;
+    subjects?: string[];
+    license?: string;
+    readOnlineUrl?: string;
+    downloadPdfUrl?: string;
+    downloadEpubUrl?: string;
+    iaDetailsUrl?: string;
+    archiveName?: string;
+  } | undefined;
+  const isBook = category.slug === 'books' || Boolean(bookDetails);
 
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] pb-24 text-[var(--text-secondary)]">
@@ -211,18 +226,102 @@ export default async function ArticleDetailPage({ params }: ArticleDetailProps) 
         </div>
       )}
 
+      {/* Book Actions & Free Download Hub (Only for Books) */}
+      {isBook && bookDetails && (
+        <div className="mx-auto max-w-4xl px-4 pt-10 sm:px-6">
+          <div className="relative overflow-hidden rounded-3xl border border-gold-500/30 bg-gradient-to-br from-gold-500/10 via-[var(--bg-card)] to-[var(--bg-primary)] p-6 sm:p-8 backdrop-blur-xl shadow-2xl">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-gold-500/20 pb-4">
+              <div className="flex items-center gap-2 text-xs font-semibold text-gold-400">
+                <ShieldCheck className="h-4 w-4 text-emerald-400" />
+                <span className="tracking-wide uppercase">Free &amp; Legal Public Domain Science Book</span>
+              </div>
+              <span className="rounded-full bg-emerald-500/10 px-3 py-1 font-mono text-[11px] font-medium text-emerald-300 border border-emerald-500/20">
+                ✓ Open Access
+              </span>
+            </div>
+
+            <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 text-xs">
+              <div className="rounded-2xl border border-[var(--border-color)] bg-white/[0.02] p-3.5">
+                <span className="text-[11px] text-[var(--text-secondary)]">Original Author</span>
+                <p className="mt-1 font-semibold text-[var(--text-primary)]">{bookDetails.originalAuthor || authorName}</p>
+              </div>
+              <div className="rounded-2xl border border-[var(--border-color)] bg-white/[0.02] p-3.5">
+                <span className="text-[11px] text-[var(--text-secondary)]">First Published</span>
+                <p className="mt-1 font-semibold text-[var(--text-primary)]">{bookDetails.firstPublished}</p>
+              </div>
+              <div className="rounded-2xl border border-[var(--border-color)] bg-white/[0.02] p-3.5">
+                <span className="text-[11px] text-[var(--text-secondary)]">Length / Pages</span>
+                <p className="mt-1 font-semibold text-[var(--text-primary)]">{bookDetails.pages ? `~${bookDetails.pages} pages` : 'Complete Edition'}</p>
+              </div>
+              <div className="rounded-2xl border border-[var(--border-color)] bg-white/[0.02] p-3.5">
+                <span className="text-[11px] text-[var(--text-secondary)]">Archived By</span>
+                <p className="mt-1 font-semibold text-[var(--text-primary)]">{bookDetails.archiveName || 'Internet Archive'}</p>
+              </div>
+            </div>
+
+            {/* Action Buttons: Read Online & Download */}
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              {bookDetails.readOnlineUrl && (
+                <a
+                  href={bookDetails.readOnlineUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-gold-500 to-amber-500 px-5 py-3 text-sm font-bold text-navy-950 shadow-lg shadow-gold-500/20 transition-all duration-200 hover:scale-[1.02] hover:shadow-gold-500/35"
+                >
+                  <BookOpen className="h-4 w-4" />
+                  <span>Read Online Free</span>
+                </a>
+              )}
+
+              {bookDetails.downloadPdfUrl && (
+                <a
+                  href={bookDetails.downloadPdfUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download
+                  className="inline-flex items-center gap-2 rounded-xl border border-gold-500/40 bg-gold-500/10 px-4 py-3 text-sm font-semibold text-gold-300 transition-all duration-200 hover:bg-gold-500/20 hover:text-white"
+                >
+                  <Download className="h-4 w-4" />
+                  <FileText className="h-3.5 w-3.5" />
+                  <span>Download PDF</span>
+                </a>
+              )}
+
+              {bookDetails.downloadEpubUrl && (
+                <a
+                  href={bookDetails.downloadEpubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download
+                  className="inline-flex items-center gap-2 rounded-xl border border-[var(--border-color)] bg-white/[0.04] px-4 py-3 text-sm font-semibold text-[var(--text-primary)] transition-all duration-200 hover:border-gold-500/40 hover:bg-gold-500/10"
+                >
+                  <Smartphone className="h-4 w-4 text-gold-400" />
+                  <span>Download EPUB</span>
+                </a>
+              )}
+
+              {bookDetails.iaDetailsUrl && (
+                <a
+                  href={bookDetails.iaDetailsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-3 text-xs font-medium text-[var(--text-secondary)] hover:text-gold-300 transition-colors"
+                >
+                  <ExternalLink className="h-3.5 w-3.5" />
+                  <span>{bookDetails.archiveName || 'Internet Archive'} Catalog</span>
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Article Body */}
       <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
         <div className="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)]/60 p-8 sm:p-12 backdrop-blur-xl shadow-2xl">
-          <div className="article-content text-[var(--text-secondary)]">
+          <div className="text-[var(--text-secondary)]">
             {article.content ? (
-              (article.content as string).split('\n').map((paragraph: string, i: number) =>
-                paragraph.trim() ? (
-                  <p key={i} className="mb-5 leading-relaxed text-[var(--text-secondary)]">
-                    {paragraph}
-                  </p>
-                ) : null
-              )
+              <ArticleContent content={article.content as string} />
             ) : (
               <>
                 <h2 className="text-2xl font-bold text-[var(--text-primary)] mt-4 mb-4">Introduction to the Phenomenon</h2>

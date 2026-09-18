@@ -1,6 +1,7 @@
 import type { ScientistListItem, ScientistProfile } from './types';
+import { SCIENTIST_BIOGRAPHIES } from './scientist-biographies';
 
-export const DEMO_SCIENTISTS: ScientistProfile[] = [
+const BASE_SCIENTISTS: ScientistProfile[] = [
   {
     id: '1',
     name: 'Albert Einstein',
@@ -599,6 +600,11 @@ export const DEMO_SCIENTISTS: ScientistProfile[] = [
     isFeatured: false,
   },
 ];
+
+export const DEMO_SCIENTISTS: ScientistProfile[] = BASE_SCIENTISTS.map((profile) => ({
+  ...profile,
+  biography: SCIENTIST_BIOGRAPHIES[profile.slug] || profile.biography,
+}));
 
 export function mergeScientistProfiles(remoteScientists: ScientistListItem[]): ScientistProfile[] {
   const remoteBySlug = new Map(remoteScientists.map((scientist) => [scientist.slug, scientist]));

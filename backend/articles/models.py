@@ -54,6 +54,14 @@ class Article(me.Document):
     liked_by = me.ListField(me.StringField())
     meta_title = me.StringField(max_length=500)
     meta_description = me.StringField(max_length=1000)
+    source_urls = me.ListField(me.URLField())
+    editorial_status = me.StringField(
+        choices=['needs_revision', 'review_required', 'approved'],
+        default='needs_revision',
+    )
+    generation_method = me.StringField(default='editorial')
+    reviewed_by = me.StringField(max_length=200)
+    reviewed_at = me.DateTimeField()
     created_at = me.DateTimeField(default=lambda: datetime.now(timezone.utc))
     updated_at = me.DateTimeField(default=lambda: datetime.now(timezone.utc))
     published_at = me.DateTimeField()
@@ -97,4 +105,5 @@ class Article(me.Document):
             'viewsCount': self.views_count,
             'likesCount': self.likes_count,
             'publishedAt': self.published_at.isoformat() if self.published_at else '',
+            'sourceUrls': self.source_urls or [],
         }

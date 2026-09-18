@@ -1,5 +1,6 @@
 """Shared test base class — manages MongoEngine connection to a test database."""
 import mongoengine
+import mongomock
 from django.test import TestCase, override_settings
 from rest_framework.test import APIClient
 
@@ -17,7 +18,12 @@ class MongoTestCase(TestCase):
             mongoengine.disconnect()
         except Exception:
             pass
-        mongoengine.connect(db=TEST_DB, host='mongodb://localhost:27017', alias='default')
+        mongoengine.connect(
+            db=TEST_DB,
+            host='mongodb://localhost',
+            alias='default',
+            mongo_client_class=mongomock.MongoClient,
+        )
 
     @classmethod
     def tearDownClass(cls):

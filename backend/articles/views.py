@@ -120,6 +120,7 @@ class ArticleViewSet(viewsets.ViewSet):
             'likedBy': article.liked_by or [],
             'metaTitle': article.meta_title or '',
             'metaDescription': article.meta_description or '',
+            'sourceUrls': article.source_urls or [],
             'createdAt': article.created_at.isoformat() if article.created_at else '',
             'updatedAt': article.updated_at.isoformat() if article.updated_at else '',
             'publishedAt': article.published_at.isoformat() if article.published_at else '',

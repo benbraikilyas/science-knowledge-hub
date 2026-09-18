@@ -9,24 +9,36 @@ interface CategoryDetailProps {
 }
 
 async function getCategoryData(slug: string) {
+  const { DEMO_CATEGORIES, DEMO_ARTICLES } = await import('@/lib/constants');
+  const localCategory = DEMO_CATEGORIES.find((category: Category) => category.slug === slug) || null;
+  const localArticles = DEMO_ARTICLES.filter((article: ArticleListItem) => article.category.slug === slug);
+
   try {
     const [rawCategory, rawArticles] = await Promise.all([
       fetchCategory(slug),
       fetchArticles({ category: slug }),
     ]);
 
-    const category = rawCategory as Category | null;
-    const articles = rawArticles as ArticleListItem[];
+    const remoteCategory = rawCategory as Category | null;
+    const remoteArticles = Array.isArray(rawArticles) ? rawArticles as ArticleListItem[] : [];
 
-    if (category !== null) {
-      return { category, articles };
+    if (remoteCategory !== null || localCategory !== null) {
+      const category = localCategory && remoteCategory
+        ? { ...localCategory, ...remoteCategory }
+        : remoteCategory || localCategory;
+      const remoteBySlug = new Map(remoteArticles.map((article) => [article.slug, article]));
+      const mergedLocal = localArticles.map((article) => {
+        const remote = remoteBySlug.get(article.slug);
+        if (!remote) return article;
+        remoteBySlug.delete(article.slug);
+        return { ...article, ...remote };
+      });
+
+      return { category, articles: [...mergedLocal, ...remoteBySlug.values()] };
     }
   } catch {}
 
-  const { DEMO_CATEGORIES, DEMO_ARTICLES } = await import('@/lib/constants');
-  const demoCategory = DEMO_CATEGORIES.find((c: Category) => c.slug === slug) || null;
-  const demoArticles = DEMO_ARTICLES.filter((a: ArticleListItem) => a.category.slug === slug);
-  return { category: demoCategory, articles: demoArticles };
+  return { category: localCategory, articles: localArticles };
 }
 
 export async function generateMetadata({ params }: CategoryDetailProps) {
@@ -72,21 +84,21 @@ export default async function CategoryDetailPage({ params }: CategoryDetailProps
           style={{ backgroundColor: category.color }}
         />
 
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 mx-auto max-w-[1550px] 2xl:max-w-[1720px] px-4 sm:px-6 lg:px-10">
           <Link
             href="/categories"
-            className="inline-flex items-center gap-2 text-xs font-semibold text-gold-400 transition-colors hover:text-gold-300 mb-6"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-gold-400 transition-colors hover:text-gold-300 mb-8"
           >
-            <ArrowLeft className="h-3.5 w-3.5" />
+            <ArrowLeft className="h-4 w-4" />
             <span>All Categories</span>
           </Link>
 
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-8">
             <div
-              className="flex h-16 w-16 items-center justify-center rounded-2xl border border-[var(--border-color)] text-3xl shadow-lg"
+              className="flex h-20 w-20 sm:h-24 sm:w-24 shrink-0 items-center justify-center rounded-3xl border border-[var(--border-color)] text-4xl sm:text-5xl shadow-2xl"
               style={{
                 backgroundColor: `${category.color}20`,
-                boxShadow: `0 0 30px ${category.color}35`,
+                boxShadow: `0 0 35px ${category.color}35`,
               }}
             >
               {category.icon}
@@ -94,32 +106,32 @@ export default async function CategoryDetailPage({ params }: CategoryDetailProps
 
             <div>
               <h1
-                className="text-3xl font-extrabold tracking-tight text-[var(--text-primary)] sm:text-4xl lg:text-5xl"
+                className="text-4xl font-extrabold tracking-tight text-[var(--text-primary)] sm:text-5xl lg:text-6xl"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
                 {category.name}
               </h1>
-              <p className="mt-2 text-base text-[var(--text-secondary)] max-w-2xl">{category.description}</p>
+              <p className="mt-3 text-lg sm:text-xl text-[var(--text-secondary)] max-w-3xl leading-relaxed">{category.description}</p>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Articles */}
-      <div className="mx-auto max-w-7xl px-4 pt-12 sm:px-6 lg:px-8">
-        <div className="mb-6 flex items-center justify-between text-xs text-[var(--text-secondary)] font-mono">
-          <span>{articles.length} articles available</span>
+      {/* Articles / Books Grid */}
+      <div className="mx-auto max-w-[1550px] 2xl:max-w-[1720px] px-4 pt-12 sm:px-6 lg:px-10">
+        <div className="mb-8 flex items-center justify-between text-sm sm:text-base text-[var(--text-secondary)] font-mono border-b border-[var(--border-color)]/60 pb-4">
+          <span>{articles.length} {category.slug === 'books' ? 'publications' : 'articles'} available</span>
         </div>
 
         {articles.length > 0 ? (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid gap-8 sm:gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4">
             {articles.map((article: ArticleListItem) => (
               <ArticleCard key={article.id} article={article} />
             ))}
           </div>
         ) : (
-          <div className="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)]/60 p-16 text-center backdrop-blur-xl">
-            <p className="text-lg text-[var(--text-secondary)]">No articles in this category yet. Check back soon!</p>
+          <div className="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)]/60 p-16 sm:p-24 text-center backdrop-blur-xl">
+            <p className="text-xl sm:text-2xl text-[var(--text-secondary)]">No articles in this category yet. Check back soon!</p>
           </div>
         )}
       </div>

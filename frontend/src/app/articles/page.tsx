@@ -1,24 +1,41 @@
 import Link from 'next/link';
 import ArticleCard from '@/components/ArticleCard';
 import { fetchArticles } from '@/lib/api';
+import { DEMO_ARTICLES } from '@/lib/constants';
 import type { ArticleListItem } from '@/lib/types';
 import { Sparkles, BookOpen, Layers } from 'lucide-react';
 
+function mergeArticles(remoteArticles: ArticleListItem[]): ArticleListItem[] {
+  const remoteBySlug = new Map(remoteArticles.map((article) => [article.slug, article]));
+  const mergedLocal = DEMO_ARTICLES.map((article) => {
+    const remote = remoteBySlug.get(article.slug);
+    if (!remote) return article;
+
+    remoteBySlug.delete(article.slug);
+    return { ...article, ...remote };
+  });
+
+  return [...mergedLocal, ...remoteBySlug.values()];
+}
+
 async function getArticles(searchParams: Record<string, string | undefined>): Promise<ArticleListItem[]> {
+  let items: ArticleListItem[];
+
   try {
     const raw = await fetchArticles({
       category: searchParams.category,
       tag: searchParams.tag,
     });
-    return raw as ArticleListItem[];
+    items = mergeArticles(Array.isArray(raw) ? raw as ArticleListItem[] : []);
   } catch {
-    const { DEMO_ARTICLES } = await import('@/lib/constants');
-    let filtered = [...DEMO_ARTICLES];
-    if (searchParams.category) {
-      filtered = filtered.filter((a: { category: { slug: string } }) => a.category.slug === searchParams.category);
-    }
-    return filtered;
+    items = [...DEMO_ARTICLES];
   }
+
+  if (searchParams.category) {
+    return items.filter((article) => article.category.slug === searchParams.category);
+  }
+
+  return items.filter((article) => article.category.slug !== 'books');
 }
 
 export async function generateMetadata() {

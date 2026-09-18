@@ -68,45 +68,45 @@ export default function FeaturedArticles({ articles }: FeaturedArticlesProps) {
   const rest = articles.slice(3, 7);
 
   return (
-    <section ref={sectionRef} className="relative py-20 sm:py-28 bg-[var(--bg-primary)]">
+    <section ref={sectionRef} className="relative py-24 sm:py-32 bg-[var(--bg-primary)]">
       {/* Background ambient glow */}
-      <div className="pointer-events-none absolute left-1/2 top-10 h-72 w-72 -translate-x-1/2 rounded-full bg-gold-500/8 blur-[130px]" />
+      <div className="pointer-events-none absolute left-1/2 top-10 h-96 w-96 -translate-x-1/2 rounded-full bg-gold-500/10 blur-[150px]" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-[1550px] 2xl:max-w-[1720px] px-4 sm:px-6 lg:px-10">
         {/* Section Header */}
-        <div ref={headerRef} className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div ref={headerRef} className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 border-b border-[var(--border-color)]/60 pb-8">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-gold-500/30 bg-gold-500/10 px-3 py-1 text-xs font-semibold text-[var(--accent-readable)] backdrop-blur-md">
-              <span className="h-1.5 w-1.5 rounded-full bg-gold-400" />
+            <div className="inline-flex items-center gap-2 rounded-full border border-gold-500/30 bg-gold-500/10 px-4 py-1.5 text-xs sm:text-sm font-semibold text-[var(--accent-readable)] backdrop-blur-md">
+              <span className="h-2 w-2 rounded-full bg-gold-400 animate-pulse" />
               Editor&apos;s Selection
             </div>
             <h2
-              className="mt-3 text-3xl font-bold tracking-tight text-[var(--text-primary)] sm:text-4xl"
+              className="mt-4 text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[var(--text-primary)]"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
               Featured Articles
             </h2>
-            <p className="mt-2 text-base text-[var(--text-secondary)]">
-              Handpicked breakthroughs, deep dives, and scientific discoveries
+            <p className="mt-3 text-base sm:text-xl text-[var(--text-secondary)] max-w-3xl">
+              Handpicked breakthroughs, deep dives, and scientific discoveries across physics, space, and modern technology.
             </p>
           </div>
           <Link
             href="/articles"
-            className="group hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-[var(--accent-readable)] transition-opacity hover:opacity-75"
+            className="group hidden sm:inline-flex items-center gap-2 text-base sm:text-lg font-semibold text-[var(--accent-readable)] transition-opacity hover:opacity-80"
           >
             <span>View all articles</span>
-            <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
+            <span className="transition-transform group-hover:translate-x-1.5">&rarr;</span>
           </Link>
         </div>
 
         {/* Dynamic Bento/Grid Layout */}
-        <div ref={gridRef} className="mt-12 grid gap-6">
+        <div ref={gridRef} className="mt-12 sm:mt-16 grid gap-8 sm:gap-10">
           {/* Top Featured Row */}
-          <div className="grid gap-6 lg:grid-cols-12">
+          <div className="grid gap-8 sm:gap-10 lg:grid-cols-12">
             <div className="article-card-item lg:col-span-7">
               <ArticleCard article={featured} featured />
             </div>
-            <div className="grid gap-6 lg:col-span-5">
+            <div className="grid gap-8 sm:gap-10 lg:col-span-5">
               {secondary.map((article) => (
                 <div key={article.id} className="article-card-item">
                   <ArticleCard article={article} />
@@ -117,7 +117,7 @@ export default function FeaturedArticles({ articles }: FeaturedArticlesProps) {
 
           {/* Lower 3-column Grid */}
           {rest.length > 0 && (
-            <div className="mt-2 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="mt-4 grid gap-8 sm:gap-10 sm:grid-cols-2 lg:grid-cols-3">
               {rest.map((article) => (
                 <div key={article.id} className="article-card-item">
                   <ArticleCard article={article} />

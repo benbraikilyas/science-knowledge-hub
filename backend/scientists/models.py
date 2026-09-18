@@ -10,6 +10,9 @@ class Scientist(me.Document):
     nationality = me.StringField(max_length=200)
     era = me.StringField(max_length=200)
     field = me.StringField(max_length=200)
+    group = me.StringField(max_length=200)
+    breakthrough = me.StringField(max_length=500)
+    source_url = me.URLField()
     biography = me.StringField()
     key_contributions = me.ListField(me.StringField())
     famous_quotes = me.ListField(me.StringField())
@@ -42,6 +45,9 @@ class Scientist(me.Document):
             'nationality': self.nationality or '',
             'era': self.era or '',
             'field': self.field or '',
+            'group': self.group or '',
+            'breakthrough': self.breakthrough or '',
+            'sourceUrl': self.source_url or '',
             'isFeatured': self.is_featured,
         }
 
@@ -56,6 +62,9 @@ class Scientist(me.Document):
             'nationality': self.nationality or '',
             'era': self.era or '',
             'field': self.field or '',
+            'group': self.group or '',
+            'breakthrough': self.breakthrough or '',
+            'sourceUrl': self.source_url or '',
             'biography': self.biography or '',
             'keyContributions': self.key_contributions or [],
             'famousQuotes': self.famous_quotes or [],

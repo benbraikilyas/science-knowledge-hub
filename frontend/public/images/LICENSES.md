@@ -48,6 +48,19 @@ The site stores local copies so profiles do not depend on third-party image avai
 | `darkmatter.jpg` | Dark matter ring in galaxy cluster CL 0024+17 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Hubble_finds_dark_matter_ring_in_galaxy_cluster_(heic0709b).jpg) | NASA / ESA Hubble, 2007 | Public domain (NASA/ESA imagery) |
 | `apollo.jpg` | Buzz Aldrin on the Moon, Apollo 11 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Aldrin_Apollo_11_original.jpg) | Neil Armstrong / NASA, 1969 | Public domain (NASA imagery) |
 
+The following files were generated specifically for ScienceHub with OpenAI
+image generation in September 2026. They were reviewed for subject fit and do
+not intentionally reproduce third-party logos or named artists' styles:
+
+- `stellar-evolution.png`
+- `team-science.png`
+- `relativity-gps.png`
+- `bell-test.png`
+- `semiconductors.png`
+- `science-instruments.png`
+- `mathematical-proof.png`
+- `quantum-computing.png`
+
 ## Authors (`/images/authors/`)
 
 The old demo portraits are retained only as unused development assets. Public
@@ -57,6 +70,6 @@ do not present fictional people or credentials.
 ## Notes
 
 - Original sources and file pages were checked in August 2026.
-- Public-domain marks: works of NASA/NIH/US-gov employees are not subject to
-  copyright in the US; historical photos pre-1930 and old paintings are out of
-  copyright worldwide.
+- Public-domain marks and reuse rules can differ by country. The linked source
+  record is authoritative; users should check the law that applies where they
+  live before redistributing an image.

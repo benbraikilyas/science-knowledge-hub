@@ -88,19 +88,19 @@ export default function Header() {
       suppressHydrationWarning
       className="notranslate sticky top-0 z-50 w-full border-b border-[var(--border-color)] bg-[var(--bg-primary)]/40 backdrop-blur-xl transition-colors duration-300"
     >
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-20 max-w-[1550px] 2xl:max-w-[1720px] items-center justify-between px-4 sm:px-6 lg:px-10">
         {/* Brand Logo */}
-        <Link href="/" className="group flex items-center gap-2.5">
-          <div className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-gold-500 via-gold-400 to-navy-600 p-[1px] shadow-[0_0_20px_rgba(255,195,0,0.3)] transition-transform duration-300 group-hover:scale-105">
-            <div className="flex h-full w-full items-center justify-center rounded-[11px] bg-[var(--bg-primary)]">
-              <Sparkles className="h-4 w-4 text-gold-400 transition-transform duration-300 group-hover:rotate-12" />
+        <Link href="/" className="group flex items-center gap-3">
+          <div className="relative flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-tr from-gold-500 via-gold-400 to-navy-600 p-[1.5px] shadow-[0_0_25px_rgba(255,195,0,0.35)] transition-transform duration-300 group-hover:scale-105">
+            <div className="flex h-full w-full items-center justify-center rounded-[14px] bg-[var(--bg-primary)]">
+              <Sparkles className="h-5 w-5 text-gold-400 transition-transform duration-300 group-hover:rotate-12" />
             </div>
           </div>
           <span
             dir="ltr"
             translate="no"
             suppressHydrationWarning
-            className="text-lg font-bold tracking-tight text-[var(--text-primary)]"
+            className="text-xl sm:text-2xl font-extrabold tracking-tight text-[var(--text-primary)]"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             Science
@@ -118,7 +118,7 @@ export default function Header() {
           aria-label="Primary navigation"
           translate="no"
           suppressHydrationWarning
-          className="notranslate hidden items-center gap-1.5 md:flex"
+          className="notranslate hidden items-center gap-2 md:flex"
         >
           {NAV_ITEMS.map((item) => {
             const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href));
@@ -128,7 +128,7 @@ export default function Header() {
                 href={item.href}
                 translate="no"
                 suppressHydrationWarning
-                className={`relative rounded-xl px-3.5 py-2 text-sm font-medium transition-all duration-200 ${isActive
+                className={`relative rounded-xl px-4 py-2.5 text-base font-medium transition-all duration-200 ${isActive
                     ? 'text-[var(--text-primary)] font-semibold'
                     : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-white/[0.06]'
                   }`}
@@ -145,15 +145,15 @@ export default function Header() {
         </nav>
 
         {/* Action Controls */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2.5">
           <button
             onClick={() => setSearchOpen(!searchOpen)}
-            className="flex items-center gap-2 rounded-xl border border-[var(--border-color)] bg-white/[0.04] px-3 py-1.5 text-xs font-medium text-[var(--text-secondary)] backdrop-blur-md transition-all duration-200 hover:border-gold-500/40 hover:bg-white/[0.08] hover:text-[var(--text-primary)]"
+            className="flex items-center gap-2.5 rounded-xl border border-[var(--border-color)] bg-white/[0.04] px-4 py-2.5 text-sm font-medium text-[var(--text-secondary)] backdrop-blur-md transition-all duration-200 hover:border-gold-500/40 hover:bg-white/[0.08] hover:text-[var(--text-primary)]"
             aria-label="Search"
           >
             <Search className="h-4 w-4 text-[var(--text-secondary)]" />
             <span className="hidden sm:inline text-[var(--text-secondary)]">Search</span>
-            <kbd className="hidden sm:inline-flex items-center rounded bg-[var(--border-color)] px-1.5 py-0.5 font-mono text-[10px] text-[var(--text-secondary)]">
+            <kbd className="hidden sm:inline-flex items-center rounded bg-[var(--border-color)] px-2 py-0.5 font-mono text-[11px] text-[var(--text-secondary)]">
               ⌘K
             </kbd>
           </button>

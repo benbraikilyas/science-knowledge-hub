@@ -93,24 +93,24 @@ export default function ArticleCard({ article, featured }: ArticleCardProps) {
       />
 
       {/* Visual / Icon Thumbnail */}
-      <div className={`relative overflow-hidden ${featured ? 'lg:w-2/5' : ''}`}>
+      <div className={`relative overflow-hidden ${featured ? 'lg:w-1/2' : ''}`}>
         {showImage ? (
-          <div className={`relative ${featured ? 'aspect-video lg:h-full' : 'aspect-[16/9]'}`}>
+          <div className={`relative ${featured ? 'aspect-[16/10] lg:h-full min-h-[260px]' : 'aspect-[16/10] min-h-[210px]'}`}>
             <Image
               src={article.featuredImage}
               alt={article.title}
               fill
-              sizes={featured ? '(max-width: 1024px) 100vw, 40vw' : '(max-width: 640px) 100vw, 33vw'}
+              sizes={featured ? '(max-width: 1024px) 100vw, 50vw' : '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'}
               className="object-cover transition-transform duration-500 group-hover:scale-105"
               onError={() => setImgFailed(true)}
             />
           </div>
         ) : (
           <div
-            className={`flex items-center justify-center bg-gradient-to-br from-[var(--bg-card)] to-[var(--bg-primary)] ${featured ? 'aspect-video lg:h-full' : 'aspect-[16/9]'
+            className={`flex items-center justify-center bg-gradient-to-br from-[var(--bg-card)] to-[var(--bg-primary)] ${featured ? 'aspect-[16/10] lg:h-full min-h-[260px]' : 'aspect-[16/10] min-h-[210px]'
               }`}
           >
-            <span className="text-5xl transition-transform duration-500 group-hover:scale-125">
+            <span className="text-6xl transition-transform duration-500 group-hover:scale-125">
               {article.category.icon}
             </span>
           </div>
@@ -119,57 +119,57 @@ export default function ArticleCard({ article, featured }: ArticleCardProps) {
       </div>
 
       {/* Details */}
-      <div className="flex flex-1 flex-col justify-between p-6">
+      <div className="flex flex-1 flex-col justify-between p-6 sm:p-8">
         <div>
           <div className="flex items-center justify-between gap-2">
             <span
-              className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold"
+              className="inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs sm:text-sm font-semibold"
               style={{
                 backgroundColor: `${article.category.color}20`,
                 color: article.category.color,
                 border: `1px solid ${article.category.color}40`,
               }}
             >
-              <span>{article.category.icon}</span>
+              <span className="text-base">{article.category.icon}</span>
               <span>{article.category.name}</span>
             </span>
-            <span className="text-xs text-[var(--text-secondary)] font-mono">{article.readTime} min read</span>
+            <span className="text-xs sm:text-sm text-[var(--text-secondary)] font-mono">{article.readTime} min read</span>
           </div>
 
           <h3
-            className={`mt-4 font-bold leading-snug text-[var(--text-primary)] transition-colors duration-200 group-hover:text-[var(--accent-readable)] ${featured ? 'text-2xl lg:text-3xl' : 'text-lg'
+            className={`mt-4 font-bold leading-snug text-[var(--text-primary)] transition-colors duration-200 group-hover:text-[var(--accent-readable)] ${featured ? 'text-2xl sm:text-3xl lg:text-4xl' : 'text-xl sm:text-2xl'
               }`}
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             {article.title}
           </h3>
 
-          <p className="mt-2.5 line-clamp-2 text-sm leading-relaxed text-[var(--text-secondary)]">
+          <p className="mt-3 line-clamp-3 text-sm sm:text-base leading-relaxed text-[var(--text-secondary)]">
             {article.excerpt}
           </p>
         </div>
 
         {/* Footer Meta */}
-        <div className="mt-6 flex flex-wrap items-center justify-between gap-x-3 gap-y-1 border-t border-[var(--border-color)] pt-4 text-xs text-[var(--text-secondary)]">
-          <div className="flex min-w-0 items-center gap-2">
+        <div className="mt-6 flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5 border-t border-[var(--border-color)] pt-4 text-xs sm:text-sm text-[var(--text-secondary)]">
+          <div className="flex min-w-0 items-center gap-2.5">
             {showAvatar ? (
               <Image
                 src={publicAuthor.avatar as string}
                 alt={publicAuthor.displayName}
-                width={24}
-                height={24}
-                className="h-6 w-6 shrink-0 rounded-full object-cover shadow-[0_0_10px_rgba(255,195,0,0.3)]"
+                width={28}
+                height={28}
+                className="h-7 w-7 shrink-0 rounded-full object-cover shadow-[0_0_10px_rgba(255,195,0,0.3)]"
                 onError={() => setAvatarFailed(true)}
               />
             ) : (
-              <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-tr from-gold-500 to-navy-600 text-[11px] font-bold text-[var(--text-primary)] shadow-[0_0_10px_rgba(255,195,0,0.3)]">
+              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gradient-to-tr from-gold-500 to-navy-600 text-xs font-bold text-[var(--text-primary)] shadow-[0_0_10px_rgba(255,195,0,0.3)]">
                 {publicAuthor.displayName.charAt(0)}
               </div>
             )}
             <span className="truncate font-medium text-[var(--text-secondary)]">{publicAuthor.displayName}</span>
           </div>
 
-          <div className="flex items-center gap-3 font-mono text-[11px]">
+          <div className="flex items-center gap-3 font-mono text-xs sm:text-sm">
             <span>{formatCompactNumber(article.viewsCount)} views</span>
             <span>·</span>
             <span>{getRelativeTime(article.publishedAt)}</span>

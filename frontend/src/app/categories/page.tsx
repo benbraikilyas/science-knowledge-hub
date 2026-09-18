@@ -1,14 +1,29 @@
 import CategoryCard from '@/components/CategoryCard';
+import { fetchCategories } from '@/lib/api';
+import { DEMO_CATEGORIES } from '@/lib/constants';
 import type { Category } from '@/lib/types';
 import { Compass } from 'lucide-react';
 
-async function getCategories() {
+function mergeCategories(remoteCategories: Category[]): Category[] {
+  const remoteBySlug = new Map(remoteCategories.map((category) => [category.slug, category]));
+  const mergedLocal = DEMO_CATEGORIES.map((category) => {
+    const remote = remoteBySlug.get(category.slug);
+    if (!remote) return category;
+
+    remoteBySlug.delete(category.slug);
+    return { ...category, ...remote };
+  });
+
+  return [...mergedLocal, ...remoteBySlug.values()]
+    .filter((category) => category.isActive !== false)
+    .sort((a, b) => a.order - b.order);
+}
+
+async function getCategories(): Promise<Category[]> {
   try {
-    const api = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1';
-    const res = await fetch(`${api}/categories/`, { next: { revalidate: 60 } });
-    return await res.json();
+    const remote = await fetchCategories();
+    return mergeCategories(Array.isArray(remote) ? remote as Category[] : []);
   } catch {
-    const { DEMO_CATEGORIES } = await import('@/lib/constants');
     return DEMO_CATEGORIES;
   }
 }

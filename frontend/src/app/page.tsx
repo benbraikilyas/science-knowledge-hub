@@ -5,6 +5,7 @@ import CategoriesGrid from '@/components/CategoriesGrid';
 import StatsCounter from '@/components/StatsCounter';
 import ScientistsSpotlight from '@/components/ScientistsSpotlight';
 import NewsletterSection from '@/components/NewsletterSection';
+import LearningPathsSection from '@/components/LearningPathsSection';
 import { fetchFeaturedArticles, fetchCategories, fetchFeaturedScientists } from '@/lib/api';
 import { DEMO_SCIENTISTS, mergeScientistProfiles } from '@/lib/scientists';
 import type { ArticleListItem, Category, ScientistListItem } from '@/lib/types';
@@ -17,7 +18,7 @@ async function getHomepageData() {
       fetchFeaturedScientists(),
     ]);
 
-    const articles = rawArticles as ArticleListItem[];
+    const articles = (rawArticles as ArticleListItem[]).filter((a) => a.category.slug !== 'books');
     const categories = rawCategories as Category[];
     const scientists = mergeScientistProfiles(rawScientists as ScientistListItem[])
       .filter((scientist) => scientist.isFeatured)
@@ -30,7 +31,7 @@ async function getHomepageData() {
 
   const { DEMO_ARTICLES, DEMO_CATEGORIES } = await import('@/lib/constants');
   return {
-    articles: DEMO_ARTICLES as ArticleListItem[],
+    articles: (DEMO_ARTICLES as ArticleListItem[]).filter((a) => a.category.slug !== 'books'),
     categories: DEMO_CATEGORIES as Category[],
     scientists: DEMO_SCIENTISTS.filter((scientist) => scientist.isFeatured).slice(0, 8),
   };
@@ -48,6 +49,7 @@ export default async function HomePage() {
       <Suspense fallback={null}>
         <CategoriesGrid categories={categories} />
       </Suspense>
+      <LearningPathsSection />
       <StatsCounter />
       <Suspense fallback={null}>
         <ScientistsSpotlight scientists={scientists} />

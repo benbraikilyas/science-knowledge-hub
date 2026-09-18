@@ -90,26 +90,26 @@ export default function CategoriesGrid({ categories }: CategoriesGridProps) {
       {/* Background radial glow */}
       <div className="pointer-events-none absolute right-1/4 top-1/3 h-80 w-80 rounded-full bg-gold-500/8 blur-[140px]" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-[1550px] 2xl:max-w-[1720px] px-4 sm:px-6 lg:px-10">
         {/* Header */}
-        <div ref={headerRef} className="text-center max-w-2xl mx-auto">
-          <div className="inline-flex items-center gap-2 rounded-full border border-gold-500/30 bg-gold-500/10 px-3.5 py-1 text-xs font-semibold text-[var(--accent-readable)] backdrop-blur-md">
-            <span className="h-1.5 w-1.5 rounded-full bg-gold-400 animate-pulse" />
+        <div ref={headerRef} className="text-center max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 rounded-full border border-gold-500/30 bg-gold-500/10 px-4 py-1.5 text-xs sm:text-sm font-semibold text-[var(--accent-readable)] backdrop-blur-md">
+            <span className="h-2 w-2 rounded-full bg-gold-400 animate-pulse" />
             Scientific Disciplines
           </div>
           <h2
-            className="mt-3 text-3xl font-bold tracking-tight text-[var(--text-primary)] sm:text-4xl"
+            className="mt-4 text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[var(--text-primary)]"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             Explore by Category
           </h2>
-          <p className="mt-3 text-base text-[var(--text-secondary)]">
+          <p className="mt-4 text-base sm:text-xl text-[var(--text-secondary)] leading-relaxed">
             Dive deep into the specialized fields decoding the universe, from quantum particles to cosmic galaxies
           </p>
         </div>
 
         {/* Categories Grid */}
-        <div ref={gridRef} className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div ref={gridRef} className="mt-16 grid gap-8 sm:gap-9 sm:grid-cols-2 lg:grid-cols-3">
           {categories.map((category) => (
             <div key={category.id} className="category-card-wrap">
               <CategoryCard category={category} />
@@ -118,13 +118,13 @@ export default function CategoriesGrid({ categories }: CategoriesGridProps) {
         </div>
 
         {/* Bottom CTA */}
-        <div ref={footerRef} className="mt-14 text-center">
+        <div ref={footerRef} className="mt-16 text-center">
           <Link
             href="/categories"
-            className="inline-flex h-12 items-center gap-2 rounded-xl border border-[var(--border-color)] bg-[var(--bg-glass)] px-8 text-sm font-semibold text-[var(--text-primary)] backdrop-blur-md transition-all duration-200 hover:border-gold-500/40 hover:bg-[var(--bg-elevated)] hover:shadow-[0_0_25px_rgba(255,195,0,0.15)]"
+            className="inline-flex h-14 items-center gap-2 rounded-xl border border-[var(--border-color)] bg-[var(--bg-glass)] px-10 text-base font-semibold text-[var(--text-primary)] backdrop-blur-md transition-all duration-200 hover:border-gold-500/40 hover:bg-[var(--bg-elevated)] hover:shadow-[0_0_30px_rgba(255,195,0,0.2)]"
           >
-            <span>Browse All Categories</span>
-            <span className="text-lg">&rarr;</span>
+            <span>Explore All 15 Categories</span>
+            <span>&rarr;</span>
           </Link>
         </div>
       </div>

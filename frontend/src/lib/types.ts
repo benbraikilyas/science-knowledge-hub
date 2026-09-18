@@ -29,6 +29,20 @@ export interface Author {
   role: 'admin' | 'editor' | 'reader';
 }
 
+// --- Book Details ---
+export interface BookDetails {
+  originalAuthor?: string;
+  firstPublished?: number | string;
+  pages?: number;
+  subjects?: string[];
+  license?: string;
+  readOnlineUrl?: string;
+  downloadPdfUrl?: string;
+  downloadEpubUrl?: string;
+  iaDetailsUrl?: string;
+  archiveName?: string;
+}
+
 // --- Article ---
 export interface Article {
   id: string;
@@ -48,9 +62,11 @@ export interface Article {
   likesCount: number;
   metaTitle?: string;
   metaDescription?: string;
+  sourceUrls?: string[];
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
+  bookDetails?: BookDetails;
 }
 
 export interface ArticleListItem {
@@ -68,6 +84,8 @@ export interface ArticleListItem {
   viewsCount: number;
   likesCount: number;
   publishedAt: string;
+  content?: string;
+  bookDetails?: BookDetails;
 }
 
 // --- Scientist ---

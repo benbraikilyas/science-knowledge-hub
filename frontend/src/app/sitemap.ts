@@ -9,6 +9,7 @@ const STATIC_ROUTES = [
   '/articles',
   '/categories',
   '/scientists',
+  '/learn',
   '/editorial-policy',
   '/sources',
   '/contact',
