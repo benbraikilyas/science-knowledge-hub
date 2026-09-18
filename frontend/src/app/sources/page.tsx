@@ -82,6 +82,15 @@ export default function SourcesPage() {
             <a href="https://archive.org/" target="_blank" rel="noreferrer" className="font-semibold text-gold-300 hover:text-gold-200">Internet Archive &rarr;</a>
           </div>
         </section>
+        <section>
+          <h2 className="text-xl font-bold text-[var(--text-primary)]">Interactive tool methodology</h2>
+          <p className="mt-3 leading-relaxed">Science Tools Lab calculations run from visible equations and SI constants. Exact constants and the gravitational constant follow the NIST 2022 CODATA publication; relativity definitions are cross-checked against OpenStax University Physics; the escape-speed model is compared with NASA educational material. Every tool states the assumptions it omits and is intended for education, not safety-critical or professional calculations.</p>
+          <div className="mt-4 flex flex-wrap gap-3 text-sm">
+            <a href="https://physics.nist.gov/cuu/pdf/wall_2022.pdf" target="_blank" rel="noreferrer" className="font-semibold text-gold-300 hover:text-gold-200">NIST CODATA &rarr;</a>
+            <a href="https://openstax.org/books/university-physics-volume-3/pages/5-3-time-dilation" target="_blank" rel="noreferrer" className="font-semibold text-gold-300 hover:text-gold-200">OpenStax Relativity &rarr;</a>
+            <a href="https://spacemath.gsfc.nasa.gov/engineering.html" target="_blank" rel="noreferrer" className="font-semibold text-gold-300 hover:text-gold-200">NASA Space Math &rarr;</a>
+          </div>
+        </section>
         <section id="image-credits" className="scroll-mt-24">
           <h2 className="text-xl font-bold text-[var(--text-primary)]">Scientist image credits</h2>
           <p className="mt-3 text-sm leading-relaxed">The linked file page is the authoritative record for the author, license, and any attribution or share-alike conditions.</p>

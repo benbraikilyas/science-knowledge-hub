@@ -114,6 +114,12 @@ export default async function ArticlesPage({
                 </Link>
               );
             })}
+            <Link
+              href="/categories/books"
+              className="inline-flex items-center gap-1.5 rounded-xl border border-indigo-400/30 bg-indigo-500/10 px-4 py-2 text-xs font-semibold text-indigo-300 backdrop-blur-md transition-all duration-200 hover:border-indigo-400/60 hover:bg-indigo-500/15"
+            >
+              <BookOpen className="h-3.5 w-3.5" /> Free Book Library
+            </Link>
           </div>
         </div>
       </div>

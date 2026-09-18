@@ -18,6 +18,7 @@ export const NAV_ITEMS: NavItem[] = [
   { label: 'Categories', href: '/categories' },
   { label: 'Scientists', href: '/scientists' },
   { label: 'Learn', href: '/learn' },
+  { label: 'Tools', href: '/tools' },
 ];
 
 // Category Icons and Colors Mapping

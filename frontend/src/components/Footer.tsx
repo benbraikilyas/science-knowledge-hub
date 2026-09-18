@@ -135,6 +135,7 @@ export default function Footer() {
                 { name: 'Biology & Life', slug: 'biology' },
                 { name: 'Artificial Intelligence', slug: 'artificial-intelligence' },
                 { name: 'Theories & Laws', slug: 'scientific-theories' },
+                { name: 'Free Science Books', slug: 'books' },
               ].map((cat) => (
                 <li key={cat.slug}>
                   <Link

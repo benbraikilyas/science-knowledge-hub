@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import ArticleCard from '@/components/ArticleCard';
+import BooksLibrary from '@/components/BooksLibrary';
 import { fetchCategory, fetchArticles } from '@/lib/api';
 import type { ArticleListItem, Category } from '@/lib/types';
 import { ArrowLeft, Sparkles } from 'lucide-react';
@@ -119,20 +120,26 @@ export default async function CategoryDetailPage({ params }: CategoryDetailProps
 
       {/* Articles / Books Grid */}
       <div className="mx-auto max-w-[1550px] 2xl:max-w-[1720px] px-4 pt-12 sm:px-6 lg:px-10">
-        <div className="mb-8 flex items-center justify-between text-sm sm:text-base text-[var(--text-secondary)] font-mono border-b border-[var(--border-color)]/60 pb-4">
-          <span>{articles.length} {category.slug === 'books' ? 'publications' : 'articles'} available</span>
-        </div>
-
-        {articles.length > 0 ? (
-          <div className="grid gap-8 sm:gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4">
-            {articles.map((article: ArticleListItem) => (
-              <ArticleCard key={article.id} article={article} />
-            ))}
-          </div>
+        {category.slug === 'books' ? (
+          <BooksLibrary books={articles} />
         ) : (
-          <div className="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)]/60 p-16 sm:p-24 text-center backdrop-blur-xl">
-            <p className="text-xl sm:text-2xl text-[var(--text-secondary)]">No articles in this category yet. Check back soon!</p>
-          </div>
+          <>
+            <div className="mb-8 flex items-center justify-between border-b border-[var(--border-color)]/60 pb-4 font-mono text-sm text-[var(--text-secondary)] sm:text-base">
+              <span>{articles.length} articles available</span>
+            </div>
+
+            {articles.length > 0 ? (
+              <div className="grid gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4">
+                {articles.map((article: ArticleListItem) => (
+                  <ArticleCard key={article.id} article={article} />
+                ))}
+              </div>
+            ) : (
+              <div className="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)]/60 p-16 text-center backdrop-blur-xl sm:p-24">
+                <p className="text-xl text-[var(--text-secondary)] sm:text-2xl">No articles in this category yet. Check back soon!</p>
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>

@@ -6,6 +6,7 @@ import StatsCounter from '@/components/StatsCounter';
 import ScientistsSpotlight from '@/components/ScientistsSpotlight';
 import NewsletterSection from '@/components/NewsletterSection';
 import LearningPathsSection from '@/components/LearningPathsSection';
+import ScienceToolsSection from '@/components/ScienceToolsSection';
 import { fetchFeaturedArticles, fetchCategories, fetchFeaturedScientists } from '@/lib/api';
 import { DEMO_SCIENTISTS, mergeScientistProfiles } from '@/lib/scientists';
 import type { ArticleListItem, Category, ScientistListItem } from '@/lib/types';
@@ -50,6 +51,7 @@ export default async function HomePage() {
         <CategoriesGrid categories={categories} />
       </Suspense>
       <LearningPathsSection />
+      <ScienceToolsSection />
       <StatsCounter />
       <Suspense fallback={null}>
         <ScientistsSpotlight scientists={scientists} />

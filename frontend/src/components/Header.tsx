@@ -118,7 +118,7 @@ export default function Header() {
           aria-label="Primary navigation"
           translate="no"
           suppressHydrationWarning
-          className="notranslate hidden items-center gap-2 md:flex"
+          className="notranslate hidden items-center gap-2 xl:flex"
         >
           {NAV_ITEMS.map((item) => {
             const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href));
@@ -170,7 +170,7 @@ export default function Header() {
 
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="rounded-xl border border-[var(--border-color)] bg-white/[0.04] p-2 text-[var(--text-secondary)] transition-colors hover:bg-white/[0.08] hover:text-[var(--text-primary)] md:hidden"
+            className="rounded-xl border border-[var(--border-color)] bg-white/[0.04] p-2 text-[var(--text-secondary)] transition-colors hover:bg-white/[0.08] hover:text-[var(--text-primary)] xl:hidden"
             aria-label="Menu"
           >
             {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -227,7 +227,7 @@ export default function Header() {
 
       {/* Mobile Drawer */}
       {menuOpen && (
-        <div className="border-t border-[var(--border-color)] bg-[var(--bg-secondary)]/98 px-4 py-4 backdrop-blur-2xl md:hidden">
+        <div className="border-t border-[var(--border-color)] bg-[var(--bg-secondary)]/98 px-4 py-4 backdrop-blur-2xl xl:hidden">
           <nav
             aria-label="Mobile navigation"
             translate="no"
