@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import type { ReactNode } from 'react';
+import { getImageMetadata } from '@/lib/image-seo';
 
 interface SafeImageProps {
   src?: string;
@@ -23,7 +24,7 @@ export default function SafeImage({ src, alt, width, height, sizes, className, f
     return (
       <Image
         src={src}
-        alt={alt}
+        alt={alt === '' ? '' : getImageMetadata(src)?.alt || alt}
         width={width}
         height={height}
         className={className}
@@ -35,7 +36,7 @@ export default function SafeImage({ src, alt, width, height, sizes, className, f
   return (
     <Image
       src={src}
-      alt={alt}
+      alt={alt === '' ? '' : getImageMetadata(src)?.alt || alt}
       fill
       sizes={sizes}
       className={className}

@@ -7,6 +7,7 @@ import { formatCompactNumber, getRelativeTime } from '@/lib/utils';
 import type { ArticleListItem } from '@/lib/types';
 import { gsap } from '@/lib/gsap';
 import { getPublicArticleAuthor } from '@/lib/article-author';
+import { getImageMetadata } from '@/lib/image-seo';
 
 interface ArticleCardProps {
   article: ArticleListItem;
@@ -98,7 +99,7 @@ export default function ArticleCard({ article, featured }: ArticleCardProps) {
           <div className={`relative ${featured ? 'aspect-[16/10] lg:h-full min-h-[260px]' : 'aspect-[16/10] min-h-[210px]'}`}>
             <Image
               src={article.featuredImage}
-              alt={article.title}
+              alt={getImageMetadata(article.featuredImage)?.alt || article.title}
               fill
               sizes={featured ? '(max-width: 1024px) 100vw, 50vw' : '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'}
               className="object-cover transition-transform duration-500 group-hover:scale-105"

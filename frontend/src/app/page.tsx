@@ -11,6 +11,8 @@ import { fetchFeaturedArticles, fetchCategories, fetchFeaturedScientists } from 
 import { DEMO_SCIENTISTS, mergeScientistProfiles } from '@/lib/scientists';
 import type { ArticleListItem, Category, ScientistListItem } from '@/lib/types';
 
+export const metadata = { alternates: { canonical: '/' } };
+
 async function getHomepageData() {
   try {
     const [rawArticles, rawCategories, rawScientists] = await Promise.all([

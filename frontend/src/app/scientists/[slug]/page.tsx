@@ -1,9 +1,12 @@
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import { fetchScientist } from '@/lib/api';
 import SafeImage from '@/components/SafeImage';
 import { DEMO_SCIENTISTS } from '@/lib/scientists';
-import { ArrowLeft, Award, Quote, Sparkles, BookOpen, ExternalLink, Lightbulb } from 'lucide-react';
+import { ArrowLeft, Award, Quote, BookOpen, ExternalLink, Lightbulb } from 'lucide-react';
 import { absoluteUrl } from '@/lib/site';
+import { imageObject, openGraphImage } from '@/lib/image-seo';
+import StructuredData from '@/components/StructuredData';
 
 interface ScientistDetailProps {
   params: Promise<{ slug: string }>;
@@ -31,10 +34,10 @@ async function getScientist(slug: string) {
 export async function generateMetadata({ params }: ScientistDetailProps) {
   const { slug } = await params;
   const scientist = (await getScientist(slug)) as Record<string, unknown> | null;
-  if (!scientist) return { title: 'Scientist Not Found' };
+  if (!scientist) notFound();
   const description = `Discover the life and achievements of ${scientist.name}, pioneer in ${scientist.field}.`;
   const image = typeof scientist.portraitImage === 'string' && scientist.portraitImage
-    ? absoluteUrl(scientist.portraitImage)
+    ? openGraphImage(scientist.portraitImage, scientist.name as string)
     : undefined;
   return {
     title: scientist.name as string,
@@ -45,13 +48,13 @@ export async function generateMetadata({ params }: ScientistDetailProps) {
       url: absoluteUrl(`/scientists/${slug}`),
       title: scientist.name as string,
       description,
-      images: image ? [{ url: image, alt: scientist.name as string }] : [],
+      images: image ? [image] : [],
     },
     twitter: {
       card: image ? 'summary_large_image' : 'summary',
       title: scientist.name as string,
       description,
-      images: image ? [image] : [],
+      images: image ? [{ url: image.url, alt: image.alt }] : [],
     },
   };
 }
@@ -60,23 +63,7 @@ export default async function ScientistDetailPage({ params }: ScientistDetailPro
   const { slug } = await params;
   const scientist = (await getScientist(slug)) as Record<string, unknown> | null;
 
-  if (!scientist) {
-    return (
-      <div className="min-h-screen bg-[var(--bg-primary)] flex items-center justify-center px-4 py-20">
-        <div className="max-w-md text-center rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)]/80 p-12 backdrop-blur-xl">
-          <Sparkles className="mx-auto h-12 w-12 text-slate-500" />
-          <h1 className="mt-4 text-2xl font-bold text-[var(--text-primary)]">Scientist Not Found</h1>
-          <p className="mt-2 text-sm text-[var(--text-secondary)]">The requested scientist profile does not exist.</p>
-          <Link
-            href="/scientists"
-            className="mt-6 inline-flex h-11 items-center gap-2 rounded-xl bg-gold-500 px-6 text-sm font-semibold text-white transition-colors hover:bg-gold-400"
-          >
-            Browse Scientists
-          </Link>
-        </div>
-      </div>
-    );
-  }
+  if (!scientist) notFound();
 
   const name = scientist.name as string;
   const field = scientist.field as string;
@@ -92,9 +79,23 @@ export default async function ScientistDetailPage({ params }: ScientistDetailPro
   const keyContributions = (scientist.keyContributions as string[]) || [];
   const famousQuotes = (scientist.famousQuotes as string[]) || [];
   const awards = (scientist.awards as string[]) || [];
+  const pageUrl = absoluteUrl(`/scientists/${slug}`);
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage', '@id': pageUrl, url: pageUrl, name, inLanguage: 'en',
+    ...(portraitImage ? { primaryImageOfPage: imageObject(portraitImage, name) } : {}),
+    mainEntity: {
+      '@type': 'Person', '@id': `${pageUrl}#person`, name,
+      description: breakthrough || `Pioneer in ${field}.`,
+      knowsAbout: field,
+      ...(sourceUrl ? { sameAs: [sourceUrl] } : {}),
+      ...(portraitImage ? { image: imageObject(portraitImage, name) } : {}),
+    },
+  };
 
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] pb-24 text-[var(--text-secondary)]">
+      <StructuredData data={structuredData} />
       {/* Header Banner */}
       <div className="relative overflow-hidden border-b border-[var(--border-color)] bg-gradient-to-b from-[var(--bg-card)] via-[var(--bg-secondary)] to-[var(--bg-primary)] py-14 sm:py-20">
         <div className="pointer-events-none absolute left-1/2 top-0 h-96 w-96 -translate-x-1/2 rounded-full bg-gold-500/10 blur-[140px]" />

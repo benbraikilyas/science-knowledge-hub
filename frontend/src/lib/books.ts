@@ -66,7 +66,7 @@ const ARCHIVE_BOOKS: ScienceBook[] = [
     author: {
       id: 'charles-darwin',
       displayName: 'Charles Darwin',
-      avatar: '/images/scientists/charles-darwin.jpg',
+      avatar: '/images/scientists/charles-darwin.webp',
     },
     tags: ['Biology', 'Evolution', 'Natural Selection', 'Darwin', 'Classics'],
     readTime: 25,
@@ -110,7 +110,7 @@ Today, Darwinian natural selection forms the central unifying paradigm of all li
     author: {
       id: 'isaac-newton',
       displayName: 'Isaac Newton',
-      avatar: '/images/scientists/newton.jpg',
+      avatar: '/images/scientists/newton.webp',
     },
     tags: ['Physics', 'Newton', 'Classical Mechanics', 'Gravitation', 'Calculus'],
     readTime: 30,
@@ -154,7 +154,7 @@ Newton’s classical physics proved so profoundly accurate that it remains the e
     author: {
       id: 'albert-einstein',
       displayName: 'Albert Einstein',
-      avatar: '/images/scientists/einstein.jpg',
+      avatar: '/images/scientists/einstein.webp',
     },
     tags: ['Physics', 'Relativity', 'Einstein', 'Spacetime', 'Quantum'],
     readTime: 18,
@@ -198,7 +198,7 @@ Part III concludes with reflections on the universe as a whole, introducing rela
     author: {
       id: 'galileo-galilei',
       displayName: 'Galileo Galilei',
-      avatar: '/images/scientists/galileo-galilei.jpg',
+      avatar: '/images/scientists/galileo-galilei.webp',
     },
     tags: ['Astronomy', 'Galileo', 'Telescopes', 'Jupiter', 'Space Missions'],
     readTime: 12,
@@ -286,7 +286,7 @@ Philosophers, scientists, and statesmen — including Spinoza, Newton, Abraham L
     author: {
       id: 'michael-faraday',
       displayName: 'Michael Faraday',
-      avatar: '/images/scientists/michael-faraday.jpg',
+      avatar: '/images/scientists/michael-faraday.webp',
     },
     tags: ['Chemistry', 'Physics', 'Faraday', 'Experiments', 'Combustion'],
     readTime: 14,
@@ -330,7 +330,7 @@ Faraday’s clarity, infectious enthusiasm, and insistence on direct experimenta
     author: {
       id: 'galileo-galilei',
       displayName: 'Galileo Galilei',
-      avatar: '/images/scientists/galileo-galilei.jpg',
+      avatar: '/images/scientists/galileo-galilei.webp',
     },
     tags: ['Physics', 'Galileo', 'Kinematics', 'Materials Science', 'Mechanics'],
     readTime: 22,
@@ -459,7 +459,7 @@ Poincaré’s insights foreshadowed both special relativity and quantum indeterm
     author: {
       id: 'charles-darwin',
       displayName: 'Charles Darwin',
-      avatar: '/images/scientists/charles-darwin.jpg',
+      avatar: '/images/scientists/charles-darwin.webp',
     },
     tags: ['Biology', 'Evolution', 'Anthropology', 'Darwin', 'Sexual Selection'],
     readTime: 26,
@@ -503,7 +503,7 @@ Darwin also laid the groundwork for evolutionary psychology and anthropology, an
     author: {
       id: 'isaac-newton',
       displayName: 'Sir Isaac Newton',
-      avatar: '/images/scientists/newton.jpg',
+      avatar: '/images/scientists/newton.webp',
     },
     tags: ['Physics', 'Optics', 'Light', 'Newton', 'Experiments'],
     readTime: 21,
@@ -634,7 +634,7 @@ A timeless, lucid orientation into the mathematical mindset for programmers, phy
     author: {
       id: 'charles-darwin',
       displayName: 'Charles Darwin',
-      avatar: '/images/scientists/charles-darwin.jpg',
+      avatar: '/images/scientists/charles-darwin.webp',
     },
     tags: ['Biology', 'Psychology', 'Darwin', 'Artificial Intelligence', 'Neuroscience'],
     readTime: 19,

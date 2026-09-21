@@ -1,8 +1,9 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
-import { Sparkles, Heart, CheckCircle2, AlertCircle } from 'lucide-react';
+import { Heart, CheckCircle2, AlertCircle } from 'lucide-react';
 import { SITE_NAME, NAV_ITEMS } from '@/lib/constants';
 import CookieSettingsButton from '@/components/CookieSettingsButton';
 
@@ -56,11 +57,9 @@ export default function Footer() {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-6">
           {/* Brand Col */}
           <div className="lg:col-span-2">
-            <Link href="/" className="group flex items-center gap-2.5">
-              <div className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-gold-500 via-navy-600 to-gold-400 p-[1px] shadow-[0_0_20px_rgba(255,195,0,0.3)]">
-                <div className="flex h-full w-full items-center justify-center rounded-[11px] bg-[var(--bg-primary)]">
-                  <Sparkles className="h-4 w-4 text-gold-400" />
-                </div>
+            <Link href="/" className="group flex items-center gap-2.5" aria-label="Science Knowledge Hub home">
+              <div className="relative h-11 w-11 shrink-0 transition-transform duration-300 group-hover:scale-105">
+                <Image src="/brand-logo.webp" alt="" width={44} height={44} className="h-11 w-11 object-contain drop-shadow-[0_0_10px_rgba(255,195,0,0.25)]" />
               </div>
               <span
                 dir="ltr"
@@ -69,7 +68,7 @@ export default function Footer() {
                 className="text-lg font-bold tracking-tight text-[var(--text-primary)]"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                Science<span className="bg-gradient-to-r from-gold-400 to-gold-300 bg-clip-text text-transparent">Hub</span>
+                Science<span className="bg-gradient-to-r from-gold-400 to-gold-300 bg-clip-text text-transparent"> Knowledge Hub</span>
               </span>
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-[var(--text-secondary)]">

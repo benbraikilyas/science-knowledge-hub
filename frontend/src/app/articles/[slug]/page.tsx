@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import { formatDate, formatCompactNumber } from '@/lib/utils';
 import { fetchArticle, fetchRelatedArticles } from '@/lib/api';
 import type { ArticleListItem } from '@/lib/types';
@@ -7,8 +8,10 @@ import ArticleCard from '@/components/ArticleCard';
 import ArticleContent from '@/components/ArticleContent';
 import SafeImage from '@/components/SafeImage';
 import { getPublicArticleAuthor } from '@/lib/article-author';
-import { absoluteUrl } from '@/lib/site';
-import { Clock, Eye, ArrowLeft, Sparkles, BookOpen, Download, FileText, Smartphone, ExternalLink, ShieldCheck } from 'lucide-react';
+import { absoluteUrl, SITE_NAME, EDITORIAL_TEAM } from '@/lib/site';
+import { getImageMetadata, imageObject, openGraphImage } from '@/lib/image-seo';
+import StructuredData from '@/components/StructuredData';
+import { Clock, Eye, ArrowLeft, BookOpen, Download, FileText, Smartphone, ExternalLink, ShieldCheck } from 'lucide-react';
 
 interface ArticleDetailProps {
   params: Promise<{ slug: string }>;
@@ -36,10 +39,10 @@ async function getRelatedArticles(slug: string): Promise<ArticleListItem[]> {
 export async function generateMetadata({ params }: ArticleDetailProps) {
   const { slug } = await params;
   const article = await getArticle(slug) as Record<string, unknown> | null;
-  if (!article) return { title: 'Article Not Found' };
+  if (!article) notFound();
   const hasOriginalContent = typeof article.content === 'string' && article.content.trim().length > 0;
   const image = typeof article.featuredImage === 'string' && article.featuredImage
-    ? absoluteUrl(article.featuredImage)
+    ? openGraphImage(article.featuredImage, article.title as string)
     : undefined;
   const publicAuthor = getPublicArticleAuthor(article.author as { displayName?: string; avatar?: string } | undefined);
   return {
@@ -49,7 +52,7 @@ export async function generateMetadata({ params }: ArticleDetailProps) {
     authors: [publicAuthor.href
       ? { name: publicAuthor.displayName, url: publicAuthor.href }
       : { name: publicAuthor.displayName }],
-    robots: { index: hasOriginalContent, follow: true },
+    robots: { index: hasOriginalContent, follow: true, 'max-image-preview': 'large' as const },
     openGraph: {
       title: article.title as string,
       description: article.excerpt as string,
@@ -57,13 +60,13 @@ export async function generateMetadata({ params }: ArticleDetailProps) {
       url: absoluteUrl(`/articles/${slug}`),
       publishedTime: article.publishedAt as string,
       tags: article.tags as string[],
-      images: image ? [{ url: image, alt: article.title as string }] : [],
+      images: image ? [image] : [],
     },
     twitter: {
       card: image ? 'summary_large_image' : 'summary',
       title: article.title as string,
       description: article.excerpt as string,
-      images: image ? [image] : [],
+      images: image ? [{ url: image.url, alt: image.alt }] : [],
     },
   };
 }
@@ -73,28 +76,13 @@ export default async function ArticleDetailPage({ params }: ArticleDetailProps) 
   const article = await getArticle(slug) as Record<string, unknown> | null;
   const related: ArticleListItem[] = await getRelatedArticles(slug);
 
-  if (!article) {
-    return (
-      <div className="min-h-screen bg-[var(--bg-primary)] flex items-center justify-center px-4 py-20">
-        <div className="max-w-md text-center rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)]/80 p-12 backdrop-blur-xl">
-          <Sparkles className="mx-auto h-12 w-12 text-slate-500" />
-          <h1 className="mt-4 text-2xl font-bold text-[var(--text-primary)]">Article Not Found</h1>
-          <p className="mt-2 text-sm text-[var(--text-secondary)]">The article you&apos;re looking for does not exist in our cosmic archive.</p>
-          <Link
-            href="/articles"
-            className="mt-6 inline-flex h-11 items-center gap-2 rounded-xl bg-gold-500 px-6 text-sm font-semibold text-white transition-colors hover:bg-gold-400"
-          >
-            Browse Articles
-          </Link>
-        </div>
-      </div>
-    );
-  }
+  if (!article) notFound();
 
   const category = article.category as { slug: string; color: string; icon: string; name: string };
   const author = article.author as { displayName?: string; avatar?: string };
   const articleTags = article.tags as string[] | undefined;
   const featuredImage = (article.featuredImage as string) || '';
+  const imageMetadata = getImageMetadata(featuredImage);
   const publicAuthor = getPublicArticleAuthor(author);
   const authorName = publicAuthor.displayName;
 
@@ -111,10 +99,43 @@ export default async function ArticleDetailPage({ params }: ArticleDetailProps) 
     archiveName?: string;
   } | undefined;
   const isBook = category.slug === 'books' || Boolean(bookDetails);
+  const pageUrl = absoluteUrl(`/articles/${slug}`);
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebPage', '@id': pageUrl, url: pageUrl,
+        name: article.title, description: article.excerpt, inLanguage: 'en',
+        ...(featuredImage ? { primaryImageOfPage: imageObject(featuredImage, article.title as string) } : {}),
+      },
+      ...(!isBook && typeof article.content === 'string' && article.content.trim() ? [{
+        '@type': 'Article', '@id': `${pageUrl}#article`, mainEntityOfPage: { '@id': pageUrl },
+        headline: article.title, description: article.excerpt, inLanguage: 'en',
+        datePublished: article.publishedAt,
+        articleSection: category.name,
+        keywords: articleTags,
+        author: {
+          '@type': authorName === EDITORIAL_TEAM.displayName ? 'Organization' : 'Person',
+          name: authorName, ...(publicAuthor.href ? { url: absoluteUrl(publicAuthor.href) } : {}),
+        },
+        publisher: { '@type': 'Organization', name: SITE_NAME, url: absoluteUrl('/') },
+        ...(featuredImage ? { image: imageObject(featuredImage, article.title as string) } : {}),
+      }] : []),
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: absoluteUrl('/') },
+          { '@type': 'ListItem', position: 2, name: 'Articles', item: absoluteUrl('/articles') },
+          { '@type': 'ListItem', position: 3, name: article.title, item: pageUrl },
+        ],
+      },
+    ],
+  };
 
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] pb-24 text-[var(--text-secondary)]">
       <ArticleReadingProgress />
+      <StructuredData data={structuredData} />
 
       {/* Header Banner */}
       <div className="relative overflow-hidden border-b border-[var(--border-color)] bg-gradient-to-b from-[var(--bg-card)] via-[var(--bg-secondary)] to-[var(--bg-primary)] py-14 sm:py-20">
@@ -221,7 +242,8 @@ export default async function ArticleDetailPage({ params }: ArticleDetailProps) 
             />
           </div>
           <p className="mt-2 text-right text-[11px] text-[var(--text-secondary)]">
-            <Link href="/sources#image-credits" className="hover:text-gold-300">Image source and license</Link>
+            {imageMetadata?.creditText && <span>{imageMetadata.creditText} · </span>}
+            <Link href={imageMetadata?.source || '/sources#image-credits'} className="hover:text-gold-300">Image source and license</Link>
           </p>
         </div>
       )}

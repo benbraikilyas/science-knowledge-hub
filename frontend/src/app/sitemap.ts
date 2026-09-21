@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { DEMO_ARTICLES, DEMO_CATEGORIES } from '@/lib/constants';
 import { DEMO_SCIENTISTS } from '@/lib/scientists';
-import { SITE_URL } from '@/lib/site';
+import { SITE_URL, absoluteUrl } from '@/lib/site';
 
 const STATIC_ROUTES = [
   '',
@@ -36,6 +36,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const scientists: MetadataRoute.Sitemap = DEMO_SCIENTISTS.map((scientist) => ({
     url: `${SITE_URL}/scientists/${scientist.slug}`,
+    images: scientist.portraitImage ? [absoluteUrl(scientist.portraitImage)] : [],
     changeFrequency: 'monthly',
     priority: 0.8,
   }));
@@ -46,6 +47,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const articles: MetadataRoute.Sitemap = publishableArticles.map((article) => ({
     url: `${SITE_URL}/articles/${article.slug}`,
+    images: article.featuredImage ? [absoluteUrl(article.featuredImage)] : [],
     lastModified: new Date(article.publishedAt),
     changeFrequency: 'monthly',
     priority: 0.8,

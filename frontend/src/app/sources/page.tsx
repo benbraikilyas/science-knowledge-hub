@@ -101,7 +101,7 @@ export default function SourcesPage() {
           <CreditList entries={ARTICLE_CREDITS} />
           <div className="mt-5 rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)]/50 p-5">
             <h3 className="font-semibold text-[var(--text-primary)]">Original ScienceHub visualizations</h3>
-            <p className="mt-2 text-sm leading-relaxed">Eight additional article illustrations were generated specifically for this project with OpenAI image generation: stellar evolution, team science, relativity and GPS, Bell tests, semiconductors, scientific instruments, mathematical proof, and quantum computing. They were reviewed for subject fit and contain no third-party logos or copied artwork.</p>
+            <p className="mt-2 text-sm leading-relaxed">Eight additional article illustrations were created specifically for Science Knowledge Hub with AI-assisted image tools: stellar evolution, team science, relativity and GPS, Bell tests, semiconductors, scientific instruments, mathematical proof, and quantum computing. They were reviewed for subject fit and contain no third-party logos or copied artwork.</p>
           </div>
         </section>
         <section className="rounded-2xl border border-gold-500/25 bg-gold-500/8 p-6">

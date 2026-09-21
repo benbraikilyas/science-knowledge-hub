@@ -1,10 +1,11 @@
 'use client';
 
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
-import { Menu, X, Search, Moon, Sun, Sparkles } from 'lucide-react';
+import { Menu, X, Search, Moon, Sun } from 'lucide-react';
 import { NAV_ITEMS } from '@/lib/constants';
 import { gsap } from '@/lib/gsap';
 
@@ -90,11 +91,9 @@ export default function Header() {
     >
       <div className="mx-auto flex h-20 max-w-[1550px] 2xl:max-w-[1720px] items-center justify-between px-4 sm:px-6 lg:px-10">
         {/* Brand Logo */}
-        <Link href="/" className="group flex items-center gap-3">
-          <div className="relative flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-tr from-gold-500 via-gold-400 to-navy-600 p-[1.5px] shadow-[0_0_25px_rgba(255,195,0,0.35)] transition-transform duration-300 group-hover:scale-105">
-            <div className="flex h-full w-full items-center justify-center rounded-[14px] bg-[var(--bg-primary)]">
-              <Sparkles className="h-5 w-5 text-gold-400 transition-transform duration-300 group-hover:rotate-12" />
-            </div>
+        <Link href="/" className="group flex items-center gap-2.5" aria-label="Science Knowledge Hub home">
+          <div className="relative h-12 w-12 shrink-0 transition-transform duration-300 group-hover:scale-105">
+            <Image src="/brand-logo.webp" alt="" width={48} height={48} priority className="h-12 w-12 object-contain drop-shadow-[0_0_12px_rgba(255,195,0,0.3)]" />
           </div>
           <span
             dir="ltr"
@@ -105,11 +104,12 @@ export default function Header() {
           >
             Science
             <span
-              className="bg-clip-text text-transparent"
+              className="hidden bg-clip-text text-transparent sm:inline"
               style={{ backgroundImage: 'var(--hero-accent-gradient)' }}
             >
-              Hub
+              {' '}Knowledge Hub
             </span>
+            <span className="bg-clip-text text-transparent sm:hidden" style={{ backgroundImage: 'var(--hero-accent-gradient)' }}>Hub</span>
           </span>
         </Link>
 

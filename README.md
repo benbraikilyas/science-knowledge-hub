@@ -4,6 +4,8 @@ A modern scientific knowledge platform covering Space, Astronomy, Physics, Quant
 
 Project priorities, launch requirements, content standards, and AdSense preparation are tracked in [NEXT_STEPS.md](NEXT_STEPS.md).
 
+Image metadata, backups, and the SEO image catalog workflow are documented in [SEO_IMAGES.md](SEO_IMAGES.md).
+
 ## Tech Stack
 
 | Layer | Technology |

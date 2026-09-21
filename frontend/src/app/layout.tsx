@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
-import Script from 'next/script';
+import StructuredData from '@/components/StructuredData';
 import { ThemeProvider } from '@/context/ThemeProvider';
 import { AuthProvider } from '@/context/AuthContext';
 import Header from '@/components/Header';
@@ -22,6 +22,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  applicationName: SITE_NAME,
+  manifest: '/manifest.webmanifest',
   title: {
     default: `${SITE_NAME} | Explore the Universe of Knowledge`,
     template: `%s | ${SITE_NAME}`,
@@ -31,7 +33,6 @@ export const metadata: Metadata = {
     'science', 'knowledge', 'space', 'astronomy', 'physics', 'quantum physics',
     'biology', 'artificial intelligence', 'technology', 'scientists', 'education',
   ],
-  alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -39,17 +40,28 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: `${SITE_NAME} | Explore the Universe of Knowledge`,
     description: SITE_DESCRIPTION,
-    images: [{ url: absoluteUrl('/og.png'), width: 1536, height: 1024, alt: SITE_NAME }],
+    images: [{ url: absoluteUrl('/og.webp'), width: 1536, height: 1024, alt: SITE_NAME }],
   },
   twitter: {
     card: 'summary_large_image',
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
-    images: [absoluteUrl('/og.png')],
+    images: [absoluteUrl('/og.webp')],
   },
   robots: {
     index: true,
     follow: true,
+    'max-image-preview': 'large',
+  },
+  icons: {
+    icon: [{ url: '/icon.png', type: 'image/png', sizes: '512x512' }],
+    shortcut: '/favicon.ico',
+    apple: [{ url: '/apple-icon.png', type: 'image/png', sizes: '180x180' }],
+  },
+  appleWebApp: {
+    capable: true,
+    title: SITE_NAME,
+    statusBarStyle: 'black-translucent',
   },
   ...(ADSENSE_ACCOUNT
     ? { other: { 'google-adsense-account': ADSENSE_ACCOUNT } }
@@ -75,6 +87,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       '@type': 'Organization',
       name: SITE_NAME,
       url: SITE_URL,
+      logo: {
+        '@type': 'ImageObject',
+        url: absoluteUrl('/brand-logo.webp'),
+        width: 512,
+        height: 512,
+      },
     },
   };
 
@@ -87,12 +105,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[var(--bg-primary)] text-[var(--text-primary)]" suppressHydrationWarning>
-        <Script
-          id="sciencehub-website-structured-data"
-          type="application/ld+json"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
+        <StructuredData data={structuredData} />
         <ThemeProvider>
           <AuthProvider>
             <CursorGlow />
