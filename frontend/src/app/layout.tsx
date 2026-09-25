@@ -31,7 +31,8 @@ export const metadata: Metadata = {
   description: SITE_DESCRIPTION,
   keywords: [
     'science', 'knowledge', 'space', 'astronomy', 'physics', 'quantum physics',
-    'biology', 'artificial intelligence', 'technology', 'scientists', 'education',
+    'biology', 'artificial intelligence', 'robotics', 'science news', 'AI research',
+    'technology', 'scientists', 'education',
   ],
   openGraph: {
     type: 'website',

@@ -2,24 +2,10 @@
 // Science Knowledge Hub — Constants
 // ========================================
 
-import type { Category, NavItem } from './types';
+import type { Category } from './types';
 import { SCIENCE_BOOKS } from './books';
 import { EDITORIAL_ARTICLES } from './editorial-articles';
-
-export const SITE_NAME = 'Science Knowledge Hub';
-export const SITE_DESCRIPTION = 'An independent educational project exploring scientists, discoveries, and ideas across science and technology.';
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-export const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1';
-
-// Navigation Items
-export const NAV_ITEMS: NavItem[] = [
-  { label: 'Home', href: '/' },
-  { label: 'Articles', href: '/articles' },
-  { label: 'Categories', href: '/categories' },
-  { label: 'Scientists', href: '/scientists' },
-  { label: 'Learn', href: '/learn' },
-  { label: 'Tools', href: '/tools' },
-];
+import { LATEST_NEWS_ARTICLES } from './news-articles';
 
 // Category Icons and Colors Mapping
 export const CATEGORY_CONFIG: Record<string, { icon: string; color: string; gradient: string }> = {
@@ -68,6 +54,11 @@ export const CATEGORY_CONFIG: Record<string, { icon: string; color: string; grad
     color: '#a78bfa',
     gradient: 'linear-gradient(135deg, #a78bfa 0%, #003566 100%)',
   },
+  'robotics': {
+    icon: '🦾',
+    color: '#f97316',
+    gradient: 'linear-gradient(135deg, #f97316 0%, #7c2d12 100%)',
+  },
   'technology': {
     icon: '💻',
     color: '#38bdf8',
@@ -100,30 +91,10 @@ export const CATEGORY_CONFIG: Record<string, { icon: string; color: string; grad
   },
 };
 
-const unsplash = (id: string) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=800&q=70`;
-
 const articleCountFor = (slug: string) =>
   EDITORIAL_ARTICLES.filter((article) => article.category.slug === slug).length
+  + LATEST_NEWS_ARTICLES.filter((article) => article.category.slug === slug).length
   + SCIENCE_BOOKS.filter((article) => article.category.slug === slug).length;
-
-export const CATEGORY_IMAGES: Record<string, string> = {
-  'space': unsplash('photo-1446776811953-b23d57bd21aa'),
-  'astronomy': unsplash('photo-1462331940025-496dfbfc7564'),
-  'physics': unsplash('photo-1509228468518-180dd4864904'),
-  'quantum-physics': unsplash('photo-1502139214982-d0ad755818d8'),
-  'scientists': unsplash('photo-1532187863486-abf9dbad1b69'),
-  'scientific-theories': unsplash('photo-1451187580459-43490279c0fa'),
-  'scientific-experiments': unsplash('photo-1576086213369-97a306d36557'),
-  'biology': unsplash('photo-1530026405186-ed1f139313f8'),
-  'artificial-intelligence': unsplash('photo-1485827404703-89b55fcc595e'),
-  'technology': unsplash('photo-1518770660439-4636190af475'),
-  'history-of-science': unsplash('photo-1481627834876-b7833e8f5570'),
-  'books': unsplash('photo-1497633762265-9d179a990aa6'),
-  'space-missions': unsplash('photo-1541185933-ef5d8ed016c2'),
-  'mathematics': unsplash('photo-1635070041078-e363dbe005cb'),
-  'future-technologies': unsplash('photo-1531297484001-80022131f5a1'),
-};
 
 // Demo categories for development & static fallback
 export const DEMO_CATEGORIES: Category[] = [
@@ -142,10 +113,17 @@ export const DEMO_CATEGORIES: Category[] = [
   { id: '13', name: 'Space Missions', slug: 'space-missions', description: 'Study the engineering, operations, discoveries, and risks behind landmark missions.', icon: '🛸', color: '#22d3ee', articleCount: articleCountFor('space-missions'), order: 13, isActive: true, createdAt: '', updatedAt: '' },
   { id: '14', name: 'Mathematics', slug: 'mathematics', description: 'Build intuition for proof, patterns, abstraction, and the mathematical tools used across science.', icon: '➗', color: '#ffd60a', articleCount: articleCountFor('mathematics'), order: 14, isActive: true, createdAt: '', updatedAt: '' },
   { id: '15', name: 'Future Technologies', slug: 'future-technologies', description: 'Separate demonstrated progress from speculation in technologies that may shape the coming decades.', icon: '🔮', color: '#34d399', articleCount: articleCountFor('future-technologies'), order: 15, isActive: true, createdAt: '', updatedAt: '' },
+  { id: '16', name: 'Robotics', slug: 'robotics', description: 'Follow verified progress in humanoid, industrial, medical, autonomous, space, and soft robotics.', icon: '🦾', color: '#f97316', articleCount: articleCountFor('robotics'), order: 16, isActive: true, createdAt: '', updatedAt: '' },
 ];
 
-// Original editorial articles plus verified public-domain books.
-export const DEMO_ARTICLES = [...EDITORIAL_ARTICLES, ...SCIENCE_BOOKS];
+// Sourced 2025–2026 news, original evergreen explainers, and verified public-domain books.
+export const DEMO_ARTICLES = [
+  ...LATEST_NEWS_ARTICLES,
+  ...[...EDITORIAL_ARTICLES, ...SCIENCE_BOOKS].sort(
+    (left, right) =>
+      new Date(right.publishedAt).getTime() - new Date(left.publishedAt).getTime()
+  ),
+];
 
 // Demo scientists are maintained separately because each profile includes
 // a biography, breakthroughs, sources, and discovery details.
@@ -153,8 +131,8 @@ export { DEMO_SCIENTISTS } from './scientists';
 
 // Platform stats for the homepage
 export const PLATFORM_STATS = {
-  articlesCount: EDITORIAL_ARTICLES.length + SCIENCE_BOOKS.length,
+  articlesCount: LATEST_NEWS_ARTICLES.length + EDITORIAL_ARTICLES.length + SCIENCE_BOOKS.length,
   scientistsCount: 26,
-  categoriesCount: 15,
+  categoriesCount: 16,
   collectionsCount: 6,
 };

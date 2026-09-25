@@ -3,6 +3,7 @@ import ArticleCard from '@/components/ArticleCard';
 import BooksLibrary from '@/components/BooksLibrary';
 import { fetchCategory, fetchArticles } from '@/lib/api';
 import type { ArticleListItem, Category } from '@/lib/types';
+import { toArticleListItem } from '@/lib/article-list';
 import { ArrowLeft, Sparkles } from 'lucide-react';
 
 interface CategoryDetailProps {
@@ -12,7 +13,9 @@ interface CategoryDetailProps {
 async function getCategoryData(slug: string) {
   const { DEMO_CATEGORIES, DEMO_ARTICLES } = await import('@/lib/constants');
   const localCategory = DEMO_CATEGORIES.find((category: Category) => category.slug === slug) || null;
-  const localArticles = DEMO_ARTICLES.filter((article: ArticleListItem) => article.category.slug === slug);
+  const localArticles = DEMO_ARTICLES
+    .filter((article: ArticleListItem) => article.category.slug === slug)
+    .map(toArticleListItem);
 
   try {
     const [rawCategory, rawArticles] = await Promise.all([
@@ -35,7 +38,10 @@ async function getCategoryData(slug: string) {
         return { ...article, ...remote };
       });
 
-      return { category, articles: [...mergedLocal, ...remoteBySlug.values()] };
+      return {
+        category,
+        articles: [...mergedLocal, ...remoteBySlug.values()].map(toArticleListItem),
+      };
     }
   } catch {}
 

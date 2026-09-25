@@ -1,44 +1,27 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { BookOpen, Users, Compass, LibraryBig } from 'lucide-react';
 import { gsap } from '@/lib/gsap';
-import { PLATFORM_STATS } from '@/lib/constants';
 
-const STATS = [
-  {
-    label: 'Articles in Progress',
-    value: PLATFORM_STATS.articlesCount,
-    suffix: '',
-    icon: BookOpen,
-    color: '#ffc300',
-  },
-  {
-    label: 'Pioneering Scientists',
-    value: PLATFORM_STATS.scientistsCount,
-    suffix: '',
-    icon: Users,
-    color: '#38bdf8',
-  },
-  {
-    label: 'Scientific Fields',
-    value: PLATFORM_STATS.categoriesCount,
-    suffix: '',
-    icon: Compass,
-    color: '#ffd60a',
-  },
-  {
-    label: 'Curated Collections',
-    value: PLATFORM_STATS.collectionsCount,
-    suffix: '',
-    icon: LibraryBig,
-    color: '#34d399',
-  },
-];
+interface StatsCounterProps {
+  stats: {
+    articlesCount: number;
+    scientistsCount: number;
+    categoriesCount: number;
+    collectionsCount: number;
+  };
+}
 
-export default function StatsCounter() {
+export default function StatsCounter({ stats }: StatsCounterProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const countersRef = useRef<(HTMLSpanElement | null)[]>([]);
+  const statItems = useMemo(() => [
+    { label: 'Published Articles', value: stats.articlesCount, suffix: '', icon: BookOpen, color: '#ffc300' },
+    { label: 'Pioneering Scientists', value: stats.scientistsCount, suffix: '', icon: Users, color: '#38bdf8' },
+    { label: 'Scientific Fields', value: stats.categoriesCount, suffix: '', icon: Compass, color: '#ffd60a' },
+    { label: 'Curated Collections', value: stats.collectionsCount, suffix: '', icon: LibraryBig, color: '#34d399' },
+  ], [stats]);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -63,7 +46,7 @@ export default function StatsCounter() {
         }
       );
 
-      STATS.forEach((stat, index) => {
+      statItems.forEach((stat, index) => {
         const el = countersRef.current[index];
         if (!el) return;
 
@@ -93,7 +76,7 @@ export default function StatsCounter() {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [statItems]);
 
   return (
     <section
@@ -102,7 +85,7 @@ export default function StatsCounter() {
     >
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {STATS.map((stat, i) => {
+          {statItems.map((stat, i) => {
             const Icon = stat.icon;
             return (
               <div

@@ -11,7 +11,11 @@ function mergeCategories(remoteCategories: Category[]): Category[] {
     if (!remote) return category;
 
     remoteBySlug.delete(category.slug);
-    return { ...category, ...remote };
+    return {
+      ...category,
+      ...remote,
+      articleCount: Math.max(category.articleCount, remote.articleCount || 0),
+    };
   });
 
   return [...mergedLocal, ...remoteBySlug.values()]
@@ -30,7 +34,7 @@ async function getCategories(): Promise<Category[]> {
 
 export const metadata = {
   title: 'Categories',
-  description: 'Explore scientific categories from Space and Astronomy to Quantum Physics and AI.',
+  description: 'Explore scientific categories from space and quantum physics to AI, robotics, and biology.',
 };
 
 export default async function CategoriesPage() {
@@ -59,7 +63,7 @@ export default async function CategoriesPage() {
           </h1>
 
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-[var(--text-secondary)] sm:text-lg">
-            Journey into astrophysics, quantum states, biological evolution, and cognitive machine systems.
+            Journey into astrophysics, quantum states, biological evolution, artificial intelligence, and robotics.
           </p>
         </div>
       </div>

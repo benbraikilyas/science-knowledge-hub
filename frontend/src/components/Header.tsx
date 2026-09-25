@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
 import { Menu, X, Search, Moon, Sun } from 'lucide-react';
-import { NAV_ITEMS } from '@/lib/constants';
+import { NAV_ITEMS } from '@/lib/navigation';
 import { gsap } from '@/lib/gsap';
 
 const emptySubscribe = () => () => { };

@@ -4,7 +4,8 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Heart, CheckCircle2, AlertCircle } from 'lucide-react';
-import { SITE_NAME, NAV_ITEMS } from '@/lib/constants';
+import { SITE_NAME } from '@/lib/site';
+import { NAV_ITEMS } from '@/lib/navigation';
 import CookieSettingsButton from '@/components/CookieSettingsButton';
 
 export default function Footer() {

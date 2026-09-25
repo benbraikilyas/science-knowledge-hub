@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   // Allow your phone/other devices on the local network to access Next.js dev resources
-  allowedDevOrigins: ["192.168.100.25", "192.168.11.113"],
+  allowedDevOrigins: [""],
 
   // Stop Next.js from 308-redirecting "/foo/" -> "/foo" before rewrites run.
   // Otherwise proxied API paths lose their trailing slash and Django's

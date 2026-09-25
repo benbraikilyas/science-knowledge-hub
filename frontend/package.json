@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "validate:news": "node scripts/validate-news-articles.mjs"
   },
   "dependencies": {
     "gsap": "^3.15.0",

@@ -3,11 +3,12 @@ import ArticleCard from '@/components/ArticleCard';
 import { fetchArticles } from '@/lib/api';
 import { DEMO_ARTICLES } from '@/lib/constants';
 import type { ArticleListItem } from '@/lib/types';
+import { toArticleListItem } from '@/lib/article-list';
 import { Sparkles, BookOpen, Layers } from 'lucide-react';
 
 function mergeArticles(remoteArticles: ArticleListItem[]): ArticleListItem[] {
   const remoteBySlug = new Map(remoteArticles.map((article) => [article.slug, article]));
-  const mergedLocal = DEMO_ARTICLES.map((article) => {
+  const mergedLocal = DEMO_ARTICLES.map(toArticleListItem).map((article) => {
     const remote = remoteBySlug.get(article.slug);
     if (!remote) return article;
 
@@ -15,7 +16,7 @@ function mergeArticles(remoteArticles: ArticleListItem[]): ArticleListItem[] {
     return { ...article, ...remote };
   });
 
-  return [...mergedLocal, ...remoteBySlug.values()];
+  return [...mergedLocal, ...remoteBySlug.values()].map(toArticleListItem);
 }
 
 async function getArticles(searchParams: Record<string, string | undefined>): Promise<ArticleListItem[]> {
@@ -28,7 +29,7 @@ async function getArticles(searchParams: Record<string, string | undefined>): Pr
     });
     items = mergeArticles(Array.isArray(raw) ? raw as ArticleListItem[] : []);
   } catch {
-    items = [...DEMO_ARTICLES];
+    items = DEMO_ARTICLES.map(toArticleListItem);
   }
 
   if (searchParams.category) {
@@ -46,7 +47,7 @@ export async function generateMetadata() {
 
   return {
     title: 'Articles',
-    description: 'Browse developing science explainers on space, physics, biology, AI, technology, and more.',
+    description: 'Browse sourced 2025–2026 updates and explainers on science, AI, robotics, space, physics, biology, and technology.',
     robots: { index: Boolean(hasPublishableArticles), follow: true },
   };
 }
@@ -54,9 +55,14 @@ export async function generateMetadata() {
 const CATEGORIES = [
   { name: 'All Topics', slug: '' },
   { name: 'Space', slug: 'space' },
+  { name: 'Astronomy', slug: 'astronomy' },
+  { name: 'Space Missions', slug: 'space-missions' },
+  { name: 'Physics', slug: 'physics' },
   { name: 'Quantum Physics', slug: 'quantum-physics' },
   { name: 'Biology', slug: 'biology' },
+  { name: 'Experiments', slug: 'scientific-experiments' },
   { name: 'Artificial Intelligence', slug: 'artificial-intelligence' },
+  { name: 'Robotics', slug: 'robotics' },
   { name: 'Theories', slug: 'scientific-theories' },
 ];
 
@@ -92,7 +98,7 @@ export default async function ArticlesPage({
           </h1>
 
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-[var(--text-secondary)] sm:text-lg">
-            Explore curated analyses, historical breakthroughs, and bleeding-edge scientific discoveries.
+            Explore sourced 2025–2026 updates, clear analysis, and evidence-led explainers across science and technology.
           </p>
 
           {/* Category Filter Pills */}

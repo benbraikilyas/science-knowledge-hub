@@ -78,16 +78,16 @@ export default function FeaturedArticles({ articles }: FeaturedArticlesProps) {
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-gold-500/30 bg-gold-500/10 px-4 py-1.5 text-xs sm:text-sm font-semibold text-[var(--accent-readable)] backdrop-blur-md">
               <span className="h-2 w-2 rounded-full bg-gold-400 animate-pulse" />
-              Editor&apos;s Selection
+              2025–2026 Research Updates
             </div>
             <h2
               className="mt-4 text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[var(--text-primary)]"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
-              Featured Articles
+              Latest Science &amp; Technology
             </h2>
             <p className="mt-3 text-base sm:text-xl text-[var(--text-secondary)] max-w-3xl">
-              Handpicked breakthroughs, deep dives, and scientific discoveries across physics, space, and modern technology.
+              Sourced reporting and clear explainers on artificial intelligence, robotics, space, physics, biology, and climate science.
             </p>
           </div>
           <Link

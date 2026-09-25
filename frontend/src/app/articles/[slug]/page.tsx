@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { formatDate, formatCompactNumber } from '@/lib/utils';
 import { fetchArticle, fetchRelatedArticles } from '@/lib/api';
 import type { ArticleListItem } from '@/lib/types';
+import { toArticleListItem } from '@/lib/article-list';
 import ArticleReadingProgress from '@/components/ArticleReadingProgress';
 import ArticleCard from '@/components/ArticleCard';
 import ArticleContent from '@/components/ArticleContent';
@@ -18,21 +19,39 @@ interface ArticleDetailProps {
 }
 
 async function getArticle(slug: string) {
+  const { DEMO_ARTICLES } = await import('@/lib/constants');
+  const localArticle = DEMO_ARTICLES.find((article: { slug: string }) => article.slug === slug);
+  if (localArticle) return localArticle;
+
   try {
     return await fetchArticle(slug);
   } catch {
-    const { DEMO_ARTICLES } = await import('@/lib/constants');
-    return DEMO_ARTICLES.find((a: { slug: string }) => a.slug === slug) || null;
+    return null;
   }
 }
 
 async function getRelatedArticles(slug: string): Promise<ArticleListItem[]> {
+  const { DEMO_ARTICLES } = await import('@/lib/constants');
+  const localArticle = DEMO_ARTICLES.find((article: { slug: string }) => article.slug === slug);
+
+  if (localArticle) {
+    const sameCategory = DEMO_ARTICLES.filter(
+      (article) =>
+        article.slug !== slug && article.category.slug === localArticle.category.slug
+    );
+    const otherCategories = DEMO_ARTICLES.filter(
+      (article) =>
+        article.slug !== slug && article.category.slug !== localArticle.category.slug
+    );
+
+    return [...sameCategory, ...otherCategories].slice(0, 3).map(toArticleListItem);
+  }
+
   try {
     const raw = await fetchRelatedArticles(slug);
-    return raw as ArticleListItem[];
+    return (raw as ArticleListItem[]).map(toArticleListItem);
   } catch {
-    const { DEMO_ARTICLES } = await import('@/lib/constants');
-    return DEMO_ARTICLES.filter((a: { slug: string }) => a.slug !== slug).slice(0, 3);
+    return [];
   }
 }
 
@@ -48,6 +67,7 @@ export async function generateMetadata({ params }: ArticleDetailProps) {
   return {
     title: (article.metaTitle as string) || (article.title as string),
     description: (article.metaDescription as string) || (article.excerpt as string),
+    keywords: article.tags as string[],
     alternates: { canonical: `/articles/${slug}` },
     authors: [publicAuthor.href
       ? { name: publicAuthor.displayName, url: publicAuthor.href }
@@ -81,6 +101,7 @@ export default async function ArticleDetailPage({ params }: ArticleDetailProps) 
   const category = article.category as { slug: string; color: string; icon: string; name: string };
   const author = article.author as { displayName?: string; avatar?: string };
   const articleTags = article.tags as string[] | undefined;
+  const sourceUrls = article.sourceUrls as string[] | undefined;
   const featuredImage = (article.featuredImage as string) || '';
   const imageMetadata = getImageMetadata(featuredImage);
   const publicAuthor = getPublicArticleAuthor(author);
@@ -112,13 +133,27 @@ export default async function ArticleDetailPage({ params }: ArticleDetailProps) 
         '@type': 'Article', '@id': `${pageUrl}#article`, mainEntityOfPage: { '@id': pageUrl },
         headline: article.title, description: article.excerpt, inLanguage: 'en',
         datePublished: article.publishedAt,
+        dateModified: article.updatedAt || article.publishedAt,
         articleSection: category.name,
         keywords: articleTags,
+        isAccessibleForFree: true,
+        wordCount: (article.content as string).trim().split(/\s+/).length,
+        ...(sourceUrls?.length ? { citation: sourceUrls } : {}),
         author: {
           '@type': authorName === EDITORIAL_TEAM.displayName ? 'Organization' : 'Person',
           name: authorName, ...(publicAuthor.href ? { url: absoluteUrl(publicAuthor.href) } : {}),
         },
-        publisher: { '@type': 'Organization', name: SITE_NAME, url: absoluteUrl('/') },
+        publisher: {
+          '@type': 'Organization',
+          name: SITE_NAME,
+          url: absoluteUrl('/'),
+          logo: {
+            '@type': 'ImageObject',
+            url: absoluteUrl('/brand-logo.webp'),
+            width: 512,
+            height: 512,
+          },
+        },
         ...(featuredImage ? { image: imageObject(featuredImage, article.title as string) } : {}),
       }] : []),
       {

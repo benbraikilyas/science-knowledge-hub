@@ -12,7 +12,7 @@ export default function EditorialPolicyPage() {
       eyebrow="Our Standards"
       title="Editorial Policy"
       description="The standards we use to make scientific material accurate, useful, transparent, and open to correction."
-      updated="August 2026"
+      updated="September 2026"
     >
       <div className="space-y-9 text-[var(--text-secondary)]">
         <section>
@@ -29,6 +29,7 @@ export default function EditorialPolicyPage() {
             <li>• Confirm names, dates, quotations, units, and mathematical notation.</li>
             <li>• Distinguish consensus findings, emerging research, hypotheses, and opinion.</li>
             <li>• Add a clear byline, publication date, update date, and source links where relevant.</li>
+            <li>• Date news explainers to the primary announcement or research publication they cover.</li>
             <li>• Check that images are reusable and that required attribution is visible.</li>
           </ul>
         </section>

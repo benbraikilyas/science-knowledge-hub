@@ -4,6 +4,7 @@ import ScientistCard from '@/components/ScientistCard';
 import { fetchArticles, fetchScientists } from '@/lib/api';
 import { DEMO_SCIENTISTS, mergeScientistProfiles } from '@/lib/scientists';
 import type { ArticleListItem, ScientistListItem } from '@/lib/types';
+import { toArticleListItem } from '@/lib/article-list';
 import { Search, Sparkles, BookOpen, Users } from 'lucide-react';
 
 interface SearchPageProps {
@@ -25,28 +26,45 @@ function scientistMatches(scientist: ScientistListItem, query: string) {
   return searchable.includes(query.toLowerCase());
 }
 
+function articleMatches(article: ArticleListItem, query: string) {
+  const searchable = [article.title, article.excerpt, article.content, ...article.tags]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase();
+
+  return searchable.includes(query.toLowerCase());
+}
+
 async function getSearchResults(query: string) {
+  const { DEMO_ARTICLES } = await import('@/lib/constants');
+  const localArticles = (DEMO_ARTICLES as ArticleListItem[])
+    .filter((article) => articleMatches(article, query))
+    .map(toArticleListItem);
+
   try {
     const [rawArticles, rawScientists] = await Promise.all([
       fetchArticles({ search: query }),
       fetchScientists({ search: query }),
     ]);
 
-    const articles = rawArticles as ArticleListItem[];
+    const remoteArticles = rawArticles as ArticleListItem[];
+    const remoteBySlug = new Map(remoteArticles.map((article) => [article.slug, article]));
+    const articles = localArticles.map((article) => {
+      const remote = remoteBySlug.get(article.slug);
+      if (!remote) return article;
+      remoteBySlug.delete(article.slug);
+      return { ...article, ...remote };
+    });
+    articles.push(...remoteBySlug.values());
     const scientists = mergeScientistProfiles(rawScientists as ScientistListItem[]).filter((scientist) =>
       scientistMatches(scientist, query)
     );
 
-    return { articles, scientists };
+    return { articles: articles.map(toArticleListItem), scientists };
   } catch {
-    const { DEMO_ARTICLES } = await import('@/lib/constants');
-    const q = query.toLowerCase();
-    const demoArticles = DEMO_ARTICLES.filter(
-      (a) => a.title.toLowerCase().includes(q) || a.excerpt.toLowerCase().includes(q) || a.tags.some((t) => t.toLowerCase().includes(q))
-    );
-    const demoScientists = DEMO_SCIENTISTS.filter((scientist) => scientistMatches(scientist, q));
+    const demoScientists = DEMO_SCIENTISTS.filter((scientist) => scientistMatches(scientist, query));
     return {
-      articles: demoArticles,
+      articles: localArticles,
       scientists: demoScientists,
     };
   }

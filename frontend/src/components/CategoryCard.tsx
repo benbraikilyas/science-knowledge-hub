@@ -3,7 +3,7 @@
 import { useRef, useEffect } from 'react';
 import Link from 'next/link';
 import type { Category } from '@/lib/types';
-import { CATEGORY_IMAGES } from '@/lib/constants';
+import { CATEGORY_IMAGES } from '@/lib/category-images';
 import { gsap } from '@/lib/gsap';
 import SafeImage from './SafeImage';
 
