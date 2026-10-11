@@ -1,0 +1,15 @@
+.env
+__pycache__/
+logs/*.log
+storage/raw/**
+!storage/raw/.gitkeep
+storage/research/**
+!storage/research/.gitkeep
+storage/drafts/**
+!storage/drafts/.gitkeep
+storage/reviews/**
+!storage/reviews/.gitkeep
+storage/approved/**
+!storage/approved/.gitkeep
+storage/jobs/**
+!storage/jobs/.gitkeep

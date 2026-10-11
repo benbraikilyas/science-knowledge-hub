@@ -6,3 +6,4 @@ djangorestframework-simplejwt>=5.0
 mongoengine>=0.28
 pymongo>=4.0
 dnspython>=2.0
+gunicorn>=23.0

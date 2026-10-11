@@ -1,0 +1,407 @@
+[
+  {
+    "title": "On the Origin of Species",
+    "slug": "on-the-origin-of-species",
+    "author": "Charles Darwin",
+    "year": 1859,
+    "pages": 502,
+    "subjects": [
+      "Evolutionary Biology",
+      "Natural Selection",
+      "Genetics Origins",
+      "Biodiversity"
+    ],
+    "tags": [
+      "evolution",
+      "darwin",
+      "biology",
+      "natural-selection",
+      "species"
+    ],
+    "featured": true,
+    "coverImage": "https://archive.org/services/img/originofspeciesb00darw_0",
+    "readOnlineUrl": "https://archive.org/details/originofspeciesb00darw_0/mode/2up",
+    "downloadPdfUrl": "https://archive.org/download/originofspeciesb00darw_0/originofspeciesb00darw_0.pdf",
+    "downloadEpubUrl": "https://archive.org/download/originofspeciesb00darw_0/originofspeciesb00darw_0.epub",
+    "iaDetailsUrl": "https://archive.org/details/originofspeciesb00darw_0",
+    "description": "Charles Darwin's epochal masterpiece introducing the theory of evolution through natural selection — the bedrock of modern biological science."
+  },
+  {
+    "title": "Philosophiæ Naturalis Principia Mathematica",
+    "slug": "philosophi-naturalis-principia-mathematica",
+    "author": "Isaac Newton",
+    "year": 1687,
+    "pages": 591,
+    "subjects": [
+      "Classical Mechanics",
+      "Celestial Gravitation",
+      "Fluid Dynamics",
+      "Calculus"
+    ],
+    "tags": [
+      "newton",
+      "physics",
+      "gravity",
+      "calculus",
+      "classical-mechanics"
+    ],
+    "featured": true,
+    "coverImage": "https://archive.org/services/img/philosophiaenatu00newt",
+    "readOnlineUrl": "https://archive.org/details/philosophiaenatu00newt/mode/2up",
+    "downloadPdfUrl": "https://archive.org/download/philosophiaenatu00newt/philosophiaenatu00newt.pdf",
+    "downloadEpubUrl": "https://archive.org/download/philosophiaenatu00newt/philosophiaenatu00newt.epub",
+    "iaDetailsUrl": "https://archive.org/details/philosophiaenatu00newt",
+    "description": "Sir Isaac Newton's monumental treatise formulating the three laws of motion and universal gravitation, establishing classical physics for centuries."
+  },
+  {
+    "title": "Relativity: The Special and General Theory",
+    "slug": "relativity-the-special-and-general-theory",
+    "author": "Albert Einstein",
+    "year": 1916,
+    "pages": 168,
+    "subjects": [
+      "Theoretical Physics",
+      "Special Relativity",
+      "General Relativity",
+      "Cosmology"
+    ],
+    "tags": [
+      "einstein",
+      "relativity",
+      "physics",
+      "spacetime",
+      "gravity"
+    ],
+    "featured": true,
+    "coverImage": "https://archive.org/services/img/cu31924011804774",
+    "readOnlineUrl": "https://archive.org/details/cu31924011804774/mode/2up",
+    "downloadPdfUrl": "https://archive.org/download/cu31924011804774/cu31924011804774.pdf",
+    "downloadEpubUrl": "https://archive.org/download/cu31924011804774/cu31924011804774.epub",
+    "iaDetailsUrl": "https://archive.org/details/cu31924011804774",
+    "description": "Albert Einstein's own accessible exposition of special and general relativity, crafted for readers curious about the spacetime universe without advanced mathematics."
+  },
+  {
+    "title": "Sidereus Nuncius (The Starry Messenger)",
+    "slug": "sidereus-nuncius-the-starry-messenger",
+    "author": "Galileo Galilei",
+    "year": 1610,
+    "pages": 118,
+    "subjects": [
+      "Observational Astronomy",
+      "Lunar Topography",
+      "Moons of Jupiter",
+      "Milky Way"
+    ],
+    "tags": [
+      "galileo",
+      "astronomy",
+      "telescope",
+      "jupiter",
+      "space-missions"
+    ],
+    "featured": true,
+    "coverImage": "https://archive.org/services/img/siderealnuncioso00gali",
+    "readOnlineUrl": "https://archive.org/details/siderealnuncioso00gali/mode/2up",
+    "downloadPdfUrl": "https://archive.org/download/siderealnuncioso00gali/siderealnuncioso00gali.pdf",
+    "downloadEpubUrl": "https://archive.org/download/siderealnuncioso00gali/siderealnuncioso00gali.epub",
+    "iaDetailsUrl": "https://archive.org/details/siderealnuncioso00gali",
+    "description": "Galileo Galilei's 1610 astronomical revelation — the very first scientific observations made through a telescope, shattering geocentric cosmology."
+  },
+  {
+    "title": "Euclid's Elements of Geometry",
+    "slug": "euclids-elements-of-geometry",
+    "author": "Euclid of Alexandria",
+    "year": -300,
+    "pages": 527,
+    "subjects": [
+      "Plane Geometry",
+      "Incommensurable Ratios",
+      "Prime Number Theory",
+      "Solid Geometry"
+    ],
+    "tags": [
+      "mathematics",
+      "geometry",
+      "euclid",
+      "proofs",
+      "number-theory"
+    ],
+    "featured": true,
+    "coverImage": "https://archive.org/services/img/thirteenbooksofeuclid01euclrich",
+    "readOnlineUrl": "https://archive.org/details/thirteenbooksofeuclid01euclrich/mode/2up",
+    "downloadPdfUrl": "https://archive.org/download/thirteenbooksofeuclid01euclrich/thirteenbooksofeuclid01euclrich.pdf",
+    "downloadEpubUrl": "https://archive.org/download/thirteenbooksofeuclid01euclrich/thirteenbooksofeuclid01euclrich.epub",
+    "iaDetailsUrl": "https://archive.org/details/thirteenbooksofeuclid01euclrich",
+    "description": "The most enduring mathematical textbook of all human civilization, establishing rigorous deductive reasoning, geometric proofs, and prime number theory."
+  },
+  {
+    "title": "The Chemical History of a Candle",
+    "slug": "the-chemical-history-of-a-candle",
+    "author": "Michael Faraday",
+    "year": 1861,
+    "pages": 226,
+    "subjects": [
+      "Combustion Chemistry",
+      "Gaseous Elements",
+      "Atmospheric Physics",
+      "Respiration"
+    ],
+    "tags": [
+      "faraday",
+      "chemistry",
+      "physics",
+      "candle",
+      "combustion"
+    ],
+    "featured": false,
+    "coverImage": "https://archive.org/services/img/chemicalhistoryo00faraiala",
+    "readOnlineUrl": "https://archive.org/details/chemicalhistoryo00faraiala/mode/2up",
+    "downloadPdfUrl": "https://archive.org/download/chemicalhistoryo00faraiala/chemicalhistoryo00faraiala.pdf",
+    "downloadEpubUrl": "https://archive.org/download/chemicalhistoryo00faraiala/chemicalhistoryo00faraiala.epub",
+    "iaDetailsUrl": "https://archive.org/details/chemicalhistoryo00faraiala",
+    "description": "Michael Faraday's celebrated Royal Institution lecture series using a burning candle to explain combustion, respiration, and atmospheric chemistry."
+  },
+  {
+    "title": "Dialogue Concerning Two New Sciences",
+    "slug": "dialogue-concerning-two-new-sciences",
+    "author": "Galileo Galilei",
+    "year": 1638,
+    "pages": 300,
+    "subjects": [
+      "Strength of Materials",
+      "Uniform & Accelerated Motion",
+      "Projectile Parabolic Paths",
+      "Pendulums"
+    ],
+    "tags": [
+      "physics",
+      "galileo",
+      "kinematics",
+      "materials-science",
+      "mechanics"
+    ],
+    "featured": false,
+    "coverImage": "https://archive.org/services/img/dialoguesconcern00galiuoft",
+    "readOnlineUrl": "https://archive.org/details/dialoguesconcern00galiuoft/mode/2up",
+    "downloadPdfUrl": "https://archive.org/download/dialoguesconcern00galiuoft/dialoguesconcern00galiuoft.pdf",
+    "downloadEpubUrl": "https://archive.org/download/dialoguesconcern00galiuoft/dialoguesconcern00galiuoft.epub",
+    "iaDetailsUrl": "https://archive.org/details/dialoguesconcern00galiuoft",
+    "description": "Galileo's culminating masterpiece exploring kinematic acceleration, free fall, projectile arcs, and the resistance of solid structures to fracture."
+  },
+  {
+    "title": "A Short History of Astronomy",
+    "slug": "a-short-history-of-astronomy",
+    "author": "Arthur Berry",
+    "year": 1898,
+    "pages": 428,
+    "subjects": [
+      "Ancient Astronomy",
+      "Copernican Revolution",
+      "Planetary Orbits",
+      "Spectroscopy Origins"
+    ],
+    "tags": [
+      "astronomy",
+      "history",
+      "stars",
+      "planets",
+      "telescopes"
+    ],
+    "featured": false,
+    "coverImage": "https://archive.org/services/img/shorthistoryofas00berruoft",
+    "readOnlineUrl": "https://archive.org/details/shorthistoryofas00berruoft/mode/2up",
+    "downloadPdfUrl": "https://archive.org/download/shorthistoryofas00berruoft/shorthistoryofas00berruoft.pdf",
+    "downloadEpubUrl": "https://archive.org/download/shorthistoryofas00berruoft/shorthistoryofas00berruoft.epub",
+    "iaDetailsUrl": "https://archive.org/details/shorthistoryofas00berruoft",
+    "description": "Arthur Berry's definitive historical narrative tracing observational and theoretical astronomy from Babylonian sky-watchers to Victorian astrophysics."
+  },
+  {
+    "title": "Science and Hypothesis",
+    "slug": "science-and-hypothesis",
+    "author": "Henri Poincaré",
+    "year": 1902,
+    "pages": 244,
+    "subjects": [
+      "Mathematical Reasoning",
+      "Non-Euclidean Geometries",
+      "Classical Mechanics Limits",
+      "Electrodynamics"
+    ],
+    "tags": [
+      "poincare",
+      "mathematics",
+      "philosophy",
+      "science",
+      "hypothesis"
+    ],
+    "featured": true,
+    "coverImage": "https://archive.org/services/img/scienceandhypoth00poinuoft",
+    "readOnlineUrl": "https://archive.org/details/scienceandhypoth00poinuoft/mode/2up",
+    "downloadPdfUrl": "https://archive.org/download/scienceandhypoth00poinuoft/scienceandhypoth00poinuoft.pdf",
+    "downloadEpubUrl": "https://archive.org/download/scienceandhypoth00poinuoft/scienceandhypoth00poinuoft.epub",
+    "iaDetailsUrl": "https://archive.org/details/scienceandhypoth00poinuoft",
+    "description": "Henri Poincaré's profound epistemological inquiry into mathematical intuition, non-Euclidean geometry, and the conceptual foundations of physical reality."
+  },
+  {
+    "title": "The Descent of Man",
+    "slug": "the-descent-of-man",
+    "author": "Charles Darwin",
+    "year": 1871,
+    "pages": 450,
+    "subjects": [
+      "Human Evolution",
+      "Comparative Anatomy",
+      "Sexual Dimorphism",
+      "Evolutionary Ethics"
+    ],
+    "tags": [
+      "darwin",
+      "evolution",
+      "human-evolution",
+      "biology",
+      "sexual-selection"
+    ],
+    "featured": false,
+    "coverImage": "https://archive.org/services/img/descentofman1871darwin01",
+    "readOnlineUrl": "https://archive.org/details/descentofman1871darwin01/mode/2up",
+    "downloadPdfUrl": "https://archive.org/download/descentofman1871darwin01/descentofman1871darwin01.pdf",
+    "downloadEpubUrl": "https://archive.org/download/descentofman1871darwin01/descentofman1871darwin01.epub",
+    "iaDetailsUrl": "https://archive.org/details/descentofman1871darwin01",
+    "description": "Darwin's groundbreaking extension of evolutionary theory to human species origins, social morality, and sexual selection across the animal kingdom."
+  },
+  {
+    "title": "Opticks: Or, A Treatise of Light and Colour",
+    "slug": "opticks-or-a-treatise-of-light-and-colour",
+    "author": "Isaac Newton",
+    "year": 1704,
+    "pages": 382,
+    "subjects": [
+      "Dispersion of Light",
+      "Prism Experiments",
+      "Newtonian Rings",
+      "Reflecting Telescopes"
+    ],
+    "tags": [
+      "newton",
+      "optics",
+      "light",
+      "prism",
+      "color-theory"
+    ],
+    "featured": false,
+    "coverImage": "https://archive.org/services/img/optabortreatise00newt",
+    "readOnlineUrl": "https://archive.org/details/optabortreatise00newt/mode/2up",
+    "downloadPdfUrl": "https://archive.org/download/optabortreatise00newt/optabortreatise00newt.pdf",
+    "downloadEpubUrl": "https://archive.org/download/optabortreatise00newt/optabortreatise00newt.epub",
+    "iaDetailsUrl": "https://archive.org/details/optabortreatise00newt",
+    "description": "Newton's experimental tour-de-force proving white light is a composite spectrum, investigating prism refractions, diffraction rings, and corpuscular optics."
+  },
+  {
+    "title": "The Principles of Psychology",
+    "slug": "the-principles-of-psychology",
+    "author": "William James",
+    "year": 1890,
+    "pages": 689,
+    "subjects": [
+      "Stream of Consciousness",
+      "Neurophysiology",
+      "Habit Architecture",
+      "Emotion Theories"
+    ],
+    "tags": [
+      "psychology",
+      "neuroscience",
+      "consciousness",
+      "brain",
+      "mind"
+    ],
+    "featured": false,
+    "coverImage": "https://archive.org/services/img/theprinciplesofp01jameuoft",
+    "readOnlineUrl": "https://archive.org/details/theprinciplesofp01jameuoft/mode/2up",
+    "downloadPdfUrl": "https://archive.org/download/theprinciplesofp01jameuoft/theprinciplesofp01jameuoft.pdf",
+    "downloadEpubUrl": "https://archive.org/download/theprinciplesofp01jameuoft/theprinciplesofp01jameuoft.epub",
+    "iaDetailsUrl": "https://archive.org/details/theprinciplesofp01jameuoft",
+    "description": "William James's monumental exploration of consciousness, habit formation, memory, attention, and the biological foundations of human mental experience."
+  },
+  {
+    "title": "An Introduction to Mathematics",
+    "slug": "an-introduction-to-mathematics",
+    "author": "Alfred North Whitehead",
+    "year": 1911,
+    "pages": 256,
+    "subjects": [
+      "Symbolic Notation",
+      "Variables & Functions",
+      "Coordinate Geometry",
+      "Infinitesimal Calculus"
+    ],
+    "tags": [
+      "mathematics",
+      "introduction",
+      "algebra",
+      "logic",
+      "number-theory"
+    ],
+    "featured": false,
+    "coverImage": "https://archive.org/services/img/introductiontoma00whit",
+    "readOnlineUrl": "https://archive.org/details/introductiontoma00whit/mode/2up",
+    "downloadPdfUrl": "https://archive.org/download/introductiontoma00whit/introductiontoma00whit.pdf",
+    "downloadEpubUrl": "https://archive.org/download/introductiontoma00whit/introductiontoma00whit.epub",
+    "iaDetailsUrl": "https://archive.org/details/introductiontoma00whit",
+    "description": "Alfred North Whitehead's illuminating masterpiece on mathematical philosophy, variables, coordinate geometry, and the symbolic language of science."
+  },
+  {
+    "title": "The Expression of the Emotions in Man and Animals",
+    "slug": "the-expression-of-the-emotions-in-man-and-animals",
+    "author": "Charles Darwin",
+    "year": 1872,
+    "pages": 374,
+    "subjects": [
+      "Facial Muscle Mechanics",
+      "Universal Expressions",
+      "Animal Ethology",
+      "Neuromuscular Responses"
+    ],
+    "tags": [
+      "darwin",
+      "emotions",
+      "psychology",
+      "behavior",
+      "biology"
+    ],
+    "featured": false,
+    "coverImage": "https://archive.org/services/img/expressionofemot1872darw",
+    "readOnlineUrl": "https://archive.org/details/expressionofemot1872darw/mode/2up",
+    "downloadPdfUrl": "https://archive.org/download/expressionofemot1872darw/expressionofemot1872darw.pdf",
+    "downloadEpubUrl": "https://archive.org/download/expressionofemot1872darw/expressionofemot1872darw.epub",
+    "iaDetailsUrl": "https://archive.org/details/expressionofemot1872darw",
+    "description": "Darwin's pioneer study linking facial expressions, biological communication, and evolutionary continuity across species — the seed of modern AI vision and ethology."
+  },
+  {
+    "title": "Astronomy for Amateurs",
+    "slug": "astronomy-for-amateurs",
+    "author": "Camille Flammarion",
+    "year": 1904,
+    "pages": 324,
+    "subjects": [
+      "Naked-Eye Astronomy",
+      "Solar System Exploration",
+      "Stellar Constellations",
+      "Comets & Meteors"
+    ],
+    "tags": [
+      "astronomy",
+      "stars",
+      "planets",
+      "stargazing",
+      "solar-system"
+    ],
+    "featured": false,
+    "coverImage": "https://archive.org/services/img/astronomyforamat00flamrich",
+    "readOnlineUrl": "https://archive.org/details/astronomyforamat00flamrich/mode/2up",
+    "downloadPdfUrl": "https://archive.org/download/astronomyforamat00flamrich/astronomyforamat00flamrich.pdf",
+    "downloadEpubUrl": "https://archive.org/download/astronomyforamat00flamrich/astronomyforamat00flamrich.epub",
+    "iaDetailsUrl": "https://archive.org/details/astronomyforamat00flamrich",
+    "description": "Camille Flammarion's poetic guide to observational stargazing, constellations, lunar landscapes, and planetary wonders for the curious night-sky observer."
+  }
+]

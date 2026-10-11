@@ -15,6 +15,10 @@ class Author(me.Document):
     def __str__(self):
         return self.display_name
 
+    def save(self, *args, **kwargs):
+        self.updated_at = datetime.now(timezone.utc)
+        return super().save(*args, **kwargs)
+
     def to_dict(self):
         return {
             'id': str(self.id),
@@ -47,8 +51,17 @@ class Article(me.Document):
     is_featured = me.BooleanField(default=False)
     views_count = me.IntField(default=0)
     likes_count = me.IntField(default=0)
+    liked_by = me.ListField(me.StringField())
     meta_title = me.StringField(max_length=500)
     meta_description = me.StringField(max_length=1000)
+    source_urls = me.ListField(me.URLField())
+    editorial_status = me.StringField(
+        choices=['needs_revision', 'review_required', 'approved'],
+        default='needs_revision',
+    )
+    generation_method = me.StringField(default='editorial')
+    reviewed_by = me.StringField(max_length=200)
+    reviewed_at = me.DateTimeField()
     created_at = me.DateTimeField(default=lambda: datetime.now(timezone.utc))
     updated_at = me.DateTimeField(default=lambda: datetime.now(timezone.utc))
     published_at = me.DateTimeField()
@@ -61,6 +74,10 @@ class Article(me.Document):
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        self.updated_at = datetime.now(timezone.utc)
+        return super().save(*args, **kwargs)
 
     def to_list_dict(self):
         return {
@@ -88,4 +105,5 @@ class Article(me.Document):
             'viewsCount': self.views_count,
             'likesCount': self.likes_count,
             'publishedAt': self.published_at.isoformat() if self.published_at else '',
+            'sourceUrls': self.source_urls or [],
         }

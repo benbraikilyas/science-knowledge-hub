@@ -20,6 +20,8 @@ INSTALLED_APPS = [
     'articles',
     'scientists',
     'authentication',
+    'newsletter',
+    'contact',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +56,12 @@ DATABASES = {}
 import mongoengine
 MONGO_DB_NAME = os.environ.get('MONGO_DB_NAME', 'science_hub')
 MONGO_URI = os.environ.get('MONGO_URI') or os.environ.get('MONGODB_URI', 'mongodb://localhost:27017')
-mongoengine.connect(db=MONGO_DB_NAME, host=MONGO_URI)
+try:
+    mongoengine.connect(db=MONGO_DB_NAME, host=MONGO_URI)
+except Exception as e:
+    import sys
+    print(f"WARNING: Could not connect to MongoDB: {e}", file=sys.stderr)
+    print("The API will return 503 errors until a valid connection is configured.", file=sys.stderr)
 
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
@@ -88,6 +95,17 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
     ),
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '200/hour',
+        'auth': '20/hour',
+        'like': '30/hour',
+        'newsletter': '20/hour',
+        'contact': '10/hour',
+    },
+    'EXCEPTION_HANDLER': 'backend_config.exceptions.custom_exception_handler',
 }
 
 SIMPLE_JWT = {

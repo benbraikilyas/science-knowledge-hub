@@ -1,12 +1,14 @@
 from rest_framework import status
-from rest_framework.decorators import api_view, permission_classes
+from rest_framework.decorators import api_view, permission_classes, throttle_classes
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework_simplejwt.exceptions import TokenError
 from rest_framework_simplejwt.settings import api_settings
 from rest_framework_simplejwt.tokens import RefreshToken
+from backend_config.throttles import AuthThrottle
 from .serializers import RegisterSerializer, UserProfileSerializer
 from .models import User, UserProfile
+
 
 def _tokens_for_user(user):
     refresh = RefreshToken()
@@ -17,6 +19,7 @@ def _tokens_for_user(user):
         'user': {'id': str(user.id), 'username': user.username, 'email': user.email},
     }
 
+
 def _get_or_create_profile(user_id):
     profile = UserProfile.objects(user_id=user_id).first()
     if not profile:
@@ -24,8 +27,10 @@ def _get_or_create_profile(user_id):
         profile.save()
     return profile
 
+
 @api_view(['POST'])
 @permission_classes([AllowAny])
+@throttle_classes([AuthThrottle])
 def register(request):
     serializer = RegisterSerializer(data=request.data)
     if serializer.is_valid():
@@ -36,8 +41,10 @@ def register(request):
         )
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 @api_view(['POST'])
 @permission_classes([AllowAny])
+@throttle_classes([AuthThrottle])
 def login(request):
     identifier = request.data.get('username') or request.data.get('email')
     password = request.data.get('password')
@@ -57,8 +64,10 @@ def login(request):
 
     return Response(_tokens_for_user(user))
 
+
 @api_view(['POST'])
 @permission_classes([AllowAny])
+@throttle_classes([AuthThrottle])
 def refresh(request):
     token = request.data.get('refresh')
     if not token:
@@ -72,6 +81,7 @@ def refresh(request):
         return Response({'access': str(refresh_token.access_token)})
     except TokenError as e:
         return Response({'detail': str(e)}, status=status.HTTP_401_UNAUTHORIZED)
+
 
 @api_view(['GET', 'PATCH'])
 @permission_classes([IsAuthenticated])
@@ -91,6 +101,7 @@ def profile(request):
     serializer = UserProfileSerializer(profile)
     return Response(serializer.data)
 
+
 @api_view(['POST', 'GET'])
 @permission_classes([IsAuthenticated])
 def bookmarks(request):
@@ -107,6 +118,7 @@ def bookmarks(request):
     profile.save()
     return Response({'bookmarks': profile.bookmarks})
 
+
 @api_view(['POST', 'GET'])
 @permission_classes([IsAuthenticated])
 def reading_history(request):
@@ -122,4 +134,3 @@ def reading_history(request):
         profile.reading_history = history[:50]
         profile.save()
     return Response({'readingHistory': profile.reading_history})
-

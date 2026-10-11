@@ -3,6 +3,23 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from .models import Scientist
 
+
+def _paginate(queryset, request):
+    page = int(request.query_params.get('page', 1))
+    page_size = int(request.query_params.get('page_size', 20))
+    page_size = min(page_size, 100)
+    total = queryset.count()
+    start = (page - 1) * page_size
+    items = list(queryset[start:start + page_size])
+    return {
+        'count': total,
+        'page': page,
+        'pageSize': page_size,
+        'totalPages': max(1, -(-total // page_size)),
+        'results': items,
+    }
+
+
 class ScientistViewSet(viewsets.ViewSet):
     def list(self, request):
         queryset = Scientist.objects.all()
@@ -10,7 +27,7 @@ class ScientistViewSet(viewsets.ViewSet):
         field = request.query_params.get('field')
         search = request.query_params.get('search')
 
-        if featured:
+        if featured is not None and featured.lower() == 'true':
             queryset = queryset.filter(is_featured=True)
         if field:
             queryset = queryset.filter(field__icontains=field)
@@ -18,8 +35,15 @@ class ScientistViewSet(viewsets.ViewSet):
             queryset = queryset.filter(name__icontains=search)
 
         queryset = queryset.order_by('name')
-        data = [s.to_list_dict() for s in queryset]
-        return Response(data)
+        paginated = _paginate(queryset, request)
+        data = [s.to_list_dict() for s in paginated['results']]
+        return Response({
+            'count': paginated['count'],
+            'page': paginated['page'],
+            'pageSize': paginated['pageSize'],
+            'totalPages': paginated['totalPages'],
+            'results': data,
+        })
 
     def retrieve(self, request, pk=None):
         try:

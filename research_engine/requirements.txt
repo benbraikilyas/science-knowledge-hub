@@ -1,0 +1,4 @@
+# Core research engine dependencies.
+# The optional backend importer reuses the dependencies from ../backend/requirements.txt.
+crawl4ai>=0.9,<1.0
+python-dotenv>=1.0

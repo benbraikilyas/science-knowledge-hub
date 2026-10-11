@@ -9,6 +9,7 @@ export interface Category {
   slug: string;
   description: string;
   icon: string;
+  image?: string;
   color: string;
   articleCount: number;
   parentId?: string;
@@ -26,6 +27,20 @@ export interface Author {
   avatar?: string;
   bio?: string;
   role: 'admin' | 'editor' | 'reader';
+}
+
+// --- Book Details ---
+export interface BookDetails {
+  originalAuthor?: string;
+  firstPublished?: number | string;
+  pages?: number;
+  subjects?: string[];
+  license?: string;
+  readOnlineUrl?: string;
+  downloadPdfUrl?: string;
+  downloadEpubUrl?: string;
+  iaDetailsUrl?: string;
+  archiveName?: string;
 }
 
 // --- Article ---
@@ -47,9 +62,11 @@ export interface Article {
   likesCount: number;
   metaTitle?: string;
   metaDescription?: string;
+  sourceUrls?: string[];
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
+  bookDetails?: BookDetails;
 }
 
 export interface ArticleListItem {
@@ -67,9 +84,17 @@ export interface ArticleListItem {
   viewsCount: number;
   likesCount: number;
   publishedAt: string;
+  content?: string;
+  bookDetails?: BookDetails;
 }
 
 // --- Scientist ---
+export type ScientistGroup =
+  | 'Arab & Muslim Pioneers'
+  | 'Computing & Algorithms'
+  | 'Physical Sciences'
+  | 'Life Sciences';
+
 export interface Scientist {
   id: string;
   name: string;
@@ -80,6 +105,9 @@ export interface Scientist {
   nationality: string;
   era: string;
   field: string;
+  group?: ScientistGroup;
+  breakthrough?: string;
+  sourceUrl?: string;
   biography: string;
   keyContributions: string[];
   famousQuotes: string[];
@@ -99,7 +127,17 @@ export interface ScientistListItem {
   nationality: string;
   era: string;
   field: string;
+  group?: ScientistGroup;
+  breakthrough?: string;
+  sourceUrl?: string;
   isFeatured: boolean;
+}
+
+export interface ScientistProfile extends ScientistListItem {
+  biography: string;
+  keyContributions: string[];
+  famousQuotes: string[];
+  awards: string[];
 }
 
 // --- Search ---
@@ -116,8 +154,9 @@ export interface SearchResult {
 // --- Pagination ---
 export interface PaginatedResponse<T> {
   count: number;
-  next: string | null;
-  previous: string | null;
+  page: number;
+  pageSize: number;
+  totalPages: number;
   results: T[];
 }
 

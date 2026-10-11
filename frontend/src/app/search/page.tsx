@@ -1,44 +1,73 @@
 import Link from 'next/link';
 import ArticleCard from '@/components/ArticleCard';
+import ScientistCard from '@/components/ScientistCard';
+import { fetchArticles, fetchScientists } from '@/lib/api';
+import { DEMO_SCIENTISTS, mergeScientistProfiles } from '@/lib/scientists';
 import type { ArticleListItem, ScientistListItem } from '@/lib/types';
+import { toArticleListItem } from '@/lib/article-list';
+import { Search, Sparkles, BookOpen, Users } from 'lucide-react';
 
 interface SearchPageProps {
   searchParams: Promise<{ q?: string }>;
 }
 
-async function fetchJson<T>(url: string): Promise<T | null> {
-  try {
-    const res = await fetch(url, { next: { revalidate: 30 } });
-    if (!res.ok) return null;
-    return res.json() as Promise<T>;
-  } catch {
-    return null;
-  }
+function scientistMatches(scientist: ScientistListItem, query: string) {
+  const searchable = [
+    scientist.name,
+    scientist.field,
+    scientist.nationality,
+    scientist.group,
+    scientist.breakthrough,
+  ]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase();
+
+  return searchable.includes(query.toLowerCase());
+}
+
+function articleMatches(article: ArticleListItem, query: string) {
+  const searchable = [article.title, article.excerpt, article.content, ...article.tags]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase();
+
+  return searchable.includes(query.toLowerCase());
 }
 
 async function getSearchResults(query: string) {
-  const api = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1';
-  const [articles, scientists] = await Promise.all([
-    fetchJson<ArticleListItem[]>(`${api}/articles/?search=${encodeURIComponent(query)}`),
-    fetchJson<ScientistListItem[]>(`${api}/scientists/?search=${encodeURIComponent(query)}`),
-  ]);
+  const { DEMO_ARTICLES } = await import('@/lib/constants');
+  const localArticles = (DEMO_ARTICLES as ArticleListItem[])
+    .filter((article) => articleMatches(article, query))
+    .map(toArticleListItem);
 
-  if (articles !== null && scientists !== null) {
-    return { articles, scientists };
+  try {
+    const [rawArticles, rawScientists] = await Promise.all([
+      fetchArticles({ search: query }),
+      fetchScientists({ search: query }),
+    ]);
+
+    const remoteArticles = rawArticles as ArticleListItem[];
+    const remoteBySlug = new Map(remoteArticles.map((article) => [article.slug, article]));
+    const articles = localArticles.map((article) => {
+      const remote = remoteBySlug.get(article.slug);
+      if (!remote) return article;
+      remoteBySlug.delete(article.slug);
+      return { ...article, ...remote };
+    });
+    articles.push(...remoteBySlug.values());
+    const scientists = mergeScientistProfiles(rawScientists as ScientistListItem[]).filter((scientist) =>
+      scientistMatches(scientist, query)
+    );
+
+    return { articles: articles.map(toArticleListItem), scientists };
+  } catch {
+    const demoScientists = DEMO_SCIENTISTS.filter((scientist) => scientistMatches(scientist, query));
+    return {
+      articles: localArticles,
+      scientists: demoScientists,
+    };
   }
-
-  const { DEMO_ARTICLES, DEMO_SCIENTISTS } = await import('@/lib/constants');
-  const q = query.toLowerCase();
-  const demoArticles = DEMO_ARTICLES.filter(
-    (a) => a.title.toLowerCase().includes(q) || a.excerpt.toLowerCase().includes(q) || a.tags.some((t) => t.toLowerCase().includes(q))
-  );
-  const demoScientists = DEMO_SCIENTISTS.filter(
-    (s) => s.name.toLowerCase().includes(q) || s.field.toLowerCase().includes(q)
-  );
-  return {
-    articles: articles ?? demoArticles,
-    scientists: scientists ?? demoScientists,
-  };
 }
 
 export async function generateMetadata({ searchParams }: SearchPageProps) {
@@ -46,6 +75,7 @@ export async function generateMetadata({ searchParams }: SearchPageProps) {
   return {
     title: q ? `Search results for "${q}"` : 'Search',
     description: q ? `Search results for "${q}" on Science Knowledge Hub` : 'Search scientific articles, scientists, and topics',
+    robots: { index: false, follow: true },
   };
 }
 
@@ -62,76 +92,139 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
     scientists = results.scientists;
   }
 
+  const totalResults = articles.length + scientists.length;
+
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-      <div className="flex flex-col gap-2">
-        <h1 className="text-3xl font-bold text-[var(--text-primary)] sm:text-4xl" style={{ fontFamily: 'var(--font-heading)' }}>
-          Search
-        </h1>
-        {query && (
-          <p className="text-[var(--text-secondary)]">
-            {articles.length + scientists.length} result{articles.length + scientists.length !== 1 ? 's' : ''} for &quot;{query}&quot;
-          </p>
-        )}
-      </div>
+    <div className="min-h-screen bg-[var(--bg-primary)] pb-24 text-[var(--text-secondary)]">
+      {/* Header Banner */}
+      <div className="relative overflow-hidden border-b border-[var(--border-color)] bg-gradient-to-b from-[var(--bg-card)] via-[var(--bg-secondary)] to-[var(--bg-primary)] py-16 sm:py-20">
+        <div className="pointer-events-none absolute left-1/2 top-0 h-96 w-96 -translate-x-1/2 rounded-full bg-gold-500/10 blur-[140px]" />
 
-      <form action="/search" method="GET" className="mt-8 flex max-w-xl gap-3">
-        <input
-          type="text"
-          name="q"
-          defaultValue={query}
-          placeholder="Search articles, scientists, topics..."
-          className="flex-1 rounded-xl border border-[var(--border-color)] bg-[var(--bg-card)] px-4 py-3 text-sm text-[var(--text-primary)] outline-none transition-colors focus:border-[var(--accent-primary)]"
-          autoFocus
-        />
-        <button
-          type="submit"
-          className="rounded-xl bg-[var(--accent-primary)] px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
-        >
-          Search
-        </button>
-      </form>
+        <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6">
+          <div className="inline-flex items-center gap-2 rounded-full border border-gold-500/30 bg-gold-500/10 px-3.5 py-1 text-xs font-semibold text-gold-200 backdrop-blur-md">
+            <Sparkles className="h-3.5 w-3.5 text-gold-400" />
+            Cosmic Knowledge Search
+          </div>
 
-      {query && articles.length === 0 && scientists.length === 0 && (
-        <div className="mt-20 text-center">
-          <p className="text-lg text-[var(--text-muted)]">No results found for &quot;{query}&quot;.</p>
-          <p className="mt-1 text-sm text-[var(--text-muted)]">Try a different search term or browse categories.</p>
-        </div>
-      )}
+          <h1
+            className="mt-4 text-3xl font-extrabold tracking-tight text-[var(--text-primary)] sm:text-4xl lg:text-5xl"
+            style={{ fontFamily: 'var(--font-heading)' }}
+          >
+            Search the{' '}
+            <span className="bg-gradient-to-r from-gold-400 via-gold-300 to-gold-500 bg-clip-text text-transparent">
+              Universe
+            </span>
+          </h1>
 
-      {scientists.length > 0 && (
-        <div className="mt-12">
-          <h2 className="text-xl font-bold text-[var(--text-primary)]">Scientists</h2>
-          <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {scientists.map((scientist) => (
+          {/* Search Form */}
+          <form action="/search" method="GET" className="mt-8 flex gap-3">
+            <div className="relative flex-1">
+              <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[var(--text-secondary)]" />
+              <input
+                type="text"
+                name="q"
+                defaultValue={query}
+                placeholder="Search articles, equations, scientists, cosmic topics..."
+                className="w-full rounded-2xl border border-gold-500/30 bg-[var(--bg-card)] py-3.5 pl-12 pr-4 text-sm text-[var(--text-primary)] placeholder-[var(--text-secondary)] outline-none backdrop-blur-xl transition-all focus:border-gold-400 focus:ring-2 focus:ring-gold-500/20"
+                autoFocus
+              />
+            </div>
+            <button
+              type="submit"
+              className="rounded-2xl bg-gradient-to-r from-gold-500 to-gold-400 px-8 py-3.5 text-sm font-semibold text-white shadow-[0_0_20px_rgba(255,195,0,0.3)] transition-all hover:from-gold-400 hover:to-gold-300 active:scale-95"
+            >
+              Search
+            </button>
+          </form>
+
+          {/* Search suggestions */}
+          <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-[var(--text-secondary)] font-mono">
+            <span>Popular:</span>
+            {['Al-Khwarizmi', 'Algorithms', 'Einstein', 'Black Holes', 'CRISPR', 'Relativity'].map((term) => (
               <Link
-                key={scientist.id}
-                href={`/scientists/${scientist.slug}`}
-                className="flex items-center gap-4 rounded-xl border border-[var(--border-color)] bg-[var(--bg-card)] p-4 transition-all hover:shadow-[var(--shadow-glow)]"
+                key={term}
+                href={`/search?q=${encodeURIComponent(term)}`}
+                className="rounded-lg border border-[var(--border-color)] bg-white/[0.04] px-2.5 py-1 text-[var(--text-secondary)] transition-colors hover:border-gold-500/40 hover:bg-gold-500/10 hover:text-gold-200"
               >
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[var(--gradient-nebula)] text-lg font-bold text-white">
-                  {scientist.name.charAt(0)}
-                </div>
-                <div className="min-w-0">
-                  <p className="font-medium text-[var(--text-primary)] truncate">{scientist.name}</p>
-                  <p className="text-xs text-[var(--text-muted)]">{scientist.field} · {scientist.nationality}</p>
-                </div>
+                {term}
               </Link>
             ))}
           </div>
         </div>
-      )}
+      </div>
 
-      {articles.length > 0 && (
-        <div className="mt-12">
-          <h2 className="text-xl font-bold text-[var(--text-primary)]">Articles</h2>
-          <div className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {articles.map((article) => (
-              <ArticleCard key={article.id} article={article} />
-            ))}
+      {/* Search Results */}
+      <div className="mx-auto max-w-7xl px-4 pt-12 sm:px-6 lg:px-8">
+        {query ? (
+          <div>
+            <div className="mb-8 flex items-center justify-between text-xs text-[var(--text-secondary)] font-mono">
+              <span>Found {totalResults} result{totalResults !== 1 ? 's' : ''} for &ldquo;{query}&rdquo;</span>
+            </div>
+
+            {totalResults === 0 && (
+              <div className="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)]/60 p-16 text-center backdrop-blur-xl">
+                <Sparkles className="mx-auto h-12 w-12 text-slate-500" />
+                <h3 className="mt-4 text-xl font-bold text-[var(--text-primary)]">No cosmic matches found</h3>
+                <p className="mt-2 text-sm text-[var(--text-secondary)] max-w-md mx-auto">
+                  We couldn&apos;t find any articles or scientists matching &ldquo;{query}&rdquo;. Try another term or explore all categories.
+                </p>
+                <div className="mt-6 flex justify-center gap-3">
+                  <Link
+                    href="/articles"
+                    className="inline-flex h-11 items-center gap-2 rounded-xl bg-gold-500 px-6 text-sm font-semibold text-white hover:bg-gold-400"
+                  >
+                    Browse Articles
+                  </Link>
+                  <Link
+                    href="/categories"
+                    className="inline-flex h-11 items-center gap-2 rounded-xl border border-[var(--border-color)] bg-white/[0.04] px-6 text-sm font-semibold text-[var(--text-primary)] hover:bg-white/[0.08]"
+                  >
+                    Browse Categories
+                  </Link>
+                </div>
+              </div>
+            )}
+
+            {/* Scientists Results */}
+            {scientists.length > 0 && (
+              <div className="mb-14">
+                <div className="flex items-center gap-2 text-lg font-bold text-[var(--text-primary)] mb-6">
+                  <Users className="h-5 w-5 text-gold-400" />
+                  <span>Matching Scientists ({scientists.length})</span>
+                </div>
+                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                  {scientists.map((scientist) => (
+                    <ScientistCard key={scientist.id} scientist={scientist} />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Articles Results */}
+            {articles.length > 0 && (
+              <div>
+                <div className="flex items-center gap-2 text-lg font-bold text-[var(--text-primary)] mb-6">
+                  <BookOpen className="h-5 w-5 text-gold-300" />
+                  <span>Matching Articles ({articles.length})</span>
+                </div>
+                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                  {articles.map((article) => (
+                    <ArticleCard key={article.id} article={article} />
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
-        </div>
-      )}
+        ) : (
+          <div className="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)]/60 p-16 text-center backdrop-blur-xl">
+            <Search className="mx-auto h-12 w-12 text-gold-400/60" />
+            <h3 className="mt-4 text-xl font-bold text-[var(--text-primary)]">Start Your Exploration</h3>
+            <p className="mt-2 text-sm text-[var(--text-secondary)] max-w-md mx-auto">
+              Type keywords above to search through our database of articles, research topics, and pioneering scientists.
+            </p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
