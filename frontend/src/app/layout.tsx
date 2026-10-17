@@ -1,14 +1,6 @@
-<<<<<<< HEAD
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import Script from "next/script";
-import { ThemeProvider } from "@/context/ThemeProvider";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import "./globals.css";
-=======
 import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/react';
 import StructuredData from '@/components/StructuredData';
 import { ThemeProvider } from '@/context/ThemeProvider';
 import { AuthProvider } from '@/context/AuthContext';
@@ -18,7 +10,6 @@ import CursorGlow from '@/components/CursorGlow';
 import CookieConsent from '@/components/CookieConsent';
 import { ADSENSE_ACCOUNT, SITE_DESCRIPTION, SITE_NAME, SITE_URL, absoluteUrl } from '@/lib/site';
 import './globals.css';
->>>>>>> 7b5df2a33e8e34bca7e3187f885fa3398392d2e6
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -115,20 +106,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       data-scroll-behavior="smooth"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-<<<<<<< HEAD
-      <head>
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2626303064946767"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
-      </head>
-      <body className="min-h-full flex flex-col" suppressHydrationWarning>
-=======
       <body className="min-h-full flex flex-col bg-[var(--bg-primary)] text-[var(--text-primary)]" suppressHydrationWarning>
         <StructuredData data={structuredData} />
->>>>>>> 7b5df2a33e8e34bca7e3187f885fa3398392d2e6
         <ThemeProvider>
           <AuthProvider>
             <CursorGlow />
@@ -138,6 +117,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <CookieConsent />
           </AuthProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
