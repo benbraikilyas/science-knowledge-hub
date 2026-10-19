@@ -72,7 +72,7 @@ export default function FeaturedArticles({ articles }: FeaturedArticlesProps) {
       {/* Background ambient glow */}
       <div className="pointer-events-none absolute left-1/2 top-10 h-96 w-96 -translate-x-1/2 rounded-full bg-gold-500/10 blur-[150px]" />
 
-      <div className="relative z-10 mx-auto max-w-[1550px] 2xl:max-w-[1720px] px-4 sm:px-6 lg:px-10">
+      <div className="relative z-10 mx-auto min-w-0 max-w-[1550px] 2xl:max-w-[1720px] px-4 sm:px-6 lg:px-10">
         {/* Section Header */}
         <div ref={headerRef} className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 border-b border-[var(--border-color)]/60 pb-8">
           <div>
@@ -100,15 +100,15 @@ export default function FeaturedArticles({ articles }: FeaturedArticlesProps) {
         </div>
 
         {/* Dynamic Bento/Grid Layout */}
-        <div ref={gridRef} className="mt-12 sm:mt-16 grid gap-8 sm:gap-10">
+        <div ref={gridRef} className="mt-12 grid min-w-0 gap-8 sm:mt-16 sm:gap-10">
           {/* Top Featured Row */}
-          <div className="grid gap-8 sm:gap-10 lg:grid-cols-12">
-            <div className="article-card-item lg:col-span-7">
+          <div className="grid min-w-0 gap-8 sm:gap-10 lg:grid-cols-12">
+            <div className="article-card-item min-w-0 lg:col-span-7">
               <ArticleCard article={featured} featured />
             </div>
-            <div className="grid gap-8 sm:gap-10 lg:col-span-5">
+            <div className="grid min-w-0 gap-8 sm:gap-10 lg:col-span-5">
               {secondary.map((article) => (
-                <div key={article.id} className="article-card-item">
+                <div key={article.id} className="article-card-item min-w-0">
                   <ArticleCard article={article} />
                 </div>
               ))}
@@ -119,7 +119,7 @@ export default function FeaturedArticles({ articles }: FeaturedArticlesProps) {
           {rest.length > 0 && (
             <div className="mt-4 grid gap-8 sm:gap-10 sm:grid-cols-2 lg:grid-cols-3">
               {rest.map((article) => (
-                <div key={article.id} className="article-card-item">
+                <div key={article.id} className="article-card-item min-w-0">
                   <ArticleCard article={article} />
                 </div>
               ))}

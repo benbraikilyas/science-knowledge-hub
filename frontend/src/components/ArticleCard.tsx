@@ -80,7 +80,7 @@ export default function ArticleCard({ article, featured }: ArticleCardProps) {
     <Link
       ref={cardRef}
       href={`/articles/${article.slug}`}
-      className={`group relative flex flex-col overflow-hidden rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)]/60 backdrop-blur-xl transition-all duration-300 hover:border-gold-500/50 hover:shadow-[0_10px_35px_rgba(255,195,0,0.12)] ${featured ? 'lg:flex-row' : ''
+      className={`group relative flex w-full min-w-0 max-w-full flex-col overflow-hidden rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)]/60 backdrop-blur-xl transition-all duration-300 hover:border-gold-500/50 hover:shadow-[0_10px_35px_rgba(255,195,0,0.12)] ${featured ? 'lg:flex-row' : ''
         }`}
       style={{ transformStyle: 'preserve-3d' }}
     >
@@ -94,9 +94,9 @@ export default function ArticleCard({ article, featured }: ArticleCardProps) {
       />
 
       {/* Visual / Icon Thumbnail */}
-      <div className={`relative overflow-hidden ${featured ? 'lg:w-1/2' : ''}`}>
+      <div className={`relative min-w-0 overflow-hidden ${featured ? 'lg:w-1/2' : ''}`}>
         {showImage ? (
-          <div className={`relative ${featured ? 'aspect-[16/10] lg:h-full min-h-[260px]' : 'aspect-[16/10] min-h-[210px]'}`}>
+          <div className={`relative ${featured ? 'aspect-[16/10] min-h-[190px] sm:min-h-[220px] lg:h-full lg:min-h-[260px]' : 'aspect-[16/10] min-h-[210px]'}`}>
             <Image
               src={article.featuredImage}
               alt={getImageMetadata(article.featuredImage)?.alt || article.title}
@@ -108,7 +108,7 @@ export default function ArticleCard({ article, featured }: ArticleCardProps) {
           </div>
         ) : (
           <div
-            className={`flex items-center justify-center bg-gradient-to-br from-[var(--bg-card)] to-[var(--bg-primary)] ${featured ? 'aspect-[16/10] lg:h-full min-h-[260px]' : 'aspect-[16/10] min-h-[210px]'
+            className={`flex items-center justify-center bg-gradient-to-br from-[var(--bg-card)] to-[var(--bg-primary)] ${featured ? 'aspect-[16/10] min-h-[190px] sm:min-h-[220px] lg:h-full lg:min-h-[260px]' : 'aspect-[16/10] min-h-[210px]'
               }`}
           >
             <span className="text-6xl transition-transform duration-500 group-hover:scale-125">
@@ -120,7 +120,7 @@ export default function ArticleCard({ article, featured }: ArticleCardProps) {
       </div>
 
       {/* Details */}
-      <div className="flex flex-1 flex-col justify-between p-6 sm:p-8">
+      <div className="flex min-w-0 flex-1 flex-col justify-between p-5 sm:p-8">
         <div>
           <div className="flex items-center justify-between gap-2">
             <span
@@ -138,7 +138,7 @@ export default function ArticleCard({ article, featured }: ArticleCardProps) {
           </div>
 
           <h3
-            className={`mt-4 font-bold leading-snug text-[var(--text-primary)] transition-colors duration-200 group-hover:text-[var(--accent-readable)] ${featured ? 'text-2xl sm:text-3xl lg:text-4xl' : 'text-xl sm:text-2xl'
+            className={`mt-4 min-w-0 break-words font-bold leading-snug text-[var(--text-primary)] transition-colors duration-200 group-hover:text-[var(--accent-readable)] ${featured ? 'text-xl sm:text-3xl lg:text-4xl' : 'text-xl sm:text-2xl'
               }`}
             style={{ fontFamily: 'var(--font-heading)' }}
           >
@@ -170,7 +170,7 @@ export default function ArticleCard({ article, featured }: ArticleCardProps) {
             <span className="truncate font-medium text-[var(--text-secondary)]">{publicAuthor.displayName}</span>
           </div>
 
-          <div className="flex items-center gap-3 font-mono text-xs sm:text-sm">
+          <div className="flex min-w-0 max-w-full items-center gap-3 font-mono text-xs sm:text-sm">
             <span>{formatCompactNumber(article.viewsCount)} views</span>
             <span>·</span>
             <span>{getRelativeTime(article.publishedAt)}</span>
