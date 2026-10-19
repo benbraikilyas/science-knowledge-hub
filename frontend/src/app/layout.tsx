@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import Script from 'next/script';
 import { Analytics } from '@vercel/analytics/react';
 import StructuredData from '@/components/StructuredData';
 import { ThemeProvider } from '@/context/ThemeProvider';
@@ -107,6 +108,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[var(--bg-primary)] text-[var(--text-primary)]" suppressHydrationWarning>
+        <Script
+          src="https://s.skimresources.com/js/311290X1799788.skimlinks.js"
+          strategy="afterInteractive"
+        />
         <StructuredData data={structuredData} />
         <ThemeProvider>
           <AuthProvider>
