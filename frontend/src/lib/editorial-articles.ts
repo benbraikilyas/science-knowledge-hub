@@ -1,3 +1,5 @@
+import { getNewsArticleImage } from './news-article';
+
 // Original ScienceHub editorial articles.
 // Each article synthesizes multiple named sources and is written for this project.
 
@@ -42,8 +44,8 @@ const categories: Record<string, EditorialCategory> = {
 
 const makeArticle = (article: EditorialArticleInput) => ({
   ...article,
-  featuredImage: article.featuredImage || '',
-  thumbnail: article.featuredImage || '',
+  featuredImage: getNewsArticleImage(article.category.slug, article.featuredImage, article.id),
+  thumbnail: getNewsArticleImage(article.category.slug, article.featuredImage, article.id),
   author: { id: 'sciencehub-editorial-team', displayName: 'ScienceHub Editorial Team' },
   isPublished: true,
   isFeatured: article.isFeatured ?? false,

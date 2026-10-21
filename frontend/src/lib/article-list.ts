@@ -1,4 +1,5 @@
 import type { ArticleListItem } from './types';
+import { getNewsArticleImage } from './news-article';
 
 /** Keep article bodies and source lists out of client-side card payloads. */
 export function toArticleListItem(article: ArticleListItem): ArticleListItem {
@@ -7,8 +8,8 @@ export function toArticleListItem(article: ArticleListItem): ArticleListItem {
     title: article.title,
     slug: article.slug,
     excerpt: article.excerpt,
-    featuredImage: article.featuredImage,
-    thumbnail: article.thumbnail,
+    featuredImage: getNewsArticleImage(article.category.slug, article.featuredImage, article.id),
+    thumbnail: getNewsArticleImage(article.category.slug, article.thumbnail || article.featuredImage, article.id),
     category: article.category,
     author: article.author,
     tags: article.tags,
