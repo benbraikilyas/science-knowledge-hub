@@ -123,7 +123,7 @@ export default function CategoriesGrid({ categories }: CategoriesGridProps) {
             href="/categories"
             className="inline-flex h-14 items-center gap-2 rounded-xl border border-[var(--border-color)] bg-[var(--bg-glass)] px-10 text-base font-semibold text-[var(--text-primary)] backdrop-blur-md transition-all duration-200 hover:border-gold-500/40 hover:bg-[var(--bg-elevated)] hover:shadow-[0_0_30px_rgba(255,195,0,0.2)]"
           >
-            <span>Explore All 15 Categories</span>
+            <span>Explore All {categories.length} Categories</span>
             <span>&rarr;</span>
           </Link>
         </div>

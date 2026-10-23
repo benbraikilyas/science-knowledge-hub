@@ -17,6 +17,7 @@ const STATIC_ROUTES = [
   '/privacy',
   '/cookies',
   '/terms',
+  '/affiliate-disclosure',
   '/sitemap',
   '/authors/sciencehub-editorial-team',
 ];

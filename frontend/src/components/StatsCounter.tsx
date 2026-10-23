@@ -13,6 +13,12 @@ interface StatsCounterProps {
   };
 }
 
+function formatStat(value: number) {
+  if (value >= 100000) return `${Math.round(value / 1000)}K`;
+  if (value >= 1000) return `${(value / 1000).toFixed(1)}K`;
+  return value.toString();
+}
+
 export default function StatsCounter({ stats }: StatsCounterProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const countersRef = useRef<(HTMLSpanElement | null)[]>([]);
@@ -61,15 +67,7 @@ export default function StatsCounter({ stats }: StatsCounterProps) {
             once: true,
           },
           onUpdate: () => {
-            const v = Math.round(obj.val);
-            if (v >= 1000) {
-              el.textContent =
-                v >= 100000
-                  ? `${Math.round(v / 1000)}K`
-                  : `${(v / 1000).toFixed(1)}K`;
-            } else {
-              el.textContent = v.toString();
-            }
+            el.textContent = formatStat(Math.round(obj.val));
           },
         });
       });
@@ -113,7 +111,7 @@ export default function StatsCounter({ stats }: StatsCounterProps) {
                       countersRef.current[i] = el;
                     }}
                   >
-                    0
+                    {formatStat(stat.value)}
                   </span>
                   <span style={{ color: stat.color }}>{stat.suffix}</span>
                 </div>

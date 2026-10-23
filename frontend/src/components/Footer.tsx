@@ -208,6 +208,7 @@ export default function Footer() {
             <Link href="/privacy" className="hover:text-[var(--text-primary)] transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-[var(--text-primary)] transition-colors">Terms of Use</Link>
             <Link href="/cookies" className="hover:text-[var(--text-primary)] transition-colors">Cookie Policy</Link>
+            <Link href="/affiliate-disclosure" className="hover:text-[var(--text-primary)] transition-colors">Affiliate Disclosure</Link>
             <Link href="/sources" className="hover:text-[var(--text-primary)] transition-colors">Sources</Link>
             <Link href="/sitemap" className="hover:text-[var(--text-primary)] transition-colors">Sitemap</Link>
             <CookieSettingsButton className="hover:text-[var(--text-primary)] transition-colors" />

@@ -31,6 +31,7 @@ const FOOTER_LINKS = [
   { label: 'Privacy Policy', href: '/privacy' },
   { label: 'Cookie Policy', href: '/cookies' },
   { label: 'Terms of Service', href: '/terms' },
+  { label: 'Affiliate Disclosure', href: '/affiliate-disclosure' },
 ];
 
 const AUTH_LINKS = [
