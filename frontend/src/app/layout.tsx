@@ -25,6 +25,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   applicationName: SITE_NAME,
   manifest: '/manifest.webmanifest',
+  verification: { google: 'g28xBaYzyW1_hMXA18mGzzWoxtborfHldjqqdjZ8H7U' },
   title: {
     default: `${SITE_NAME} | Explore the Universe of Knowledge`,
     template: `%s | ${SITE_NAME}`,
