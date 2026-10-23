@@ -1,4 +1,5 @@
 import InfoPageShell from '@/components/InfoPageShell';
+import catalog from '@/lib/image-metadata.json';
 
 export const metadata = {
   title: 'Sources & Image Credits',
@@ -34,26 +35,47 @@ const SCIENTIST_CREDITS = [
   ['Michael Faraday', 'Historical photograph — status on source page', 'https://commons.wikimedia.org/wiki/File:Michael_Faraday_sitting_crop.jpg'],
 ] as const;
 
-const ARTICLE_CREDITS = [
-  ['Webb’s First Deep Field', 'NASA, ESA, CSA, STScI, 2022 — public-domain NASA imagery', 'https://commons.wikimedia.org/wiki/File:Webb%27s_First_Deep_Field.jpg'],
-  ['Quantum computing laboratory', 'ManoBV16 — CC0 1.0', 'https://commons.wikimedia.org/wiki/File:Quantum_Computing_AI_Lab.jpg'],
-  ['CRISPR-Cas9 illustration', 'National Institutes of Health — US government work', 'https://www.flickr.com/photos/132318516@N08/41124064215'],
-  ['Data center infrastructure', 'US government source — public domain', 'https://commons.wikimedia.org/wiki/File:Data_center_infrastructure_in_the_United_States.jpg'],
-  ['Dark matter ring', 'NASA / ESA Hubble, 2007 — public-domain agency imagery', 'https://commons.wikimedia.org/wiki/File:Hubble_finds_dark_matter_ring_in_galaxy_cluster_(heic0709b).jpg'],
-  ['Apollo 11', 'Neil Armstrong / NASA, 1969 — public domain', 'https://commons.wikimedia.org/wiki/File:Aldrin_Apollo_11_original.jpg'],
-] as const;
+type CatalogEntry = { title: string; creditText?: string; source?: string };
+type Credit = readonly [title: string, credit: string, url?: string];
 
-function CreditList({ entries }: { entries: ReadonlyArray<readonly [string, string, string]> }) {
+function creditsFor(prefix: string): Credit[] {
+  return Object.entries(catalog as Record<string, CatalogEntry>)
+    .filter(([src]) => src.startsWith(prefix))
+    .map(([, entry]) => [entry.title, entry.creditText ?? '', entry.source]);
+}
+
+const ARTICLE_CREDITS = creditsFor('/images/articles/');
+const CATEGORY_CREDITS = creditsFor('/images/categories/');
+const BOOK_CREDITS = creditsFor('/images/books/');
+
+function CreditList({ entries }: { entries: ReadonlyArray<Credit> }) {
+  const card = 'rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)]/50 p-4';
   return (
     <div className="mt-5 grid gap-3 sm:grid-cols-2">
-      {entries.map(([title, credit, url]) => (
-        <a key={title} href={url} target="_blank" rel="noreferrer" className="rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)]/50 p-4 transition-colors hover:border-gold-500/40">
-          <span className="block font-semibold text-[var(--text-primary)]">{title}</span>
-          <span className="mt-1 block text-xs leading-relaxed text-[var(--text-secondary)]">{credit}</span>
-          <span className="mt-2 block text-xs font-semibold text-gold-300">Open source record &rarr;</span>
-        </a>
-      ))}
+      {entries.map(([title, credit, url], index) => {
+        const body = (
+          <>
+            <span className="block font-semibold text-[var(--text-primary)]">{title}</span>
+            <span className="mt-1 block text-xs leading-relaxed text-[var(--text-secondary)]">{credit}</span>
+            {url && <span className="mt-2 block text-xs font-semibold text-gold-300">Open source record &rarr;</span>}
+          </>
+        );
+        return url ? (
+          <a key={`${title}-${index}`} href={url} target="_blank" rel="noreferrer" className={`${card} transition-colors hover:border-gold-500/40`}>{body}</a>
+        ) : (
+          <div key={`${title}-${index}`} className={card}>{body}</div>
+        );
+      })}
     </div>
+  );
+}
+
+function CreditGroup({ summary, entries }: { summary: string; entries: ReadonlyArray<Credit> }) {
+  return (
+    <details className="mt-5 rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)]/30 p-5">
+      <summary className="cursor-pointer font-semibold text-[var(--text-primary)]">{summary} ({entries.length})</summary>
+      <CreditList entries={entries} />
+    </details>
   );
 }
 
@@ -63,7 +85,7 @@ export default function SourcesPage() {
       eyebrow="Transparency"
       title="Sources & Image Credits"
       description="Where our information and visual material come from, and how to report a missing or incorrect credit."
-      updated="September 2026"
+      updated="October 2026"
     >
       <div className="space-y-12 text-[var(--text-secondary)]">
         <section>
@@ -98,11 +120,14 @@ export default function SourcesPage() {
         </section>
         <section>
           <h2 className="text-xl font-bold text-[var(--text-primary)]">Article image credits</h2>
-          <CreditList entries={ARTICLE_CREDITS} />
-          <div className="mt-5 rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)]/50 p-5">
-            <h3 className="font-semibold text-[var(--text-primary)]">Original ScienceHub visualizations</h3>
-            <p className="mt-2 text-sm leading-relaxed">Eight additional article illustrations were created specifically for Science Knowledge Hub with AI-assisted image tools: stellar evolution, team science, relativity and GPS, Bell tests, semiconductors, scientific instruments, mathematical proof, and quantum computing. They were reviewed for subject fit and contain no third-party logos or copied artwork.</p>
-          </div>
+          <p className="mt-3 text-sm leading-relaxed">Every article uses its own photograph, diagram or illustration published in the public domain or under an open license, mostly from Wikimedia Commons, NASA, NOAA, NIH and NIST. Where a picture is a stand-in for a company product or event that has no open image, its description says what it actually shows. The linked file page is the authoritative record for the author and license.</p>
+          <CreditGroup summary="Show all article image credits" entries={ARTICLE_CREDITS} />
+        </section>
+        <section>
+          <h2 className="text-xl font-bold text-[var(--text-primary)]">Category and book images</h2>
+          <p className="mt-3 text-sm leading-relaxed">Most category cover photographs come from Unsplash contributors and are used under the Unsplash License. The Physics and Quantum Physics covers are from Wikimedia Commons. Book covers are scans of public-domain editions digitised by the Internet Archive, covers supplied by Project Gutenberg, or typographic covers designed for this site.</p>
+          <CreditGroup summary="Show category image credits" entries={CATEGORY_CREDITS} />
+          <CreditGroup summary="Show book cover credits" entries={BOOK_CREDITS} />
         </section>
         <section className="rounded-2xl border border-gold-500/25 bg-gold-500/8 p-6">
           <h2 className="text-xl font-bold text-[var(--text-primary)]">Is a credit incomplete?</h2>

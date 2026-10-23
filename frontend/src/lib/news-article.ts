@@ -1,4 +1,5 @@
 import type { Article } from './types';
+import { CATEGORY_IMAGES } from './category-images';
 
 export type NewsCategory = Pick<
   Article['category'],
@@ -70,135 +71,106 @@ export const NEWS_CATEGORIES: Record<string, NewsCategory> = {
   },
 };
 
-// Some sourced news entries do not have a publisher-supplied image. Use
-// openly licensed images from Wikimedia Commons/NASA instead of repeating one local
-// placeholder. The article id picks a stable image from the subject's set.
-const NEWS_CATEGORY_IMAGES: Record<string, string[]> = {
-  ai: [
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Laboratory%20robot%20Eve.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/NCATS%20Robots%20%285964663649%29.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Full%20wafer%20of%20Intel%20quantum%20computers.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Industrial%20robot.jpg?width=1280',
-  ],
-  robotics: [
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Industrial%20robot.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Robotic%20Arm.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Lexington%20Medical%2C%20Inc.%20Manufacturing%20Robot%20Arm.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Robot%20arm%20picks%20up%20cylindrical%20objects%20in%20a%20factory%20setting.jpg?width=1280',
-  ],
-  space: [
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Webb%20image%20of%20M82%20%28SVS14968%20-%20Webb%20M82%29.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Cartwheel%20Galaxy.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Sombrero%20Galaxy.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Galaxies%20in%20a%20cosmic%20house%20of%20mirrors%20ESA529016.jpg?width=1280',
-  ],
-  astronomy: [
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Sombrero%20Galaxy.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Cartwheel%20Galaxy.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Webb%20image%20of%20M82%20%28SVS14968%20-%20Webb%20M82%29.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/COSMOS%20Field%20MoM-z14%20Galaxy%20%28NIRCam%20pullout%20image%29%20%28weic2603a%29.jpg?width=1280',
-  ],
-  physics: [
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Full%20wafer%20of%20Intel%20quantum%20computers.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Silicon%20wafer.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Micro-chips%20wafer.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Haswell%20Chip.jpg?width=1280',
-  ],
-  quantum: [
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Full%20wafer%20of%20Intel%20quantum%20computers.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Quantum%20computer.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Silicon%20wafers.jpg?width=1280',
-  ],
-  experiments: [
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Looking%20through%20a%20microscope.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Man%20with%20microscope%20in%20lab.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Robert%20Hooke%27s%20microscope.png?width=1280',
-  ],
-  biology: [
-    'https://commons.wikimedia.org/wiki/Special:FilePath/DNA%20Model%20Crick-Watson.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/DNA.png?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Dna-163466.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/DNA-structure-and-bases.png?width=1280',
-  ],
-  technology: [
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Semiconductor%20Wafer%20of%20Microelectronics.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Micro-chips%20wafer.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Silicon%20wafers.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Haswell%20Chip.jpg?width=1280',
-  ],
-  missions: [
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Lunar%20Rover.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Lunar%20Rover%20Apollo%2017.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Apollo15LunarRover.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Lunar%20Electric%20Rover%202008%20desert%20testing.jpg?width=1280',
-  ],
-  future: [
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Full%20wafer%20of%20Intel%20quantum%20computers.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Robotic%20Arm.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Silicon%20wafers.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Lunar%20Electric%20Rover%202008%20desert%20testing.jpg?width=1280',
-  ],
-  scientists: [
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Man%20with%20microscope%20in%20lab.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Looking%20through%20a%20microscope.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Laboratory%20robot%20Eve.jpg?width=1280',
-  ],
-  'scientific-theories': [
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Full%20wafer%20of%20Intel%20quantum%20computers.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/DNA.png?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Silicon%20wafer.jpg?width=1280',
-  ],
-  'history-of-science': [
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Robert%20Hooke%27s%20microscope.png?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/DNA%20Model%20Crick-Watson.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Lunar%20Rover.jpg?width=1280',
-  ],
-  mathematics: [
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Haswell%20Chip.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Silicon%20wafers.jpg?width=1280',
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Full%20wafer%20of%20Intel%20quantum%20computers.jpg?width=1280',
-  ],
-};
-
-const NEWS_CATEGORY_IMAGE_ALIASES: Record<string, string> = {
-  'artificial-intelligence': 'ai',
-  'quantum-physics': 'quantum',
-  'scientific-experiments': 'experiments',
-  'space-missions': 'missions',
-  'future-technologies': 'future',
-};
-
-// When the publisher exposes a real article image, prefer that exact image
-// for the matching story before using the category fallback below.
+// Every article has its own openly licensed image in /images/articles, named after
+// the article slug. Credits live in seo-images.json and on the Sources page.
 const NEWS_ARTICLE_IMAGES: Record<string, string> = {
   'news-ai-weathernext-3-2026':
-    'https://storage.googleapis.com/gweb-uniblog-publish-prod/images/WeatherNext3_diagrams_fig-01.width-1200.format-webp.webp',
-  'robotics-news-ottava-fda-2026':
-    'https://jnj-content-lab2.brightspotcdn.com/dims4/default/243f65b/2147483647/strip/true/crop/7838x4409%2B0%2B352/resize/1440x810%21/quality/90/?url=https%3A%2F%2Fjnj-production-jnj.s3.us-east-1.amazonaws.com%2Fbrightspot%2Ff2%2F26%2F76c41aae45b8a0a5802b9cd82c0f%2Fottava-hero.jpg',
-  'robotics-news-waymo-safety-220m-2026':
-    'https://lh3.googleusercontent.com/yevE3jyiROCQqiwXaGJtzhk8AvQ9HXNgGYNCvROXWidpxZIstqU9f7wLlUFVxDQhjupJBwCH4pj65o1-rRxqqreuOYUXyd6D0Fw%3De365-s420',
-  'science-news-mom-z14-2026':
-    'https://assets.science.nasa.gov/dynamicimage/assets/science/missions/webb/science/2026/01/STScI-01K3HEQQQ86HVER8ZEE8QQMCGX.jpg?crop=faces%2Cfocalpoint&fit=clip&h=640&w=1536',
+    '/images/articles/weathernext-3-hourly-global-ai-weather-forecasting-2026.webp',
   'news-ai-model-hardware-standard-2026':
-    'https://www.anthropic.com/_next/image?q=75&url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2F0aa7623ba0e545ce39e0de725583c0445ce6b76d-1999x1250.png&w=3840',
-  'robotics-news-atlas-product-2026':
-    'https://s.yimg.com/ny/api/res/1.2/b_gsUlkFs1j08wSUQjP0kA--/YXBwaWQ9aGlnaGxhbmRlcjt3PTI0MDA7aD0xMzUwO2NmPXdlYnA-/https%3A/media.zenfs.com/en/engadget_703/67b1bb055f59614d8477b91da6ca096b',
+    '/images/articles/model-hardware-standard-ai-agents-physical-equipment-2026.webp',
+  'robotics-news-ottava-fda-2026':
+    '/images/articles/fda-authorizes-ottava-surgical-system-2026.webp',
+  'robotics-news-waymo-safety-220m-2026':
+    '/images/articles/waymo-safety-results-220-million-driverless-miles-2026.webp',
+  'news-ai-gpt-5-5-2026':
+    '/images/articles/gpt-5-5-agentic-work-computer-use-safety-2026.webp',
+  'news-ai-muse-spark-2026':
+    '/images/articles/meta-muse-spark-multimodal-multi-agent-model-2026.webp',
+  'science-news-mom-z14-2026':
+    '/images/articles/webb-confirms-mom-z14-earliest-galaxy-2026.webp',
   'robotics-news-figure-helix-02-2026':
-    'https://assets.newatlas.com/dims4/default/fb4545c/2147483647/strip/true/crop/2943x1962%2B0%2B0/resize/1440x960%21/format/webp/quality/90/?url=https%3A%2F%2Fnewatlas-brightspot.s3.amazonaws.com%2F0a%2Fea%2F4f3e9e1b4188b3f147d316443c9e%2F0-collaboration-figure-02-robots.jpg',
+    '/images/articles/figure-helix-02-full-body-autonomy-2026.webp',
+  'science-news-morocco-hominins-2026':
+    '/images/articles/casablanca-morocco-hominin-fossils-773000-years-2026.webp',
+  'science-news-pacific-storm-track-2026':
+    '/images/articles/north-pacific-winter-storm-track-poleward-shift-2026.webp',
+  'robotics-news-atlas-product-2026':
+    '/images/articles/boston-dynamics-product-atlas-industrial-robot-2026.webp',
+  'news-ai-eu-gpai-rules-2025':
+    '/images/articles/eu-ai-act-general-purpose-ai-model-rules-2025.webp',
+  'robotics-news-srt-h-surgery-2025':
+    '/images/articles/srt-h-autonomous-gallbladder-surgery-2025.webp',
+  'news-ai-claude-4-agents-2025':
+    '/images/articles/claude-4-long-running-ai-agents-coding-2025.webp',
+  'science-news-personalized-base-editing-2025':
+    '/images/articles/personalized-base-editing-infant-cps1-deficiency-2025.webp',
+  'news-ai-alphaevolve-2025':
+    '/images/articles/alphaevolve-ai-agent-algorithm-discovery-2025.webp',
+  'science-news-alice-lead-gold-2025':
+    '/images/articles/alice-lead-to-gold-lhc-nuclear-transmutation-2025.webp',
+  'robotics-news-amazon-vulcan-2025':
+    '/images/articles/amazon-vulcan-force-feedback-warehouse-robot-2025.webp',
+  'robotics-news-phase-transition-soft-actuator-2025':
+    '/images/articles/water-phase-transition-soft-actuators-2025.webp',
+  'science-news-microns-connectome-2025':
+    '/images/articles/microns-mouse-visual-cortex-connectome-2025.webp',
+  'news-ai-llama-4-2025':
+    '/images/articles/llama-4-open-weight-multimodal-mixture-experts-2025.webp',
+  'news-ai-gemini-2-5-2025':
+    '/images/articles/gemini-2-5-thinking-model-reasoning-2025.webp',
+  'science-news-desi-dark-energy-2025':
+    '/images/articles/desi-three-year-results-evolving-dark-energy-2025.webp',
+  'robotics-news-gemini-robotics-2025':
+    '/images/articles/gemini-robotics-language-vision-actions-2025.webp',
+  'science-news-spherex-launch-2025':
+    '/images/articles/nasa-spherex-launch-all-sky-infrared-survey-2025.webp',
+  'robotics-news-nasa-cadre-rovers-2025':
+    '/images/articles/nasa-cadre-cooperative-moon-rovers-2025.webp',
+  'science-news-distributed-quantum-computing-2025':
+    '/images/articles/distributed-quantum-computing-optical-link-2025.webp',
+  'robotics-news-iso-10218-2025':
+    '/images/articles/iso-10218-2025-industrial-robot-safety-update.webp',
+  'news-ai-deepseek-r1-2025':
+    '/images/articles/deepseek-r1-open-weight-reasoning-model-2025.webp',
+  'science-news-beyond-epica-oldest-ice-2025':
+    '/images/articles/beyond-epica-antarctic-oldest-ice-core-2025.webp',
+  'editorial-jwst':
+    '/images/articles/how-james-webb-space-telescope-reads-early-universe.webp',
+  'editorial-stars':
+    '/images/articles/how-stars-are-born-live-and-die.webp',
+  'editorial-dark-universe':
+    '/images/articles/dark-matter-dark-energy-different-mysteries.webp',
+  'editorial-entanglement':
+    '/images/articles/quantum-entanglement-without-faster-than-light-myth.webp',
+  'editorial-collaboration':
+    '/images/articles/why-scientific-breakthroughs-rarely-belong-to-one-person.webp',
+  'editorial-relativity':
+    '/images/articles/general-relativity-curved-spacetime-working-gps.webp',
+  'editorial-bell-tests':
+    '/images/articles/how-bell-tests-turned-quantum-debate-into-data.webp',
+  'editorial-crispr':
+    '/images/articles/crispr-gene-editing-capabilities-limits.webp',
+  'editorial-transformers':
+    '/images/articles/how-transformer-models-process-language-and-fail.webp',
+  'editorial-semiconductors':
+    '/images/articles/how-semiconductors-turn-physics-into-computing.webp',
+  'editorial-instruments':
+    '/images/articles/how-instruments-changed-what-science-could-know.webp',
+  'editorial-apollo':
+    '/images/articles/apollo-11-engineering-behind-first-moon-landing.webp',
+  'editorial-proof':
+    '/images/articles/why-mathematical-proof-is-more-than-calculation.webp',
+  'editorial-quantum-computing':
+    '/images/articles/quantum-computing-after-hype-engineering-reality.webp',
 };
 
 export function getNewsArticleImage(categorySlug: string, image?: string, articleId = '') {
-  // The old local `/images/articles/*` files are editorial placeholders. Keep
-  // a real supplied URL, but replace those placeholders with a web image.
-  if (image && !image.startsWith('/images/articles/')) return image;
-  if (NEWS_ARTICLE_IMAGES[articleId]) return NEWS_ARTICLE_IMAGES[articleId];
-  const categoryKey = NEWS_CATEGORY_IMAGE_ALIASES[categorySlug] || categorySlug;
-  const candidates = NEWS_CATEGORY_IMAGES[categoryKey] || [
-    'https://commons.wikimedia.org/wiki/Special:FilePath/Industrial%20robot.jpg?width=1280',
-  ];
-  let hash = 0;
-  for (const character of articleId) hash = (hash * 31 + character.charCodeAt(0)) | 0;
-  return candidates[Math.abs(hash) % candidates.length];
+  return (
+    NEWS_ARTICLE_IMAGES[articleId] ||
+    image ||
+    CATEGORY_IMAGES[categorySlug] ||
+    CATEGORY_IMAGES.technology
+  );
 }
 
 export const makeNewsArticle = (article: NewsArticleInput) => ({

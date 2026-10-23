@@ -4,8 +4,8 @@ const unsplash = (id: string) =>
 export const CATEGORY_IMAGES: Record<string, string> = {
   space: unsplash('photo-1446776811953-b23d57bd21aa'),
   astronomy: unsplash('photo-1462331940025-496dfbfc7564'),
-  physics: unsplash('photo-1509228468518-180dd4864904'),
-  'quantum-physics': unsplash('photo-1502139214982-d0ad755818d8'),
+  physics: '/images/categories/physics.webp',
+  'quantum-physics': '/images/categories/quantum-physics.webp',
   scientists: unsplash('photo-1532187863486-abf9dbad1b69'),
   'scientific-theories': unsplash('photo-1451187580459-43490279c0fa'),
   'scientific-experiments': unsplash('photo-1576086213369-97a306d36557'),

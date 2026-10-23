@@ -1,9 +1,9 @@
 # Image metadata workflow
 
 `seo-injector.py` uses `seo-images.json` as the reviewed source of truth for the
-public article images, scientist portraits, avatars, social preview, and brand logo. Descriptions follow the existing image
+public article images, category photos, book covers, scientist portraits, social preview, and brand logo. Descriptions follow the existing image
 source inventory in `frontend/public/images/LICENSES.md`; generated illustrations
-are identified as AI-generated. Unused demo author portraits are excluded.
+are identified as AI-generated.
 
 From the repository root, with Python 3.10+:
 

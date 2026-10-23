@@ -5,6 +5,7 @@
 // ===================================================================
 
 import { GUTENBERG_BOOK_SPECS } from './gutenberg-books';
+import { BOOK_COVERS } from './book-covers';
 
 export interface BookDetails {
   originalAuthor: string;
@@ -710,8 +711,8 @@ const GUTENBERG_BOOKS: ScienceBook[] = GUTENBERG_BOOK_SPECS.map((book, index) =>
   slug: book.slug,
   excerpt: book.excerpt,
   content: `${book.overview}\n\n## About this free edition\n\nThis catalog record links to Project Gutenberg’s public-domain edition. Historical science books are valuable primary sources, but older claims should be compared with current evidence before being treated as modern scientific guidance.`,
-  featuredImage: `https://www.gutenberg.org/cache/epub/${book.ebookId}/pg${book.ebookId}.cover.medium.jpg`,
-  thumbnail: `https://www.gutenberg.org/cache/epub/${book.ebookId}/pg${book.ebookId}.cover.small.jpg`,
+  featuredImage: BOOK_COVERS[book.slug] ?? `https://www.gutenberg.org/cache/epub/${book.ebookId}/pg${book.ebookId}.cover.medium.jpg`,
+  thumbnail: BOOK_COVERS[book.slug] ?? `https://www.gutenberg.org/cache/epub/${book.ebookId}/pg${book.ebookId}.cover.medium.jpg`,
   category: {
     id: '12',
     name: 'Books',
@@ -747,6 +748,8 @@ const GUTENBERG_BOOKS: ScienceBook[] = GUTENBERG_BOOK_SPECS.map((book, index) =>
 
 const NORMALIZED_ARCHIVE_BOOKS: ScienceBook[] = ARCHIVE_BOOKS.map((book) => ({
   ...book,
+  featuredImage: BOOK_COVERS[book.slug] ?? book.featuredImage,
+  thumbnail: BOOK_COVERS[book.slug] ?? book.thumbnail,
   bookDetails: {
     ...book.bookDetails,
     license: 'Public-domain archive edition — free access; readers should check the copyright rules that apply where they live.',
