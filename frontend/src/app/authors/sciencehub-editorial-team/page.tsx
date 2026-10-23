@@ -2,6 +2,7 @@ import Link from 'next/link';
 import InfoPageShell from '@/components/InfoPageShell';
 
 export const metadata = {
+  alternates: { canonical: '/authors/sciencehub-editorial-team' },
   title: 'ScienceHub Editorial Team',
   description: 'About the editorial team responsible for content on Science Knowledge Hub.',
 };

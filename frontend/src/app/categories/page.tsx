@@ -33,6 +33,7 @@ async function getCategories(): Promise<Category[]> {
 }
 
 export const metadata = {
+  alternates: { canonical: '/categories' },
   title: 'Categories',
   description: 'Explore scientific categories from space and quantum physics to AI, robotics, and biology.',
 };

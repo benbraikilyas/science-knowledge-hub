@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     description: 'Six guided journeys through space, quantum physics, biology, computing, scientific thinking, and the Islamic Golden Age.',
     url: absoluteUrl('/learn'),
     type: 'website',
+    images: [absoluteUrl('/og.webp')],
   },
 };
 

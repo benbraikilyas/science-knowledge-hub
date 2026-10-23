@@ -3,6 +3,7 @@ import InfoPageShell from '@/components/InfoPageShell';
 import { CONTACT_EMAIL } from '@/lib/site';
 
 export const metadata = {
+  alternates: { canonical: '/contact' },
   title: 'Contact',
   description: 'Contact Science Knowledge Hub about corrections, sources, privacy, or general questions.',
 };

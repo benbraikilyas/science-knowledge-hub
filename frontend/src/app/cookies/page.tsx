@@ -2,6 +2,7 @@ import CookieSettingsButton from '@/components/CookieSettingsButton';
 import InfoPageShell from '@/components/InfoPageShell';
 
 export const metadata = {
+  alternates: { canonical: '/cookies' },
   title: 'Cookie Policy',
   description: 'How Science Knowledge Hub uses cookies and how visitors can control optional storage.',
 };

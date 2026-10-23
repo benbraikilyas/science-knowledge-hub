@@ -2,6 +2,7 @@ import InfoPageShell from '@/components/InfoPageShell';
 import catalog from '@/lib/image-metadata.json';
 
 export const metadata = {
+  alternates: { canonical: '/sources' },
   title: 'Sources & Image Credits',
   description: 'Source standards, corrections information, and visible image credits for Science Knowledge Hub.',
 };

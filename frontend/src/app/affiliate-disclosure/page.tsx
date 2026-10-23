@@ -2,6 +2,7 @@ import Link from 'next/link';
 import InfoPageShell from '@/components/InfoPageShell';
 
 export const metadata = {
+  alternates: { canonical: '/affiliate-disclosure' },
   title: 'Affiliate Disclosure',
   description: 'How Science Knowledge Hub may earn commissions from some links, and what that does not change.',
 };

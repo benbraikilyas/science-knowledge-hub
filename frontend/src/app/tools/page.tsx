@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     description: 'Explore physics through transparent calculators that show their formulas, assumptions, and limitations.',
     url: absoluteUrl('/tools'),
     type: 'website',
+    images: [absoluteUrl('/og.webp')],
   },
 };
 

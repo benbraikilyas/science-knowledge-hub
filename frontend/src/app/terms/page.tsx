@@ -2,6 +2,7 @@ import Link from 'next/link';
 import InfoPageShell from '@/components/InfoPageShell';
 
 export const metadata = {
+  alternates: { canonical: '/terms' },
   title: 'Terms of Use',
   description: 'Terms governing use of Science Knowledge Hub.',
 };

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Sparkles } from 'lucide-react';
 
 export const metadata = {
+  alternates: { canonical: '/sitemap' },
   title: 'Sitemap',
   description: 'Sitemap for Science Knowledge Hub - find all pages and sections.',
 };

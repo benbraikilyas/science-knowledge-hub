@@ -3,6 +3,7 @@ import InfoPageShell from '@/components/InfoPageShell';
 import { CONTACT_EMAIL } from '@/lib/site';
 
 export const metadata = {
+  alternates: { canonical: '/privacy' },
   title: 'Privacy Policy',
   description: 'How Science Knowledge Hub collects, uses, stores, and shares personal information.',
 };

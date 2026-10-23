@@ -2,6 +2,7 @@ import Link from 'next/link';
 import InfoPageShell from '@/components/InfoPageShell';
 
 export const metadata = {
+  alternates: { canonical: '/editorial-policy' },
   title: 'Editorial Policy',
   description: 'How Science Knowledge Hub researches, reviews, publishes, and corrects educational content.',
 };

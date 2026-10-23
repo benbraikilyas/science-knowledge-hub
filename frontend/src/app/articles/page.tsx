@@ -48,6 +48,7 @@ export async function generateMetadata() {
   return {
     title: 'Articles',
     description: 'Browse sourced 2025–2026 updates and explainers on science, AI, robotics, space, physics, biology, and technology.',
+    alternates: { canonical: '/articles' },
     robots: { index: Boolean(hasPublishableArticles), follow: true },
   };
 }

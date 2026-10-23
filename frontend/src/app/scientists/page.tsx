@@ -22,6 +22,7 @@ async function getScientists(): Promise<ScientistListItem[]> {
 }
 
 export const metadata = {
+  alternates: { canonical: '/scientists' },
   title: 'Scientists Directory',
   description: 'Discover the brilliant minds who shaped our understanding of the universe.',
 };
