@@ -9,6 +9,7 @@ import Footer from '@/components/Footer';
 import CursorGlow from '@/components/CursorGlow';
 import CookieConsent from '@/components/CookieConsent';
 import { ADSENSE_ACCOUNT, SITE_DESCRIPTION, SITE_NAME, SITE_URL, absoluteUrl } from '@/lib/site';
+import { imageObject } from '@/lib/image-seo';
 import './globals.css';
 
 const geistSans = Geist({
@@ -90,12 +91,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       '@type': 'Organization',
       name: SITE_NAME,
       url: SITE_URL,
-      logo: {
-        '@type': 'ImageObject',
-        url: absoluteUrl('/brand-logo.webp'),
-        width: 512,
-        height: 512,
-      },
+      logo: imageObject('/brand-logo.webp', SITE_NAME),
     },
   };
 

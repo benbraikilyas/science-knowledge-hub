@@ -7,35 +7,6 @@ export const metadata = {
   description: 'Source standards, corrections information, and visible image credits for Science Knowledge Hub.',
 };
 
-const SCIENTIST_CREDITS = [
-  ['Albert Einstein', 'Ferdinand Schmutzer, 1921 — public domain', 'https://commons.wikimedia.org/wiki/File:Albert_Einstein_Head.jpg'],
-  ['Marie Curie', 'Unknown photographer, c. 1920 — public domain', 'https://commons.wikimedia.org/wiki/File:Marie_Curie_c1920.jpg'],
-  ['Nikola Tesla', 'Napoleon Sarony, c. 1890s — public domain', 'https://commons.wikimedia.org/wiki/File:N.Tesla.JPG'],
-  ['Stephen Hawking', 'NASA, 2008 — US government work', 'https://commons.wikimedia.org/wiki/File:Stephen_hawking_2008_nasa.jpg'],
-  ['Isaac Newton', 'Godfrey Kneller, 1689 — public domain', 'https://commons.wikimedia.org/wiki/File:GodfreyKneller-IsaacNewton-1689.jpg'],
-  ['Ada Lovelace', 'Margaret Sarah Carpenter, 1836 — public domain', 'https://commons.wikimedia.org/wiki/File:Ada_Lovelace_portrait.jpg'],
-  ['Al-Khwarizmi', 'Monument photograph — license on source page', 'https://commons.wikimedia.org/wiki/File:Madrid_-_Ciudad_Universitaria,_Monumento_a_Muhammad_al-Juarismi_(cropped).jpg'],
-  ['Ibn al-Haytham', 'Historical depiction — license on source page', 'https://commons.wikimedia.org/wiki/File:Ibn_al-Haytham_crop.jpg'],
-  ['Ibn Sina', 'Bust photograph — license on source page', 'https://commons.wikimedia.org/wiki/File:Avicenna_Bust,_left_profile_(cropped).jpg'],
-  ['Al-Zahrawi', 'Illustration — CC0 on source page', 'https://commons.wikimedia.org/wiki/File:Al-Zahrawi.png'],
-  ['Al-Biruni', 'Historical image — license on source page', 'https://commons.wikimedia.org/wiki/File:Biruni-russian.jpg'],
-  ['Jabir ibn Hayyan', 'Historical manuscript — status on source page', 'https://commons.wikimedia.org/wiki/File:Man_Florence,_Ashburnham_1166_fol_12r.jpg'],
-  ['Al-Jazari', 'Elephant clock manuscript — status on source page', 'https://commons.wikimedia.org/wiki/File:Al-jazari_elephant_clock.png'],
-  ['Ibn al-Nafis', 'Statue photograph — license on source page', 'https://commons.wikimedia.org/wiki/File:Ibn_Al_Nafis_statue.jpg'],
-  ['Al-Kindi', 'Iraqi stamp, 1962 — status on source page', 'https://commons.wikimedia.org/wiki/File:Stamp_IQ_1962_6f.jpg'],
-  ['Al-Razi', 'Artwork — license on source page', 'https://commons.wikimedia.org/wiki/File:%D8%B2%DA%A9%D8%B1%DB%8C%D8%A7%DB%8C_%D8%B1%D8%A7%D8%B2%DB%8C_%D8%A7%D8%AB%D8%B1_%D8%AD%D8%B3%DB%8C%D9%86_%D8%A8%D9%87%D8%B2%D8%A7%D8%AF_(cropped).jpg'],
-  ['Alan Turing', 'Historical photograph — license on source page', 'https://commons.wikimedia.org/wiki/File:Alan_turing_header.jpg'],
-  ['Grace Hopper', 'US Navy portrait — status on source page', 'https://commons.wikimedia.org/wiki/File:Commodore_Grace_M._Hopper,_USN_(covered)_head_and_shoulders_crop.jpg'],
-  ['Claude Shannon', 'Tekniska museet — license on source page', 'https://commons.wikimedia.org/wiki/File:C.E._Shannon._Tekniska_museet_43069_(2x3_crop).jpg'],
-  ['Margaret Hamilton', 'NASA-era photograph — status on source page', 'https://commons.wikimedia.org/wiki/File:Margaret_Hamilton_-_restoration.jpg'],
-  ['John von Neumann', 'Los Alamos photograph — status on source page', 'https://commons.wikimedia.org/wiki/File:JohnvonNeumann-LosAlamos.gif'],
-  ['Charles Darwin', 'Historical photograph — status on source page', 'https://commons.wikimedia.org/wiki/File:Charles_Darwin_seated_crop.jpg'],
-  ['Galileo Galilei', 'Historical painting — status on source page', 'https://commons.wikimedia.org/wiki/File:Galileo_Galilei_(1564-1642)_RMG_BHC2700.tiff'],
-  ['Louis Pasteur', 'Paul Nadar photograph — status on source page', 'https://commons.wikimedia.org/wiki/File:Louis_Pasteur,_foto_av_Paul_Nadar,_Crisco_edit.jpg'],
-  ['Rosalind Franklin', 'Historical photograph — license on source page', 'https://commons.wikimedia.org/wiki/File:Rosalind_Franklin_(retouched).jpg'],
-  ['Michael Faraday', 'Historical photograph — status on source page', 'https://commons.wikimedia.org/wiki/File:Michael_Faraday_sitting_crop.jpg'],
-] as const;
-
 type CatalogEntry = { title: string; creditText?: string; source?: string };
 type Credit = readonly [title: string, credit: string, url?: string];
 
@@ -45,6 +16,7 @@ function creditsFor(prefix: string): Credit[] {
     .map(([, entry]) => [entry.title, entry.creditText ?? '', entry.source]);
 }
 
+const SCIENTIST_CREDITS = creditsFor('/images/scientists/');
 const ARTICLE_CREDITS = creditsFor('/images/articles/');
 const CATEGORY_CREDITS = creditsFor('/images/categories/');
 const BOOK_CREDITS = creditsFor('/images/books/');

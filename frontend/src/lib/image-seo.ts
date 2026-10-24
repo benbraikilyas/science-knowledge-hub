@@ -10,7 +10,11 @@ interface ImageMetadata {
   encodingFormat: string;
   source?: string;
   creditText?: string;
+  creator?: string;
+  creatorType?: 'Person' | 'Organization';
+  copyrightNotice?: string;
   license?: string;
+  acquireLicensePage?: string;
   generated?: boolean;
 }
 
@@ -31,8 +35,11 @@ export function imageObject(src: string, fallbackName: string) {
       height: metadata.height,
       encodingFormat: metadata.encodingFormat,
       creditText: metadata.creditText,
+      ...(metadata.creator ? { creator: { '@type': metadata.creatorType || 'Person', name: metadata.creator } } : {}),
+      copyrightNotice: metadata.copyrightNotice,
       isBasedOn: metadata.source,
       license: metadata.license,
+      acquireLicensePage: metadata.acquireLicensePage,
     } : {}),
   };
 }

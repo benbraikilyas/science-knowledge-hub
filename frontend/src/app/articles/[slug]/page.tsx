@@ -147,12 +147,7 @@ export default async function ArticleDetailPage({ params }: ArticleDetailProps) 
           '@type': 'Organization',
           name: SITE_NAME,
           url: absoluteUrl('/'),
-          logo: {
-            '@type': 'ImageObject',
-            url: absoluteUrl('/brand-logo.webp'),
-            width: 512,
-            height: 512,
-          },
+          logo: imageObject('/brand-logo.webp', SITE_NAME),
         },
         ...(featuredImage ? { image: imageObject(featuredImage, article.title as string) } : {}),
       }] : []),

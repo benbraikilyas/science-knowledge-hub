@@ -8,34 +8,34 @@ The site stores local copies so profiles do not depend on third-party image avai
 
 ## Scientists (`/images/scientists/`)
 
-| File | Subject | Source | Author / Date | Status |
-|------|---------|--------|---------------|--------|
-| `einstein.webp` | Albert Einstein | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Albert_Einstein_Head.jpg) | Ferdinand Schmutzer, 1921 | Public domain |
-| `curie.webp` | Marie Curie | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Marie_Curie_c1920.jpg) | Unknown photographer, c. 1920 | Public domain |
-| `tesla.webp` | Nikola Tesla | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:N.Tesla.JPG) | Napoleon Sarony, c. 1890s | Public domain |
-| `hawking.webp` | Stephen Hawking | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Stephen_hawking_2008_nasa.jpg) | NASA, 2008 | Public domain (US govt work) |
-| `newton.webp` | Isaac Newton | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:GodfreyKneller-IsaacNewton-1689.jpg) | Godfrey Kneller, 1689 (painting) | Public domain |
-| `lovelace.webp` | Ada Lovelace | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Ada_Lovelace_portrait.jpg) | Margaret Sarah Carpenter, 1836 (painting) | Public domain |
-| `al-khwarizmi.webp` | Al-Khwarizmi monument | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Madrid_-_Ciudad_Universitaria,_Monumento_a_Muhammad_al-Juarismi_(cropped).jpg) | See source page | Commons license |
-| `ibn-al-haytham.webp` | Ibn al-Haytham | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Ibn_al-Haytham_crop.jpg) | See source page | Commons license |
-| `ibn-sina.webp` | Ibn Sina bust | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Avicenna_Bust,_left_profile_(cropped).jpg) | See source page | Commons license |
-| `al-zahrawi.webp` | Al-Zahrawi | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Al-Zahrawi.png) | See source page | CC0 on source page |
-| `al-biruni.webp` | Al-Biruni | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Biruni-russian.jpg) | See source page | Commons license |
-| `jabir-ibn-hayyan.webp` | Jabir ibn Hayyan depiction | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Man_Florence,_Ashburnham_1166_fol_12r.jpg) | Historical manuscript | See source page |
-| `al-jazari.webp` | Al-Jazari elephant clock | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Al-jazari_elephant_clock.png) | Historical manuscript | See source page |
-| `ibn-al-nafis.webp` | Ibn al-Nafis statue | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Ibn_Al_Nafis_statue.jpg) | See source page | Commons license |
-| `al-kindi.webp` | Al-Kindi on an Iraqi stamp | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Stamp_IQ_1962_6f.jpg) | Iraq Post, 1962 | See source page |
-| `al-razi.webp` | Al-Razi | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:%D8%B2%DA%A9%D8%B1%DB%8C%D8%A7%DB%8C_%D8%B1%D8%A7%D8%B2%DB%8C_%D8%A7%D8%AB%D8%B1_%D8%AD%D8%B3%DB%8C%D9%86_%D8%A8%D9%87%D8%B2%D8%A7%D8%AF_(cropped).jpg) | See source page | Commons license |
-| `alan-turing.webp` | Alan Turing | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Alan_turing_header.jpg) | See source page | Commons license |
-| `grace-hopper.webp` | Grace Hopper | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Commodore_Grace_M._Hopper,_USN_(covered)_head_and_shoulders_crop.jpg) | U.S. Navy | See source page |
-| `claude-shannon.webp` | Claude Shannon | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:C.E._Shannon._Tekniska_museet_43069_(2x3_crop).jpg) | Tekniska museet | See source page |
-| `margaret-hamilton.webp` | Margaret Hamilton | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Margaret_Hamilton_-_restoration.jpg) | See source page | Commons license |
-| `john-von-neumann.webp` | John von Neumann | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:JohnvonNeumann-LosAlamos.gif) | Los Alamos | See source page |
-| `charles-darwin.webp` | Charles Darwin | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Charles_Darwin_seated_crop.jpg) | Historical photograph | See source page |
-| `galileo-galilei.webp` | Galileo Galilei | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Galileo_Galilei_(1564-1642)_RMG_BHC2700.tiff) | Historical painting | See source page |
-| `louis-pasteur.webp` | Louis Pasteur | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Louis_Pasteur,_foto_av_Paul_Nadar,_Crisco_edit.jpg) | Paul Nadar | See source page |
-| `rosalind-franklin.webp` | Rosalind Franklin | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Rosalind_Franklin_(retouched).jpg) | See source page | Commons license |
-| `michael-faraday.webp` | Michael Faraday | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Michael_Faraday_sitting_crop.jpg) | Historical photograph | See source page |
+| File | Subject | Source | Author / Date | License |
+|------|---------|--------|---------------|---------|
+| `al-biruni.webp` | Al-Biruni | [Source](https://commons.wikimedia.org/wiki/File:Biruni-russian.jpg) | USSR postage stamp, 1973 | Public domain |
+| `al-jazari.webp` | Al-Jazari elephant clock | [Source](https://commons.wikimedia.org/wiki/File:Al-jazari_elephant_clock.png) | Al-Jazari, 1315 (manuscript illustration) | Public domain |
+| `al-khwarizmi.webp` | Al-Khwarizmi monument | [Source](https://commons.wikimedia.org/wiki/File:Madrid_-_Ciudad_Universitaria,_Monumento_a_Muhammad_al-Juarismi_(cropped).jpg) | Zarateman, 2022 (statue photograph) | CC0 |
+| `al-kindi.webp` | Al-Kindi on an Iraqi stamp | [Source](https://commons.wikimedia.org/wiki/File:Stamp_IQ_1962_6f.jpg) | Iraqi Post, 1962 (postage stamp) | Public domain |
+| `al-razi.webp` | Al-Razi | [Source](https://commons.wikimedia.org/wiki/File:%D8%B2%DA%A9%D8%B1%DB%8C%D8%A7%DB%8C_%D8%B1%D8%A7%D8%B2%DB%8C_%D8%A7%D8%AB%D8%B1_%D8%AD%D8%B3%DB%8C%D9%86_%D8%A8%D9%87%D8%B2%D8%A7%D8%AF_(cropped).jpg) | Hossein Behzad (artwork) | Public domain |
+| `al-zahrawi.webp` | Al-Zahrawi | [Source](https://commons.wikimedia.org/wiki/File:Al-Zahrawi.png) | Illustration released under CC0 | CC0 |
+| `alan-turing.webp` | Alan Turing | [Source](https://commons.wikimedia.org/wiki/File:Alan_turing_header.jpg) | Elliott & Fry, 1951 | Public domain |
+| `charles-darwin.webp` | Charles Darwin | [Source](https://commons.wikimedia.org/wiki/File:Charles_Darwin_seated_crop.jpg) | Maull & Fox (Henry Maull and John Fox), c. 1854 | Public domain |
+| `claude-shannon.webp` | Claude Shannon | [Source](https://commons.wikimedia.org/wiki/File:C.E._Shannon._Tekniska_museet_43069_(2x3_crop).jpg) | Tekniska museet (via Flickr) | CC BY 2.0 |
+| `curie.webp` | Marie Curie | [Source](https://commons.wikimedia.org/wiki/File:Marie_Curie_c1920.jpg) | Henri Manuel, c. 1920 | Public domain |
+| `einstein.webp` | Albert Einstein | [Source](https://commons.wikimedia.org/wiki/File:Albert_Einstein_Head.jpg) | Orren Jack Turner, Princeton, 1947 | Public domain |
+| `galileo-galilei.webp` | Galileo Galilei | [Source](https://commons.wikimedia.org/wiki/File:Galileo_Galilei_(1564-1642)_RMG_BHC2700.tiff) | Justus Sustermans, c. 1640 (painting) | Public domain |
+| `grace-hopper.webp` | Grace Hopper | [Source](https://commons.wikimedia.org/wiki/File:Commodore_Grace_M._Hopper,_USN_(covered)_head_and_shoulders_crop.jpg) | James S. Davis, U.S. Navy, 1984 | Public domain |
+| `hawking.webp` | Stephen Hawking | [Source](https://commons.wikimedia.org/wiki/File:Stephen_hawking_2008_nasa.jpg) | NASA/Paul Alers, 2008 | Public domain |
+| `ibn-al-haytham.webp` | Ibn al-Haytham | [Source](https://commons.wikimedia.org/wiki/File:Ibn_al-Haytham_crop.jpg) | Adolph Boÿ (design) and Jeremias Falck (engraving), 1647 | Public domain |
+| `ibn-al-nafis.webp` | Ibn al-Nafis statue | [Source](https://commons.wikimedia.org/wiki/File:Ibn_Al_Nafis_statue.jpg) | Unknown photographer (statue) | CC BY-SA 3.0 |
+| `ibn-sina.webp` | Ibn Sina bust | [Source](https://commons.wikimedia.org/wiki/File:Avicenna_Bust,_left_profile_(cropped).jpg) | National Library of Medicine, 1952 (bust photograph) | No known copyright restrictions |
+| `jabir-ibn-hayyan.webp` | Jabir ibn Hayyan depiction | [Source](https://commons.wikimedia.org/wiki/File:Man_Florence,_Ashburnham_1166_fol_12r.jpg) | Unknown illuminator, 1470 (manuscript) | Public domain |
+| `john-von-neumann.webp` | John von Neumann | [Source](https://commons.wikimedia.org/wiki/File:JohnvonNeumann-LosAlamos.gif) | Los Alamos National Laboratory (LANL) | see source record for terms |
+| `louis-pasteur.webp` | Louis Pasteur | [Source](https://commons.wikimedia.org/wiki/File:Louis_Pasteur,_foto_av_Paul_Nadar,_Crisco_edit.jpg) | Paul Nadar, before 1895 | Public domain |
+| `lovelace.webp` | Ada Lovelace | [Source](https://commons.wikimedia.org/wiki/File:Ada_Lovelace_portrait.jpg) | Alfred Edward Chalon, c. 1840 (painting) | Public domain |
+| `margaret-hamilton.webp` | Margaret Hamilton | [Source](https://commons.wikimedia.org/wiki/File:Margaret_Hamilton_-_restoration.jpg) | 1969 photograph, restored by Adam Cuerden | Public domain |
+| `michael-faraday.webp` | Michael Faraday | [Source](https://commons.wikimedia.org/wiki/File:Michael_Faraday_sitting_crop.jpg) | Unknown photographer, c. 1850s | Public domain |
+| `newton.webp` | Isaac Newton | [Source](https://commons.wikimedia.org/wiki/File:GodfreyKneller-IsaacNewton-1689.jpg) | Godfrey Kneller, 1689 (painting) | Public domain |
+| `rosalind-franklin.webp` | Rosalind Franklin | [Source](https://commons.wikimedia.org/wiki/File:Rosalind_Franklin_(retouched).jpg) | MRC Laboratory of Molecular Biology, 1955 | CC BY-SA 4.0 |
+| `tesla.webp` | Nikola Tesla | [Source](https://commons.wikimedia.org/wiki/File:N.Tesla.JPG) | Unknown photographer, c. 1896 | Public domain |
 
 ## Articles (`/images/articles/`)
 

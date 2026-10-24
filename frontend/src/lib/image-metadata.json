@@ -16,6 +16,9 @@
       "Science Knowledge Hub"
     ],
     "creditText": "Science Knowledge Hub",
+    "creator": "Science Knowledge Hub",
+    "creatorType": "Organization",
+    "copyrightNotice": "© 2026 Science Knowledge Hub",
     "width": 512,
     "height": 512,
     "encodingFormat": "image/webp"
@@ -40,7 +43,11 @@
     ],
     "source": "https://commons.wikimedia.org/wiki/File:ALICE_experiment_at_CERN.jpg",
     "creditText": "Andres T — CC BY-SA 2.0",
-    "license": "https://creativecommons.org/licenses/by-sa/2.0",
+    "license": "https://creativecommons.org/licenses/by-sa/2.0/",
+    "creator": "Andres T",
+    "creatorType": "Person",
+    "copyrightNotice": "© Andres T, CC BY-SA 2.0",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:ALICE_experiment_at_CERN.jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -65,7 +72,11 @@
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Tensor_Processing_Unit_3.0.jpg",
     "creditText": "Zinskauf — CC BY-SA 4.0",
-    "license": "https://creativecommons.org/licenses/by-sa/4.0",
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "creator": "Zinskauf",
+    "creatorType": "Person",
+    "copyrightNotice": "© Zinskauf, CC BY-SA 4.0",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Tensor_Processing_Unit_3.0.jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -90,7 +101,11 @@
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Amazon_warehouse_robot_2020.JPG",
     "creditText": "Geni — CC BY-SA 4.0",
-    "license": "https://creativecommons.org/licenses/by-sa/4.0",
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "creator": "Geni",
+    "creatorType": "Person",
+    "copyrightNotice": "© Geni, CC BY-SA 4.0",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Amazon_warehouse_robot_2020.JPG",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -112,7 +127,12 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Apollo_11_Saturn_V_and_Mobile_Service_Structure_at_pad_39-A_(48286445877).jpg",
-    "creditText": "Project Apollo Archive — Public domain",
+    "creditText": "NASA (Project Apollo Archive) — Public domain",
+    "creator": "NASA",
+    "creatorType": "Organization",
+    "copyrightNotice": "Public domain — NASA",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Apollo_11_Saturn_V_and_Mobile_Service_Structure_at_pad_39-A_(48286445877).jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -137,7 +157,11 @@
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Antarctica_WAIS_Divide_Field_Camp_10.jpg",
     "creditText": "Eli Duke — CC BY-SA 2.0",
-    "license": "https://creativecommons.org/licenses/by-sa/2.0",
+    "license": "https://creativecommons.org/licenses/by-sa/2.0/",
+    "creator": "Eli Duke",
+    "creatorType": "Person",
+    "copyrightNotice": "© Eli Duke, CC BY-SA 2.0",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Antarctica_WAIS_Divide_Field_Camp_10.jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -162,6 +186,11 @@
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Team_ViGIR_Robot_Florian_DARPA_Robotics_Challenge_2015.jpg",
     "creditText": "Sun L. Vega — Public domain",
+    "creator": "Sun L. Vega",
+    "creatorType": "Person",
+    "copyrightNotice": "Public domain — Sun L. Vega",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Team_ViGIR_Robot_Florian_DARPA_Robotics_Challenge_2015.jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -186,7 +215,11 @@
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Em_-_Homo_erectus_-_2.jpg",
     "creditText": "Emőke Dénes — CC BY-SA 4.0",
-    "license": "https://creativecommons.org/licenses/by-sa/4.0",
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "creator": "Emőke Dénes",
+    "creatorType": "Person",
+    "copyrightNotice": "© Emőke Dénes, CC BY-SA 4.0",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Em_-_Homo_erectus_-_2.jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -211,7 +244,11 @@
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Rack_of_Worldwide_LHC_Computing_Grid.jpg",
     "creditText": "Marián Hubinský — CC BY-SA 4.0",
-    "license": "https://creativecommons.org/licenses/by-sa/4.0",
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "creator": "Marián Hubinský",
+    "creatorType": "Person",
+    "copyrightNotice": "© Marián Hubinský, CC BY-SA 4.0",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Rack_of_Worldwide_LHC_Computing_Grid.jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -233,7 +270,12 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:CRISPR_Cas9_(41124064215).jpg",
-    "creditText": "NIH Image Gallery from Bethesda, Maryland, USA — Public domain",
+    "creditText": "NIH Image Gallery — Public domain",
+    "creator": "NIH Image Gallery",
+    "creatorType": "Organization",
+    "copyrightNotice": "Public domain — NIH Image Gallery",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:CRISPR_Cas9_(41124064215).jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -256,6 +298,11 @@
     ],
     "source": "https://commons.wikimedia.org/wiki/File:CL0024%2B17.jpg",
     "creditText": "NASA, ESA, M.J. Jee and H. Ford (Johns Hopkins University) — Public domain",
+    "creator": "NASA, ESA, M.J. Jee and H. Ford (Johns Hopkins University)",
+    "creatorType": "Organization",
+    "copyrightNotice": "Public domain — NASA, ESA, M.J. Jee and H. Ford (Johns Hopkins University)",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:CL0024%2B17.jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -279,8 +326,12 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Silicon_chip_from_a_computer_laser_mouse_under_a_microscope_50%D1%85.jpg",
-    "creditText": "Alexander Klepnev — CC BY-SA 4.0",
-    "license": "https://creativecommons.org/licenses/by-sa/4.0",
+    "creditText": "Alexander Klepnev (derivative work: IamMM) — CC BY-SA 4.0",
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "creator": "Alexander Klepnev",
+    "creatorType": "Person",
+    "copyrightNotice": "© Alexander Klepnev, CC BY-SA 4.0",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Silicon_chip_from_a_computer_laser_mouse_under_a_microscope_50%D1%85.jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -304,8 +355,12 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:The_Dark_Energy_Spectroscopic_Instrument_(DESI)_installed_on_the_Nicholas_U_Mayall_4-meter_Telescope_(noirlab-mayall-desi-1).jpg",
-    "creditText": "NOIRLab/KPNO/ NSF /AURA/P. Marenfeld — CC BY 4.0",
-    "license": "https://creativecommons.org/licenses/by/4.0",
+    "creditText": "NOIRLab/KPNO/NSF/AURA/P. Marenfeld — CC BY 4.0",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "creator": "NOIRLab/KPNO/NSF/AURA/P. Marenfeld",
+    "creatorType": "Organization",
+    "copyrightNotice": "© NOIRLab/KPNO/NSF/AURA/P. Marenfeld, CC BY 4.0",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:The_Dark_Energy_Spectroscopic_Instrument_(DESI)_installed_on_the_Nicholas_U_Mayall_4-meter_Telescope_(noirlab-mayall-desi-1).jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -330,6 +385,11 @@
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Quantum_Computing;_Ion_Trapping_(5941055642).jpg",
     "creditText": "National Institute of Standards and Technology — Public domain",
+    "creator": "National Institute of Standards and Technology",
+    "creatorType": "Organization",
+    "copyrightNotice": "Public domain — National Institute of Standards and Technology",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Quantum_Computing;_Ion_Trapping_(5941055642).jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -354,7 +414,11 @@
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Belgique_-_Bruxelles_-_Schuman_-_Berlaymont_-_01.jpg",
     "creditText": "EmDee — CC BY-SA 4.0",
-    "license": "https://creativecommons.org/licenses/by-sa/4.0",
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "creator": "EmDee",
+    "creatorType": "Person",
+    "copyrightNotice": "© EmDee, CC BY-SA 4.0",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Belgique_-_Bruxelles_-_Schuman_-_Berlaymont_-_01.jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -379,7 +443,11 @@
     ],
     "source": "https://commons.wikimedia.org/wiki/File:New_Da_Vinci_Xi.jpg",
     "creditText": "Alvarogarciamd — CC BY-SA 4.0",
-    "license": "https://creativecommons.org/licenses/by-sa/4.0",
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "creator": "Alvarogarciamd",
+    "creatorType": "Person",
+    "copyrightNotice": "© Alvarogarciamd, CC BY-SA 4.0",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:New_Da_Vinci_Xi.jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -403,8 +471,12 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:SURENA_III.jpg",
-    "creditText": "CAST(Center of Advanced Systems & Technologies) — CC BY-SA 4.0",
-    "license": "https://creativecommons.org/licenses/by-sa/4.0",
+    "creditText": "CAST (Center of Advanced Systems & Technologies) — CC BY-SA 4.0",
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "creator": "CAST (Center of Advanced Systems & Technologies)",
+    "creatorType": "Organization",
+    "copyrightNotice": "© CAST (Center of Advanced Systems & Technologies), CC BY-SA 4.0",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:SURENA_III.jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -429,7 +501,11 @@
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Google_Data_Center,_Council_Bluffs_Iowa_(49062863796).jpg",
     "creditText": "Chad Davis — CC BY 2.0",
-    "license": "https://creativecommons.org/licenses/by/2.0",
+    "license": "https://creativecommons.org/licenses/by/2.0/",
+    "creator": "Chad Davis",
+    "creatorType": "Person",
+    "copyrightNotice": "© Chad Davis, CC BY 2.0",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Google_Data_Center,_Council_Bluffs_Iowa_(49062863796).jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -454,7 +530,11 @@
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Baxter_robot%27s_gripper.JPG",
     "creditText": "Gustavo A. Casañ — CC BY-SA 4.0",
-    "license": "https://creativecommons.org/licenses/by-sa/4.0",
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "creator": "Gustavo A. Casañ",
+    "creatorType": "Person",
+    "copyrightNotice": "© Gustavo A. Casañ, CC BY-SA 4.0",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Baxter_robot%27s_gripper.JPG",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -476,7 +556,12 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Artist%27s_global_concept_of_the_NAVSTAR_Global_Positioning_System_Satellite_-_DPLA_-_e1743941362296beee266682f3b33ed0.jpeg",
-    "creditText": "Department of Defense. American Forces Information Service. Defense Visual Information Cen — Public domain",
+    "creditText": "U.S. Department of Defense (Defense Visual Information Center) — Public domain",
+    "creator": "U.S. Department of Defense",
+    "creatorType": "Organization",
+    "copyrightNotice": "Public domain — U.S. Department of Defense",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Artist%27s_global_concept_of_the_NAVSTAR_Global_Positioning_System_Satellite_-_DPLA_-_e1743941362296beee266682f3b33ed0.jpeg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -501,7 +586,11 @@
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Frontier_supercomputer_(15).jpg",
     "creditText": "Oak Ridge National Laboratory — CC BY 2.0",
-    "license": "https://creativecommons.org/licenses/by/2.0",
+    "license": "https://creativecommons.org/licenses/by/2.0/",
+    "creator": "Oak Ridge National Laboratory",
+    "creatorType": "Organization",
+    "copyrightNotice": "© Oak Ridge National Laboratory, CC BY 2.0",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Frontier_supercomputer_(15).jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -524,7 +613,11 @@
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Belfast_(423),_October_2009.JPG",
     "creditText": "Ardfern — CC BY-SA 3.0",
-    "license": "https://creativecommons.org/licenses/by-sa/3.0",
+    "license": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "creator": "Ardfern",
+    "creatorType": "Person",
+    "copyrightNotice": "© Ardfern, CC BY-SA 3.0",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Belfast_(423),_October_2009.JPG",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -547,6 +640,11 @@
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Micrographia_by_Robert_Hooke,_1665,_England_-_Golub_Collection_of_Antique_Microscopes_-_DSC04817.JPG",
     "creditText": "Daderot — CC0",
+    "creator": "Daderot",
+    "creatorType": "Person",
+    "copyrightNotice": "Daderot, CC0 1.0 (no rights reserved)",
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Micrographia_by_Robert_Hooke,_1665,_England_-_Golub_Collection_of_Antique_Microscopes_-_DSC04817.JPG",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -569,6 +667,11 @@
     ],
     "source": "https://commons.wikimedia.org/wiki/File:James_Webb_Primary_Mirror.jpg",
     "creditText": "NASA/MSFC/David Higginbotham — Public domain",
+    "creator": "NASA/MSFC/David Higginbotham",
+    "creatorType": "Organization",
+    "copyrightNotice": "Public domain — NASA/MSFC/David Higginbotham",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:James_Webb_Primary_Mirror.jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -591,7 +694,11 @@
     ],
     "source": "https://commons.wikimedia.org/wiki/File:07R01.jpg",
     "creditText": "Mister rf — CC BY-SA 4.0",
-    "license": "https://creativecommons.org/licenses/by-sa/4.0",
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "creator": "Mister rf",
+    "creatorType": "Person",
+    "copyrightNotice": "© Mister rf, CC BY-SA 4.0",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:07R01.jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -613,7 +720,12 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:NASA%E2%80%99s_Webb_Reveals_Cosmic_Cliffs,_Glittering_Landscape_of_Star_Birth.jpg",
-    "creditText": "Image: National Aeronautics and Space Administration (a U.S. federal government agency; ht — Public domain",
+    "creditText": "NASA, ESA, CSA, STScI — Public domain",
+    "creator": "NASA, ESA, CSA, STScI",
+    "creatorType": "Organization",
+    "copyrightNotice": "Public domain — NASA, ESA, CSA, STScI",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:NASA%E2%80%99s_Webb_Reveals_Cosmic_Cliffs,_Glittering_Landscape_of_Star_Birth.jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -636,7 +748,11 @@
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Transformer_architecture_-_Attention_Head_module.png",
     "creditText": "Cosmia Nebula — CC BY-SA 4.0",
-    "license": "https://creativecommons.org/licenses/by-sa/4.0",
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "creator": "Cosmia Nebula",
+    "creatorType": "Person",
+    "copyrightNotice": "© Cosmia Nebula, CC BY-SA 4.0",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Transformer_architecture_-_Attention_Head_module.png",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -661,7 +777,11 @@
     ],
     "source": "https://commons.wikimedia.org/wiki/File:%D0%9B%D0%B8%D0%BD%D0%B8%D1%8F_%D1%81%D0%B2%D0%B0%D1%80%D0%BA%D0%B8_%D0%B1%D0%BE%D0%BA%D0%BE%D0%B2%D0%BE%D0%B9_%D1%81%D1%82%D0%B5%D0%BD%D1%8B_%D0%B2%D0%B0%D0%B3%D0%BE%D0%BD%D0%B0._%C2%AB%D0%A2%D0%B8%D1%85%D0%B2%D0%B8%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_%D0%B2%D0%B0%D0%B3%D0%BE%D0%BD%D0%BE%D1%81%D1%82%D1%80%D0%BE%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9_%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%C2%BB.jpg",
     "creditText": "AKomkova — CC BY-SA 4.0",
-    "license": "https://creativecommons.org/licenses/by-sa/4.0",
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "creator": "AKomkova",
+    "creatorType": "Person",
+    "copyrightNotice": "© AKomkova, CC BY-SA 4.0",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:%D0%9B%D0%B8%D0%BD%D0%B8%D1%8F_%D1%81%D0%B2%D0%B0%D1%80%D0%BA%D0%B8_%D0%B1%D0%BE%D0%BA%D0%BE%D0%B2%D0%BE%D0%B9_%D1%81%D1%82%D0%B5%D0%BD%D1%8B_%D0%B2%D0%B0%D0%B3%D0%BE%D0%BD%D0%B0._%C2%AB%D0%A2%D0%B8%D1%85%D0%B2%D0%B8%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_%D0%B2%D0%B0%D0%B3%D0%BE%D0%BD%D0%BE%D1%81%D1%82%D1%80%D0%BE%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9_%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%C2%BB.jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -685,7 +805,12 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Cable_racks_at_grid_computing_center,_Fermilab_with_blue_lights.jpg",
-    "creditText": "ENERGY.GOV — Public domain",
+    "creditText": "U.S. Department of Energy (Energy.gov) — Public domain",
+    "creator": "U.S. Department of Energy",
+    "creatorType": "Organization",
+    "copyrightNotice": "Public domain — U.S. Department of Energy",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Cable_racks_at_grid_computing_center,_Fermilab_with_blue_lights.jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -710,7 +835,11 @@
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Facebook,_Highway_126,_Prineville_-_DPLA_-_fd9c0cae95b43c5864c55d3eef1bf5a6.jpg",
     "creditText": "Gary Halvorson, Oregon State Archives — CC BY 4.0",
-    "license": "https://creativecommons.org/licenses/by/4.0",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "creator": "Gary Halvorson",
+    "creatorType": "Person",
+    "copyrightNotice": "© Gary Halvorson, CC BY 4.0",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Facebook,_Highway_126,_Prineville_-_DPLA_-_fd9c0cae95b43c5864c55d3eef1bf5a6.jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -735,7 +864,11 @@
     ],
     "source": "https://commons.wikimedia.org/wiki/File:PNNs_at_primary_somatosensory_cortex_in_mouse_brain_01.jpg",
     "creditText": "Арнст Никита, Светлана Кузнецова, Мельникова Анастасия — CC BY-SA 4.0",
-    "license": "https://creativecommons.org/licenses/by-sa/4.0",
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "creator": "Арнст Никита, Светлана Кузнецова, Мельникова Анастасия",
+    "creatorType": "Person",
+    "copyrightNotice": "© Арнст Никита, Светлана Кузнецова, Мельникова Анастасия, CC BY-SA 4.0",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:PNNs_at_primary_somatosensory_cortex_in_mouse_brain_01.jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -760,6 +893,11 @@
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Chemical_Genomics_Robot.jpg",
     "creditText": "Maggie Bartlett, National Human Genome Research Institute — Public domain",
+    "creator": "Maggie Bartlett",
+    "creatorType": "Person",
+    "copyrightNotice": "Public domain — Maggie Bartlett",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Chemical_Genomics_Robot.jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -784,6 +922,11 @@
     ],
     "source": "https://commons.wikimedia.org/wiki/File:CADRE_Rover_Awaits_Shipping_(PIA26428).jpg",
     "creditText": "NASA/JPL-Caltech — Public domain",
+    "creator": "NASA/JPL-Caltech",
+    "creatorType": "Organization",
+    "copyrightNotice": "Public domain — NASA/JPL-Caltech",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:CADRE_Rover_Awaits_Shipping_(PIA26428).jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -808,6 +951,11 @@
     ],
     "source": "https://commons.wikimedia.org/wiki/File:SPHEREx_Spacecraft_Nears_Completion_(PIA26537).jpg",
     "creditText": "NASA/JPL-Caltech/BAE Systems — Public domain",
+    "creator": "NASA/JPL-Caltech/BAE Systems",
+    "creatorType": "Organization",
+    "copyrightNotice": "Public domain — NASA/JPL-Caltech/BAE Systems",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:SPHEREx_Spacecraft_Nears_Completion_(PIA26537).jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -832,6 +980,11 @@
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Two_Cyclones_Swirl_in_the_North_Pacific_(NESDIS_2020-04-21).png",
     "creditText": "NOAA — Public domain",
+    "creator": "NOAA",
+    "creatorType": "Organization",
+    "copyrightNotice": "Public domain — NOAA",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Two_Cyclones_Swirl_in_the_North_Pacific_(NESDIS_2020-04-21).png",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -856,6 +1009,11 @@
     ],
     "source": "https://commons.wikimedia.org/wiki/File:NHGRI-97218.jpg",
     "creditText": "Ernesto del Aguila III, NHGRI — Public domain",
+    "creator": "Ernesto del Aguila III",
+    "creatorType": "Person",
+    "copyrightNotice": "Public domain — Ernesto del Aguila III",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:NHGRI-97218.jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -878,7 +1036,11 @@
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Dilution_Fridge_with_Quantum_Processors_Enclosed_008_8K.png",
     "creditText": "OJB Quantum — CC BY 4.0",
-    "license": "https://creativecommons.org/licenses/by/4.0",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "creator": "OJB Quantum",
+    "creatorType": "Person",
+    "copyrightNotice": "© OJB Quantum, CC BY 4.0",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Dilution_Fridge_with_Quantum_Processors_Enclosed_008_8K.png",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -901,6 +1063,11 @@
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Photon_Source_(5941055810).jpg",
     "creditText": "National Institute of Standards and Technology — Public domain",
+    "creator": "National Institute of Standards and Technology",
+    "creatorType": "Organization",
+    "copyrightNotice": "Public domain — National Institute of Standards and Technology",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Photon_Source_(5941055810).jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -925,6 +1092,11 @@
     ],
     "source": "https://commons.wikimedia.org/wiki/File:WBAMC_first_in_DoD_to_use_robot_for_surgery_160426-A-EK666-526.jpg",
     "creditText": "Marcy Sanchez — Public domain",
+    "creator": "Marcy Sanchez",
+    "creatorType": "Person",
+    "copyrightNotice": "Public domain — Marcy Sanchez",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:WBAMC_first_in_DoD_to_use_robot_for_surgery_160426-A-EK666-526.jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -949,7 +1121,11 @@
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Inflatable_Robotic_Arm.jpg",
     "creditText": "Z22 — CC BY-SA 4.0",
-    "license": "https://creativecommons.org/licenses/by-sa/4.0",
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "creator": "Z22",
+    "creatorType": "Person",
+    "copyrightNotice": "© Z22, CC BY-SA 4.0",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Inflatable_Robotic_Arm.jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -974,7 +1150,11 @@
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Waymo_One_Jaguar_I-Pace_-_02.jpg",
     "creditText": "Oleg Yunakov — CC BY-SA 4.0",
-    "license": "https://creativecommons.org/licenses/by-sa/4.0",
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "creator": "Oleg Yunakov",
+    "creatorType": "Person",
+    "copyrightNotice": "© Oleg Yunakov, CC BY-SA 4.0",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Waymo_One_Jaguar_I-Pace_-_02.jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -998,7 +1178,12 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:GOES-16_ABI_Full_Disk_(32440453126).jpg",
-    "creditText": "NOAASatellites — Public domain",
+    "creditText": "NOAA Satellites — Public domain",
+    "creator": "NOAA Satellites",
+    "creatorType": "Organization",
+    "copyrightNotice": "Public domain — NOAA Satellites",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:GOES-16_ABI_Full_Disk_(32440453126).jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -1022,8 +1207,12 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:COSMOS_Field_MoM-z14_Galaxy_(NIRCam_compass_image)_(weic2603b).jpg",
-    "creditText": "NASA, ESA, CSA, STScI, R. Naidu (MIT), Image Processing: J. DePasquale (STScI) — CC BY 4.0",
-    "license": "https://creativecommons.org/licenses/by/4.0",
+    "creditText": "NASA, ESA, CSA, STScI; R. Naidu (MIT); processing J. DePasquale (STScI) — CC BY 4.0",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "creator": "NASA, ESA, CSA, STScI",
+    "creatorType": "Organization",
+    "copyrightNotice": "© NASA, ESA, CSA, STScI, CC BY 4.0",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:COSMOS_Field_MoM-z14_Galaxy_(NIRCam_compass_image)_(weic2603b).jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -1045,7 +1234,10 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:P._Oxy._I_29.jpg",
-    "creditText": "Euclid — Public domain",
+    "creditText": "Oxyrhynchus Papyri, P.Oxy. I 29 (Euclid, Elements) — Public domain",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:P._Oxy._I_29.jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -1068,6 +1260,11 @@
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Solvay_conference_1927.jpg",
     "creditText": "Benjamin Couprie — Public domain",
+    "creator": "Benjamin Couprie",
+    "creatorType": "Person",
+    "copyrightNotice": "Public domain — Benjamin Couprie",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Solvay_conference_1927.jpg",
     "width": 1600,
     "height": 1000,
     "encodingFormat": "image/webp"
@@ -1085,6 +1282,9 @@
     ],
     "source": "https://archive.org/details/fieldbookofstars00olcouoft",
     "creditText": "Internet Archive scan of a public-domain edition",
+    "copyrightNotice": "Public domain — scan from the Internet Archive",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://archive.org/details/fieldbookofstars00olcouoft",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1100,6 +1300,9 @@
       "free science book"
     ],
     "creditText": "Science Knowledge Hub",
+    "creator": "Science Knowledge Hub",
+    "creatorType": "Organization",
+    "copyrightNotice": "© 2026 Science Knowledge Hub",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1117,6 +1320,9 @@
     ],
     "source": "https://archive.org/details/anintroductionto00whituoft",
     "creditText": "Internet Archive scan of a public-domain edition",
+    "copyrightNotice": "Public domain — scan from the Internet Archive",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://archive.org/details/anintroductionto00whituoft",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1134,6 +1340,9 @@
     ],
     "source": "https://archive.org/details/astronomyforamat00flamrich",
     "creditText": "Internet Archive scan of a public-domain edition",
+    "copyrightNotice": "Public domain — scan from the Internet Archive",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://archive.org/details/astronomyforamat00flamrich",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1151,6 +1360,9 @@
     ],
     "source": "https://archive.org/details/cosmossketchofph185601humb",
     "creditText": "Internet Archive scan of a public-domain edition",
+    "copyrightNotice": "Public domain — scan from the Internet Archive",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://archive.org/details/cosmossketchofph185601humb",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1168,6 +1380,9 @@
     ],
     "source": "https://archive.org/details/dialoguesconcern00galiuoft",
     "creditText": "Internet Archive scan of a public-domain edition",
+    "copyrightNotice": "Public domain — scan from the Internet Archive",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://archive.org/details/dialoguesconcern00galiuoft",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1183,6 +1398,9 @@
       "free science book"
     ],
     "creditText": "Science Knowledge Hub",
+    "creator": "Science Knowledge Hub",
+    "creatorType": "Organization",
+    "copyrightNotice": "© 2026 Science Knowledge Hub",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1200,6 +1418,9 @@
     ],
     "source": "https://archive.org/details/firstsixbooksofe00eucl",
     "creditText": "Internet Archive scan of a public-domain edition",
+    "copyrightNotice": "Public domain — scan from the Internet Archive",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://archive.org/details/firstsixbooksofe00eucl",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1215,6 +1436,9 @@
       "free science book"
     ],
     "creditText": "Science Knowledge Hub",
+    "creator": "Science Knowledge Hub",
+    "creatorType": "Organization",
+    "copyrightNotice": "© 2026 Science Knowledge Hub",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1230,6 +1454,9 @@
       "free science book"
     ],
     "creditText": "Science Knowledge Hub",
+    "creator": "Science Knowledge Hub",
+    "creatorType": "Organization",
+    "copyrightNotice": "© 2026 Science Knowledge Hub",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1247,6 +1474,9 @@
     ],
     "source": "https://archive.org/details/originofspeciesb00darw_0",
     "creditText": "Internet Archive scan of a public-domain edition",
+    "copyrightNotice": "Public domain — scan from the Internet Archive",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://archive.org/details/originofspeciesb00darw_0",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1264,6 +1494,9 @@
     ],
     "source": "https://archive.org/details/opticksoratreat00newtgoog",
     "creditText": "Internet Archive scan of a public-domain edition",
+    "copyrightNotice": "Public domain — scan from the Internet Archive",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://archive.org/details/opticksoratreat00newtgoog",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1281,6 +1514,9 @@
     ],
     "source": "https://archive.org/details/philosophiaenatu00newt",
     "creditText": "Internet Archive scan of a public-domain edition",
+    "copyrightNotice": "Public domain — scan from the Internet Archive",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://archive.org/details/philosophiaenatu00newt",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1298,6 +1534,9 @@
     ],
     "source": "https://archive.org/details/cu31924011804774",
     "creditText": "Internet Archive scan of a public-domain edition",
+    "copyrightNotice": "Public domain — scan from the Internet Archive",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://archive.org/details/cu31924011804774",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1315,6 +1554,9 @@
     ],
     "source": "https://archive.org/details/scienceandhypoth00poinuoft",
     "creditText": "Internet Archive scan of a public-domain edition",
+    "copyrightNotice": "Public domain — scan from the Internet Archive",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://archive.org/details/scienceandhypoth00poinuoft",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1332,6 +1574,9 @@
     ],
     "source": "https://archive.org/details/scienceandhypoth00poinuoft",
     "creditText": "Internet Archive scan of a public-domain edition",
+    "copyrightNotice": "Public domain — scan from the Internet Archive",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://archive.org/details/scienceandhypoth00poinuoft",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1349,6 +1594,9 @@
     ],
     "source": "https://archive.org/details/sidereusnunciusm00gali_0",
     "creditText": "Internet Archive scan of a public-domain edition",
+    "copyrightNotice": "Public domain — scan from the Internet Archive",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://archive.org/details/sidereusnunciusm00gali_0",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1366,6 +1614,9 @@
     ],
     "source": "https://archive.org/details/spacetimematter00weyluoft",
     "creditText": "Internet Archive scan of a public-domain edition",
+    "copyrightNotice": "Public domain — scan from the Internet Archive",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://archive.org/details/spacetimematter00weyluoft",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1383,6 +1634,9 @@
     ],
     "source": "https://archive.org/details/chemicalhistoryo00faraiala",
     "creditText": "Internet Archive scan of a public-domain edition",
+    "copyrightNotice": "Public domain — scan from the Internet Archive",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://archive.org/details/chemicalhistoryo00faraiala",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1400,6 +1654,9 @@
     ],
     "source": "https://archive.org/details/descentofmansele01darw",
     "creditText": "Internet Archive scan of a public-domain edition",
+    "copyrightNotice": "Public domain — scan from the Internet Archive",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://archive.org/details/descentofmansele01darw",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1415,6 +1672,9 @@
       "free science book"
     ],
     "creditText": "Science Knowledge Hub",
+    "creator": "Science Knowledge Hub",
+    "creatorType": "Organization",
+    "copyrightNotice": "© 2026 Science Knowledge Hub",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1432,6 +1692,9 @@
     ],
     "source": "https://archive.org/details/expressionofemot1872darw",
     "creditText": "Internet Archive scan of a public-domain edition",
+    "copyrightNotice": "Public domain — scan from the Internet Archive",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://archive.org/details/expressionofemot1872darw",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1447,6 +1710,9 @@
       "free science book"
     ],
     "creditText": "Science Knowledge Hub",
+    "creator": "Science Knowledge Hub",
+    "creatorType": "Organization",
+    "copyrightNotice": "© 2026 Science Knowledge Hub",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1464,6 +1730,9 @@
     ],
     "source": "https://archive.org/details/b29011085",
     "creditText": "Internet Archive scan of a public-domain edition",
+    "copyrightNotice": "Public domain — scan from the Internet Archive",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://archive.org/details/b29011085",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1479,6 +1748,9 @@
       "free science book"
     ],
     "creditText": "Science Knowledge Hub",
+    "creator": "Science Knowledge Hub",
+    "creatorType": "Organization",
+    "copyrightNotice": "© 2026 Science Knowledge Hub",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1496,6 +1768,9 @@
     ],
     "source": "https://archive.org/details/storyheavens00ballgoog",
     "creditText": "Internet Archive scan of a public-domain edition",
+    "copyrightNotice": "Public domain — scan from the Internet Archive",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://archive.org/details/storyheavens00ballgoog",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1513,6 +1788,9 @@
     ],
     "source": "https://archive.org/details/theoryofheatradi0000plan",
     "creditText": "Internet Archive scan of a public-domain edition",
+    "copyrightNotice": "Public domain — scan from the Internet Archive",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://archive.org/details/theoryofheatradi0000plan",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1528,6 +1806,9 @@
       "free science book"
     ],
     "creditText": "Science Knowledge Hub",
+    "creator": "Science Knowledge Hub",
+    "creatorType": "Organization",
+    "copyrightNotice": "© 2026 Science Knowledge Hub",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1543,6 +1824,9 @@
       "free science book"
     ],
     "creditText": "Science Knowledge Hub",
+    "creator": "Science Knowledge Hub",
+    "creatorType": "Organization",
+    "copyrightNotice": "© 2026 Science Knowledge Hub",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1557,7 +1841,12 @@
       "science"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:FASER_in_LHC.jpg",
-    "creditText": "Brice, Maximilien — CC BY 4.0",
+    "creditText": "Maximilien Brice — CC BY 4.0",
+    "creator": "Maximilien Brice",
+    "creatorType": "Person",
+    "copyrightNotice": "© Maximilien Brice, CC BY 4.0",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:FASER_in_LHC.jpg",
     "width": 1200,
     "height": 800,
     "encodingFormat": "image/webp"
@@ -1573,6 +1862,11 @@
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Gold_Ion_Trap_(6029437325).jpg",
     "creditText": "National Institute of Standards and Technology — Public domain",
+    "creator": "National Institute of Standards and Technology",
+    "creatorType": "Organization",
+    "copyrightNotice": "Public domain — National Institute of Standards and Technology",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Gold_Ion_Trap_(6029437325).jpg",
     "width": 1200,
     "height": 800,
     "encodingFormat": "image/webp"
@@ -1595,6 +1889,10 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Biruni-russian.jpg",
+    "creditText": "USSR postage stamp, 1973 — Public domain",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Biruni-russian.jpg",
     "width": 728,
     "height": 1001,
     "encodingFormat": "image/webp"
@@ -1617,6 +1915,12 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Al-jazari_elephant_clock.png",
+    "creditText": "Al-Jazari, 1315 (manuscript illustration) — Public domain",
+    "creator": "Al-Jazari",
+    "creatorType": "Person",
+    "copyrightNotice": "Public domain — Al-Jazari",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Al-jazari_elephant_clock.png",
     "width": 960,
     "height": 1504,
     "encodingFormat": "image/webp"
@@ -1639,6 +1943,12 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Madrid_-_Ciudad_Universitaria,_Monumento_a_Muhammad_al-Juarismi_(cropped).jpg",
+    "creditText": "Zarateman, 2022 (statue photograph) — CC0",
+    "creator": "Zarateman",
+    "creatorType": "Person",
+    "copyrightNotice": "Zarateman, CC0 1.0 (no rights reserved)",
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Madrid_-_Ciudad_Universitaria,_Monumento_a_Muhammad_al-Juarismi_(cropped).jpg",
     "width": 596,
     "height": 794,
     "encodingFormat": "image/webp"
@@ -1661,7 +1971,12 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Stamp_IQ_1962_6f.jpg",
-    "creditText": "Iraq Post, 1962",
+    "creditText": "Iraqi Post, 1962 (postage stamp) — Public domain",
+    "creator": "Iraqi Post",
+    "creatorType": "Organization",
+    "copyrightNotice": "Public domain — Iraqi Post",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Stamp_IQ_1962_6f.jpg",
     "width": 467,
     "height": 602,
     "encodingFormat": "image/webp"
@@ -1684,6 +1999,12 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:%D8%B2%DA%A9%D8%B1%DB%8C%D8%A7%DB%8C_%D8%B1%D8%A7%D8%B2%DB%8C_%D8%A7%D8%AB%D8%B1_%D8%AD%D8%B3%DB%8C%D9%86_%D8%A8%D9%87%D8%B2%D8%A7%D8%AF_(cropped).jpg",
+    "creditText": "Hossein Behzad (artwork) — Public domain",
+    "creator": "Hossein Behzad",
+    "creatorType": "Person",
+    "copyrightNotice": "Public domain — Hossein Behzad",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:%D8%B2%DA%A9%D8%B1%DB%8C%D8%A7%DB%8C_%D8%B1%D8%A7%D8%B2%DB%8C_%D8%A7%D8%AB%D8%B1_%D8%AD%D8%B3%DB%8C%D9%86_%D8%A8%D9%87%D8%B2%D8%A7%D8%AF_(cropped).jpg",
     "width": 703,
     "height": 937,
     "encodingFormat": "image/webp"
@@ -1706,6 +2027,10 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Al-Zahrawi.png",
+    "creditText": "Illustration released under CC0 — CC0",
+    "copyrightNotice": "CC0 1.0 (no rights reserved)",
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Al-Zahrawi.png",
     "width": 800,
     "height": 780,
     "encodingFormat": "image/webp"
@@ -1728,6 +2053,12 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Alan_turing_header.jpg",
+    "creditText": "Elliott & Fry, 1951 — Public domain",
+    "creator": "Elliott & Fry",
+    "creatorType": "Organization",
+    "copyrightNotice": "Public domain — Elliott & Fry",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Alan_turing_header.jpg",
     "width": 752,
     "height": 1002,
     "encodingFormat": "image/webp"
@@ -1750,6 +2081,12 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Charles_Darwin_seated_crop.jpg",
+    "creditText": "Maull & Fox (Henry Maull and John Fox), c. 1854 — Public domain",
+    "creator": "Maull & Fox",
+    "creatorType": "Organization",
+    "copyrightNotice": "Public domain — Maull & Fox",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Charles_Darwin_seated_crop.jpg",
     "width": 960,
     "height": 1263,
     "encodingFormat": "image/webp"
@@ -1772,7 +2109,12 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:C.E._Shannon._Tekniska_museet_43069_(2x3_crop).jpg",
-    "creditText": "Tekniska museet",
+    "creditText": "Tekniska museet (via Flickr) — CC BY 2.0",
+    "creator": "Tekniska museet",
+    "creatorType": "Organization",
+    "copyrightNotice": "© Tekniska museet, CC BY 2.0",
+    "license": "https://creativecommons.org/licenses/by/2.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:C.E._Shannon._Tekniska_museet_43069_(2x3_crop).jpg",
     "width": 960,
     "height": 1439,
     "encodingFormat": "image/webp"
@@ -1795,6 +2137,12 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Marie_Curie_c1920.jpg",
+    "creditText": "Henri Manuel, c. 1920 — Public domain",
+    "creator": "Henri Manuel",
+    "creatorType": "Person",
+    "copyrightNotice": "Public domain — Henri Manuel",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Marie_Curie_c1920.jpg",
     "width": 1177,
     "height": 1600,
     "encodingFormat": "image/webp"
@@ -1817,7 +2165,12 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Albert_Einstein_Head.jpg",
-    "creditText": "Ferdinand Schmutzer, 1921",
+    "creditText": "Orren Jack Turner, Princeton, 1947 — Public domain",
+    "creator": "Orren Jack Turner",
+    "creatorType": "Person",
+    "copyrightNotice": "Public domain — Orren Jack Turner",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Albert_Einstein_Head.jpg",
     "width": 1200,
     "height": 1600,
     "encodingFormat": "image/webp"
@@ -1840,6 +2193,12 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Galileo_Galilei_(1564-1642)_RMG_BHC2700.tiff",
+    "creditText": "Justus Sustermans, c. 1640 (painting) — Public domain",
+    "creator": "Justus Sustermans",
+    "creatorType": "Person",
+    "copyrightNotice": "Public domain — Justus Sustermans",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Galileo_Galilei_(1564-1642)_RMG_BHC2700.tiff",
     "width": 960,
     "height": 1219,
     "encodingFormat": "image/webp"
@@ -1862,7 +2221,12 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Commodore_Grace_M._Hopper,_USN_(covered)_head_and_shoulders_crop.jpg",
-    "creditText": "U.S. Navy",
+    "creditText": "James S. Davis, U.S. Navy, 1984 — Public domain",
+    "creator": "James S. Davis",
+    "creatorType": "Person",
+    "copyrightNotice": "Public domain — James S. Davis",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Commodore_Grace_M._Hopper,_USN_(covered)_head_and_shoulders_crop.jpg",
     "width": 960,
     "height": 1277,
     "encodingFormat": "image/webp"
@@ -1885,7 +2249,12 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Stephen_hawking_2008_nasa.jpg",
-    "creditText": "NASA, 2008",
+    "creditText": "NASA/Paul Alers, 2008 — Public domain",
+    "creator": "Paul Alers",
+    "creatorType": "Person",
+    "copyrightNotice": "Public domain — Paul Alers",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Stephen_hawking_2008_nasa.jpg",
     "width": 900,
     "height": 1200,
     "encodingFormat": "image/webp"
@@ -1908,6 +2277,12 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Ibn_al-Haytham_crop.jpg",
+    "creditText": "Adolph Boÿ (design) and Jeremias Falck (engraving), 1647 — Public domain",
+    "creator": "Jeremias Falck",
+    "creatorType": "Person",
+    "copyrightNotice": "Public domain — Jeremias Falck",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Ibn_al-Haytham_crop.jpg",
     "width": 710,
     "height": 939,
     "encodingFormat": "image/webp"
@@ -1930,6 +2305,10 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Ibn_Al_Nafis_statue.jpg",
+    "creditText": "Unknown photographer (statue) — CC BY-SA 3.0",
+    "copyrightNotice": "© the creator, CC BY-SA 3.0",
+    "license": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Ibn_Al_Nafis_statue.jpg",
     "width": 330,
     "height": 407,
     "encodingFormat": "image/webp"
@@ -1952,6 +2331,12 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Avicenna_Bust,_left_profile_(cropped).jpg",
+    "creditText": "National Library of Medicine, 1952 (bust photograph) — No known copyright restrictions",
+    "creator": "National Library of Medicine",
+    "creatorType": "Organization",
+    "copyrightNotice": "National Library of Medicine — no known copyright restrictions",
+    "license": "https://www.flickr.com/commons/usage/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Avicenna_Bust,_left_profile_(cropped).jpg",
     "width": 960,
     "height": 1237,
     "encodingFormat": "image/webp"
@@ -1974,6 +2359,10 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Man_Florence,_Ashburnham_1166_fol_12r.jpg",
+    "creditText": "Unknown illuminator, 1470 (manuscript) — Public domain",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Man_Florence,_Ashburnham_1166_fol_12r.jpg",
     "width": 960,
     "height": 1326,
     "encodingFormat": "image/webp"
@@ -1996,7 +2385,11 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:JohnvonNeumann-LosAlamos.gif",
-    "creditText": "Los Alamos",
+    "creditText": "Los Alamos National Laboratory (LANL) — see source record for terms",
+    "creator": "Los Alamos National Laboratory",
+    "creatorType": "Organization",
+    "copyrightNotice": "Los Alamos National Laboratory — see the linked source record for the license",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:JohnvonNeumann-LosAlamos.gif",
     "width": 490,
     "height": 639,
     "encodingFormat": "image/webp"
@@ -2019,7 +2412,12 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Louis_Pasteur,_foto_av_Paul_Nadar,_Crisco_edit.jpg",
-    "creditText": "Paul Nadar",
+    "creditText": "Paul Nadar, before 1895 — Public domain",
+    "creator": "Paul Nadar",
+    "creatorType": "Person",
+    "copyrightNotice": "Public domain — Paul Nadar",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Louis_Pasteur,_foto_av_Paul_Nadar,_Crisco_edit.jpg",
     "width": 960,
     "height": 1323,
     "encodingFormat": "image/webp"
@@ -2042,7 +2440,12 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Ada_Lovelace_portrait.jpg",
-    "creditText": "Margaret Sarah Carpenter, 1836 (painting)",
+    "creditText": "Alfred Edward Chalon, c. 1840 (painting) — Public domain",
+    "creator": "Alfred Edward Chalon",
+    "creatorType": "Person",
+    "copyrightNotice": "Public domain — Alfred Edward Chalon",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Ada_Lovelace_portrait.jpg",
     "width": 1114,
     "height": 1600,
     "encodingFormat": "image/webp"
@@ -2065,6 +2468,10 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Margaret_Hamilton_-_restoration.jpg",
+    "creditText": "1969 photograph, restored by Adam Cuerden — Public domain",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Margaret_Hamilton_-_restoration.jpg",
     "width": 2294,
     "height": 2853,
     "encodingFormat": "image/webp"
@@ -2087,6 +2494,10 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Michael_Faraday_sitting_crop.jpg",
+    "creditText": "Unknown photographer, c. 1850s — Public domain",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Michael_Faraday_sitting_crop.jpg",
     "width": 960,
     "height": 1269,
     "encodingFormat": "image/webp"
@@ -2109,7 +2520,12 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:GodfreyKneller-IsaacNewton-1689.jpg",
-    "creditText": "Godfrey Kneller, 1689 (painting)",
+    "creditText": "Godfrey Kneller, 1689 (painting) — Public domain",
+    "creator": "Godfrey Kneller",
+    "creatorType": "Person",
+    "copyrightNotice": "Public domain — Godfrey Kneller",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:GodfreyKneller-IsaacNewton-1689.jpg",
     "width": 1139,
     "height": 1600,
     "encodingFormat": "image/webp"
@@ -2132,6 +2548,12 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:Rosalind_Franklin_(retouched).jpg",
+    "creditText": "MRC Laboratory of Molecular Biology, 1955 — CC BY-SA 4.0",
+    "creator": "MRC Laboratory of Molecular Biology",
+    "creatorType": "Organization",
+    "copyrightNotice": "© MRC Laboratory of Molecular Biology, CC BY-SA 4.0",
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Rosalind_Franklin_(retouched).jpg",
     "width": 488,
     "height": 592,
     "encodingFormat": "image/webp"
@@ -2154,7 +2576,10 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:N.Tesla.JPG",
-    "creditText": "Napoleon Sarony, c. 1890s",
+    "creditText": "Unknown photographer, c. 1896 — Public domain",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:N.Tesla.JPG",
     "width": 1225,
     "height": 1600,
     "encodingFormat": "image/webp"
@@ -2177,6 +2602,9 @@
       "science articles"
     ],
     "creditText": "Science Knowledge Hub",
+    "creator": "Science Knowledge Hub",
+    "creatorType": "Organization",
+    "copyrightNotice": "© 2026 Science Knowledge Hub",
     "width": 1536,
     "height": 1024,
     "encodingFormat": "image/webp"
