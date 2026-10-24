@@ -10,6 +10,7 @@ import ArticleContent from '@/components/ArticleContent';
 import SafeImage from '@/components/SafeImage';
 import { getPublicArticleAuthor } from '@/lib/article-author';
 import { absoluteUrl, SITE_NAME, EDITORIAL_TEAM } from '@/lib/site';
+import { pageTitle, SEO_DESCRIPTIONS, SEO_TITLES } from '@/lib/seo-copy';
 import { getImageMetadata, imageObject, openGraphImage } from '@/lib/image-seo';
 import StructuredData from '@/components/StructuredData';
 import { Clock, Eye, ArrowLeft, BookOpen, Download, FileText, Smartphone, ExternalLink, ShieldCheck } from 'lucide-react';
@@ -64,9 +65,10 @@ export async function generateMetadata({ params }: ArticleDetailProps) {
     ? openGraphImage(article.featuredImage, article.title as string)
     : undefined;
   const publicAuthor = getPublicArticleAuthor(article.author as { displayName?: string; avatar?: string } | undefined);
+  const headline = (article.metaTitle as string) || (article.title as string);
   return {
-    title: (article.metaTitle as string) || (article.title as string),
-    description: (article.metaDescription as string) || (article.excerpt as string),
+    title: pageTitle(SEO_TITLES[slug] ?? headline, SITE_NAME),
+    description: SEO_DESCRIPTIONS[slug] ?? ((article.metaDescription as string) || (article.excerpt as string)),
     keywords: article.tags as string[],
     alternates: { canonical: `/articles/${slug}` },
     authors: [publicAuthor.href

@@ -1,3 +1,5 @@
+import { absoluteUrl } from './site';
+
 const unsplash = (id: string) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=800&q=70`;
 
@@ -19,3 +21,12 @@ export const CATEGORY_IMAGES: Record<string, string> = {
   mathematics: unsplash('photo-1635070041078-e363dbe005cb'),
   'future-technologies': unsplash('photo-1531297484001-80022131f5a1'),
 };
+
+// Social-card / search-preview version of a category photo (1200x630 crop for Unsplash).
+export function categoryOgImage(slug: string) {
+  const url = CATEGORY_IMAGES[slug];
+  if (!url) return undefined;
+  return url.startsWith('https://images.unsplash.com/')
+    ? url.replace('w=800&q=70', 'w=1200&h=630&q=75')
+    : absoluteUrl(url);
+}

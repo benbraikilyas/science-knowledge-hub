@@ -6,7 +6,7 @@ import { absoluteUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Interactive Science Tools',
-  description: 'Use free educational calculators for light travel time, photon energy, relativistic time dilation, and escape velocity—with formulas, assumptions, and reliable sources.',
+  description: 'Free educational calculators for light travel time, photon energy, time dilation and escape velocity, with formulas, assumptions and sources.',
   alternates: { canonical: '/tools' },
   openGraph: {
     title: 'Interactive Science Tools | ScienceHub',

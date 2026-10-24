@@ -4,6 +4,8 @@ import BooksLibrary from '@/components/BooksLibrary';
 import { fetchCategory, fetchArticles } from '@/lib/api';
 import type { ArticleListItem, Category } from '@/lib/types';
 import { toArticleListItem } from '@/lib/article-list';
+import { categoryOgImage } from '@/lib/category-images';
+import { absoluteUrl, SITE_NAME } from '@/lib/site';
 import { ArrowLeft, Sparkles } from 'lucide-react';
 
 interface CategoryDetailProps {
@@ -52,11 +54,27 @@ export async function generateMetadata({ params }: CategoryDetailProps) {
   const { slug } = await params;
   const { category, articles } = await getCategoryData(slug);
   if (!category) return { title: 'Category Not Found' };
+  const image = { url: categoryOgImage(slug) ?? absoluteUrl('/og.webp'), alt: `${category.name} — Science Knowledge Hub` };
   return {
     title: category.name,
     description: category.description,
     alternates: { canonical: `/categories/${slug}` },
     robots: { index: articles.length > 0, follow: true },
+    openGraph: {
+      type: 'website',
+      siteName: SITE_NAME,
+      locale: 'en_US',
+      url: absoluteUrl(`/categories/${slug}`),
+      title: category.name,
+      description: category.description,
+      images: [image],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: category.name,
+      description: category.description,
+      images: [image],
+    },
   };
 }
 
