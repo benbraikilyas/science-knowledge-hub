@@ -12,13 +12,17 @@ interface SafeImageProps {
   height?: number;
   sizes?: string;
   className?: string;
+  priority?: boolean;
   fallback: ReactNode;
 }
 
-export default function SafeImage({ src, alt, width, height, sizes, className, fallback }: SafeImageProps) {
+export default function SafeImage({ src, alt, width, height, sizes, className, priority, fallback }: SafeImageProps) {
   const [failed, setFailed] = useState(false);
 
   if (!src || failed) return <>{fallback}</>;
+
+  // Above-the-fold images should not be lazy-loaded (it delays the largest contentful paint).
+  const eager = priority ? ({ loading: 'eager', fetchPriority: 'high' } as const) : {};
 
   if (width && height) {
     return (
@@ -29,6 +33,7 @@ export default function SafeImage({ src, alt, width, height, sizes, className, f
         height={height}
         className={className}
         onError={() => setFailed(true)}
+        {...eager}
       />
     );
   }
@@ -41,6 +46,7 @@ export default function SafeImage({ src, alt, width, height, sizes, className, f
       sizes={sizes}
       className={className}
       onError={() => setFailed(true)}
+      {...eager}
     />
   );
 }

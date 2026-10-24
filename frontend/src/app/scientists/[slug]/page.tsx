@@ -116,6 +116,7 @@ export default async function ScientistDetailPage({ params }: ScientistDetailPro
                 alt={name}
                 width={224}
                 height={224}
+                priority
                 className="h-full w-full rounded-[22px] object-cover object-top"
                 fallback={
                   <div className="flex h-full w-full items-center justify-center rounded-[22px] bg-[var(--bg-secondary)] text-5xl font-extrabold text-[var(--text-primary)]">

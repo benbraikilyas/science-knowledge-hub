@@ -258,11 +258,12 @@ export default async function ArticleDetailPage({ params }: ArticleDetailProps) 
       {/* Featured Image */}
       {featuredImage && (
         <div className="mx-auto max-w-4xl px-4 pt-12 sm:px-6">
-          <div className="relative aspect-[16/9] overflow-hidden rounded-3xl border border-[var(--border-color)] shadow-2xl">
+          <div className={`relative overflow-hidden rounded-3xl border border-[var(--border-color)] shadow-2xl ${isBook ? 'mx-auto aspect-[2/3] max-w-xs' : 'aspect-[16/9]'}`}>
             <SafeImage
               src={featuredImage}
               alt={article.title as string}
-              sizes="(max-width: 896px) 100vw, 896px"
+              sizes={isBook ? '320px' : '(max-width: 896px) 100vw, 896px'}
+              priority
               className="object-cover"
               fallback={
                 <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[var(--bg-card)] to-[var(--bg-primary)] text-6xl">
@@ -271,7 +272,7 @@ export default async function ArticleDetailPage({ params }: ArticleDetailProps) 
               }
             />
           </div>
-          <p className="mt-2 text-right text-[11px] text-[var(--text-secondary)]">
+          <p className={`mt-2 text-[11px] text-[var(--text-secondary)] ${isBook ? 'text-center' : 'text-right'}`}>
             {imageMetadata?.creditText && <span>{imageMetadata.creditText} · </span>}
             <Link href={imageMetadata?.source || '/sources#image-credits'} className="hover:text-gold-300">Image source and license</Link>
           </p>
