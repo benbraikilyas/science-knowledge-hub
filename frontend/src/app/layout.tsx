@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
-import { Analytics } from '@vercel/analytics/react';
 import StructuredData from '@/components/StructuredData';
 import { ThemeProvider } from '@/context/ThemeProvider';
 import { AuthProvider } from '@/context/AuthContext';
@@ -8,6 +7,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CursorGlow from '@/components/CursorGlow';
 import CookieConsent from '@/components/CookieConsent';
+import SiteAnalytics from '@/components/SiteAnalytics';
 import { ADSENSE_ACCOUNT, SITE_DESCRIPTION, SITE_NAME, SITE_URL, absoluteUrl } from '@/lib/site';
 import { imageObject } from '@/lib/image-seo';
 import './globals.css';
@@ -114,7 +114,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <CookieConsent />
           </AuthProvider>
         </ThemeProvider>
-        <Analytics />
+        <SiteAnalytics />
       </body>
     </html>
   );
