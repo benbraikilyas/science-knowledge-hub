@@ -5,6 +5,7 @@ import { fetchCategory, fetchArticles } from '@/lib/api';
 import type { ArticleListItem, Category } from '@/lib/types';
 import { toArticleListItem } from '@/lib/article-list';
 import { categoryOgImage } from '@/lib/category-images';
+import StructuredData from '@/components/StructuredData';
 import { absoluteUrl, SITE_NAME } from '@/lib/site';
 import { ArrowLeft, Sparkles } from 'lucide-react';
 
@@ -100,8 +101,34 @@ export default async function CategoryDetailPage({ params }: CategoryDetailProps
     );
   }
 
+  const pageUrl = absoluteUrl(`/categories/${slug}`);
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'CollectionPage', '@id': pageUrl, url: pageUrl, name: category.name, description: category.description, inLanguage: 'en',
+        mainEntity: {
+          '@type': 'ItemList',
+          numberOfItems: articles.length,
+          itemListElement: articles.slice(0, 50).map((article, index) => ({
+            '@type': 'ListItem', position: index + 1, name: article.title, url: absoluteUrl(`/articles/${article.slug}`),
+          })),
+        },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: absoluteUrl('/') },
+          { '@type': 'ListItem', position: 2, name: 'Categories', item: absoluteUrl('/categories') },
+          { '@type': 'ListItem', position: 3, name: category.name, item: pageUrl },
+        ],
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] pb-24">
+      <StructuredData data={structuredData} />
       {/* Header */}
       <div className="relative overflow-hidden border-b border-[var(--border-color)] bg-gradient-to-b from-[var(--bg-card)] via-[var(--bg-secondary)] to-[var(--bg-primary)] py-16 sm:py-20">
         <div

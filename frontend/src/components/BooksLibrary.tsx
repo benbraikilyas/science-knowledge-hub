@@ -336,9 +336,9 @@ export default function BooksLibrary({ books }: BooksLibraryProps) {
                       {book.bookDetails?.downloadEpubUrl && <span className="inline-flex items-center gap-1"><Download className="h-3.5 w-3.5" />EPUB</span>}
                     </div>
                     <div className="flex items-center gap-2">
-                      <Link href={`/articles/${book.slug}`} className="inline-flex h-9 items-center rounded-lg border border-[var(--border-color)] px-3 text-xs font-bold text-[var(--text-primary)] transition-colors hover:border-gold-500/40 hover:text-gold-300">Details</Link>
+                      <Link href={`/articles/${book.slug}`} className="inline-flex h-9 items-center rounded-lg border border-[var(--border-color)] px-3 text-xs font-bold text-[var(--text-primary)] transition-colors hover:border-gold-500/40 hover:text-gold-300">Details<span className="sr-only"> about {book.title}</span></Link>
                       {book.bookDetails?.readOnlineUrl && (
-                        <a href={book.bookDetails.readOnlineUrl} target="_blank" rel="noreferrer" className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-gold-500 px-3 text-xs font-bold text-navy-950 transition-colors hover:bg-gold-400">Read free <ExternalLink className="h-3.5 w-3.5" /></a>
+                        <a href={book.bookDetails.readOnlineUrl} target="_blank" rel="noreferrer" className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-gold-500 px-3 text-xs font-bold text-navy-950 transition-colors hover:bg-gold-400">Read free<span className="sr-only">: {book.title}</span> <ExternalLink className="h-3.5 w-3.5" /></a>
                       )}
                     </div>
                   </div>

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { formatDate, formatCompactNumber } from '@/lib/utils';
+import { formatDate } from '@/lib/utils';
 import { fetchArticle, fetchRelatedArticles } from '@/lib/api';
 import type { ArticleListItem } from '@/lib/types';
 import { toArticleListItem } from '@/lib/article-list';
@@ -13,7 +13,7 @@ import { absoluteUrl, SITE_NAME, EDITORIAL_TEAM } from '@/lib/site';
 import { pageTitle, SEO_DESCRIPTIONS, SEO_TITLES } from '@/lib/seo-copy';
 import { getImageMetadata, imageObject, openGraphImage } from '@/lib/image-seo';
 import StructuredData from '@/components/StructuredData';
-import { Clock, Eye, ArrowLeft, BookOpen, Download, FileText, Smartphone, ExternalLink, ShieldCheck } from 'lucide-react';
+import { Clock, ArrowLeft, BookOpen, Download, FileText, Smartphone, ExternalLink, ShieldCheck } from 'lucide-react';
 
 interface ArticleDetailProps {
   params: Promise<{ slug: string }>;
@@ -246,11 +246,6 @@ export default async function ArticleDetailPage({ params }: ArticleDetailProps) 
               <div className="flex items-center gap-1.5">
                 <Clock className="h-3.5 w-3.5 text-gold-400" />
                 <span>{article.readTime as number} min read</span>
-              </div>
-              <span>·</span>
-              <div className="flex items-center gap-1.5">
-                <Eye className="h-3.5 w-3.5 text-gold-300" />
-                <span>{formatCompactNumber(article.viewsCount as number)} views</span>
               </div>
             </div>
           </div>

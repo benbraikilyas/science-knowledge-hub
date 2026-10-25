@@ -80,8 +80,7 @@ export default async function ScientistDetailPage({ params }: ScientistDetailPro
   const famousQuotes = (scientist.famousQuotes as string[]) || [];
   const awards = (scientist.awards as string[]) || [];
   const pageUrl = absoluteUrl(`/scientists/${slug}`);
-  const structuredData = {
-    '@context': 'https://schema.org',
+  const profilePage = {
     '@type': 'ProfilePage', '@id': pageUrl, url: pageUrl, name, inLanguage: 'en',
     ...(portraitImage ? { primaryImageOfPage: imageObject(portraitImage, name) } : {}),
     mainEntity: {
@@ -91,6 +90,20 @@ export default async function ScientistDetailPage({ params }: ScientistDetailPro
       ...(sourceUrl ? { sameAs: [sourceUrl] } : {}),
       ...(portraitImage ? { image: imageObject(portraitImage, name) } : {}),
     },
+  };
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      profilePage,
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: absoluteUrl('/') },
+          { '@type': 'ListItem', position: 2, name: 'Scientists', item: absoluteUrl('/scientists') },
+          { '@type': 'ListItem', position: 3, name, item: pageUrl },
+        ],
+      },
+    ],
   };
 
   return (

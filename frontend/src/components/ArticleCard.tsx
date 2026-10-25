@@ -3,7 +3,6 @@
 import { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { formatCompactNumber, getRelativeTime } from '@/lib/utils';
 import type { ArticleListItem } from '@/lib/types';
 import { gsap } from '@/lib/gsap';
 import { getPublicArticleAuthor } from '@/lib/article-author';
@@ -168,12 +167,6 @@ export default function ArticleCard({ article, featured }: ArticleCardProps) {
               </div>
             )}
             <span className="truncate font-medium text-[var(--text-secondary)]">{publicAuthor.displayName}</span>
-          </div>
-
-          <div className="flex min-w-0 max-w-full items-center gap-3 font-mono text-xs sm:text-sm">
-            <span>{formatCompactNumber(article.viewsCount)} views</span>
-            <span>·</span>
-            <span>{getRelativeTime(article.publishedAt)}</span>
           </div>
         </div>
       </div>
