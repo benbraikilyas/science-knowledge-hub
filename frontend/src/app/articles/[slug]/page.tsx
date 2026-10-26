@@ -45,7 +45,18 @@ async function getRelatedArticles(slug: string): Promise<ArticleListItem[]> {
         article.slug !== slug && article.category.slug !== localArticle.category.slug
     );
 
-    return [...sameCategory, ...otherCategories].slice(0, 3).map(toArticleListItem);
+    // One topical pick (most shared tags), then the next articles after this one in its category.
+    // Always taking the first three linked the same few pages everywhere and left the rest orphaned.
+    const sharedTags = (article: { tags?: string[] }) =>
+      (article.tags ?? []).filter((tag) => (localArticle.tags ?? []).includes(tag)).length;
+    const position = DEMO_ARTICLES.indexOf(localArticle);
+    const distance = (article: (typeof DEMO_ARTICLES)[number]) =>
+      (DEMO_ARTICLES.indexOf(article) - position + DEMO_ARTICLES.length) % DEMO_ARTICLES.length;
+    const topical = [...sameCategory].sort((a, b) => sharedTags(b) - sharedTags(a))[0];
+    const neighbours = [...sameCategory].sort((a, b) => distance(a) - distance(b));
+    const picked = [...new Set([...(topical && sharedTags(topical) > 0 ? [topical] : []), ...neighbours, ...otherCategories])];
+
+    return picked.slice(0, 3).map(toArticleListItem);
   }
 
   try {

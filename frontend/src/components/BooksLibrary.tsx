@@ -116,6 +116,9 @@ export default function BooksLibrary({ books }: BooksLibraryProps) {
     return sources.map((name) => ({ name, count: books.filter((book) => getSource(book) === name).length }));
   }, [books, sources]);
 
+  // Pagination only renders 12 cards, so this plain list keeps every book reachable by link.
+  const allBooks = useMemo(() => [...books].sort((a, b) => a.title.localeCompare(b.title)), [books]);
+
   const filteredBooks = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
     const result = books.filter((book) => {
@@ -365,6 +368,19 @@ export default function BooksLibrary({ books }: BooksLibraryProps) {
           <button type="button" onClick={() => setPage(Math.min(pageCount, currentPage + 1))} disabled={currentPage === pageCount} className="inline-flex h-10 items-center gap-1.5 rounded-xl border border-[var(--border-color)] px-4 text-sm font-semibold text-[var(--text-secondary)] transition-colors hover:border-gold-500/40 hover:text-[var(--text-primary)] disabled:cursor-not-allowed disabled:opacity-40">Next <ChevronRight className="h-4 w-4" /></button>
         </nav>
       )}
+
+      <nav aria-labelledby="all-books-heading" className="mt-12 border-t border-[var(--border-color)] pt-8">
+        <h2 id="all-books-heading" className="text-lg font-bold text-[var(--text-primary)]">All {allBooks.length} books in the library</h2>
+        <ul className="mt-4 grid gap-x-8 gap-y-2 text-sm sm:grid-cols-2 lg:grid-cols-3">
+          {allBooks.map((book) => (
+            <li key={book.id}>
+              <Link href={`/articles/${book.slug}`} className="text-[var(--text-secondary)] transition-colors hover:text-gold-300">
+                {book.title} <span className="text-xs opacity-70">by {book.author.displayName}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
 
       <p className="mt-8 text-center text-xs leading-relaxed text-[var(--text-secondary)]">
         Saved books stay on this device. Archive availability and copyright status can vary by edition and country; always review the linked source record.
