@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import Link from 'next/link';
 import ArticleCard from '@/components/ArticleCard';
 import BooksLibrary from '@/components/BooksLibrary';
@@ -5,12 +6,32 @@ import { fetchCategory, fetchArticles } from '@/lib/api';
 import type { ArticleListItem, Category } from '@/lib/types';
 import { toArticleListItem } from '@/lib/article-list';
 import { categoryOgImage } from '@/lib/category-images';
+import { guidesForCategory } from '@/lib/guides';
 import StructuredData from '@/components/StructuredData';
 import { absoluteUrl, SITE_NAME } from '@/lib/site';
 import { ArrowLeft, Sparkles } from 'lucide-react';
 
 interface CategoryDetailProps {
   params: Promise<{ slug: string }>;
+}
+
+// Search-facing copy for collections whose short category name says too little on its own.
+const COLLECTION_COPY: Record<string, { title: string; heading: string; description: (count: number) => string }> = {
+  books: {
+    title: 'Free Science Books to Read Online',
+    heading: 'Free Science Books',
+    description: (count) =>
+      `Read guides to ${count} public-domain science classics by Darwin, Newton, Einstein, Faraday and Galileo, each linked to a free, legal edition online.`,
+  },
+};
+
+function collectionCopy(category: Category, count: number) {
+  const copy = COLLECTION_COPY[category.slug];
+  return {
+    title: copy?.title ?? category.name,
+    heading: copy?.heading ?? category.name,
+    description: copy?.description(count) ?? category.description,
+  };
 }
 
 async function getCategoryData(slug: string) {
@@ -55,10 +76,11 @@ export async function generateMetadata({ params }: CategoryDetailProps) {
   const { slug } = await params;
   const { category, articles } = await getCategoryData(slug);
   if (!category) return { title: 'Category Not Found' };
-  const image = { url: categoryOgImage(slug) ?? absoluteUrl('/og.webp'), alt: `${category.name} — Science Knowledge Hub` };
+  const { title, heading, description } = collectionCopy(category, articles.length);
+  const image = { url: categoryOgImage(slug) ?? absoluteUrl('/og.webp'), alt: `${heading} — Science Knowledge Hub` };
   return {
-    title: category.name,
-    description: category.description,
+    title,
+    description,
     alternates: { canonical: `/categories/${slug}` },
     robots: { index: articles.length > 0, follow: true },
     openGraph: {
@@ -66,14 +88,14 @@ export async function generateMetadata({ params }: CategoryDetailProps) {
       siteName: SITE_NAME,
       locale: 'en_US',
       url: absoluteUrl(`/categories/${slug}`),
-      title: category.name,
-      description: category.description,
+      title,
+      description,
       images: [image],
     },
     twitter: {
       card: 'summary_large_image',
-      title: category.name,
-      description: category.description,
+      title,
+      description,
       images: [image],
     },
   };
@@ -102,11 +124,13 @@ export default async function CategoryDetailPage({ params }: CategoryDetailProps
   }
 
   const pageUrl = absoluteUrl(`/categories/${slug}`);
+  const { heading, description } = collectionCopy(category, articles.length);
+  const guides = guidesForCategory(category.slug);
   const structuredData = {
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': 'CollectionPage', '@id': pageUrl, url: pageUrl, name: category.name, description: category.description, inLanguage: 'en',
+        '@type': 'CollectionPage', '@id': pageUrl, url: pageUrl, name: heading, description, inLanguage: 'en',
         mainEntity: {
           '@type': 'ItemList',
           numberOfItems: articles.length,
@@ -120,7 +144,7 @@ export default async function CategoryDetailPage({ params }: CategoryDetailProps
         itemListElement: [
           { '@type': 'ListItem', position: 1, name: 'Home', item: absoluteUrl('/') },
           { '@type': 'ListItem', position: 2, name: 'Categories', item: absoluteUrl('/categories') },
-          { '@type': 'ListItem', position: 3, name: category.name, item: pageUrl },
+          { '@type': 'ListItem', position: 3, name: heading, item: pageUrl },
         ],
       },
     ],
@@ -161,9 +185,22 @@ export default async function CategoryDetailPage({ params }: CategoryDetailProps
                 className="text-4xl font-extrabold tracking-tight text-[var(--text-primary)] sm:text-5xl lg:text-6xl"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                {category.name}
+                {heading}
               </h1>
-              <p className="mt-3 text-lg sm:text-xl text-[var(--text-secondary)] max-w-3xl leading-relaxed">{category.description}</p>
+              <p className="mt-3 text-lg sm:text-xl text-[var(--text-secondary)] max-w-3xl leading-relaxed">{description}</p>
+              {guides.length > 0 && (
+                <p className="mt-4 text-sm sm:text-base text-[var(--text-secondary)]">
+                  Start here:{' '}
+                  {guides.map((guide, index) => (
+                    <Fragment key={guide.slug}>
+                      {index > 0 && ' · '}
+                      <Link href={`/guides/${guide.slug}`} className="font-semibold text-gold-400 transition-colors hover:text-gold-300">
+                        {guide.title}
+                      </Link>
+                    </Fragment>
+                  ))}
+                </p>
+              )}
             </div>
           </div>
         </div>

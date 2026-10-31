@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Sparkles } from 'lucide-react';
+import { GUIDES } from '@/lib/guides';
 
 export const metadata = {
   alternates: { canonical: '/sitemap' },
@@ -12,8 +13,12 @@ const NAV_LINKS = [
   { label: 'Articles', href: '/articles' },
   { label: 'Categories', href: '/categories' },
   { label: 'Scientists', href: '/scientists' },
+  { label: 'Reading Guides', href: '/guides' },
+  { label: 'Learning Paths', href: '/learn' },
   { label: 'Search', href: '/search' },
 ];
+
+const GUIDE_LINKS = GUIDES.map((guide) => ({ label: guide.title, href: `/guides/${guide.slug}` }));
 
 const CATEGORY_LINKS = [
   { label: 'Space & Astronomy', href: '/categories/space' },
@@ -80,6 +85,17 @@ export default function SitemapPage() {
             <h2 className="text-lg font-bold text-[var(--text-primary)]" style={{ fontFamily: 'var(--font-heading)' }}>Categories</h2>
             <ul className="mt-4 space-y-2.5">
               {CATEGORY_LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-sm text-[var(--text-secondary)] transition-colors hover:text-gold-400">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            <h2 className="mt-8 text-lg font-bold text-[var(--text-primary)]" style={{ fontFamily: 'var(--font-heading)' }}>Reading Guides</h2>
+            <ul className="mt-4 space-y-2.5">
+              {GUIDE_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="text-sm text-[var(--text-secondary)] transition-colors hover:text-gold-400">
                     {link.label}

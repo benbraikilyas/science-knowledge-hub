@@ -232,8 +232,8 @@ This brief treatise completely upended the thousand-year Ptolemaic dogma and fur
     title: 'Euclid’s Elements of Geometry',
     slug: 'euclids-elements-of-geometry',
     excerpt: 'The most enduring mathematical textbook of all human civilization, establishing rigorous deductive reasoning, geometric proofs, and prime number theory.',
-    featuredImage: 'https://archive.org/services/img/thirteenbooksofeuclid01euclrich',
-    thumbnail: 'https://archive.org/services/img/thirteenbooksofeuclid01euclrich',
+    featuredImage: 'https://archive.org/services/img/bub_gb_UhgPAAAAIAAJ',
+    thumbnail: 'https://archive.org/services/img/bub_gb_UhgPAAAAIAAJ',
     category: {
       id: '12',
       name: 'Books',
@@ -254,13 +254,13 @@ This brief treatise completely upended the thousand-year Ptolemaic dogma and fur
     bookDetails: {
       originalAuthor: 'Euclid of Alexandria (trans. Sir Thomas L. Heath)',
       firstPublished: 'c. 300 BCE',
-      pages: 527,
+      pages: 439,
       subjects: ['Plane Geometry', 'Incommensurable Ratios', 'Prime Number Theory', 'Solid Geometry'],
       license: 'Public-domain archive edition — free access; verify local copyright rules.',
-      readOnlineUrl: 'https://archive.org/details/thirteenbooksofeuclid01euclrich/mode/2up',
-      downloadPdfUrl: 'https://archive.org/download/thirteenbooksofeuclid01euclrich/thirteenbooksofeuclid01euclrich.pdf',
-      downloadEpubUrl: 'https://archive.org/download/thirteenbooksofeuclid01euclrich/thirteenbooksofeuclid01euclrich.epub',
-      iaDetailsUrl: 'https://archive.org/details/thirteenbooksofeuclid01euclrich',
+      readOnlineUrl: 'https://archive.org/details/bub_gb_UhgPAAAAIAAJ/mode/2up',
+      downloadPdfUrl: 'https://archive.org/download/bub_gb_UhgPAAAAIAAJ/bub_gb_UhgPAAAAIAAJ.pdf',
+      downloadEpubUrl: 'https://archive.org/download/bub_gb_UhgPAAAAIAAJ/bub_gb_UhgPAAAAIAAJ.epub',
+      iaDetailsUrl: 'https://archive.org/details/bub_gb_UhgPAAAAIAAJ',
     },
     content: `Compiled around 300 BCE in Alexandria, Euclid’s Elements is second only to the Bible in the total number of editions published, printed, and studied across world history. It formulated the deductive axiomatic methodology that governs modern mathematics and computer logic.
 

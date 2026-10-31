@@ -7,7 +7,7 @@ export const CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() || ''
 export const ADSENSE_ACCOUNT = process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_ACCOUNT?.trim() || '';
 
 export const SITE_DESCRIPTION =
-  'An independent educational project exploring scientists, discoveries, and ideas across science and technology.';
+  'Free science articles and explainers on space, physics, biology and AI, plus public-domain science books you can read legally online.';
 
 export const EDITORIAL_TEAM = {
   id: 'sciencehub-editorial-team',

@@ -112,7 +112,7 @@
     "slug": "euclids-elements-of-geometry",
     "author": "Euclid of Alexandria",
     "year": -300,
-    "pages": 527,
+    "pages": 439,
     "subjects": [
       "Plane Geometry",
       "Incommensurable Ratios",
@@ -127,11 +127,11 @@
       "number-theory"
     ],
     "featured": true,
-    "coverImage": "https://archive.org/services/img/thirteenbooksofeuclid01euclrich",
-    "readOnlineUrl": "https://archive.org/details/thirteenbooksofeuclid01euclrich/mode/2up",
-    "downloadPdfUrl": "https://archive.org/download/thirteenbooksofeuclid01euclrich/thirteenbooksofeuclid01euclrich.pdf",
-    "downloadEpubUrl": "https://archive.org/download/thirteenbooksofeuclid01euclrich/thirteenbooksofeuclid01euclrich.epub",
-    "iaDetailsUrl": "https://archive.org/details/thirteenbooksofeuclid01euclrich",
+    "coverImage": "https://archive.org/services/img/bub_gb_UhgPAAAAIAAJ",
+    "readOnlineUrl": "https://archive.org/details/bub_gb_UhgPAAAAIAAJ/mode/2up",
+    "downloadPdfUrl": "https://archive.org/download/bub_gb_UhgPAAAAIAAJ/bub_gb_UhgPAAAAIAAJ.pdf",
+    "downloadEpubUrl": "https://archive.org/download/bub_gb_UhgPAAAAIAAJ/bub_gb_UhgPAAAAIAAJ.epub",
+    "iaDetailsUrl": "https://archive.org/details/bub_gb_UhgPAAAAIAAJ",
     "description": "The most enduring mathematical textbook of all human civilization, establishing rigorous deductive reasoning, geometric proofs, and prime number theory."
   },
   {

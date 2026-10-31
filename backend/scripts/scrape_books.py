@@ -70,9 +70,9 @@ BOOKS_DATA = [
     {
         "title": "Euclid's Elements of Geometry",
         "author": "Euclid of Alexandria",
-        "ia_id": "thirteenbooksofeuclid01euclrich",
+        "ia_id": "bub_gb_UhgPAAAAIAAJ",
         "year": -300,
-        "pages": 527,
+        "pages": 439,
         "subjects": ["Plane Geometry", "Incommensurable Ratios", "Prime Number Theory", "Solid Geometry"],
         "tags": ["mathematics", "geometry", "euclid", "proofs", "number-theory"],
         "featured": True,

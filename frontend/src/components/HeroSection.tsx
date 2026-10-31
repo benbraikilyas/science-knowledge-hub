@@ -411,8 +411,8 @@ export default function HeroSection() {
               ref={descRef}
               className="mt-6 text-base leading-relaxed text-[var(--text-secondary)] sm:text-lg lg:text-xl font-light"
             >
-              From the quantum realm to the cosmic horizon — your gateway to the equations,
-              experiments, and discoveries that decoded the laws of nature.
+              Free science articles, clear explainers, and public-domain science books, from the
+              quantum realm to the cosmic horizon.
             </p>
 
             <div

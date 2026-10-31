@@ -110,7 +110,7 @@ export default function Footer() {
               Navigation
             </h3>
             <ul className="mt-4 space-y-2.5 text-sm">
-              {NAV_ITEMS.map((item) => (
+              {[...NAV_ITEMS, { label: 'Reading Guides', href: '/guides' }].map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}

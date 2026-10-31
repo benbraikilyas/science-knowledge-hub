@@ -46,8 +46,8 @@ export async function generateMetadata() {
   ).some((article) => article.content?.trim());
 
   return {
-    title: 'Articles',
-    description: 'Browse sourced 2025–2026 updates and explainers on science, AI, robotics, space, physics, biology, and technology.',
+    title: 'Science Articles and Explainers',
+    description: 'Browse sourced science articles and explainers on space, physics, quantum physics, biology, AI and robotics, from 2025–2026 discoveries to evergreen guides.',
     alternates: { canonical: '/articles' },
     robots: { index: Boolean(hasPublishableArticles), follow: true },
   };
@@ -92,14 +92,25 @@ export default async function ArticlesPage({
             className="mt-4 text-4xl font-extrabold tracking-tight text-[var(--text-primary)] sm:text-5xl lg:text-6xl"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            Scientific{' '}
+            Science{' '}
             <span className="bg-gradient-to-r from-gold-400 via-gold-300 to-gold-500 bg-clip-text text-transparent">
-              Articles & Papers
+              Articles & Explainers
             </span>
           </h1>
 
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-[var(--text-secondary)] sm:text-lg">
             Explore sourced 2025–2026 updates, clear analysis, and evidence-led explainers across science and technology.
+          </p>
+          <p className="mt-3 text-sm text-[var(--text-secondary)]">
+            New here? Start with{' '}
+            <Link href="/guides/best-science-articles" className="font-semibold text-gold-400 transition-colors hover:text-gold-300">
+              the best science articles to read first
+            </Link>{' '}
+            or browse all{' '}
+            <Link href="/guides" className="font-semibold text-gold-400 transition-colors hover:text-gold-300">
+              reading guides
+            </Link>
+            .
           </p>
 
           {/* Category Filter Pills */}

@@ -7,6 +7,7 @@ import ScientistsSpotlight from '@/components/ScientistsSpotlight';
 import NewsletterSection from '@/components/NewsletterSection';
 import LearningPathsSection from '@/components/LearningPathsSection';
 import ScienceToolsSection from '@/components/ScienceToolsSection';
+import HomeAnswers from '@/components/HomeAnswers';
 import { fetchFeaturedArticles, fetchCategories, fetchFeaturedScientists } from '@/lib/api';
 import { DEMO_SCIENTISTS, mergeScientistProfiles } from '@/lib/scientists';
 import { toArticleListItem } from '@/lib/article-list';
@@ -93,6 +94,7 @@ export default async function HomePage() {
       <Suspense fallback={null}>
         <ScientistsSpotlight scientists={scientists} />
       </Suspense>
+      <HomeAnswers />
       <NewsletterSection />
     </>
   );

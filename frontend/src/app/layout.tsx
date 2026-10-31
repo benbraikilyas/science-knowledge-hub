@@ -22,13 +22,17 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
+// Say what the site offers in the title: search engines and AI answers match it against
+// queries like "best science articles" and "free science books".
+const HOME_TITLE = `${SITE_NAME}: Science Articles & Free Science Books`;
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   applicationName: SITE_NAME,
   manifest: '/manifest.webmanifest',
   verification: { google: 'g28xBaYzyW1_hMXA18mGzzWoxtborfHldjqqdjZ8H7U' },
   title: {
-    default: `${SITE_NAME} | Explore the Universe of Knowledge`,
+    default: HOME_TITLE,
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
@@ -42,13 +46,13 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: `${SITE_NAME} | Explore the Universe of Knowledge`,
+    title: HOME_TITLE,
     description: SITE_DESCRIPTION,
     images: [{ url: absoluteUrl('/og.webp'), width: 1536, height: 1024, alt: SITE_NAME }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: SITE_NAME,
+    title: HOME_TITLE,
     description: SITE_DESCRIPTION,
     images: [absoluteUrl('/og.webp')],
   },

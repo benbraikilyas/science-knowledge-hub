@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { DEMO_ARTICLES, DEMO_CATEGORIES } from '@/lib/constants';
+import { GUIDES } from '@/lib/guides';
 import { DEMO_SCIENTISTS } from '@/lib/scientists';
 import { SITE_URL, absoluteUrl } from '@/lib/site';
 
@@ -9,6 +10,7 @@ const STATIC_ROUTES = [
   '/articles',
   '/categories',
   '/scientists',
+  '/guides',
   '/learn',
   '/tools',
   '/editorial-policy',
@@ -54,5 +56,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticPages, ...categories, ...scientists, ...articles];
+  const guides: MetadataRoute.Sitemap = GUIDES.map((guide) => ({
+    url: `${SITE_URL}/guides/${guide.slug}`,
+    lastModified: new Date(guide.updatedAt),
+    changeFrequency: 'monthly',
+    priority: 0.8,
+  }));
+
+  return [...staticPages, ...categories, ...guides, ...scientists, ...articles];
 }
