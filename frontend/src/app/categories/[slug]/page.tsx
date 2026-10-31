@@ -7,6 +7,7 @@ import type { ArticleListItem, Category } from '@/lib/types';
 import { toArticleListItem } from '@/lib/article-list';
 import { categoryOgImage } from '@/lib/category-images';
 import { guidesForCategory } from '@/lib/guides';
+import { pageTitle } from '@/lib/seo-copy';
 import StructuredData from '@/components/StructuredData';
 import { absoluteUrl, SITE_NAME } from '@/lib/site';
 import { ArrowLeft, Sparkles } from 'lucide-react';
@@ -16,9 +17,10 @@ interface CategoryDetailProps {
 }
 
 // Search-facing copy for collections whose short category name says too little on its own.
-const COLLECTION_COPY: Record<string, { title: string; heading: string; description: (count: number) => string }> = {
+const COLLECTION_COPY: Record<string, { title: (count: number) => string; heading: string; description: (count: number) => string }> = {
   books: {
-    title: 'Free Science Books to Read Online',
+    // Competing results lead with a count and "no signup"; both are true here.
+    title: (count) => `${count} Free Science Books to Read Online, No Signup`,
     heading: 'Free Science Books',
     description: (count) =>
       `Read guides to ${count} public-domain science classics by Darwin, Newton, Einstein, Faraday and Galileo, each linked to a free, legal edition online.`,
@@ -28,7 +30,7 @@ const COLLECTION_COPY: Record<string, { title: string; heading: string; descript
 function collectionCopy(category: Category, count: number) {
   const copy = COLLECTION_COPY[category.slug];
   return {
-    title: copy?.title ?? category.name,
+    title: copy?.title(count) ?? category.name,
     heading: copy?.heading ?? category.name,
     description: copy?.description(count) ?? category.description,
   };
@@ -79,7 +81,7 @@ export async function generateMetadata({ params }: CategoryDetailProps) {
   const { title, heading, description } = collectionCopy(category, articles.length);
   const image = { url: categoryOgImage(slug) ?? absoluteUrl('/og.webp'), alt: `${heading} — Science Knowledge Hub` };
   return {
-    title,
+    title: pageTitle(title, SITE_NAME),
     description,
     alternates: { canonical: `/categories/${slug}` },
     robots: { index: articles.length > 0, follow: true },

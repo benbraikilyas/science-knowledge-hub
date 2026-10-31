@@ -330,6 +330,7 @@ export const GUIDES: Guide[] = [
     elsewhere: [
       { name: 'Project Gutenberg', href: 'https://www.gutenberg.org/', note: 'Free public-domain ebooks in several formats, including many science classics.' },
       { name: 'Internet Archive', href: 'https://archive.org/', note: 'Scans of historic books, often with the original illustrations and plates.' },
+      { name: 'NASA Science e-Books', href: 'https://science.nasa.gov/multimedia/science-e-books/', note: 'Free modern e-books from NASA on missions, planets, telescopes and space history.' },
       { name: 'Biodiversity Heritage Library', href: 'https://www.biodiversitylibrary.org/', note: 'Free natural-history and biology literature, from field guides to Darwin’s contemporaries.' },
       { name: 'OpenStax', href: 'https://openstax.org/', note: 'Free, peer-reviewed modern textbooks in physics, chemistry, biology and astronomy, if you want today’s science rather than the classics.' },
     ],
