@@ -3,14 +3,29 @@ import { notFound } from 'next/navigation';
 import { fetchScientist } from '@/lib/api';
 import SafeImage from '@/components/SafeImage';
 import { DEMO_SCIENTISTS } from '@/lib/scientists';
-import { ArrowLeft, Award, Quote, BookOpen, ExternalLink, Lightbulb } from 'lucide-react';
-import { absoluteUrl } from '@/lib/site';
+import { getScientistDeepDive } from '@/lib/scientist-deep-dives';
+import { pageTitle } from '@/lib/seo-copy';
+import { ArrowLeft, Award, Quote, BookOpen, CalendarDays, CircleHelp, Compass, ExternalLink, Lightbulb, SearchCheck, Sprout, Target } from 'lucide-react';
+import { absoluteUrl, SITE_NAME } from '@/lib/site';
 import { imageObject, openGraphImage } from '@/lib/image-seo';
 import StructuredData from '@/components/StructuredData';
 
 interface ScientistDetailProps {
   params: Promise<{ slug: string }>;
 }
+
+const ISO_DATE = /^(\d{3,4})-(\d{2})-(\d{2})$/;
+
+// Exact dates read as "14 March 1879"; approximate medieval dates such as "c. 780" stay as written.
+function displayDate(value?: string) {
+  const match = value?.match(ISO_DATE);
+  if (!match) return value;
+  return new Date(Date.UTC(Number(match[1]), Number(match[2]) - 1, Number(match[3])))
+    .toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+}
+
+const SECTION = 'rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)]/60 p-8 backdrop-blur-xl';
+const SECTION_HEADING = 'text-xl font-bold text-[var(--text-primary)] mb-4 flex items-center gap-2';
 
 export function generateStaticParams() {
   return DEMO_SCIENTISTS.map((scientist) => ({ slug: scientist.slug }));
@@ -35,12 +50,16 @@ export async function generateMetadata({ params }: ScientistDetailProps) {
   const { slug } = await params;
   const scientist = (await getScientist(slug)) as Record<string, unknown> | null;
   if (!scientist) notFound();
-  const description = `Discover the life and achievements of ${scientist.name}, pioneer in ${scientist.field}.`;
+  const deepDive = getScientistDeepDive(slug);
+  const description = deepDive?.summary
+    ?? `Discover the life and achievements of ${scientist.name}, pioneer in ${scientist.field}.`;
   const image = typeof scientist.portraitImage === 'string' && scientist.portraitImage
     ? openGraphImage(scientist.portraitImage, scientist.name as string)
     : undefined;
   return {
-    title: scientist.name as string,
+    title: deepDive
+      ? pageTitle(`${scientist.name}: Life, Discoveries and Legacy`, SITE_NAME)
+      : (scientist.name as string),
     description,
     alternates: { canonical: `/scientists/${slug}` },
     openGraph: {
@@ -79,22 +98,35 @@ export default async function ScientistDetailPage({ params }: ScientistDetailPro
   const keyContributions = (scientist.keyContributions as string[]) || [];
   const famousQuotes = (scientist.famousQuotes as string[]) || [];
   const awards = (scientist.awards as string[]) || [];
+  const deepDive = getScientistDeepDive(slug);
   const pageUrl = absoluteUrl(`/scientists/${slug}`);
   const profilePage = {
     '@type': 'ProfilePage', '@id': pageUrl, url: pageUrl, name, inLanguage: 'en',
     ...(portraitImage ? { primaryImageOfPage: imageObject(portraitImage, name) } : {}),
     mainEntity: {
       '@type': 'Person', '@id': `${pageUrl}#person`, name,
-      description: breakthrough || `Pioneer in ${field}.`,
+      description: deepDive?.summary || breakthrough || `Pioneer in ${field}.`,
       knowsAbout: field,
+      ...(ISO_DATE.test(birthDate) ? { birthDate } : {}),
+      ...(deathDate && ISO_DATE.test(deathDate) ? { deathDate } : {}),
       ...(sourceUrl ? { sameAs: [sourceUrl] } : {}),
       ...(portraitImage ? { image: imageObject(portraitImage, name) } : {}),
     },
+  };
+  const faqPage = deepDive && {
+    '@type': 'FAQPage',
+    '@id': `${pageUrl}#faq`,
+    mainEntity: deepDive.faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+    })),
   };
   const structuredData = {
     '@context': 'https://schema.org',
     '@graph': [
       profilePage,
+      ...(faqPage ? [faqPage] : []),
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
@@ -156,11 +188,11 @@ export default async function ScientistDetailPage({ params }: ScientistDetailPro
               <div className="mt-3 flex flex-wrap items-center gap-4 text-xs text-[var(--text-secondary)] font-mono">
                 <span>Nationality: <strong className="text-[var(--text-primary)]">{nationality}</strong></span>
                 <span>·</span>
-                <span>Born: <strong className="text-[var(--text-primary)]">{birthDate}</strong></span>
+                <span>Born: <strong className="text-[var(--text-primary)]">{displayDate(birthDate)}</strong></span>
                 {deathDate && (
                   <>
                     <span>·</span>
-                    <span>Died: <strong className="text-[var(--text-primary)]">{deathDate}</strong></span>
+                    <span>Died: <strong className="text-[var(--text-primary)]">{displayDate(deathDate)}</strong></span>
                   </>
                 )}
               </div>
@@ -168,6 +200,12 @@ export default async function ScientistDetailPage({ params }: ScientistDetailPro
               {group && (
                 <p className="mt-4 text-xs font-semibold uppercase tracking-[0.18em] text-gold-300/80">
                   {group}
+                </p>
+              )}
+
+              {deepDive && (
+                <p className="mt-4 max-w-3xl text-base leading-relaxed text-[var(--text-secondary)] sm:text-lg">
+                  {deepDive.summary}
                 </p>
               )}
             </div>
@@ -211,6 +249,30 @@ export default async function ScientistDetailPage({ params }: ScientistDetailPro
               </div>
             )}
 
+            {deepDive && (
+              <>
+                <section className={SECTION}>
+                  <h2 className={SECTION_HEADING}>
+                    <Sprout className="h-5 w-5 text-gold-400" />
+                    Early Life and Education
+                  </h2>
+                  <p className="text-base leading-relaxed text-[var(--text-secondary)]">{deepDive.earlyLife}</p>
+                </section>
+
+                <section className={SECTION}>
+                  <h2 className={SECTION_HEADING}>
+                    <Target className="h-5 w-5 text-gold-400" />
+                    The Work, Explained
+                  </h2>
+                  <div className="space-y-4 text-base leading-relaxed text-[var(--text-secondary)]">
+                    {deepDive.work.map((paragraph) => (
+                      <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+                    ))}
+                  </div>
+                </section>
+              </>
+            )}
+
             {keyContributions.length > 0 && (
               <div className="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)]/60 p-8 backdrop-blur-xl">
                 <h2 className="text-xl font-bold text-[var(--text-primary)] mb-6">Key Contributions to Science</h2>
@@ -228,6 +290,52 @@ export default async function ScientistDetailPage({ params }: ScientistDetailPro
                   ))}
                 </div>
               </div>
+            )}
+
+            {deepDive && (
+              <>
+                <section className={SECTION}>
+                  <h2 className={SECTION_HEADING}>
+                    <SearchCheck className="h-5 w-5 text-gold-400" />
+                    Myths and Facts
+                  </h2>
+                  <div className="space-y-4">
+                    {deepDive.myths.map((item) => (
+                      <div key={item.myth} className="rounded-2xl border border-[var(--border-color)] bg-white/[0.02] p-5">
+                        <p className="text-sm font-semibold text-[var(--text-primary)]">
+                          <span className="text-rose-300">Myth:</span> {item.myth}
+                        </p>
+                        <p className="mt-2 text-sm leading-relaxed text-[var(--text-secondary)]">
+                          <span className="font-semibold text-emerald-300">Fact:</span> {item.fact}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
+                <section className={SECTION}>
+                  <h2 className={SECTION_HEADING}>
+                    <Compass className="h-5 w-5 text-gold-400" />
+                    Why It Matters Today
+                  </h2>
+                  <p className="text-base leading-relaxed text-[var(--text-secondary)]">{deepDive.legacy}</p>
+                </section>
+
+                <section className={SECTION}>
+                  <h2 className={SECTION_HEADING}>
+                    <CircleHelp className="h-5 w-5 text-gold-400" />
+                    Frequently Asked Questions
+                  </h2>
+                  <div className="space-y-5">
+                    {deepDive.faqs.map((faq) => (
+                      <div key={faq.question}>
+                        <h3 className="text-base font-semibold text-[var(--text-primary)]">{faq.question}</h3>
+                        <p className="mt-1.5 text-sm leading-relaxed text-[var(--text-secondary)]">{faq.answer}</p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              </>
             )}
 
             {famousQuotes.length > 0 && (
@@ -252,6 +360,23 @@ export default async function ScientistDetailPage({ params }: ScientistDetailPro
 
           {/* Sidebar Awards & Fast Facts */}
           <div className="lg:col-span-4 space-y-6">
+            {deepDive && (
+              <div className="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)]/60 p-6 backdrop-blur-xl">
+                <h2 className="text-sm font-bold uppercase tracking-wider text-[var(--text-primary)] flex items-center gap-2 mb-4">
+                  <CalendarDays className="h-4 w-4 text-gold-400" />
+                  Timeline
+                </h2>
+                <ol className="space-y-3 border-l border-gold-500/30 pl-4">
+                  {deepDive.timeline.map(([year, event]) => (
+                    <li key={`${year}-${event}`} className="text-xs leading-relaxed text-[var(--text-secondary)]">
+                      <span className="block font-mono font-bold text-gold-300">{year}</span>
+                      {event}
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            )}
+
             {awards.length > 0 && (
               <div className="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)]/60 p-6 backdrop-blur-xl">
                 <h3 className="text-sm font-bold uppercase tracking-wider text-[var(--text-primary)] flex items-center gap-2 mb-4">
@@ -270,6 +395,23 @@ export default async function ScientistDetailPage({ params }: ScientistDetailPro
                   ))}
                 </ul>
               </div>
+            )}
+
+            {deepDive && (
+              <nav aria-labelledby="read-next" className="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)]/60 p-6 backdrop-blur-xl">
+                <h2 id="read-next" className="text-sm font-bold uppercase tracking-wider text-[var(--text-primary)] mb-4">
+                  Read Next
+                </h2>
+                <ul className="space-y-2.5 text-sm">
+                  {deepDive.related.map((link) => (
+                    <li key={link.href}>
+                      <Link href={link.href} className="text-[var(--text-secondary)] transition-colors hover:text-gold-300">
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
             )}
 
             {sourceUrl && (
