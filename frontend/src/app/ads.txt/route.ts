@@ -1,7 +1,9 @@
+import { ADSENSE_ACCOUNT } from '@/lib/site';
+
 const ADSENSE_RELATIONSHIP_ID = 'f08c47fec0942fa0';
 
 export async function GET() {
-  const publisherId = process.env.GOOGLE_ADSENSE_PUBLISHER_ID?.trim();
+  const publisherId = process.env.GOOGLE_ADSENSE_PUBLISHER_ID?.trim() || ADSENSE_ACCOUNT.replace(/^ca-/, '');
 
   if (!publisherId || !/^pub-\d+$/.test(publisherId)) {
     return new Response('', { status: 404 });
