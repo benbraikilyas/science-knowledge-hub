@@ -101,22 +101,6 @@ Several mysteries in the book have since acquired better explanations, which mak
 Readers should treat discarded ether models as history, not current theory. The value is seeing discovery in motion: new instruments created results that old concepts could not comfortably explain.`,
   },
   {
-    title: 'Science and Hypothesis',
-    slug: 'science-and-hypothesis-poincare',
-    author: 'Henri Poincaré',
-    authorId: 'henri-poincare',
-    firstPublished: 1902,
-    ebookId: 37157,
-    excerpt: 'A mathematician’s examination of geometry, mechanics, probability, and the role that conventions and hypotheses play in science.',
-    subjects: ['Philosophy of Science', 'Geometry', 'Mechanics', 'Probability'],
-    tags: ['Mathematics', 'Physics', 'Scientific Method', 'Philosophy'],
-    overview: `Poincaré asks how much of science is discovered in nature and how much depends on the conceptual language used to organize experience. His discussions of geometry, measurement, motion, probability, optics, and electrodynamics reject both naive certainty and arbitrary relativism.
-
-The book rewards slow reading because its central question remains active: evidence constrains theories, but scientists still choose definitions, models, and mathematical structures. Those choices are judged by consistency, usefulness, and contact with observation.`,
-    pdfUrl: 'https://www.gutenberg.org/files/37157/37157-pdf.pdf',
-    hasEpub: false,
-  },
-  {
     title: "Five of Maxwell's Papers",
     slug: 'five-of-maxwells-papers',
     author: 'James Clerk Maxwell',

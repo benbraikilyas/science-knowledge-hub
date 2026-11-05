@@ -10,7 +10,6 @@ export const BOOK_COVERS: Record<string, string> = {
   'the-chemical-history-of-a-candle': '/images/books/the-chemical-history-of-a-candle.webp',
   'dialogue-concerning-two-new-sciences': '/images/books/dialogue-concerning-two-new-sciences.webp',
   'science-and-hypothesis': '/images/books/science-and-hypothesis.webp',
-  'science-and-hypothesis-poincare': '/images/books/science-and-hypothesis-poincare.webp',
   'the-descent-of-man': '/images/books/the-descent-of-man.webp',
   'opticks-treatise-of-light-colour': '/images/books/opticks-treatise-of-light-colour.webp',
   'an-introduction-to-mathematics': '/images/books/an-introduction-to-mathematics.webp',

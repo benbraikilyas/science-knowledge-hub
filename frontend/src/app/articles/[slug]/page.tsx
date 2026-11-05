@@ -13,6 +13,8 @@ import { absoluteUrl, SITE_NAME, EDITORIAL_TEAM } from '@/lib/site';
 import { pageTitle, SEO_DESCRIPTIONS, SEO_TITLES } from '@/lib/seo-copy';
 import { getImageMetadata, imageObject, openGraphImage } from '@/lib/image-seo';
 import StructuredData from '@/components/StructuredData';
+import BookGuideSections from '@/components/BookGuideSections';
+import { getBookGuide } from '@/lib/book-guides';
 import { Clock, ArrowLeft, BookOpen, Download, FileText, Smartphone, ExternalLink, ShieldCheck } from 'lucide-react';
 
 interface ArticleDetailProps {
@@ -77,8 +79,16 @@ export async function generateMetadata({ params }: ArticleDetailProps) {
     : undefined;
   const publicAuthor = getPublicArticleAuthor(article.author as { displayName?: string; avatar?: string } | undefined);
   const headline = (article.metaTitle as string) || (article.title as string);
+  // Book searches usually include the author ("max planck theory of heat radiation").
+  const bookAuthor = (article.category as { slug?: string } | undefined)?.slug === 'books'
+    ? (article.author as { displayName?: string } | undefined)?.displayName
+    : undefined;
+  const bookTitle = bookAuthor && `${article.title} by ${bookAuthor}`;
+  const seoHeadline = bookTitle
+    ? (`${bookTitle}: Read Free Online`.length <= 60 ? `${bookTitle}: Read Free Online` : bookTitle)
+    : headline;
   return {
-    title: pageTitle(SEO_TITLES[slug] ?? headline, SITE_NAME),
+    title: pageTitle(SEO_TITLES[slug] ?? seoHeadline, SITE_NAME),
     description: SEO_DESCRIPTIONS[slug] ?? ((article.metaDescription as string) || (article.excerpt as string)),
     keywords: article.tags as string[],
     alternates: { canonical: `/articles/${slug}` },
@@ -133,6 +143,7 @@ export default async function ArticleDetailPage({ params }: ArticleDetailProps) 
     archiveName?: string;
   } | undefined;
   const isBook = category.slug === 'books' || Boolean(bookDetails);
+  const bookGuide = isBook ? getBookGuide(slug) : null;
   const pageUrl = absoluteUrl(`/articles/${slug}`);
   const structuredData = {
     '@context': 'https://schema.org',
@@ -163,6 +174,15 @@ export default async function ArticleDetailPage({ params }: ArticleDetailProps) 
           logo: imageObject('/brand-logo.webp', SITE_NAME),
         },
         ...(featuredImage ? { image: imageObject(featuredImage, article.title as string) } : {}),
+      }] : []),
+      ...(bookGuide ? [{
+        '@type': 'FAQPage',
+        '@id': `${pageUrl}#faq`,
+        mainEntity: bookGuide.faqs.map((faq) => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+        })),
       }] : []),
       {
         '@type': 'BreadcrumbList',
@@ -411,6 +431,7 @@ export default async function ArticleDetailPage({ params }: ArticleDetailProps) 
                 </p>
               </>
             )}
+            {bookGuide && <BookGuideSections guide={bookGuide} />}
           </div>
 
           {/* Tags */}

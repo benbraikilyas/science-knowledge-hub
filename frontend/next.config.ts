@@ -21,6 +21,8 @@ const nextConfig: NextConfig = {
       { source: '/articles/dark-matter-dark-energy', destination: '/articles/dark-matter-dark-energy-different-mysteries', permanent: true },
       { source: '/articles/james-webb-space-telescope-first-light', destination: '/articles/how-james-webb-space-telescope-reads-early-universe', permanent: true },
       { source: '/articles/quantum-entanglement-explained', destination: '/articles/quantum-entanglement-without-faster-than-light-myth', permanent: true },
+      // Two pages covered the same book; the Gutenberg one merged into the main guide.
+      { source: '/articles/science-and-hypothesis-poincare', destination: '/articles/science-and-hypothesis', permanent: true },
     ];
   },
 

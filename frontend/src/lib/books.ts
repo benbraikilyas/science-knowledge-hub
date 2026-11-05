@@ -54,7 +54,7 @@ const ARCHIVE_BOOKS: ScienceBook[] = [
     id: 'book-1',
     title: 'On the Origin of Species',
     slug: 'on-the-origin-of-species',
-    excerpt: 'Charles Darwin’s epochal masterpiece introducing the theory of evolution through natural selection — the bedrock of modern biological science.',
+    excerpt: 'Charles Darwin’s 1859 book setting out evolution by natural selection, argued from a mass of evidence; the foundation of modern biology.',
     featuredImage: 'https://archive.org/services/img/originofspeciesb00darw_0',
     thumbnail: 'https://archive.org/services/img/originofspeciesb00darw_0',
     category: {
@@ -83,24 +83,25 @@ const ARCHIVE_BOOKS: ScienceBook[] = [
       license: 'Public-domain archive edition — free access; verify local copyright rules.',
       readOnlineUrl: 'https://archive.org/details/originofspeciesb00darw_0/mode/2up',
       downloadPdfUrl: 'https://archive.org/download/originofspeciesb00darw_0/originofspeciesb00darw_0.pdf',
-      downloadEpubUrl: 'https://archive.org/download/originofspeciesb00darw_0/originofspeciesb00darw_0.epub',
+      // The Archive scan has no EPUB; Gutenberg #2009 is the same revised (sixth-edition) text.
+      downloadEpubUrl: 'https://www.gutenberg.org/ebooks/2009.epub3.images',
       iaDetailsUrl: 'https://archive.org/details/originofspeciesb00darw_0',
     },
     content: `Published on 24 November 1859, On the Origin of Species by Means of Natural Selection is considered the foundation of evolutionary biology. Darwin introduced the revolutionary scientific idea that populations evolve over generations through natural selection.
 
-Drawing from his historic five-year voyage aboard HMS Beagle — particularly his meticulous observations of finches and tortoises in the Galápagos archipelago — Darwin presented comprehensive empirical evidence that the diversity of life arose by common descent through a branching pattern of evolution.
+Drawing on two decades of work that began with his five-year voyage aboard HMS Beagle, along with evidence from animal breeding, fossils and geography, Darwin presented comprehensive empirical evidence that the diversity of life arose by common descent through a branching pattern of evolution.
 
 The book provoked immediate international debate across scientific, philosophical, and theological spheres. Darwin rigorously anticipated counter-arguments, dedicating entire chapters to difficulties on theory, hybridism, the imperfection of the geological record, and geographical distribution.
 
-Today, Darwinian natural selection forms the central unifying paradigm of all life sciences. From evolutionary biology and immunology to machine learning genetic algorithms, the core insights of this work continue to steer scientific progress.`,
+Today natural selection, combined with genetics, is the central organizing idea of biology. The edition linked here is a late printing of the revised text, which Darwin updated several times after 1859.`,
   },
   {
     id: 'book-2',
     title: 'Philosophiæ Naturalis Principia Mathematica',
     slug: 'philosophiae-naturalis-principia-mathematica',
-    excerpt: 'Sir Isaac Newton’s monumental treatise formulating the three laws of motion and universal gravitation, establishing classical physics for centuries.',
-    featuredImage: 'https://archive.org/services/img/philosophiaenatu00newt',
-    thumbnail: 'https://archive.org/services/img/philosophiaenatu00newt',
+    excerpt: 'Isaac Newton’s 1687 treatise setting out the three laws of motion and universal gravitation, here in Andrew Motte’s English translation.',
+    featuredImage: 'https://archive.org/services/img/bub_gb_KaAIAAAAIAAJ',
+    thumbnail: 'https://archive.org/services/img/bub_gb_KaAIAAAAIAAJ',
     category: {
       id: '12',
       name: 'Books',
@@ -122,21 +123,21 @@ Today, Darwinian natural selection forms the central unifying paradigm of all li
     bookDetails: {
       originalAuthor: 'Sir Isaac Newton',
       firstPublished: 1687,
-      pages: 591,
+      pages: 588,
       subjects: ['Classical Mechanics', 'Celestial Gravitation', 'Fluid Dynamics', 'Calculus'],
       license: 'Public-domain archive edition — free access; verify local copyright rules.',
-      readOnlineUrl: 'https://archive.org/details/philosophiaenatu00newt/mode/2up',
-      downloadPdfUrl: 'https://archive.org/download/philosophiaenatu00newt/philosophiaenatu00newt.pdf',
-      downloadEpubUrl: 'https://archive.org/download/philosophiaenatu00newt/philosophiaenatu00newt.epub',
-      iaDetailsUrl: 'https://archive.org/details/philosophiaenatu00newt',
+      readOnlineUrl: 'https://archive.org/details/bub_gb_KaAIAAAAIAAJ/mode/2up',
+      downloadPdfUrl: 'https://archive.org/download/bub_gb_KaAIAAAAIAAJ/bub_gb_KaAIAAAAIAAJ.pdf',
+      downloadEpubUrl: 'https://archive.org/download/bub_gb_KaAIAAAAIAAJ/bub_gb_KaAIAAAAIAAJ.epub',
+      iaDetailsUrl: 'https://archive.org/details/bub_gb_KaAIAAAAIAAJ',
     },
-    content: `First published on 5 July 1687, the Principia Mathematica is universally celebrated as the most influential publication in the history of physical science. Newton stated his three fundamental laws of motion: the law of inertia, force equals mass times acceleration (F=ma), and the law of reciprocal action and reaction.
+    content: `First published on 5 July 1687, the Principia Mathematica is often ranked among the most influential books in the history of science. Newton stated his three fundamental laws of motion: the law of inertia, force equals mass times acceleration (F=ma), and the law of reciprocal action and reaction.
 
-In the third volume, "The System of the World," Newton demonstrated that the very force causing an apple to fall to the earth also holds the Moon in its orbit and governs the motions of all planets and comets around the Sun — thereby creating the first mathematical unification of terrestrial and celestial physics.
+In the third book, "The System of the World," Newton demonstrated that the very force causing an apple to fall to the earth also holds the Moon in its orbit and governs the motions of all planets and comets around the Sun — thereby creating the first mathematical unification of terrestrial and celestial physics.
 
-The work also pioneered the mathematical foundation of infinitesimal calculus (described through geometric proportions) and derived Johannes Kepler’s empirical laws of planetary motion from first mathematical principles.
+Newton wrote the proofs mostly in the language of classical geometry, with limiting arguments related to his calculus, and he showed how Johannes Kepler’s laws of planetary motion follow from an inverse-square force. The original was in Latin; the free edition linked here is the 1848 American printing of Andrew Motte’s English translation.
 
-Newton’s classical physics proved so profoundly accurate that it remains the engineering backbone behind modern architecture, aviation, ballistics, and orbital satellite trajectory design.`,
+Newtonian mechanics remains accurate enough for most engineering, from bridges and aircraft to many spacecraft trajectories.`,
   },
   {
     id: 'book-3',
@@ -186,9 +187,9 @@ Part III concludes with reflections on the universe as a whole, introducing rela
     id: 'book-4',
     title: 'Sidereus Nuncius (The Starry Messenger)',
     slug: 'sidereus-nuncius-starry-messenger',
-    excerpt: 'Galileo Galilei’s 1610 astronomical revelation — the very first scientific observations made through a telescope, shattering geocentric cosmology.',
-    featuredImage: 'https://archive.org/services/img/siderealnuncioso00gali',
-    thumbnail: 'https://archive.org/services/img/siderealnuncioso00gali',
+    excerpt: 'Galileo’s 1610 report of what his telescope revealed: the Moon’s mountains, countless stars and four moons of Jupiter. The first published book of telescope observations.',
+    featuredImage: 'https://www.gutenberg.org/cache/epub/46036/pg46036.cover.medium.jpg',
+    thumbnail: 'https://www.gutenberg.org/cache/epub/46036/pg46036.cover.medium.jpg',
     category: {
       id: '12',
       name: 'Books',
@@ -213,25 +214,25 @@ Part III concludes with reflections on the universe as a whole, introducing rela
       pages: 118,
       subjects: ['Observational Astronomy', 'Lunar Topography', 'Moons of Jupiter', 'Milky Way'],
       license: 'Public-domain archive edition — free access; verify local copyright rules.',
-      readOnlineUrl: 'https://archive.org/details/siderealnuncioso00gali/mode/2up',
-      downloadPdfUrl: 'https://archive.org/download/siderealnuncioso00gali/siderealnuncioso00gali.pdf',
-      downloadEpubUrl: 'https://archive.org/download/siderealnuncioso00gali/siderealnuncioso00gali.epub',
-      iaDetailsUrl: 'https://archive.org/details/siderealnuncioso00gali',
+      readOnlineUrl: 'https://www.gutenberg.org/ebooks/46036',
+      downloadEpubUrl: 'https://www.gutenberg.org/ebooks/46036.epub3.images',
+      iaDetailsUrl: 'https://www.gutenberg.org/ebooks/46036',
+      archiveName: 'Project Gutenberg',
     },
-    content: `Published in Venice in March 1610, Sidereus Nuncius (The Starry Messenger) was the opening salvo of modern observational astronomy. Upon polishing his own convex and concave lenses to achieve roughly 20x magnification, Galileo turned his spyglass skyward.
+    content: `Published in Venice in March 1610, Sidereus Nuncius (The Starry Messenger) was the first published book of astronomical observations made with a telescope. After grinding his own convex and concave lenses to achieve roughly 20x magnification, Galileo turned his spyglass skyward.
 
 He announced three epochal discoveries:
 1. The Moon is not a smooth, crystalline Aristotelian sphere, but rugged, scarred with deep craters and towering mountain ranges whose heights Galileo measured using shadow trigonometry.
 2. The nebulous glow of the Milky Way is in reality an immense congregation of countless individual stars invisible to the unaided eye.
-3. Four companion bodies orbit the planet Jupiter — the Galilean moons (Io, Europa, Ganymede, and Callisto) — delivering decisive proof that heavenly bodies can and do orbit centers other than Earth.
+3. Four bodies orbit the planet Jupiter. Galileo called them the Medicean stars; we now know them as Io, Europa, Ganymede and Callisto. They showed that not everything in the heavens circles the Earth.
 
-This brief treatise completely upended the thousand-year Ptolemaic dogma and furnished indispensable physical confirmation for Nicolaus Copernicus’s heliocentric model.`,
+The book did not prove the Copernican system on its own; Galileo’s later observation of the phases of Venus was stronger evidence. But it made the telescope a scientific instrument and challenged the old picture of perfect, unchanging heavens. The free edition linked here is Edward Stafford Carlos’s 1880 English translation, The Sidereal Messenger.`,
   },
   {
     id: 'book-5',
     title: 'Euclid’s Elements of Geometry',
     slug: 'euclids-elements-of-geometry',
-    excerpt: 'The most enduring mathematical textbook of all human civilization, establishing rigorous deductive reasoning, geometric proofs, and prime number theory.',
+    excerpt: 'Euclid’s Elements, the most influential mathematics textbook in history, building geometry and number theory step by step from definitions and postulates.',
     featuredImage: 'https://archive.org/services/img/bub_gb_UhgPAAAAIAAJ',
     thumbnail: 'https://archive.org/services/img/bub_gb_UhgPAAAAIAAJ',
     category: {
@@ -262,11 +263,11 @@ This brief treatise completely upended the thousand-year Ptolemaic dogma and fur
       downloadEpubUrl: 'https://archive.org/download/bub_gb_UhgPAAAAIAAJ/bub_gb_UhgPAAAAIAAJ.epub',
       iaDetailsUrl: 'https://archive.org/details/bub_gb_UhgPAAAAIAAJ',
     },
-    content: `Compiled around 300 BCE in Alexandria, Euclid’s Elements is second only to the Bible in the total number of editions published, printed, and studied across world history. It formulated the deductive axiomatic methodology that governs modern mathematics and computer logic.
+    content: `Compiled around 300 BCE in Alexandria, Euclid’s Elements is often said to be one of the most frequently printed books after the Bible. It made the deductive method, proving each result from stated assumptions, the model for mathematics.
 
 Starting from just five fundamental postulates (such as the famous Parallel Postulate) and five common notions, Euclid systematically built 465 propositions with watertight geometric proofs.
 
-Beyond plane and solid geometry, Books VII through IX establish foundational number theory: the Euclidean algorithm for greatest common divisors, the fundamental theorem of arithmetic, and the celebrated proof of the infinitude of prime numbers.
+Beyond plane and solid geometry, Books VII to IX develop number theory, including the Euclidean algorithm for greatest common divisors and the celebrated proof that there are infinitely many prime numbers. The free edition linked here is Volume I of Thomas Heath’s 1908 translation, which covers Books I and II with Heath’s long introduction.
 
 Philosophers, scientists, and statesmen — including Spinoza, Newton, Abraham Lincoln, and Bertrand Russell — credited Euclid with teaching them how to construct rigorous, irrefutable logical arguments.`,
   },
@@ -310,7 +311,7 @@ Philosophers, scientists, and statesmen — including Spinoza, Newton, Abraham L
 
 "There is not a law under which any part of this universe is governed," declared Faraday, "which does not come into play and is not touched upon in these phenomena."
 
-Through a sequence of live chemical demonstrations, Faraday showed how capillary action draws wax up the wick, how vaporized hydrocarbons ignite inside the luminous zone, how water vapor and carbon dioxide are produced, and how the chemical process of combustion is fundamentally identical to biological respiration within the lungs.
+Through a sequence of live chemical demonstrations, Faraday showed how capillary action draws wax up the wick, how vaporized hydrocarbons ignite inside the luminous zone, how water vapor and carbon dioxide are produced, and how breathing is a slow form of the same chemistry that happens in the flame.
 
 Faraday’s clarity, infectious enthusiasm, and insistence on direct experimental proof make this classic an indispensable model for contemporary science communicators.`,
   },
@@ -362,7 +363,7 @@ This book replaced qualitative Aristotelian physics with quantitative, mathemati
     id: 'book-8',
     title: 'A Short History of Astronomy',
     slug: 'a-short-history-of-astronomy',
-    excerpt: 'Arthur Berry’s definitive historical narrative tracing observational and theoretical astronomy from Babylonian sky-watchers to Victorian astrophysics.',
+    excerpt: 'Arthur Berry’s classic historical narrative tracing observational and theoretical astronomy from Babylonian sky-watchers to Victorian astrophysics.',
     featuredImage: 'https://archive.org/services/img/shorthistoryofas00berruoft',
     thumbnail: 'https://archive.org/services/img/shorthistoryofas00berruoft',
     category: {
@@ -403,7 +404,7 @@ The work concludes with the dawn of astronomical spectroscopy and astrophotograp
     id: 'book-9',
     title: 'Science and Hypothesis',
     slug: 'science-and-hypothesis',
-    excerpt: 'Henri Poincaré’s profound epistemological inquiry into mathematical intuition, non-Euclidean geometry, and the conceptual foundations of physical reality.',
+    excerpt: 'Henri Poincaré’s classic inquiry into which parts of science are experimental fact, which are convention and which are hypothesis, from geometry to mechanics.',
     featuredImage: 'https://archive.org/services/img/scienceandhypoth00poinuoft',
     thumbnail: 'https://archive.org/services/img/scienceandhypoth00poinuoft',
     category: {
@@ -434,22 +435,22 @@ The work concludes with the dawn of astronomical spectroscopy and astrophotograp
       downloadEpubUrl: 'https://archive.org/download/scienceandhypoth00poinuoft/scienceandhypoth00poinuoft.epub',
       iaDetailsUrl: 'https://archive.org/details/scienceandhypoth00poinuoft',
     },
-    content: `Published in Paris in 1902, Science and Hypothesis (La Science et l'Hypothèse) was read intensely by the young Albert Einstein and his "Olympia Academy" circle in Bern prior to the 1905 Annus Mirabilis papers.
+    content: `Published in Paris in 1902, Science and Hypothesis (La Science et l’Hypothèse) asks how much of science is discovered in nature and how much depends on the concepts we choose to organize experience. The young Albert Einstein read it with friends in his “Olympia Academy” reading group in Bern, a few years before his 1905 papers.
 
-Poincaré, one of history’s greatest polymaths, probes the true nature of scientific laws:
-- Are mathematical truths synthetic a priori, empirical conventions, or analytical tautologies?
-- How do non-Euclidean geometries (Lobachevsky and Riemann) demonstrate that physical space is not an immutable absolute, but an empirical convention of convenience?
-- Does absolute time exist, or are simultaneous events merely convention?
+Poincaré works through four domains, number and magnitude, space, force, and nature, and asks of each:
+- Are mathematical truths experimental facts, logical consequences or something else?
+- Do the non-Euclidean geometries of Lobachevsky and Riemann show that the geometry of physical space is a convention, chosen because it is convenient?
+- Which principles of mechanics are definitions in disguise, and which can experiment test?
 
-Poincaré’s insights foreshadowed both special relativity and quantum indeterminacy, establishing scientific conventionalism and highlighting how creative hypotheses drive genuine physical discovery.`,
+His answer rejects both naive certainty and the idea that science is arbitrary. Evidence constrains theories, but scientists still choose definitions, models and mathematical structures, judged by consistency, usefulness and contact with observation. That view, known as conventionalism, is still debated in the philosophy of science.`,
   },
   {
     id: 'book-10',
     title: 'The Descent of Man',
     slug: 'the-descent-of-man',
     excerpt: 'Darwin’s groundbreaking extension of evolutionary theory to human species origins, social morality, and sexual selection across the animal kingdom.',
-    featuredImage: 'https://archive.org/services/img/descentofman1871darwin01',
-    thumbnail: 'https://archive.org/services/img/descentofman1871darwin01',
+    featuredImage: 'https://www.gutenberg.org/cache/epub/2300/pg2300.cover.medium.jpg',
+    thumbnail: 'https://www.gutenberg.org/cache/epub/2300/pg2300.cover.medium.jpg',
     category: {
       id: '12',
       name: 'Books',
@@ -474,26 +475,26 @@ Poincaré’s insights foreshadowed both special relativity and quantum indeterm
       pages: 450,
       subjects: ['Human Evolution', 'Comparative Anatomy', 'Sexual Dimorphism', 'Evolutionary Ethics'],
       license: 'Public-domain archive edition — free access; verify local copyright rules.',
-      readOnlineUrl: 'https://archive.org/details/descentofman1871darwin01/mode/2up',
-      downloadPdfUrl: 'https://archive.org/download/descentofman1871darwin01/descentofman1871darwin01.pdf',
-      downloadEpubUrl: 'https://archive.org/download/descentofman1871darwin01/descentofman1871darwin01.epub',
-      iaDetailsUrl: 'https://archive.org/details/descentofman1871darwin01',
+      readOnlineUrl: 'https://www.gutenberg.org/ebooks/2300',
+      downloadEpubUrl: 'https://www.gutenberg.org/ebooks/2300.epub3.images',
+      iaDetailsUrl: 'https://www.gutenberg.org/ebooks/2300',
+      archiveName: 'Project Gutenberg',
     },
     content: `Published twelve years after Origin of Species, The Descent of Man, and Selection in Relation to Sex directly confronted the question Darwin had previously avoided: does humanity share common ancestry with other primates?
 
 Darwin mobilized evidence from comparative embryology, rudimentary/vestigial organs, comparative physiology, and mental faculties to demonstrate that Homo sapiens descended from an ancestral primate branch.
 
-Crucially, the book introduced Darwin’s second major evolutionary mechanism: Sexual Selection — explaining physical ornamentation, vocal courtship, and behavioral dimorphism across species that could not be explained by natural survival pressure alone.
+Crucially, the book developed in full Darwin’s second evolutionary mechanism, sexual selection, which he had only sketched in the Origin: explaining physical ornamentation, vocal courtship, and behavioral dimorphism across species that could not be explained by natural survival pressure alone.
 
-Darwin also laid the groundwork for evolutionary psychology and anthropology, analyzing how sympathy, altruism, and social cooperation evolved as vital survival adaptations for social mammals.`,
+Darwin also discussed how sympathy and cooperation could evolve in social animals. Modern readers should know that the book also contains Victorian views on race and sex that science has since rejected.`,
   },
   {
     id: 'book-11',
     title: 'Opticks: Or, A Treatise of Light and Colour',
     slug: 'opticks-treatise-of-light-colour',
-    excerpt: 'Newton’s experimental tour-de-force proving white light is a composite spectrum, investigating prism refractions, diffraction rings, and corpuscular optics.',
-    featuredImage: 'https://archive.org/services/img/optabortreatise00newt',
-    thumbnail: 'https://archive.org/services/img/optabortreatise00newt',
+    excerpt: 'Newton’s 1704 book of experiments on light, showing that white light is a mixture of colours and studying refraction, coloured rings and diffraction.',
+    featuredImage: 'https://www.gutenberg.org/cache/epub/33504/pg33504.cover.medium.jpg',
+    thumbnail: 'https://www.gutenberg.org/cache/epub/33504/pg33504.cover.medium.jpg',
     category: {
       id: '12',
       name: 'Books',
@@ -518,18 +519,18 @@ Darwin also laid the groundwork for evolutionary psychology and anthropology, an
       pages: 382,
       subjects: ['Dispersion of Light', 'Prism Experiments', 'Newtonian Rings', 'Reflecting Telescopes'],
       license: 'Public-domain archive edition — free access; verify local copyright rules.',
-      readOnlineUrl: 'https://archive.org/details/optabortreatise00newt/mode/2up',
-      downloadPdfUrl: 'https://archive.org/download/optabortreatise00newt/optabortreatise00newt.pdf',
-      downloadEpubUrl: 'https://archive.org/download/optabortreatise00newt/optabortreatise00newt.epub',
-      iaDetailsUrl: 'https://archive.org/details/optabortreatise00newt',
+      readOnlineUrl: 'https://www.gutenberg.org/ebooks/33504',
+      downloadEpubUrl: 'https://www.gutenberg.org/ebooks/33504.epub3.images',
+      iaDetailsUrl: 'https://www.gutenberg.org/ebooks/33504',
+      archiveName: 'Project Gutenberg',
     },
     content: `Published in London in 1704, Opticks represents Isaac Newton at his most brilliant experimental peak. In contrast to the heavy geometric Latin of the Principia, Opticks was composed in clear vernacular English, presenting repeatable laboratory procedures.
 
 Through his celebrated experimentum crucis with glass prisms in a darkened room, Newton proved that white sunlight is not a homogeneous fundamental entity, but a composite blend of all colors of the rainbow, each possessing its own characteristic angle of refrangibility.
 
-Newton explained how chromatic aberration plagued refracting lenses, which prompted him to invent the reflecting telescope utilizing a curved mirror (the Newtonian reflector still in widespread astronomical use).
+Newton explained why lenses produce coloured fringes (chromatic aberration), which led him to build a reflecting telescope with a curved mirror, a design still used by amateur astronomers.
 
-The concluding "Queries" of Opticks were visionary speculations where Newton anticipated radiant heat, chemical affinity, and the particulate nature of light that would later materialize in Einstein’s photon theory.`,
+The concluding "Queries" are open questions in which Newton speculated about the nature of light, heat, chemical attraction and the forces between particles. His particle view of light differs from the modern photon, but the Queries show a great experimenter thinking aloud.`,
   },
   {
     id: 'book-12',
@@ -570,18 +571,18 @@ The concluding "Queries" of Opticks were visionary speculations where Newton ant
 
 It introduced concepts that became cornerstones of modern cognitive science:
 - The "Stream of Thought / Consciousness": mental life is not discrete static ideas linked like beads, but continuous, ever-flowing, and constantly modified by prior context.
-- Habit Formation as plastic neuro-pathways: early recognition of synaptic plasticity.
+- Habit: James described the nervous system as “plastic”, shaped by repeated use, an early form of an idea central to neuroscience today.
 - The James-Lange Theory of Emotion: emotional feelings arise from physiological bodily changes in response to stimuli ("we feel sorry because we cry, angry because we strike").
 
-James’s luminous prose and profound respect for lived subjective experience make this masterwork required reading for neuroscientists and AI cognitive architects alike.`,
+James’s vivid prose and respect for lived experience keep the book readable, even where its physiology is out of date.`,
   },
   {
     id: 'book-13',
     title: 'An Introduction to Mathematics',
     slug: 'an-introduction-to-mathematics',
-    excerpt: 'Alfred North Whitehead’s illuminating masterpiece on mathematical philosophy, variables, coordinate geometry, and the symbolic language of science.',
-    featuredImage: 'https://archive.org/services/img/introductiontoma00whit',
-    thumbnail: 'https://archive.org/services/img/introductiontoma00whit',
+    excerpt: 'Alfred North Whitehead’s short, clear introduction to the ideas behind mathematics: variables, coordinate geometry, and the symbolic language of science.',
+    featuredImage: 'https://www.gutenberg.org/cache/epub/41568/pg41568.cover.medium.jpg',
+    thumbnail: 'https://www.gutenberg.org/cache/epub/41568/pg41568.cover.medium.jpg',
     category: {
       id: '12',
       name: 'Books',
@@ -605,10 +606,10 @@ James’s luminous prose and profound respect for lived subjective experience ma
       pages: 256,
       subjects: ['Symbolic Notation', 'Variables & Functions', 'Coordinate Geometry', 'Infinitesimal Calculus'],
       license: 'Public-domain archive edition — free access; verify local copyright rules.',
-      readOnlineUrl: 'https://archive.org/details/introductiontoma00whit/mode/2up',
-      downloadPdfUrl: 'https://archive.org/download/introductiontoma00whit/introductiontoma00whit.pdf',
-      downloadEpubUrl: 'https://archive.org/download/introductiontoma00whit/introductiontoma00whit.epub',
-      iaDetailsUrl: 'https://archive.org/details/introductiontoma00whit',
+      readOnlineUrl: 'https://www.gutenberg.org/ebooks/41568',
+      downloadPdfUrl: 'https://www.gutenberg.org/files/41568/41568-pdf.pdf',
+      iaDetailsUrl: 'https://www.gutenberg.org/ebooks/41568',
+      archiveName: 'Project Gutenberg',
     },
     content: `Written in 1911 by Alfred North Whitehead — co-author with Bertrand Russell of the monumental Principia Mathematica — this gem was designed not to drill routine formulas, but to explain what mathematics is truly about and why it is the indispensable engine of natural science.
 
@@ -622,7 +623,7 @@ A timeless, lucid orientation into the mathematical mindset for programmers, phy
     id: 'book-14',
     title: 'The Expression of the Emotions in Man and Animals',
     slug: 'the-expression-of-the-emotions-in-man-and-animals',
-    excerpt: 'Darwin’s pioneer study linking facial expressions, biological communication, and evolutionary continuity across species — the seed of modern AI vision and ethology.',
+    excerpt: 'Darwin’s pioneering 1872 study of facial expressions in humans and animals, one of the first science books illustrated with photographs.',
     featuredImage: 'https://archive.org/services/img/expressionofemot1872darw',
     thumbnail: 'https://archive.org/services/img/expressionofemot1872darw',
     category: {
@@ -656,11 +657,11 @@ A timeless, lucid orientation into the mathematical mindset for programmers, phy
     },
     content: `Published in 1872, The Expression of the Emotions in Man and Animals was one of the first scientific books to use photographs as empirical evidence. Darwin investigated whether emotional facial expressions (fear, rage, grief, joy, disgust) are arbitrary cultural conventions or biological, universal evolutionary traits.
 
-By surveying missionaries and travelers across diverse human cultures, observing infants, studying psychiatric patients, and comparing human expressions with primates, dogs, and cats, Darwin proved that fundamental emotions share identical neuromuscular pathways worldwide.
+By surveying missionaries and travelers across diverse human cultures, observing infants, studying psychiatric patients, and comparing human expressions with primates, dogs, and cats, Darwin argued that several basic expressions are shared across cultures and have evolutionary roots.
 
 He formulated three core explanatory principles: Serviceable Associated Habits, Antithesis, and the Direct Action of the Excited Nervous System.
 
-In the 21st century, Darwin’s findings form the empirical bedrock for Paul Ekman’s universal micro-expressions and computer vision algorithms in affective computing and AI emotion detection.`,
+In the 20th century the psychologist Paul Ekman built on Darwin’s idea of universal expressions. Researchers still debate how universal facial expressions really are, which makes the book a lively starting point rather than the last word.`,
   },
   {
     id: 'book-15',
@@ -697,11 +698,11 @@ In the 21st century, Darwin’s findings form the empirical bedrock for Paul Ekm
       downloadEpubUrl: 'https://archive.org/download/astronomyforamat00flamrich/astronomyforamat00flamrich.epub',
       iaDetailsUrl: 'https://archive.org/details/astronomyforamat00flamrich',
     },
-    content: `French astronomer Camille Flammarion was arguably the greatest astronomical popularizer of the 19th and early 20th centuries. Astronomy for Amateurs (translated by Frances A. Welby) was crafted to awaken a love for the celestial vault in every reader.
+    content: `French astronomer Camille Flammarion was one of the best-known popularizers of astronomy of the late 19th and early 20th centuries. Astronomy for Amateurs (translated by Frances A. Welby) was crafted to awaken a love for the celestial vault in every reader.
 
-Flammarion guides the observer through seasonal night skies, teaching how to recognize Ursa Major, the North Star, Orion, and the Andromeda Galaxy with nothing more than the naked eye and binoculars.
+Flammarion guides the observer through seasonal night skies, teaching how to recognize Ursa Major, the North Star, Orion and other landmarks with the naked eye or a small instrument.
 
-He describes the changing phases and craters of the Moon, the ring geometry of Saturn, the fiery storms of Jupiter, and the breathtaking majesty of meteor swarms. Flammarion’s poetic reverence for cosmic scale makes this handbook a beloved classic of astronomical literature.`,
+He describes the changing phases and craters of the Moon, the rings of Saturn, the cloud belts of Jupiter and meteor showers. Flammarion’s poetic reverence for cosmic scale makes this handbook a beloved classic of astronomical literature.`,
   },
 ];
 
@@ -753,7 +754,7 @@ const NORMALIZED_ARCHIVE_BOOKS: ScienceBook[] = ARCHIVE_BOOKS.map((book) => ({
   bookDetails: {
     ...book.bookDetails,
     license: 'Public-domain archive edition — free access; readers should check the copyright rules that apply where they live.',
-    archiveName: 'Internet Archive',
+    archiveName: book.bookDetails.archiveName ?? 'Internet Archive',
   },
 }));
 

@@ -133,7 +133,7 @@ export const LEARNING_PATHS: LearningPath[] = [
       { id: 'method-proof', kind: 'article', minimumMode: 'quick', title: 'Why Proof Is More Than Calculation', description: 'Compare mathematical certainty with evidence-based scientific confidence.', href: '/articles/why-mathematical-proof-is-more-than-calculation', minutes: 10 },
       { id: 'method-faraday', kind: 'scientist', minimumMode: 'full', title: 'Meet Michael Faraday', description: 'Study a career built on careful experiments, visualization, and repeatable demonstrations.', href: '/scientists/michael-faraday', minutes: 8 },
       { id: 'method-candle', kind: 'book', minimumMode: 'full', title: 'The Chemical History of a Candle', description: 'Follow a model of clear experimental teaching using an everyday object.', href: '/articles/the-chemical-history-of-a-candle', minutes: 18 },
-      { id: 'method-poincare', kind: 'book', minimumMode: 'deep', title: 'Science and Hypothesis', description: 'Examine conventions, models, geometry, and the assumptions inside explanation.', href: '/articles/science-and-hypothesis-poincare', minutes: 22 },
+      { id: 'method-poincare', kind: 'book', minimumMode: 'deep', title: 'Science and Hypothesis', description: 'Examine conventions, models, geometry, and the assumptions inside explanation.', href: '/articles/science-and-hypothesis', minutes: 22 },
       { id: 'method-euclid', kind: 'book', minimumMode: 'deep', title: 'Euclid’s Elements', description: 'Read a foundational example of definitions, axioms, and deductive structure.', href: '/articles/euclids-elements-of-geometry', minutes: 24 },
     ],
   },

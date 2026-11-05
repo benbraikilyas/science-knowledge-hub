@@ -59,9 +59,7 @@ export const SEO_TITLES: Record<string, string> = {
   'how-semiconductors-turn-physics-into-computing':
     'How Semiconductors Turn Quantum Physics Into Computing',
   'science-and-hypothesis':
-    'Science and Hypothesis — Internet Archive Edition',
-  'science-and-hypothesis-poincare':
-    'Science and Hypothesis — Project Gutenberg Edition',
+    'Science and Hypothesis by Henri Poincaré: Free Book Guide',
 };
 
 export const SEO_DESCRIPTIONS: Record<string, string> = {
