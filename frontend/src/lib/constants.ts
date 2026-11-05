@@ -116,6 +116,13 @@ export const DEMO_CATEGORIES: Category[] = [
   { id: '16', name: 'Robotics', slug: 'robotics', description: 'Follow verified progress in humanoid, industrial, medical, autonomous, space, and soft robotics.', icon: '🦾', color: '#f97316', articleCount: articleCountFor('robotics'), order: 16, isActive: true, createdAt: '', updatedAt: '' },
 ];
 
+// Read time from the text itself (about 220 words a minute). The hand-set estimates claimed
+// up to 30 minutes for pages that take two, which misleads readers.
+const withMeasuredReadTime = <T extends { content?: string; readTime: number }>(article: T): T => ({
+  ...article,
+  readTime: Math.max(1, Math.round((article.content ?? '').split(/\s+/).filter(Boolean).length / 220)),
+});
+
 // Sourced 2025–2026 news, original evergreen explainers, and verified public-domain books.
 export const DEMO_ARTICLES = [
   ...LATEST_NEWS_ARTICLES,
@@ -123,7 +130,7 @@ export const DEMO_ARTICLES = [
     (left, right) =>
       new Date(right.publishedAt).getTime() - new Date(left.publishedAt).getTime()
   ),
-];
+].map(withMeasuredReadTime);
 
 // Demo scientists are maintained separately because each profile includes
 // a biography, breakthroughs, sources, and discovery details.

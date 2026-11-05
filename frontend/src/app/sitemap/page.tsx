@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { Sparkles } from 'lucide-react';
 import { GUIDES } from '@/lib/guides';
+import { API_ENABLED } from '@/lib/site';
 
 export const metadata = {
   alternates: { canonical: '/sitemap' },
   title: 'Sitemap',
-  description: 'Sitemap for Science Knowledge Hub - find all pages and sections.',
+  description: 'Every section of Science Knowledge Hub in one place: articles, categories, reading guides, scientist profiles, free books and site policies.',
 };
 
 const NAV_LINKS = [
@@ -107,18 +108,22 @@ export default function SitemapPage() {
 
           {/* Account & Legal */}
           <div>
-            <h2 className="text-lg font-bold text-[var(--text-primary)]" style={{ fontFamily: 'var(--font-heading)' }}>Account</h2>
-            <ul className="mt-4 space-y-2.5">
-              {AUTH_LINKS.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-[var(--text-secondary)] transition-colors hover:text-gold-400">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            {API_ENABLED && (
+              <>
+                <h2 className="text-lg font-bold text-[var(--text-primary)]" style={{ fontFamily: 'var(--font-heading)' }}>Account</h2>
+                <ul className="mt-4 mb-8 space-y-2.5">
+                  {AUTH_LINKS.map((link) => (
+                    <li key={link.href}>
+                      <Link href={link.href} className="text-sm text-[var(--text-secondary)] transition-colors hover:text-gold-400">
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
 
-            <h2 className="mt-8 text-lg font-bold text-[var(--text-primary)]" style={{ fontFamily: 'var(--font-heading)' }}>Legal</h2>
+            <h2 className="text-lg font-bold text-[var(--text-primary)]" style={{ fontFamily: 'var(--font-heading)' }}>Legal</h2>
             <ul className="mt-4 space-y-2.5">
               {FOOTER_LINKS.map((link) => (
                 <li key={link.href}>

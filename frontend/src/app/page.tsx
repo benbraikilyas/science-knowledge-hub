@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 import HeroSection from '@/components/HeroSection';
 import FeaturedArticles from '@/components/FeaturedArticles';
 import CategoriesGrid from '@/components/CategoriesGrid';
@@ -11,6 +10,7 @@ import HomeAnswers from '@/components/HomeAnswers';
 import { fetchFeaturedArticles, fetchCategories, fetchFeaturedScientists } from '@/lib/api';
 import { DEMO_SCIENTISTS, mergeScientistProfiles } from '@/lib/scientists';
 import { toArticleListItem } from '@/lib/article-list';
+import { API_ENABLED } from '@/lib/site';
 import type { ArticleListItem, Category, ScientistListItem } from '@/lib/types';
 
 export const metadata = { alternates: { canonical: '/' } };
@@ -82,20 +82,14 @@ export default async function HomePage() {
   return (
     <>
       <HeroSection />
-      <Suspense fallback={null}>
-        <FeaturedArticles articles={articles} />
-      </Suspense>
-      <Suspense fallback={null}>
-        <CategoriesGrid categories={categories} />
-      </Suspense>
+      <FeaturedArticles articles={articles} />
+      <CategoriesGrid categories={categories} />
       <LearningPathsSection />
       <ScienceToolsSection />
       <StatsCounter stats={stats} />
-      <Suspense fallback={null}>
-        <ScientistsSpotlight scientists={scientists} />
-      </Suspense>
+      <ScientistsSpotlight scientists={scientists} />
       <HomeAnswers />
-      <NewsletterSection />
+      {API_ENABLED && <NewsletterSection />}
     </>
   );
 }

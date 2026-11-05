@@ -147,7 +147,7 @@ export default async function ArticlesPage({
         <div className="mb-6 flex items-center justify-between text-xs text-[var(--text-secondary)] font-mono">
           <div className="flex items-center gap-2">
             <Layers className="h-4 w-4 text-gold-400" />
-            <span>Showing {articles.length} articles</span>
+            <h2 className="font-normal">Showing {articles.length} articles</h2>
           </div>
         </div>
 

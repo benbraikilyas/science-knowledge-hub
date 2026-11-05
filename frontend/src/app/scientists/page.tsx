@@ -109,7 +109,7 @@ export default async function ScientistsPage({
       {/* Scientists Grid */}
       <div className="mx-auto max-w-7xl px-4 pt-12 sm:px-6 lg:px-8">
         <div className="mb-6 flex items-center justify-between text-xs text-[var(--text-secondary)] font-mono">
-          <span>Showing {scientists.length} scientists</span>
+          <h2 className="font-normal">Showing {scientists.length} scientists</h2>
         </div>
 
         {scientists.length > 0 ? (

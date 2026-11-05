@@ -215,7 +215,7 @@ export default async function CategoryDetailPage({ params }: CategoryDetailProps
         ) : (
           <>
             <div className="mb-8 flex items-center justify-between border-b border-[var(--border-color)]/60 pb-4 font-mono text-sm text-[var(--text-secondary)] sm:text-base">
-              <span>{articles.length} articles available</span>
+              <h2 className="font-normal">{articles.length} articles available</h2>
             </div>
 
             {articles.length > 0 ? (

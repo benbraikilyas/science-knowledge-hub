@@ -161,11 +161,11 @@ export const GUIDES: Guide[] = [
     description:
       'Our editors’ picks of the clearest science articles, from JWST and CRISPR to quantum entanglement, plus trusted science magazines to read next.',
     answer:
-      'The best science articles explain how we know something, not just what was found. Start with these four: how the James Webb Space Telescope reads the early universe, why dark matter and dark energy are different mysteries, what CRISPR can and cannot change, and why quantum entanglement does not allow faster-than-light messages. Each takes about ten minutes and is built on named sources. When you want more, the trusted magazines at the end of this guide are good next steps.',
+      'The best science articles explain how we know something, not just what was found. Start with these four: how the James Webb Space Telescope reads the early universe, why dark matter and dark energy are different mysteries, what CRISPR can and cannot change, and why quantum entanglement does not allow faster-than-light messages. Each is a short read built on named sources. When you want more, the trusted magazines at the end of this guide are good next steps.',
     criteria: [
       'Explains the evidence and the method, not only the headline.',
       'Says plainly what the science does not show yet.',
-      'Readable in about ten minutes without a science degree.',
+      'Readable in one sitting without a science degree.',
       'Built on named sources you can check yourself.',
     ],
     sections: [

@@ -4,9 +4,15 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Heart, CheckCircle2, AlertCircle } from 'lucide-react';
-import { SITE_NAME } from '@/lib/site';
+import { API_ENABLED, SITE_NAME } from '@/lib/site';
 import { NAV_ITEMS } from '@/lib/navigation';
 import CookieSettingsButton from '@/components/CookieSettingsButton';
+
+const START_LINKS = [
+  { label: 'Best Science Articles', href: '/guides/best-science-articles' },
+  { label: 'Best Free Science Books', href: '/guides/best-free-science-books' },
+  { label: 'Best AI Explainers', href: '/guides/best-ai-explainers' },
+];
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -149,7 +155,23 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Quick Join */}
+          {/* Quick Join: the newsletter needs the API, so without it the column points readers to the guides */}
+          {!API_ENABLED ? (
+            <div>
+              <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--text-primary)]">
+                Start Here
+              </h3>
+              <ul className="mt-4 space-y-2.5 text-sm">
+                {START_LINKS.map((item) => (
+                  <li key={item.href}>
+                    <Link href={item.href} className="transition-colors duration-200 hover:text-gold-300">
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : (
           <div>
             <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--text-primary)]">
               Quick Connect
@@ -199,6 +221,7 @@ export default function Footer() {
               <Link href="/unsubscribe" className="text-gold-300 hover:underline">Unsubscribe</Link> anytime.
             </p>
           </div>
+          )}
         </div>
 
         {/* Bottom copyright */}

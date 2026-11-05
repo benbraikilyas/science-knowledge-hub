@@ -20,7 +20,7 @@ const ANSWERS: { question: string; answer: Segment[] }[] = [
       { text: 'what CRISPR can and cannot change', href: '/articles/crispr-gene-editing-capabilities-limits' },
       ' for biology, or ',
       { text: 'how transformer models process language', href: '/articles/how-transformer-models-process-language-and-fail' },
-      ' for AI. Each takes about ten minutes. Still unsure? See ',
+      ' for AI. Each is a short read built on named sources. Still unsure? See ',
       { text: 'the best science articles to read first', href: '/guides/best-science-articles' },
       '.',
     ],
