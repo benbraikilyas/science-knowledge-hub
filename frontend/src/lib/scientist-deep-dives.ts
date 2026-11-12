@@ -1,8 +1,12 @@
 import { resolveInternalLinks } from './internal-links';
 import { COMPUTING_DEEP_DIVES } from './scientist-deep-dives-computing';
+import { COMPUTING_DEEP_DIVES_2 } from './scientist-deep-dives-computing-2';
 import { GOLDEN_AGE_DEEP_DIVES } from './scientist-deep-dives-golden-age';
+import { GOLDEN_AGE_DEEP_DIVES_2 } from './scientist-deep-dives-golden-age-2';
 import { LIFE_SCIENCE_DEEP_DIVES } from './scientist-deep-dives-life';
+import { LIFE_SCIENCE_DEEP_DIVES_2 } from './scientist-deep-dives-life-2';
 import { PHYSICAL_SCIENCE_DEEP_DIVES } from './scientist-deep-dives-physical';
+import { PHYSICAL_SCIENCE_DEEP_DIVES_2 } from './scientist-deep-dives-physical-2';
 
 // Long-form sections for scientist profiles: early life, the work in plain language,
 // a timeline, common myths, legacy and short answers to the questions people search.
@@ -24,6 +28,10 @@ const DEEP_DIVES: Record<string, ScientistDeepDive> = {
   ...COMPUTING_DEEP_DIVES,
   ...LIFE_SCIENCE_DEEP_DIVES,
   ...GOLDEN_AGE_DEEP_DIVES,
+  ...PHYSICAL_SCIENCE_DEEP_DIVES_2,
+  ...COMPUTING_DEEP_DIVES_2,
+  ...LIFE_SCIENCE_DEEP_DIVES_2,
+  ...GOLDEN_AGE_DEEP_DIVES_2,
 };
 
 export function getScientistDeepDive(slug: string) {

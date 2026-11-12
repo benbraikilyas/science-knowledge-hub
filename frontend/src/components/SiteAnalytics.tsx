@@ -19,5 +19,7 @@ function isExcluded() {
 const beforeSend = (event: BeforeSendEvent) => (isExcluded() ? null : event);
 
 export default function SiteAnalytics() {
+  // Vercel Analytics only exists on Vercel; the static Cloudflare build uses Cloudflare Web Analytics.
+  if (process.env.NEXT_PUBLIC_STATIC_EXPORT === '1') return null;
   return <Analytics beforeSend={beforeSend} />;
 }

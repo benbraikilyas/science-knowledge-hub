@@ -4,6 +4,9 @@ import { GUIDES } from '@/lib/guides';
 import { DEMO_SCIENTISTS } from '@/lib/scientists';
 import { SITE_URL, absoluteUrl } from '@/lib/site';
 
+// Built once as a plain file, so it also works on static hosting.
+export const dynamic = 'force-static';
+
 const STATIC_ROUTES = [
   '',
   '/about',

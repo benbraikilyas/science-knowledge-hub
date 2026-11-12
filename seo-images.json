@@ -1643,6 +1643,53 @@
     "license": "https://creativecommons.org/publicdomain/mark/1.0/",
     "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Gold_Ion_Trap_(6029437325).jpg"
   },
+  "/images/scientists/abbas-ibn-firnas.webp": {
+    "title": "Abbas ibn Firnas, modern illustration",
+    "description": "Abbas ibn Firnas, modern illustration",
+    "alt": "Abbas ibn Firnas, modern illustration",
+    "keywords": [
+      "Abbas ibn Firnas",
+      "early flight",
+      "invention",
+      "al-Andalus",
+      "Islamic Golden Age",
+      "scientist biography",
+      "scientific contributions",
+      "history of science",
+      "science education",
+      "historical portrait",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Armen_Firman_Abb%C3%A1s_Ibn_Firn%C3%A1s_(MUNCYT,_Eulogia_Merle).jpg",
+    "creditText": "Eulogia Merle (FECYT), 2011 (illustration) — CC BY-SA 4.0",
+    "creator": "Eulogia Merle",
+    "copyrightNotice": "© Eulogia Merle, CC BY-SA 4.0",
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Armen_Firman_Abb%C3%A1s_Ibn_Firn%C3%A1s_(MUNCYT,_Eulogia_Merle).jpg"
+  },
+  "/images/scientists/al-battani.webp": {
+    "title": "Page from a medieval Latin manuscript of al-Battani’s astronomical work",
+    "description": "Page from a medieval Latin manuscript of al-Battani’s astronomical work",
+    "alt": "Page from a medieval Latin manuscript of al-Battani’s astronomical work",
+    "keywords": [
+      "Al-Battani",
+      "astronomy",
+      "trigonometry",
+      "solar year",
+      "Islamic Golden Age",
+      "scientist biography",
+      "scientific contributions",
+      "history of science",
+      "science education",
+      "historical portrait",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Latin_7266;_folio_78r_(BnF).jpg",
+    "creditText": "Unknown scribe, 14th century (BnF Latin 7266, manuscript) — CC BY-SA 4.0",
+    "copyrightNotice": "© the creator, CC BY-SA 4.0",
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Latin_7266;_folio_78r_(BnF).jpg"
+  },
   "/images/scientists/al-biruni.webp": {
     "title": "Portrait of Al-Biruni",
     "description": "Portrait of Al-Biruni",
@@ -1665,6 +1712,30 @@
     "copyrightNotice": "Public domain",
     "license": "https://creativecommons.org/publicdomain/mark/1.0/",
     "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Biruni-russian.jpg"
+  },
+  "/images/scientists/al-idrisi.webp": {
+    "title": "Al-Idrisi statue in Ceuta",
+    "description": "Al-Idrisi statue in Ceuta",
+    "alt": "Al-Idrisi statue in Ceuta",
+    "keywords": [
+      "Al-Idrisi",
+      "geography",
+      "cartography",
+      "Tabula Rogeriana",
+      "Islamic Golden Age",
+      "scientist biography",
+      "scientific contributions",
+      "history of science",
+      "science education",
+      "historical portrait",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Estatua_de_Al-Idrisi_bajo_el_baluarte_de_los_Mallorquines,_Ceuta_(5).jpg",
+    "creditText": "Mario Sánchez Bueno; derivative by Ecemaml, 2012 (statue photograph, cropped) — CC BY-SA 3.0",
+    "creator": "Mario Sánchez Bueno",
+    "copyrightNotice": "© Mario Sánchez Bueno, CC BY-SA 3.0",
+    "license": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Estatua_de_Al-Idrisi_bajo_el_baluarte_de_los_Mallorquines,_Ceuta_(5).jpg"
   },
   "/images/scientists/al-jazari.webp": {
     "title": "Al-Jazari elephant clock",
@@ -1814,6 +1885,75 @@
     "license": "https://creativecommons.org/publicdomain/mark/1.0/",
     "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Alan_turing_header.jpg"
   },
+  "/images/scientists/alexander-fleming.webp": {
+    "title": "Alexander Fleming in his laboratory at St Mary’s Hospital",
+    "description": "Alexander Fleming in his laboratory at St Mary’s Hospital",
+    "alt": "Alexander Fleming in his laboratory at St Mary’s Hospital",
+    "keywords": [
+      "Alexander Fleming",
+      "penicillin",
+      "antibiotics",
+      "bacteriology",
+      "history of medicine",
+      "scientist biography",
+      "scientific contributions",
+      "history of science",
+      "science education",
+      "historical portrait",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Synthetic_Production_of_Penicillin_TR1468.jpg",
+    "creditText": "Official photographer, 1943 (Imperial War Museums TR 1468) — Public domain",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Synthetic_Production_of_Penicillin_TR1468.jpg"
+  },
+  "/images/scientists/barbara-mcclintock.webp": {
+    "title": "Barbara McClintock in her laboratory in 1947",
+    "description": "Barbara McClintock in her laboratory in 1947",
+    "alt": "Barbara McClintock in her laboratory in 1947",
+    "keywords": [
+      "Barbara McClintock",
+      "genetics",
+      "transposons",
+      "maize",
+      "women in science",
+      "scientist biography",
+      "scientific contributions",
+      "history of science",
+      "science education",
+      "historical portrait",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Barbara_McClintock_(1902-1992)_shown_in_her_laboratory_in_1947.jpg",
+    "creditText": "Smithsonian Institution/Science Service, 1947; restored by Adam Cuerden — Public domain",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Barbara_McClintock_(1902-1992)_shown_in_her_laboratory_in_1947.jpg"
+  },
+  "/images/scientists/charles-babbage.webp": {
+    "title": "Portrait of Charles Babbage",
+    "description": "Portrait of Charles Babbage",
+    "alt": "Portrait of Charles Babbage",
+    "keywords": [
+      "Charles Babbage",
+      "Analytical Engine",
+      "Difference Engine",
+      "computing history",
+      "mathematics",
+      "scientist biography",
+      "scientific contributions",
+      "history of science",
+      "science education",
+      "historical portrait",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Charles_Babbage_-_1860.jpg",
+    "creditText": "Unknown photographer, 1860 — Public domain",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Charles_Babbage_-_1860.jpg"
+  },
   "/images/scientists/charles-darwin.webp": {
     "title": "Portrait of Charles Darwin",
     "description": "Portrait of Charles Darwin",
@@ -1889,6 +2029,76 @@
     "license": "https://creativecommons.org/publicdomain/mark/1.0/",
     "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Marie_Curie_c1920.jpg"
   },
+  "/images/scientists/dennis-ritchie.webp": {
+    "title": "Dennis Ritchie in 2011",
+    "description": "Dennis Ritchie in 2011",
+    "alt": "Dennis Ritchie in 2011",
+    "keywords": [
+      "Dennis Ritchie",
+      "C programming language",
+      "Unix",
+      "operating systems",
+      "computer science",
+      "scientist biography",
+      "scientific contributions",
+      "history of science",
+      "science education",
+      "historical portrait",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Dennis_Ritchie_2011.jpg",
+    "creditText": "Denise Panyik-Dale, 2011 — CC BY 2.0",
+    "creator": "Denise Panyik-Dale",
+    "copyrightNotice": "© Denise Panyik-Dale, CC BY 2.0",
+    "license": "https://creativecommons.org/licenses/by/2.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Dennis_Ritchie_2011.jpg"
+  },
+  "/images/scientists/dmitri-mendeleev.webp": {
+    "title": "Portrait of Dmitri Mendeleev",
+    "description": "Portrait of Dmitri Mendeleev",
+    "alt": "Portrait of Dmitri Mendeleev",
+    "keywords": [
+      "Dmitri Mendeleev",
+      "periodic table",
+      "chemistry",
+      "chemical elements",
+      "periodic law",
+      "scientist biography",
+      "scientific contributions",
+      "history of science",
+      "science education",
+      "historical portrait",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Dmitri_Mendeleev.jpg",
+    "creditText": "Unknown photographer — Public domain",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Dmitri_Mendeleev.jpg"
+  },
+  "/images/scientists/edward-jenner.webp": {
+    "title": "Portrait of Edward Jenner",
+    "description": "Portrait of Edward Jenner",
+    "alt": "Portrait of Edward Jenner",
+    "keywords": [
+      "Edward Jenner",
+      "vaccination",
+      "smallpox",
+      "immunology",
+      "history of medicine",
+      "scientist biography",
+      "scientific contributions",
+      "history of science",
+      "science education",
+      "historical portrait",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Edward_Jenner.jpg",
+    "creditText": "John Raphael Smith (pastel portrait) — Public domain",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Edward_Jenner.jpg"
+  },
   "/images/scientists/einstein.webp": {
     "title": "Portrait of Albert Einstein",
     "description": "Portrait of Albert Einstein",
@@ -1913,6 +2123,75 @@
     "copyrightNotice": "Public domain — Orren Jack Turner",
     "license": "https://creativecommons.org/publicdomain/mark/1.0/",
     "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Albert_Einstein_Head.jpg"
+  },
+  "/images/scientists/enrico-fermi.webp": {
+    "title": "Portrait of Enrico Fermi",
+    "description": "Portrait of Enrico Fermi",
+    "alt": "Portrait of Enrico Fermi",
+    "keywords": [
+      "Enrico Fermi",
+      "nuclear reactor",
+      "nuclear physics",
+      "beta decay",
+      "Nobel Prize scientist",
+      "scientist biography",
+      "scientific contributions",
+      "history of science",
+      "science education",
+      "historical portrait",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Enrico_Fermi_1943-49.jpg",
+    "creditText": "U.S. Department of Energy, 1943–1949 — Public domain",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Enrico_Fermi_1943-49.jpg"
+  },
+  "/images/scientists/ernest-rutherford.webp": {
+    "title": "Portrait of Ernest Rutherford",
+    "description": "Portrait of Ernest Rutherford",
+    "alt": "Portrait of Ernest Rutherford",
+    "keywords": [
+      "Ernest Rutherford",
+      "atomic nucleus",
+      "nuclear physics",
+      "radioactivity",
+      "gold foil experiment",
+      "scientist biography",
+      "scientific contributions",
+      "history of science",
+      "science education",
+      "historical portrait",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Sir_Ernest_Rutherford_LCCN2014716719_-_restoration1.jpg",
+    "creditText": "Bain News Service; restored by Bammesk — Public domain",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Sir_Ernest_Rutherford_LCCN2014716719_-_restoration1.jpg"
+  },
+  "/images/scientists/erwin-schrodinger.webp": {
+    "title": "Portrait of Erwin Schrödinger",
+    "description": "Portrait of Erwin Schrödinger",
+    "alt": "Portrait of Erwin Schrödinger",
+    "keywords": [
+      "Erwin Schrödinger",
+      "quantum mechanics",
+      "wave equation",
+      "Schrödinger’s cat",
+      "entanglement",
+      "scientist biography",
+      "scientific contributions",
+      "history of science",
+      "science education",
+      "historical portrait",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Erwin_Schr%C3%B6dinger_-_Narodowe_Archiwum_Cyfrowe_(1-E-939).jpg",
+    "creditText": "Unknown photographer, 1933 (Narodowe Archiwum Cyfrowe) — Public domain",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Erwin_Schr%C3%B6dinger_-_Narodowe_Archiwum_Cyfrowe_(1-E-939).jpg"
   },
   "/images/scientists/galileo-galilei.webp": {
     "title": "Portrait of Galileo Galilei",
@@ -1939,6 +2218,29 @@
     "license": "https://creativecommons.org/publicdomain/mark/1.0/",
     "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Galileo_Galilei_(1564-1642)_RMG_BHC2700.tiff"
   },
+  "/images/scientists/george-boole.webp": {
+    "title": "Portrait of George Boole",
+    "description": "Portrait of George Boole",
+    "alt": "Portrait of George Boole",
+    "keywords": [
+      "George Boole",
+      "Boolean algebra",
+      "logic",
+      "mathematics",
+      "computing history",
+      "scientist biography",
+      "scientific contributions",
+      "history of science",
+      "science education",
+      "historical portrait",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Portrait_of_George_Boole.png",
+    "creditText": "Unknown artist, 1865 (engraving) — Public domain",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Portrait_of_George_Boole.png"
+  },
   "/images/scientists/grace-hopper.webp": {
     "title": "Portrait of Grace Hopper",
     "description": "Portrait of Grace Hopper",
@@ -1964,6 +2266,29 @@
     "license": "https://creativecommons.org/publicdomain/mark/1.0/",
     "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Commodore_Grace_M._Hopper,_USN_(covered)_head_and_shoulders_crop.jpg"
   },
+  "/images/scientists/gregor-mendel.webp": {
+    "title": "Portrait of Gregor Mendel",
+    "description": "Portrait of Gregor Mendel",
+    "alt": "Portrait of Gregor Mendel",
+    "keywords": [
+      "Gregor Mendel",
+      "genetics",
+      "heredity",
+      "pea plant experiments",
+      "laws of inheritance",
+      "scientist biography",
+      "scientific contributions",
+      "history of science",
+      "science education",
+      "historical portrait",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Gregor_Mendel_2.jpg",
+    "creditText": "Unknown photographer, c. 1862 — Public domain",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Gregor_Mendel_2.jpg"
+  },
   "/images/scientists/hawking.webp": {
     "title": "Portrait of Stephen Hawking",
     "description": "Portrait of Stephen Hawking",
@@ -1988,6 +2313,53 @@
     "copyrightNotice": "Public domain — Paul Alers",
     "license": "https://creativecommons.org/publicdomain/mark/1.0/",
     "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Stephen_hawking_2008_nasa.jpg"
+  },
+  "/images/scientists/hedy-lamarr.webp": {
+    "title": "Portrait of Hedy Lamarr",
+    "description": "Portrait of Hedy Lamarr",
+    "alt": "Portrait of Hedy Lamarr",
+    "keywords": [
+      "Hedy Lamarr",
+      "frequency hopping",
+      "spread spectrum",
+      "inventor",
+      "women in technology",
+      "scientist biography",
+      "scientific contributions",
+      "history of science",
+      "science education",
+      "historical portrait",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Hedy_Lamarr_Publicity_Photo_for_The_Heavenly_Body_1944.jpg",
+    "creditText": "Unknown photographer, 1944 (MGM publicity photograph) — Public domain",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Hedy_Lamarr_Publicity_Photo_for_The_Heavenly_Body_1944.jpg"
+  },
+  "/images/scientists/ibn-al-baytar.webp": {
+    "title": "Ibn al-Baytar statue in Benalmádena",
+    "description": "Ibn al-Baytar statue in Benalmádena",
+    "alt": "Ibn al-Baytar statue in Benalmádena",
+    "keywords": [
+      "Ibn al-Baytar",
+      "botany",
+      "pharmacology",
+      "medicinal plants",
+      "Islamic Golden Age",
+      "scientist biography",
+      "scientific contributions",
+      "history of science",
+      "science education",
+      "historical portrait",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Ibn_al-Baytar.JPG",
+    "creditText": "Keke999, 2008 (statue photograph) — CC BY-SA 4.0",
+    "creator": "Keke999",
+    "copyrightNotice": "© Keke999, CC BY-SA 4.0",
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Ibn_al-Baytar.JPG"
   },
   "/images/scientists/ibn-al-haytham.webp": {
     "title": "Portrait of Ibn al-Haytham",
@@ -2037,6 +2409,54 @@
     "license": "https://creativecommons.org/licenses/by-sa/3.0/",
     "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Ibn_Al_Nafis_statue.jpg"
   },
+  "/images/scientists/ibn-khaldun.webp": {
+    "title": "Ibn Khaldun bust at the Casbah of Béjaïa",
+    "description": "Ibn Khaldun bust at the Casbah of Béjaïa",
+    "alt": "Ibn Khaldun bust at the Casbah of Béjaïa",
+    "keywords": [
+      "Ibn Khaldun",
+      "Muqaddimah",
+      "sociology",
+      "historiography",
+      "economics",
+      "scientist biography",
+      "scientific contributions",
+      "history of science",
+      "science education",
+      "historical portrait",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Bust_of_Ibn_Khaldun_(Casbah_of_Bejaia,_Algeria).jpg",
+    "creditText": "Reda Kerbush, 2017 (bust photograph) — CC BY-SA 4.0",
+    "creator": "Reda Kerbush",
+    "copyrightNotice": "© Reda Kerbush, CC BY-SA 4.0",
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Bust_of_Ibn_Khaldun_(Casbah_of_Bejaia,_Algeria).jpg"
+  },
+  "/images/scientists/ibn-rushd.webp": {
+    "title": "Ibn Rushd (Averroes), detail of a fresco by Andrea di Bonaiuto",
+    "description": "Ibn Rushd (Averroes), detail of a fresco by Andrea di Bonaiuto",
+    "alt": "Ibn Rushd (Averroes), detail of a fresco by Andrea di Bonaiuto",
+    "keywords": [
+      "Ibn Rushd (Averroes)",
+      "Averroes",
+      "philosophy",
+      "medicine",
+      "Islamic Golden Age",
+      "scientist biography",
+      "scientific contributions",
+      "history of science",
+      "science education",
+      "historical portrait",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Andrea_di_bonaiuto,_apoteosi_di_san_tommaso_d%27aquino,_11_averro%C3%A8.jpg",
+    "creditText": "Andrea di Bonaiuto, c. 1365–1368 (fresco); photograph by Sailko — CC BY 3.0",
+    "creator": "Sailko",
+    "copyrightNotice": "© Sailko, CC BY 3.0",
+    "license": "https://creativecommons.org/licenses/by/3.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Andrea_di_bonaiuto,_apoteosi_di_san_tommaso_d%27aquino,_11_averro%C3%A8.jpg"
+  },
   "/images/scientists/ibn-sina.webp": {
     "title": "Ibn Sina bust",
     "description": "Ibn Sina bust",
@@ -2085,6 +2505,52 @@
     "license": "https://creativecommons.org/publicdomain/mark/1.0/",
     "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Man_Florence,_Ashburnham_1166_fol_12r.jpg"
   },
+  "/images/scientists/james-clerk-maxwell.webp": {
+    "title": "Portrait of James Clerk Maxwell",
+    "description": "Portrait of James Clerk Maxwell",
+    "alt": "Portrait of James Clerk Maxwell",
+    "keywords": [
+      "James Clerk Maxwell",
+      "electromagnetism",
+      "Maxwell equations",
+      "light",
+      "kinetic theory of gases",
+      "scientist biography",
+      "scientific contributions",
+      "history of science",
+      "science education",
+      "historical portrait",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:James-Clerk-Maxwell-1831-1879.jpg",
+    "creditText": "Unknown photographer, c. 1870 — Public domain",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:James-Clerk-Maxwell-1831-1879.jpg"
+  },
+  "/images/scientists/johannes-kepler.webp": {
+    "title": "Portrait of Johannes Kepler",
+    "description": "Portrait of Johannes Kepler",
+    "alt": "Portrait of Johannes Kepler",
+    "keywords": [
+      "Johannes Kepler",
+      "planetary motion",
+      "astronomy",
+      "elliptical orbits",
+      "scientific revolution",
+      "scientist biography",
+      "scientific contributions",
+      "history of science",
+      "science education",
+      "historical portrait",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:JKepler.jpg",
+    "creditText": "August Köhler, 1910 (painting after an earlier portrait) — Public domain",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:JKepler.jpg"
+  },
   "/images/scientists/john-von-neumann.webp": {
     "title": "Portrait of John von Neumann",
     "description": "Portrait of John von Neumann",
@@ -2108,6 +2574,52 @@
     "creatorType": "Organization",
     "copyrightNotice": "Los Alamos National Laboratory — see the linked source record for the license",
     "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:JohnvonNeumann-LosAlamos.gif"
+  },
+  "/images/scientists/katherine-johnson.webp": {
+    "title": "Portrait of Katherine Johnson",
+    "description": "Portrait of Katherine Johnson",
+    "alt": "Portrait of Katherine Johnson",
+    "keywords": [
+      "Katherine Johnson",
+      "orbital mechanics",
+      "NASA",
+      "Apollo program",
+      "women in computing",
+      "scientist biography",
+      "scientific contributions",
+      "history of science",
+      "science education",
+      "historical portrait",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Katherine_Johnson_1983.jpg",
+    "creditText": "NASA, 1983 — Public domain",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Katherine_Johnson_1983.jpg"
+  },
+  "/images/scientists/lise-meitner.webp": {
+    "title": "Portrait of Lise Meitner",
+    "description": "Portrait of Lise Meitner",
+    "alt": "Portrait of Lise Meitner",
+    "keywords": [
+      "Lise Meitner",
+      "nuclear fission",
+      "nuclear physics",
+      "radioactivity",
+      "women in science",
+      "scientist biography",
+      "scientific contributions",
+      "history of science",
+      "science education",
+      "historical portrait",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Lise_Meitner_NatGeo.jpg",
+    "creditText": "Harris & Ewing — Public domain",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Lise_Meitner_NatGeo.jpg"
   },
   "/images/scientists/louis-pasteur.webp": {
     "title": "Portrait of Louis Pasteur",
@@ -2182,6 +2694,29 @@
     "license": "https://creativecommons.org/publicdomain/mark/1.0/",
     "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Margaret_Hamilton_-_restoration.jpg"
   },
+  "/images/scientists/max-planck.webp": {
+    "title": "Portrait of Max Planck",
+    "description": "Portrait of Max Planck",
+    "alt": "Portrait of Max Planck",
+    "keywords": [
+      "Max Planck",
+      "quantum theory",
+      "Planck constant",
+      "black-body radiation",
+      "theoretical physics",
+      "scientist biography",
+      "scientific contributions",
+      "history of science",
+      "science education",
+      "historical portrait",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Max_Planck_by_Hugo_Erfurth_1938cr_-_restoration1.jpg",
+    "creditText": "Hugo Erfurth, 1938 — Public domain",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Max_Planck_by_Hugo_Erfurth_1938cr_-_restoration1.jpg"
+  },
   "/images/scientists/michael-faraday.webp": {
     "title": "Portrait of Michael Faraday",
     "description": "Portrait of Michael Faraday",
@@ -2204,6 +2739,29 @@
     "copyrightNotice": "Public domain",
     "license": "https://creativecommons.org/publicdomain/mark/1.0/",
     "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Michael_Faraday_sitting_crop.jpg"
+  },
+  "/images/scientists/nasir-al-din-al-tusi.webp": {
+    "title": "Nasir al-Din al-Tusi on an Iranian postage stamp",
+    "description": "Nasir al-Din al-Tusi on an Iranian postage stamp",
+    "alt": "Nasir al-Din al-Tusi on an Iranian postage stamp",
+    "keywords": [
+      "Nasir al-Din al-Tusi",
+      "astronomy",
+      "Maragha observatory",
+      "trigonometry",
+      "Islamic Golden Age",
+      "scientist biography",
+      "scientific contributions",
+      "history of science",
+      "science education",
+      "historical portrait",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Nasir_al-Din_Tusi.jpg",
+    "creditText": "Iranian postage stamp — Public domain",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Nasir_al-Din_Tusi.jpg"
   },
   "/images/scientists/newton.webp": {
     "title": "Portrait of Isaac Newton",
@@ -2229,6 +2787,122 @@
     "copyrightNotice": "Public domain — Godfrey Kneller",
     "license": "https://creativecommons.org/publicdomain/mark/1.0/",
     "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:GodfreyKneller-IsaacNewton-1689.jpg"
+  },
+  "/images/scientists/nicolaus-copernicus.webp": {
+    "title": "Portrait of Nicolaus Copernicus",
+    "description": "Portrait of Nicolaus Copernicus",
+    "alt": "Portrait of Nicolaus Copernicus",
+    "keywords": [
+      "Nicolaus Copernicus",
+      "heliocentrism",
+      "astronomy",
+      "scientific revolution",
+      "solar system",
+      "scientist biography",
+      "scientific contributions",
+      "history of science",
+      "science education",
+      "historical portrait",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Nikolaus_Kopernikus_MOT.jpg",
+    "creditText": "Unknown artist, c. 1580 (painting) — Public domain",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Nikolaus_Kopernikus_MOT.jpg"
+  },
+  "/images/scientists/niels-bohr.webp": {
+    "title": "Portrait of Niels Bohr",
+    "description": "Portrait of Niels Bohr",
+    "alt": "Portrait of Niels Bohr",
+    "keywords": [
+      "Niels Bohr",
+      "atomic model",
+      "quantum physics",
+      "complementarity",
+      "Nobel Prize scientist",
+      "scientist biography",
+      "scientific contributions",
+      "history of science",
+      "science education",
+      "historical portrait",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Niels_Bohr.jpg",
+    "creditText": "AB Lagrelius & Westphal, c. 1922 — Public domain",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Niels_Bohr.jpg"
+  },
+  "/images/scientists/omar-khayyam.webp": {
+    "title": "Omar Khayyam statue",
+    "description": "Omar Khayyam statue",
+    "alt": "Omar Khayyam statue",
+    "keywords": [
+      "Omar Khayyam",
+      "algebra",
+      "cubic equations",
+      "Jalali calendar",
+      "Islamic Golden Age",
+      "scientist biography",
+      "scientific contributions",
+      "history of science",
+      "science education",
+      "historical portrait",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Hakim_Omar_Khayam_-_panoramio.jpg",
+    "creditText": "Alireza Javaheri (via Panoramio), 2011 (statue photograph) — CC BY 3.0",
+    "creator": "Alireza Javaheri",
+    "copyrightNotice": "© Alireza Javaheri, CC BY 3.0",
+    "license": "https://creativecommons.org/licenses/by/3.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Hakim_Omar_Khayam_-_panoramio.jpg"
+  },
+  "/images/scientists/rachel-carson.webp": {
+    "title": "Portrait of Rachel Carson",
+    "description": "Portrait of Rachel Carson",
+    "alt": "Portrait of Rachel Carson",
+    "keywords": [
+      "Rachel Carson",
+      "Silent Spring",
+      "ecology",
+      "marine biology",
+      "environmental science",
+      "scientist biography",
+      "scientific contributions",
+      "history of science",
+      "science education",
+      "historical portrait",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Rachel-Carson.jpg",
+    "creditText": "U.S. Fish and Wildlife Service, 1944 — Public domain",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Rachel-Carson.jpg"
+  },
+  "/images/scientists/robert-koch.webp": {
+    "title": "Portrait of Robert Koch",
+    "description": "Portrait of Robert Koch",
+    "alt": "Portrait of Robert Koch",
+    "keywords": [
+      "Robert Koch",
+      "microbiology",
+      "tuberculosis",
+      "germ theory",
+      "Koch postulates",
+      "scientist biography",
+      "scientific contributions",
+      "history of science",
+      "science education",
+      "historical portrait",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:RobertKoch_cropped.jpg",
+    "creditText": "Unknown photographer, published 1907 — Public domain",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:RobertKoch_cropped.jpg"
   },
   "/images/scientists/rosalind-franklin.webp": {
     "title": "Portrait of Rosalind Franklin",
@@ -2277,6 +2951,30 @@
     "copyrightNotice": "Public domain",
     "license": "https://creativecommons.org/publicdomain/mark/1.0/",
     "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:N.Tesla.JPG"
+  },
+  "/images/scientists/tim-berners-lee.webp": {
+    "title": "Tim Berners-Lee speaking at Web Summit 2025",
+    "description": "Tim Berners-Lee speaking at Web Summit 2025",
+    "alt": "Tim Berners-Lee speaking at Web Summit 2025",
+    "keywords": [
+      "Tim Berners-Lee",
+      "World Wide Web",
+      "HTML",
+      "computer science",
+      "internet history",
+      "scientist biography",
+      "scientific contributions",
+      "history of science",
+      "science education",
+      "historical portrait",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Tim_Berners-Lee_at_the_2025_Web_Summit_(Cropped).jpg",
+    "creditText": "Web Summit (via Flickr), 2025 (cropped) — CC BY 4.0",
+    "creator": "Web Summit",
+    "copyrightNotice": "© Web Summit, CC BY 4.0",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Tim_Berners-Lee_at_the_2025_Web_Summit_(Cropped).jpg"
   },
   "/og.webp": {
     "title": "Science Knowledge Hub — Explore the Universe of Knowledge",

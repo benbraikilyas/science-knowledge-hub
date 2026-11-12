@@ -1,6 +1,9 @@
 import type { MetadataRoute } from 'next';
 import { SITE_DESCRIPTION, SITE_NAME } from '@/lib/site';
 
+// Built once as a plain file, so it also works on static hosting.
+export const dynamic = 'force-static';
+
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: SITE_NAME,

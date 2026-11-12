@@ -16,6 +16,14 @@ interface CategoryDetailProps {
   params: Promise<{ slug: string }>;
 }
 
+// Every category is built ahead of time, so any other slug is a real 404.
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+  const { DEMO_CATEGORIES } = await import('@/lib/constants');
+  return DEMO_CATEGORIES.map((category) => ({ slug: category.slug }));
+}
+
 // Search-facing copy for collections whose short category name says too little on its own.
 const COLLECTION_COPY: Record<string, { title: (count: number) => string; heading: string; description: (count: number) => string }> = {
   books: {

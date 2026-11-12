@@ -19,21 +19,14 @@ function mergeArticles(remoteArticles: ArticleListItem[]): ArticleListItem[] {
   return [...mergedLocal, ...remoteBySlug.values()].map(toArticleListItem);
 }
 
-async function getArticles(searchParams: Record<string, string | undefined>): Promise<ArticleListItem[]> {
+async function getArticles(): Promise<ArticleListItem[]> {
   let items: ArticleListItem[];
 
   try {
-    const raw = await fetchArticles({
-      category: searchParams.category,
-      tag: searchParams.tag,
-    });
+    const raw = await fetchArticles();
     items = mergeArticles(Array.isArray(raw) ? raw as ArticleListItem[] : []);
   } catch {
     items = DEMO_ARTICLES.map(toArticleListItem);
-  }
-
-  if (searchParams.category) {
-    return items.filter((article) => article.category.slug === searchParams.category);
   }
 
   return items.filter((article) => article.category.slug !== 'books');
@@ -67,14 +60,10 @@ const CATEGORIES = [
   { name: 'Theories', slug: 'scientific-theories' },
 ];
 
-export default async function ArticlesPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ [key: string]: string | undefined }>;
-}) {
-  const params = await searchParams;
-  const currentCategory = params.category || '';
-  const articles: ArticleListItem[] = await getArticles(params);
+// The topic buttons open each category's own page, so this archive is one static list.
+export default async function ArticlesPage() {
+  const currentCategory = '';
+  const articles: ArticleListItem[] = await getArticles();
 
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] pb-24">
@@ -117,7 +106,7 @@ export default async function ArticlesPage({
           <div className="mt-8 flex flex-wrap gap-2.5">
             {CATEGORIES.map((cat) => {
               const isActive = currentCategory === cat.slug;
-              const href = cat.slug ? `/articles?category=${cat.slug}` : '/articles';
+              const href = cat.slug ? `/categories/${cat.slug}` : '/articles';
               return (
                 <Link
                   key={cat.slug}

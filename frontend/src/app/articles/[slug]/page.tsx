@@ -21,6 +21,14 @@ interface ArticleDetailProps {
   params: Promise<{ slug: string }>;
 }
 
+// Every local article and book is built ahead of time, so any other slug is a real 404.
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+  const { DEMO_ARTICLES } = await import('@/lib/constants');
+  return DEMO_ARTICLES.map((article) => ({ slug: article.slug }));
+}
+
 async function getArticle(slug: string) {
   const { DEMO_ARTICLES } = await import('@/lib/constants');
   const localArticle = DEMO_ARTICLES.find((article: { slug: string }) => article.slug === slug);
@@ -440,7 +448,7 @@ export default async function ArticleDetailPage({ params }: ArticleDetailProps) 
               {articleTags.map((tag: string) => (
                 <Link
                   key={tag}
-                  href={`/articles?tag=${encodeURIComponent(tag.toLowerCase())}`}
+                  href={`/search?q=${encodeURIComponent(tag)}`}
                   className="rounded-xl border border-[var(--border-color)] bg-white/[0.04] px-3 py-1 font-mono text-xs text-[var(--text-secondary)] transition-colors hover:border-gold-500/40 hover:bg-gold-500/10 hover:text-gold-200"
                 >
                   #{tag}

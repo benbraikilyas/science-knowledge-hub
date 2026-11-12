@@ -1,0 +1,8 @@
+[
+  { "source": "/articles/apollo-11-moon-landing", "destination": "/articles/apollo-11-engineering-behind-first-moon-landing" },
+  { "source": "/articles/crispr-cas9-gene-editing", "destination": "/articles/crispr-gene-editing-capabilities-limits" },
+  { "source": "/articles/dark-matter-dark-energy", "destination": "/articles/dark-matter-dark-energy-different-mysteries" },
+  { "source": "/articles/james-webb-space-telescope-first-light", "destination": "/articles/how-james-webb-space-telescope-reads-early-universe" },
+  { "source": "/articles/quantum-entanglement-explained", "destination": "/articles/quantum-entanglement-without-faster-than-light-myth" },
+  { "source": "/articles/science-and-hypothesis-poincare", "destination": "/articles/science-and-hypothesis" }
+]

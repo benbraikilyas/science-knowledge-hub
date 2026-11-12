@@ -1,8 +1,13 @@
 import type { ArticleListItem, PaginatedResponse, ScientistListItem } from './types';
+import { API_ENABLED } from './site';
 
 export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1';
 
 async function apiFetch<T>(path: string, options?: RequestInit): Promise<T> {
+  // Without a configured API every caller falls back to local data, so skip the network
+  // entirely: builds stay fast and pages stay fully static.
+  if (!API_ENABLED) throw new Error('API not configured');
+
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 8_000);
 

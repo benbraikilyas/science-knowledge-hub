@@ -139,7 +139,7 @@ export { DEMO_SCIENTISTS } from './scientists';
 // Platform stats for the homepage
 export const PLATFORM_STATS = {
   articlesCount: LATEST_NEWS_ARTICLES.length + EDITORIAL_ARTICLES.length + SCIENCE_BOOKS.length,
-  scientistsCount: 26,
+  scientistsCount: 56,
   categoriesCount: 16,
   collectionsCount: 6,
 };

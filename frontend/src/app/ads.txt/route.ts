@@ -2,6 +2,9 @@ import { ADSENSE_ACCOUNT } from '@/lib/site';
 
 const ADSENSE_RELATIONSHIP_ID = 'f08c47fec0942fa0';
 
+// Built once as a plain file, so it also works on static hosting.
+export const dynamic = 'force-static';
+
 export async function GET() {
   const publisherId = process.env.GOOGLE_ADSENSE_PUBLISHER_ID?.trim() || ADSENSE_ACCOUNT.replace(/^ca-/, '');
 

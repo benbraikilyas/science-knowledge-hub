@@ -1,5 +1,6 @@
 import type { ScientistListItem, ScientistProfile } from './types';
 import { SCIENTIST_BIOGRAPHIES } from './scientist-biographies';
+import { EXPANSION_SCIENTISTS } from './scientists-expansion';
 
 const BASE_SCIENTISTS: ScientistProfile[] = [
   {
@@ -601,7 +602,7 @@ const BASE_SCIENTISTS: ScientistProfile[] = [
   },
 ];
 
-export const DEMO_SCIENTISTS: ScientistProfile[] = BASE_SCIENTISTS.map((profile) => ({
+export const DEMO_SCIENTISTS: ScientistProfile[] = [...BASE_SCIENTISTS, ...EXPANSION_SCIENTISTS].map((profile) => ({
   ...profile,
   biography: SCIENTIST_BIOGRAPHIES[profile.slug] || profile.biography,
 }));
