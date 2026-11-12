@@ -71,9 +71,11 @@ export const metadata: Metadata = {
     title: SITE_NAME,
     statusBarStyle: 'black-translucent',
   },
-  ...(ADSENSE_ACCOUNT
-    ? { other: { 'google-adsense-account': ADSENSE_ACCOUNT } }
-    : {}),
+  other: {
+    // Pinterest domain verification.
+    'p:domain_verify': '6ef2a696104cbcd2dab48f86684ea9dc',
+    ...(ADSENSE_ACCOUNT ? { 'google-adsense-account': ADSENSE_ACCOUNT } : {}),
+  },
 };
 
 export const viewport: Viewport = {
