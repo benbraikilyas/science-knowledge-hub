@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { ArrowLeft, ArrowRight, CircleHelp, Lightbulb, Users } from 'lucide-react';
 import SafeImage from '@/components/SafeImage';
 import StructuredData from '@/components/StructuredData';
+import CiteThisPage from '@/components/CiteThisPage';
 import { DEMO_SCIENTISTS } from '@/lib/scientists';
 import { getScientistDeepDive } from '@/lib/scientist-deep-dives';
 import type { ScientistCollection } from '@/lib/scientist-collections';
@@ -200,6 +201,8 @@ export default function ScientistCollectionPage({ collection }: { collection: Sc
             ))}
           </div>
         </section>
+
+        <CiteThisPage title={collection.title} path={`/scientists/${collection.slug}`} />
 
         <nav aria-labelledby="related" className={SECTION}>
           <h2 id="related" className="mb-4 text-sm font-bold uppercase tracking-wider text-[var(--text-primary)]">Keep exploring</h2>

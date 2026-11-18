@@ -10,6 +10,7 @@ import { ArrowLeft, Award, Quote, BookOpen, CalendarDays, CircleHelp, Compass, E
 import { absoluteUrl, SITE_NAME } from '@/lib/site';
 import { imageObject, openGraphImage } from '@/lib/image-seo';
 import StructuredData from '@/components/StructuredData';
+import CiteThisPage from '@/components/CiteThisPage';
 
 interface ScientistDetailProps {
   params: Promise<{ slug: string }>;
@@ -357,6 +358,11 @@ export default async function ScientistDetailPage({ params }: ScientistDetailPro
                 </div>
               </div>
             )}
+
+            <CiteThisPage
+              title={deepDive ? `${name}: Biography, Discoveries and Facts` : name}
+              path={`/scientists/${slug}`}
+            />
           </div>
 
           {/* Sidebar Awards & Fast Facts */}
