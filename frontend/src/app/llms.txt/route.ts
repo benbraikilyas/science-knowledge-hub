@@ -3,6 +3,7 @@ import { EDITORIAL_ARTICLES } from '@/lib/editorial-articles';
 import { LATEST_NEWS_ARTICLES } from '@/lib/news-articles';
 import { SCIENCE_BOOKS } from '@/lib/books';
 import { DEMO_SCIENTISTS } from '@/lib/scientists';
+import { SCIENTIST_COLLECTIONS } from '@/lib/scientist-collections';
 import { getScientistDeepDive } from '@/lib/scientist-deep-dives';
 import { GUIDES } from '@/lib/guides';
 import { LEARNING_PATHS } from '@/lib/learning-paths';
@@ -24,6 +25,9 @@ export async function GET() {
     `- [All Science Articles](${absoluteUrl('/articles')}): Full directory of evergreen explainers and 2025–2026 research reports.`,
     `- [Reading Guides](${absoluteUrl('/guides')}): Answer-first curated reading guides across science, AI, and free books.`,
     `- [Scientists Directory](${absoluteUrl('/scientists')}): 56 deep-dive profiles of pioneers across physical sciences, life sciences, computing, and the Islamic Golden Age.`,
+    ...SCIENTIST_COLLECTIONS.map(
+      (collection) => `- [${collection.title}](${absoluteUrl(`/scientists/${collection.slug}`)}): ${collection.description}`
+    ),
     `- [Free Science Books Library](${absoluteUrl('/categories/books')}): ${SCIENCE_BOOKS.length} legal public-domain science classics with modern reading guides.`,
     `- [Science Learning Paths](${absoluteUrl('/learn')}): ${LEARNING_PATHS.length} structured curricula from quick starts to deep dives.`,
     `- [Interactive Science Tools Lab](${absoluteUrl('/tools')}): Educational calculators for light travel time, photon energy, relativistic time dilation, and escape velocity.`,
