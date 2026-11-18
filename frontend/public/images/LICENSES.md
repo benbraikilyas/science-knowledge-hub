@@ -21,6 +21,8 @@ The site stores local copies so profiles do not depend on third-party image avai
 | `al-zahrawi.webp` | Al-Zahrawi | [Source](https://commons.wikimedia.org/wiki/File:Al-Zahrawi.png) | Illustration released under CC0 | CC0 |
 | `alan-turing.webp` | Alan Turing | [Source](https://commons.wikimedia.org/wiki/File:Alan_turing_header.jpg) | Elliott & Fry, 1951 | Public domain |
 | `alexander-fleming.webp` | Alexander Fleming in his laboratory at St Mary’s Hospital | [Source](https://commons.wikimedia.org/wiki/File:Synthetic_Production_of_Penicillin_TR1468.jpg) | Official photographer, 1943 (Imperial War Museums TR 1468) | Public domain |
+| `alfred-nobel.webp` | Alfred Nobel | [Source](https://commons.wikimedia.org/wiki/File:Alfred_Nobel3.jpg) | Unknown photographer, before 1896 | Public domain |
+| `archimedes.webp` | Archimedes, painting by Domenico Fetti (1620) | [Source](https://commons.wikimedia.org/wiki/File:Domenico-Fetti_Archimedes_1620.jpg) | Domenico Fetti, c. 1620 (painting) | Public domain |
 | `barbara-mcclintock.webp` | Barbara McClintock in her laboratory in 1947 | [Source](https://commons.wikimedia.org/wiki/File:Barbara_McClintock_(1902-1992)_shown_in_her_laboratory_in_1947.jpg) | Smithsonian Institution/Science Service, 1947; restored by Adam Cuerden | Public domain |
 | `charles-babbage.webp` | Charles Babbage | [Source](https://commons.wikimedia.org/wiki/File:Charles_Babbage_-_1860.jpg) | Unknown photographer, 1860 | Public domain |
 | `charles-darwin.webp` | Charles Darwin | [Source](https://commons.wikimedia.org/wiki/File:Charles_Darwin_seated_crop.jpg) | Maull & Fox (Henry Maull and John Fox), c. 1854 | Public domain |
@@ -30,7 +32,9 @@ The site stores local copies so profiles do not depend on third-party image avai
 | `dmitri-mendeleev.webp` | Dmitri Mendeleev | [Source](https://commons.wikimedia.org/wiki/File:Dmitri_Mendeleev.jpg) | Unknown photographer | Public domain |
 | `edward-jenner.webp` | Edward Jenner | [Source](https://commons.wikimedia.org/wiki/File:Edward_Jenner.jpg) | John Raphael Smith (pastel portrait) | Public domain |
 | `einstein.webp` | Albert Einstein | [Source](https://commons.wikimedia.org/wiki/File:Albert_Einstein_Head.jpg) | Orren Jack Turner, Princeton, 1947 | Public domain |
+| `emmy-noether.webp` | Emmy Noether | [Source](https://commons.wikimedia.org/wiki/File:Emmy_Noether_(3x4_cropped).jpg) | Unknown photographer, c. 1900 | Public domain |
 | `enrico-fermi.webp` | Enrico Fermi | [Source](https://commons.wikimedia.org/wiki/File:Enrico_Fermi_1943-49.jpg) | U.S. Department of Energy, 1943–1949 | Public domain |
+| `eratosthenes.webp` | Eratosthenes, imagined engraved portrait | [Source](https://commons.wikimedia.org/wiki/File:Portrait_of_Eratosthenes.png) | Unknown engraver (imagined portrait) | Public domain |
 | `ernest-rutherford.webp` | Ernest Rutherford | [Source](https://commons.wikimedia.org/wiki/File:Sir_Ernest_Rutherford_LCCN2014716719_-_restoration1.jpg) | Bain News Service; restored by Bammesk | Public domain |
 | `erwin-schrodinger.webp` | Erwin Schrödinger | [Source](https://commons.wikimedia.org/wiki/File:Erwin_Schr%C3%B6dinger_-_Narodowe_Archiwum_Cyfrowe_(1-E-939).jpg) | Unknown photographer, 1933 (Narodowe Archiwum Cyfrowe) | Public domain |
 | `galileo-galilei.webp` | Galileo Galilei | [Source](https://commons.wikimedia.org/wiki/File:Galileo_Galilei_(1564-1642)_RMG_BHC2700.tiff) | Justus Sustermans, c. 1640 (painting) | Public domain |

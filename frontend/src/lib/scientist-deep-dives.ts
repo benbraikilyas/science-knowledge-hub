@@ -1,4 +1,5 @@
 import { resolveInternalLinks } from './internal-links';
+import { CLASSICS_DEEP_DIVES } from './scientist-deep-dives-classics';
 import { COMPUTING_DEEP_DIVES } from './scientist-deep-dives-computing';
 import { COMPUTING_DEEP_DIVES_2 } from './scientist-deep-dives-computing-2';
 import { GOLDEN_AGE_DEEP_DIVES } from './scientist-deep-dives-golden-age';
@@ -32,6 +33,7 @@ const DEEP_DIVES: Record<string, ScientistDeepDive> = {
   ...COMPUTING_DEEP_DIVES_2,
   ...LIFE_SCIENCE_DEEP_DIVES_2,
   ...GOLDEN_AGE_DEEP_DIVES_2,
+  ...CLASSICS_DEEP_DIVES,
 };
 
 export function getScientistDeepDive(slug: string) {

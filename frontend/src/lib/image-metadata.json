@@ -2169,6 +2169,58 @@
     "height": 1363,
     "encodingFormat": "image/webp"
   },
+  "/images/scientists/alfred-nobel.webp": {
+    "title": "Portrait of Alfred Nobel",
+    "description": "Portrait of Alfred Nobel",
+    "alt": "Portrait of Alfred Nobel",
+    "keywords": [
+      "Alfred Nobel",
+      "Nobel Prize",
+      "dynamite",
+      "chemistry",
+      "inventor",
+      "scientist biography",
+      "scientific contributions",
+      "history of science",
+      "science education",
+      "historical portrait",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Alfred_Nobel3.jpg",
+    "creditText": "Unknown photographer, before 1896 — Public domain",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Alfred_Nobel3.jpg",
+    "width": 666,
+    "height": 879,
+    "encodingFormat": "image/webp"
+  },
+  "/images/scientists/archimedes.webp": {
+    "title": "Archimedes, painting by Domenico Fetti (1620)",
+    "description": "Archimedes, painting by Domenico Fetti (1620)",
+    "alt": "Archimedes, painting by Domenico Fetti (1620)",
+    "keywords": [
+      "Archimedes",
+      "Archimedes principle",
+      "buoyancy",
+      "law of the lever",
+      "ancient Greek mathematics",
+      "scientist biography",
+      "scientific contributions",
+      "history of science",
+      "science education",
+      "historical portrait",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Domenico-Fetti_Archimedes_1620.jpg",
+    "creditText": "Domenico Fetti, c. 1620 (painting) — Public domain",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Domenico-Fetti_Archimedes_1620.jpg",
+    "width": 960,
+    "height": 1280,
+    "encodingFormat": "image/webp"
+  },
   "/images/scientists/barbara-mcclintock.webp": {
     "title": "Barbara McClintock in her laboratory in 1947",
     "description": "Barbara McClintock in her laboratory in 1947",
@@ -2412,6 +2464,32 @@
     "height": 1600,
     "encodingFormat": "image/webp"
   },
+  "/images/scientists/emmy-noether.webp": {
+    "title": "Portrait of Emmy Noether",
+    "description": "Portrait of Emmy Noether",
+    "alt": "Portrait of Emmy Noether",
+    "keywords": [
+      "Emmy Noether",
+      "Noether theorem",
+      "abstract algebra",
+      "symmetry and conservation laws",
+      "women in science",
+      "scientist biography",
+      "scientific contributions",
+      "history of science",
+      "science education",
+      "historical portrait",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Emmy_Noether_(3x4_cropped).jpg",
+    "creditText": "Unknown photographer, c. 1900 — Public domain",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Emmy_Noether_(3x4_cropped).jpg",
+    "width": 960,
+    "height": 1285,
+    "encodingFormat": "image/webp"
+  },
   "/images/scientists/enrico-fermi.webp": {
     "title": "Portrait of Enrico Fermi",
     "description": "Portrait of Enrico Fermi",
@@ -2436,6 +2514,32 @@
     "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Enrico_Fermi_1943-49.jpg",
     "width": 960,
     "height": 1187,
+    "encodingFormat": "image/webp"
+  },
+  "/images/scientists/eratosthenes.webp": {
+    "title": "Eratosthenes, imagined engraved portrait",
+    "description": "Eratosthenes, imagined engraved portrait",
+    "alt": "Eratosthenes, imagined engraved portrait",
+    "keywords": [
+      "Eratosthenes",
+      "circumference of the Earth",
+      "geography",
+      "sieve of Eratosthenes",
+      "Library of Alexandria",
+      "scientist biography",
+      "scientific contributions",
+      "history of science",
+      "science education",
+      "historical portrait",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Portrait_of_Eratosthenes.png",
+    "creditText": "Unknown engraver (imagined portrait) — Public domain",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Portrait_of_Eratosthenes.png",
+    "width": 278,
+    "height": 275,
     "encodingFormat": "image/webp"
   },
   "/images/scientists/ernest-rutherford.webp": {

@@ -96,6 +96,10 @@ SCIENTIST_TOPICS = {
     "tim-berners-lee": ["World Wide Web", "HTML", "computer science", "internet history"],
     "dennis-ritchie": ["C programming language", "Unix", "operating systems", "computer science"],
     "hedy-lamarr": ["frequency hopping", "spread spectrum", "inventor", "women in technology"],
+    "emmy-noether": ["Noether theorem", "abstract algebra", "symmetry and conservation laws", "women in science"],
+    "archimedes": ["Archimedes principle", "buoyancy", "law of the lever", "ancient Greek mathematics"],
+    "alfred-nobel": ["Nobel Prize", "dynamite", "chemistry", "inventor"],
+    "eratosthenes": ["circumference of the Earth", "geography", "sieve of Eratosthenes", "Library of Alexandria"],
 }
 
 

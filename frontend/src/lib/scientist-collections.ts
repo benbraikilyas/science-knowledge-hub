@@ -109,25 +109,25 @@ export const SCIENTIST_COLLECTIONS: ScientistCollection[] = [
       { label: 'Learning path: the Islamic Golden Age', href: '/learn#golden-age' },
       { label: 'Famous women scientists', href: '/scientists/women-scientists' },
       { label: 'Why breakthroughs rarely belong to one person', href: '/articles/why-scientific-breakthroughs-rarely-belong-to-one-person' },
-      { label: 'All 56 scientist profiles', href: '/scientists' },
+      { label: 'All scientist profiles', href: '/scientists' },
     ],
     updatedAt: '2026-11-18',
   },
   {
     slug: 'women-scientists',
     title: 'Famous Women Scientists Who Changed Science',
-    seoTitle: 'Famous Women Scientists: 10 Who Changed Science',
+    seoTitle: 'Famous Women Scientists: 11 Who Changed Science',
     description:
-      'Marie Curie, Rosalind Franklin, Lise Meitner, Ada Lovelace, Katherine Johnson and more: what 10 famous women scientists discovered and the credit some were denied.',
+      'Marie Curie, Emmy Noether, Rosalind Franklin, Lise Meitner, Ada Lovelace and more: what 11 famous women scientists discovered and the credit some were denied.',
     eyebrow: 'Women in science',
     answer:
-      'Some of the most famous women scientists are Marie Curie, the first person to win Nobel Prizes in two sciences; Rosalind Franklin, whose X-ray images revealed the helix of DNA; Lise Meitner, who explained nuclear fission; Barbara McClintock, who discovered jumping genes; Rachel Carson, whose Silent Spring launched the environmental movement; and the computing pioneers Ada Lovelace, Grace Hopper, Katherine Johnson and Margaret Hamilton.',
+      'Some of the most famous women scientists are Marie Curie, the first person to win Nobel Prizes in two sciences; Rosalind Franklin, whose X-ray images revealed the helix of DNA; Lise Meitner, who explained nuclear fission; Emmy Noether, whose theorem ties every symmetry in physics to a conservation law; Barbara McClintock, who discovered jumping genes; Rachel Carson, whose Silent Spring launched the environmental movement; and the computing pioneers Ada Lovelace, Grace Hopper, Katherine Johnson and Margaret Hamilton.',
     tableHeading: 'Famous women scientists at a glance',
     sections: [
       {
-        heading: 'Physics and chemistry',
-        intro: 'Radioactivity, nuclear fission and two Nobel Prizes in two different sciences.',
-        slugs: ['marie-curie', 'lise-meitner'],
+        heading: 'Physics, chemistry and mathematics',
+        intro: 'Radioactivity, nuclear fission, two Nobel Prizes in two different sciences and the theorem behind every conservation law.',
+        slugs: ['marie-curie', 'lise-meitner', 'emmy-noether'],
       },
       {
         heading: 'Biology, genetics and the environment',
@@ -187,7 +187,7 @@ export const SCIENTIST_COLLECTIONS: ScientistCollection[] = [
       { label: 'Learning path: computing and intelligence', href: '/learn#computing-intelligence' },
       { label: 'Famous Muslim scientists', href: '/scientists/muslim-scientists' },
       { label: 'Apollo 11: the engineering behind the Moon landing', href: '/articles/apollo-11-engineering-behind-first-moon-landing' },
-      { label: 'All 56 scientist profiles', href: '/scientists' },
+      { label: 'All scientist profiles', href: '/scientists' },
     ],
     updatedAt: '2026-11-18',
   },

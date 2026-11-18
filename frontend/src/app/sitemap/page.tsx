@@ -178,7 +178,7 @@ export default function SitemapPage() {
           </ul>
         </section>
 
-        {/* All 56 Scientists */}
+        {/* All scientists */}
         <section className="border-t border-[var(--border-color)] pt-12">
           <h2 className="text-xl font-bold text-[var(--text-primary)]" style={{ fontFamily: 'var(--font-heading)' }}>
             Scientist Profiles ({DEMO_SCIENTISTS.length})

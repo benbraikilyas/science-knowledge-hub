@@ -24,8 +24,8 @@ async function getScientists(): Promise<ScientistListItem[]> {
 
 export const metadata = {
   alternates: { canonical: '/scientists' },
-  title: 'Famous Scientists and Their Discoveries: 56 Biographies',
-  description: 'Biographies of 56 scientists who changed the world, from al-Khwarizmi and Ibn Sina to Marie Curie, Einstein, Ada Lovelace and Alan Turing.',
+  title: 'Famous Scientists and Their Discoveries: 60 Biographies',
+  description: 'Biographies of 60 scientists who changed the world, from Archimedes and al-Khwarizmi to Marie Curie, Einstein, Emmy Noether and Alan Turing.',
 };
 
 const groupId = (label: string) => label.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-');

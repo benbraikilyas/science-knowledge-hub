@@ -256,7 +256,7 @@ export default async function CategoryDetailPage({ params }: CategoryDetailProps
                     href="/scientists"
                     className="text-sm font-semibold text-gold-400 transition-colors hover:text-gold-300"
                   >
-                    Explore all 56 scientists &rarr;
+                    Explore all 60 scientists &rarr;
                   </Link>
                 </div>
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
