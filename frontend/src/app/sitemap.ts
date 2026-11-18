@@ -7,14 +7,14 @@ import { SITE_URL, absoluteUrl } from '@/lib/site';
 // Built once as a plain file, so it also works on static hosting.
 export const dynamic = 'force-static';
 
+const DEFAULT_LAST_MODIFIED = new Date('2026-11-12T09:00:00Z');
+
 const STATIC_ROUTES = [
   '',
   '/about',
   '/articles',
   '/categories',
   '/scientists',
-  '/scientists/muslim-scientists',
-  '/scientists/women-scientists',
   '/guides',
   '/learn',
   '/tools',
@@ -32,19 +32,24 @@ const STATIC_ROUTES = [
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = STATIC_ROUTES.map((route) => ({
     url: `${SITE_URL}${route}`,
+    lastModified: DEFAULT_LAST_MODIFIED,
     changeFrequency: route === '' ? 'weekly' : 'monthly',
     priority: route === '' ? 1 : 0.7,
   }));
 
-  const categories: MetadataRoute.Sitemap = DEMO_CATEGORIES.map((category) => ({
-    url: `${SITE_URL}/categories/${category.slug}`,
-    changeFrequency: 'weekly',
-    priority: 0.6,
-  }));
+  const categories: MetadataRoute.Sitemap = DEMO_CATEGORIES
+    .filter((category) => category.articleCount > 0)
+    .map((category) => ({
+      url: `${SITE_URL}/categories/${category.slug}`,
+      lastModified: DEFAULT_LAST_MODIFIED,
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    }));
 
   const scientists: MetadataRoute.Sitemap = DEMO_SCIENTISTS.map((scientist) => ({
     url: `${SITE_URL}/scientists/${scientist.slug}`,
     images: scientist.portraitImage ? [absoluteUrl(scientist.portraitImage)] : [],
+    lastModified: DEFAULT_LAST_MODIFIED,
     changeFrequency: 'monthly',
     priority: 0.8,
   }));

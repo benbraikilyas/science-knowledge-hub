@@ -23,15 +23,14 @@ export default function CategoriesGrid({ categories }: CategoriesGridProps) {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         headerRef.current,
-        { opacity: 0, y: 30 },
+        { y: 16 },
         {
-          opacity: 1,
           y: 0,
-          duration: 0.8,
+          duration: 0.6,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: headerRef.current,
-            start: 'top 85%',
+            start: 'top 90%',
             once: true,
           },
         }
@@ -41,17 +40,15 @@ export default function CategoriesGrid({ categories }: CategoriesGridProps) {
       if (cards && cards.length > 0) {
         gsap.fromTo(
           cards,
-          { opacity: 0, y: 40, scale: 0.95 },
+          { y: 20 },
           {
-            opacity: 1,
             y: 0,
-            scale: 1,
-            duration: 0.75,
-            stagger: 0.08,
+            duration: 0.6,
+            stagger: 0.05,
             ease: 'power3.out',
             scrollTrigger: {
               trigger: gridRef.current,
-              start: 'top 82%',
+              start: 'top 88%',
               once: true,
             },
           }
@@ -61,15 +58,14 @@ export default function CategoriesGrid({ categories }: CategoriesGridProps) {
       if (footerRef.current) {
         gsap.fromTo(
           footerRef.current,
-          { opacity: 0, y: 20 },
+          { y: 12 },
           {
-            opacity: 1,
             y: 0,
-            duration: 0.7,
+            duration: 0.5,
             ease: 'power3.out',
             scrollTrigger: {
               trigger: footerRef.current,
-              start: 'top 90%',
+              start: 'top 92%',
               once: true,
             },
           }

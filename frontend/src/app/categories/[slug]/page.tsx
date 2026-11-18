@@ -2,9 +2,11 @@ import { Fragment } from 'react';
 import Link from 'next/link';
 import ArticleCard from '@/components/ArticleCard';
 import BooksLibrary from '@/components/BooksLibrary';
+import ScientistCard from '@/components/ScientistCard';
 import { fetchCategory, fetchArticles } from '@/lib/api';
 import type { ArticleListItem, Category } from '@/lib/types';
 import { toArticleListItem } from '@/lib/article-list';
+import { getCategoryScientists } from '@/lib/article-aeo';
 import { categoryOgImage } from '@/lib/category-images';
 import { guidesForCategory } from '@/lib/guides';
 import { pageTitle } from '@/lib/seo-copy';
@@ -45,11 +47,9 @@ function collectionCopy(category: Category, count: number) {
 }
 
 async function getCategoryData(slug: string) {
-  const { DEMO_CATEGORIES, DEMO_ARTICLES } = await import('@/lib/constants');
+  const { DEMO_CATEGORIES, selectArticlesForCategory } = await import('@/lib/constants');
   const localCategory = DEMO_CATEGORIES.find((category: Category) => category.slug === slug) || null;
-  const localArticles = DEMO_ARTICLES
-    .filter((article: ArticleListItem) => article.category.slug === slug)
-    .map(toArticleListItem);
+  const localArticles = selectArticlesForCategory(slug).map(toArticleListItem);
 
   try {
     const [rawCategory, rawArticles] = await Promise.all([
@@ -136,6 +136,7 @@ export default async function CategoryDetailPage({ params }: CategoryDetailProps
   const pageUrl = absoluteUrl(`/categories/${slug}`);
   const { heading, description } = collectionCopy(category, articles.length);
   const guides = guidesForCategory(category.slug);
+  const relatedScientists = category.slug === 'books' ? [] : getCategoryScientists(category.slug, 8);
   const structuredData = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -236,6 +237,34 @@ export default async function CategoryDetailPage({ params }: CategoryDetailProps
               <div className="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)]/60 p-16 text-center backdrop-blur-xl sm:p-24">
                 <p className="text-xl text-[var(--text-secondary)] sm:text-2xl">No articles in this category yet. Check back soon!</p>
               </div>
+            )}
+
+            {relatedScientists.length > 0 && (
+              <section aria-labelledby="category-scientists-heading" className="mt-20 border-t border-[var(--border-color)] pt-12">
+                <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-[0.16em] text-gold-400">Pioneers of this field</p>
+                    <h2
+                      id="category-scientists-heading"
+                      className="mt-2 text-2xl font-bold tracking-tight text-[var(--text-primary)] sm:text-3xl"
+                      style={{ fontFamily: 'var(--font-heading)' }}
+                    >
+                      Key Scientists in {heading}
+                    </h2>
+                  </div>
+                  <Link
+                    href="/scientists"
+                    className="text-sm font-semibold text-gold-400 transition-colors hover:text-gold-300"
+                  >
+                    Explore all 56 scientists &rarr;
+                  </Link>
+                </div>
+                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                  {relatedScientists.map((scientist) => (
+                    <ScientistCard key={scientist.id} scientist={scientist} />
+                  ))}
+                </div>
+              </section>
             )}
           </>
         )}

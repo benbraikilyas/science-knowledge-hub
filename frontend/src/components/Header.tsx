@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useTheme } from 'next-themes';
 import { Menu, X, Search, Moon, Sun } from 'lucide-react';
 import { NAV_ITEMS } from '@/lib/navigation';
@@ -16,6 +16,7 @@ export default function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const pathname = usePathname();
+  const router = useRouter();
   const { resolvedTheme, setTheme } = useTheme();
   const headerRef = useRef<HTMLElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
@@ -74,7 +75,7 @@ export default function Header() {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      window.location.href = `/search?q=${encodeURIComponent(searchQuery.trim())}`;
+      router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
       setSearchOpen(false);
       setSearchQuery('');
     }
@@ -214,7 +215,8 @@ export default function Header() {
                 key={tag}
                 type="button"
                 onClick={() => {
-                  window.location.href = `/search?q=${encodeURIComponent(tag)}`;
+                  router.push(`/search?q=${encodeURIComponent(tag)}`);
+                  setSearchOpen(false);
                 }}
                 className="rounded-lg border border-[var(--border-color)] bg-white/[0.04] px-2.5 py-1 text-[var(--text-secondary)] transition-colors hover:border-gold-500/40 hover:bg-gold-500/10 hover:text-gold-300"
               >

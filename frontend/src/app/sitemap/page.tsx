@@ -1,33 +1,38 @@
 import Link from 'next/link';
 import { Sparkles } from 'lucide-react';
+import { DEMO_CATEGORIES } from '@/lib/constants';
+import { EDITORIAL_ARTICLES } from '@/lib/editorial-articles';
+import { LATEST_NEWS_ARTICLES } from '@/lib/news-articles';
+import { SCIENCE_BOOKS } from '@/lib/books';
+import { DEMO_SCIENTISTS } from '@/lib/scientists';
 import { GUIDES } from '@/lib/guides';
 import { API_ENABLED } from '@/lib/site';
 
 export const metadata = {
   alternates: { canonical: '/sitemap' },
   title: 'Sitemap',
-  description: 'Every section of Science Knowledge Hub in one place: articles, categories, reading guides, scientist profiles, free books and site policies.',
+  description: 'Complete directory of every page on Science Knowledge Hub: science articles, 2025–2026 research updates, 56 scientist profiles, 34 free books, reading guides, and tools.',
 };
 
 const NAV_LINKS = [
   { label: 'Home', href: '/' },
-  { label: 'Articles', href: '/articles' },
-  { label: 'Categories', href: '/categories' },
-  { label: 'Scientists', href: '/scientists' },
+  { label: 'Articles & Explainers', href: '/articles' },
+  { label: 'Scientific Categories', href: '/categories' },
+  { label: 'Scientists Directory', href: '/scientists' },
   { label: 'Reading Guides', href: '/guides' },
   { label: 'Learning Paths', href: '/learn' },
-  { label: 'Search', href: '/search' },
+  { label: 'Interactive Science Tools', href: '/tools' },
+  { label: 'XML Sitemap (/sitemap.xml)', href: '/sitemap.xml' },
+  { label: 'RSS Feed (/feed.xml)', href: '/feed.xml' },
+  { label: 'AI / LLM Index (/llms.txt)', href: '/llms.txt' },
 ];
 
 const GUIDE_LINKS = GUIDES.map((guide) => ({ label: guide.title, href: `/guides/${guide.slug}` }));
 
-const CATEGORY_LINKS = [
-  { label: 'Space & Astronomy', href: '/categories/space' },
-  { label: 'Quantum Physics', href: '/categories/quantum-physics' },
-  { label: 'Biology & Life', href: '/categories/biology' },
-  { label: 'Artificial Intelligence', href: '/categories/artificial-intelligence' },
-  { label: 'Scientific Theories', href: '/categories/scientific-theories' },
-];
+const CATEGORY_LINKS = DEMO_CATEGORIES.map((cat) => ({
+  label: `${cat.name} (${cat.articleCount})`,
+  href: `/categories/${cat.slug}`,
+}));
 
 const FOOTER_LINKS = [
   { label: 'About Us', href: '/about' },
@@ -51,10 +56,10 @@ export default function SitemapPage() {
     <div className="min-h-screen bg-[var(--bg-primary)] pb-24">
       <div className="relative overflow-hidden border-b border-[var(--border-color)] bg-gradient-to-b from-[var(--bg-card)] via-[var(--bg-secondary)] to-[var(--bg-primary)] py-16 sm:py-24">
         <div className="pointer-events-none absolute left-1/2 top-0 h-96 w-96 -translate-x-1/2 rounded-full bg-gold-500/10 blur-[140px]" />
-        <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="inline-flex items-center gap-2 rounded-full border border-gold-500/30 bg-gold-500/10 px-3.5 py-1 text-xs font-semibold text-gold-200 backdrop-blur-md">
             <Sparkles className="h-3.5 w-3.5 text-gold-400" />
-            Site Map
+            Complete Site Index
           </div>
           <h1
             className="mt-4 text-4xl font-extrabold tracking-tight text-[var(--text-primary)] sm:text-5xl"
@@ -62,14 +67,19 @@ export default function SitemapPage() {
           >
             Sitemap
           </h1>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[var(--text-secondary)] sm:text-base">
+            Direct links to all {EDITORIAL_ARTICLES.length + LATEST_NEWS_ARTICLES.length} science articles,{' '}
+            {DEMO_SCIENTISTS.length} scientist biographies, {SCIENCE_BOOKS.length} free public-domain science books,{' '}
+            {DEMO_CATEGORIES.length} topic hubs, and {GUIDES.length} reading guides.
+          </p>
         </div>
       </div>
 
-      <div className="mx-auto max-w-4xl px-4 pt-12 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl px-4 pt-12 sm:px-6 lg:px-8 space-y-16">
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
           {/* Main Navigation */}
           <div>
-            <h2 className="text-lg font-bold text-[var(--text-primary)]" style={{ fontFamily: 'var(--font-heading)' }}>Main Pages</h2>
+            <h2 className="text-lg font-bold text-[var(--text-primary)]" style={{ fontFamily: 'var(--font-heading)' }}>Main Pages &amp; Feeds</h2>
             <ul className="mt-4 space-y-2.5">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
@@ -79,13 +89,10 @@ export default function SitemapPage() {
                 </li>
               ))}
             </ul>
-          </div>
 
-          {/* Categories */}
-          <div>
-            <h2 className="text-lg font-bold text-[var(--text-primary)]" style={{ fontFamily: 'var(--font-heading)' }}>Categories</h2>
+            <h2 className="mt-10 text-lg font-bold text-[var(--text-primary)]" style={{ fontFamily: 'var(--font-heading)' }}>Reading Guides ({GUIDE_LINKS.length})</h2>
             <ul className="mt-4 space-y-2.5">
-              {CATEGORY_LINKS.map((link) => (
+              {GUIDE_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="text-sm text-[var(--text-secondary)] transition-colors hover:text-gold-400">
                     {link.label}
@@ -93,10 +100,13 @@ export default function SitemapPage() {
                 </li>
               ))}
             </ul>
+          </div>
 
-            <h2 className="mt-8 text-lg font-bold text-[var(--text-primary)]" style={{ fontFamily: 'var(--font-heading)' }}>Reading Guides</h2>
+          {/* All 16 Categories */}
+          <div>
+            <h2 className="text-lg font-bold text-[var(--text-primary)]" style={{ fontFamily: 'var(--font-heading)' }}>Categories ({CATEGORY_LINKS.length})</h2>
             <ul className="mt-4 space-y-2.5">
-              {GUIDE_LINKS.map((link) => (
+              {CATEGORY_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="text-sm text-[var(--text-secondary)] transition-colors hover:text-gold-400">
                     {link.label}
@@ -123,7 +133,7 @@ export default function SitemapPage() {
               </>
             )}
 
-            <h2 className="text-lg font-bold text-[var(--text-primary)]" style={{ fontFamily: 'var(--font-heading)' }}>Legal</h2>
+            <h2 className="text-lg font-bold text-[var(--text-primary)]" style={{ fontFamily: 'var(--font-heading)' }}>Trust &amp; Legal</h2>
             <ul className="mt-4 space-y-2.5">
               {FOOTER_LINKS.map((link) => (
                 <li key={link.href}>
@@ -135,6 +145,70 @@ export default function SitemapPage() {
             </ul>
           </div>
         </div>
+
+        {/* Evergreen Science Explainers */}
+        <section className="border-t border-[var(--border-color)] pt-12">
+          <h2 className="text-xl font-bold text-[var(--text-primary)]" style={{ fontFamily: 'var(--font-heading)' }}>
+            Evergreen Science Explainers ({EDITORIAL_ARTICLES.length})
+          </h2>
+          <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+            {EDITORIAL_ARTICLES.map((article) => (
+              <li key={article.slug}>
+                <Link href={`/articles/${article.slug}`} className="text-sm text-[var(--text-secondary)] transition-colors hover:text-gold-400">
+                  {article.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* 2025-2026 Science, AI & Robotics Research Updates */}
+        <section className="border-t border-[var(--border-color)] pt-12">
+          <h2 className="text-xl font-bold text-[var(--text-primary)]" style={{ fontFamily: 'var(--font-heading)' }}>
+            2025–2026 Science, AI &amp; Robotics Updates ({LATEST_NEWS_ARTICLES.length})
+          </h2>
+          <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+            {LATEST_NEWS_ARTICLES.map((article) => (
+              <li key={article.slug}>
+                <Link href={`/articles/${article.slug}`} className="text-sm text-[var(--text-secondary)] transition-colors hover:text-gold-400">
+                  {article.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* All 56 Scientists */}
+        <section className="border-t border-[var(--border-color)] pt-12">
+          <h2 className="text-xl font-bold text-[var(--text-primary)]" style={{ fontFamily: 'var(--font-heading)' }}>
+            Scientist Profiles ({DEMO_SCIENTISTS.length})
+          </h2>
+          <ul className="mt-5 grid gap-2.5 sm:grid-cols-3 lg:grid-cols-4">
+            {DEMO_SCIENTISTS.map((scientist) => (
+              <li key={scientist.slug}>
+                <Link href={`/scientists/${scientist.slug}`} className="text-sm text-[var(--text-secondary)] transition-colors hover:text-gold-400">
+                  {scientist.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* All 34 Free Public-Domain Science Books */}
+        <section className="border-t border-[var(--border-color)] pt-12">
+          <h2 className="text-xl font-bold text-[var(--text-primary)]" style={{ fontFamily: 'var(--font-heading)' }}>
+            Free Public-Domain Science Books ({SCIENCE_BOOKS.length})
+          </h2>
+          <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+            {SCIENCE_BOOKS.map((book) => (
+              <li key={book.slug}>
+                <Link href={`/articles/${book.slug}`} className="text-sm text-[var(--text-secondary)] transition-colors hover:text-gold-400">
+                  {book.title} — <span className="text-xs opacity-75">{book.author.displayName}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
 
         <div className="mt-16 border-t border-[var(--border-color)] pt-8 text-center text-sm text-[var(--text-secondary)]">
           <Link href="/" className="text-gold-400 hover:text-gold-300 transition-colors">&larr; Back to Home</Link>

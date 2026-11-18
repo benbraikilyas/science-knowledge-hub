@@ -3,7 +3,7 @@ export const SITE_NAME = 'Science Knowledge Hub';
 const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
 
 export const SITE_URL = (configuredSiteUrl || 'https://scienceknowledgehub.com').replace(/\/$/, '');
-export const CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() || '';
+export const CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() || 'contact@scienceknowledgehub.com';
 // Public AdSense publisher ID. It only verifies site ownership (meta tag + ads.txt);
 // no ad script is loaded, because Vercel Hobby hosting does not allow ads.
 export const ADSENSE_ACCOUNT = process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_ACCOUNT?.trim() || 'ca-pub-2626303064946767';

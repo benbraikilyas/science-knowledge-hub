@@ -15,7 +15,8 @@ import { getImageMetadata, imageObject, openGraphImage } from '@/lib/image-seo';
 import StructuredData from '@/components/StructuredData';
 import BookGuideSections from '@/components/BookGuideSections';
 import { getBookGuide } from '@/lib/book-guides';
-import { Clock, ArrowLeft, BookOpen, Download, FileText, Smartphone, ExternalLink, ShieldCheck } from 'lucide-react';
+import { getArticleFaqs, getArticleTakeaways, resolveTagHref } from '@/lib/article-aeo';
+import { Clock, ArrowLeft, BookOpen, Download, FileText, Smartphone, ExternalLink, ShieldCheck, Lightbulb, CircleHelp } from 'lucide-react';
 
 interface ArticleDetailProps {
   params: Promise<{ slug: string }>;
@@ -152,6 +153,13 @@ export default async function ArticleDetailPage({ params }: ArticleDetailProps) 
   } | undefined;
   const isBook = category.slug === 'books' || Boolean(bookDetails);
   const bookGuide = isBook ? getBookGuide(slug) : null;
+  const articleTakeaways = !isBook
+    ? getArticleTakeaways(article.content as string | undefined, article.excerpt as string | undefined)
+    : [];
+  const articleFaqs = !isBook
+    ? getArticleFaqs(article.title as string, article.excerpt as string, article.content as string | undefined)
+    : [];
+  const allFaqs = bookGuide ? bookGuide.faqs : articleFaqs;
   const pageUrl = absoluteUrl(`/articles/${slug}`);
   const structuredData = {
     '@context': 'https://schema.org',
@@ -159,10 +167,39 @@ export default async function ArticleDetailPage({ params }: ArticleDetailProps) 
       {
         '@type': 'WebPage', '@id': pageUrl, url: pageUrl,
         name: article.title, description: article.excerpt, inLanguage: 'en',
+        speakable: {
+          '@type': 'SpeakableSpecification',
+          cssSelector: ['h1', '.article-key-takeaway'],
+        },
         ...(featuredImage ? { primaryImageOfPage: imageObject(featuredImage, article.title as string) } : {}),
       },
+      ...(isBook && bookDetails ? [{
+        '@type': 'Book',
+        '@id': `${pageUrl}#book`,
+        mainEntityOfPage: { '@id': pageUrl },
+        name: article.title,
+        headline: article.title,
+        description: SEO_DESCRIPTIONS[slug] ?? (article.excerpt as string),
+        inLanguage: 'en',
+        isAccessibleForFree: true,
+        ...(bookDetails.originalAuthor ? { author: { '@type': 'Person', name: bookDetails.originalAuthor } } : {}),
+        ...(bookDetails.firstPublished ? { datePublished: String(bookDetails.firstPublished) } : {}),
+        ...(bookDetails.pages ? { numberOfPages: bookDetails.pages } : {}),
+        ...(bookDetails.subjects?.length ? { keywords: bookDetails.subjects } : {}),
+        ...(featuredImage ? { image: imageObject(featuredImage, article.title as string) } : {}),
+        ...(bookDetails.readOnlineUrl ? {
+          sameAs: [
+            bookDetails.readOnlineUrl,
+            ...(bookDetails.iaDetailsUrl && bookDetails.iaDetailsUrl !== bookDetails.readOnlineUrl
+              ? [bookDetails.iaDetailsUrl]
+              : []),
+          ],
+        } : {}),
+      }] : []),
       ...(!isBook && typeof article.content === 'string' && article.content.trim() ? [{
-        '@type': 'Article', '@id': `${pageUrl}#article`, mainEntityOfPage: { '@id': pageUrl },
+        '@type': sourceUrls?.length ? ['Article', 'NewsArticle'] : 'Article',
+        '@id': `${pageUrl}#article`,
+        mainEntityOfPage: { '@id': pageUrl },
         headline: article.title, description: article.excerpt, inLanguage: 'en',
         datePublished: article.publishedAt,
         dateModified: article.updatedAt || article.publishedAt,
@@ -183,10 +220,10 @@ export default async function ArticleDetailPage({ params }: ArticleDetailProps) 
         },
         ...(featuredImage ? { image: imageObject(featuredImage, article.title as string) } : {}),
       }] : []),
-      ...(bookGuide ? [{
+      ...(allFaqs.length > 0 ? [{
         '@type': 'FAQPage',
         '@id': `${pageUrl}#faq`,
-        mainEntity: bookGuide.faqs.map((faq) => ({
+        mainEntity: allFaqs.map((faq) => ({
           '@type': 'Question',
           name: faq.question,
           acceptedAnswer: { '@type': 'Answer', text: faq.answer },
@@ -194,11 +231,18 @@ export default async function ArticleDetailPage({ params }: ArticleDetailProps) 
       }] : []),
       {
         '@type': 'BreadcrumbList',
-        itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Home', item: absoluteUrl('/') },
-          { '@type': 'ListItem', position: 2, name: 'Articles', item: absoluteUrl('/articles') },
-          { '@type': 'ListItem', position: 3, name: article.title, item: pageUrl },
-        ],
+        itemListElement: isBook
+          ? [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: absoluteUrl('/') },
+              { '@type': 'ListItem', position: 2, name: 'Free Science Books', item: absoluteUrl('/categories/books') },
+              { '@type': 'ListItem', position: 3, name: article.title, item: pageUrl },
+            ]
+          : [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: absoluteUrl('/') },
+              { '@type': 'ListItem', position: 2, name: 'Articles', item: absoluteUrl('/articles') },
+              { '@type': 'ListItem', position: 3, name: category.name, item: absoluteUrl(`/categories/${category.slug}`) },
+              { '@type': 'ListItem', position: 4, name: article.title, item: pageUrl },
+            ],
       },
     ],
   };
@@ -409,8 +453,27 @@ export default async function ArticleDetailPage({ params }: ArticleDetailProps) 
       <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
         <div className="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)]/60 p-8 sm:p-12 backdrop-blur-xl shadow-2xl">
           <div className="text-[var(--text-secondary)]">
+            {articleTakeaways.length > 0 && (
+              <section
+                aria-label="Key takeaways"
+                className="article-key-takeaway mb-8 rounded-2xl border border-gold-500/30 bg-gradient-to-br from-gold-500/10 via-white/[0.02] to-transparent p-6"
+              >
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-gold-400">
+                  <Lightbulb className="h-4 w-4" />
+                  <span>Key Takeaways</span>
+                </div>
+                <ul className="mt-3 space-y-2.5 text-sm leading-relaxed text-[var(--text-primary)]">
+                  {articleTakeaways.map((point, idx) => (
+                    <li key={idx} className="flex items-start gap-2.5">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400" />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
             {article.content ? (
-              <ArticleContent content={article.content as string} />
+              <ArticleContent content={article.content as string} currentSlug={slug} />
             ) : (
               <>
                 <h2 className="text-2xl font-bold text-[var(--text-primary)] mt-4 mb-4">Introduction to the Phenomenon</h2>
@@ -440,6 +503,22 @@ export default async function ArticleDetailPage({ params }: ArticleDetailProps) 
               </>
             )}
             {bookGuide && <BookGuideSections guide={bookGuide} />}
+            {!isBook && articleFaqs.length > 0 && (
+              <section aria-labelledby="article-faq-heading" className="mt-12 border-t border-[var(--border-color)] pt-8">
+                <h2 id="article-faq-heading" className="flex items-center gap-2 text-2xl font-bold text-[var(--text-primary)]">
+                  <CircleHelp className="h-5 w-5 text-gold-400" />
+                  <span>Frequently Asked Questions</span>
+                </h2>
+                <div className="mt-6 space-y-5">
+                  {articleFaqs.map((faq) => (
+                    <div key={faq.question} className="rounded-2xl border border-[var(--border-color)] bg-white/[0.02] p-5">
+                      <h3 className="text-base font-semibold text-[var(--text-primary)]">{faq.question}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-[var(--text-secondary)]">{faq.answer}</p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
           </div>
 
           {/* Tags */}
@@ -448,7 +527,7 @@ export default async function ArticleDetailPage({ params }: ArticleDetailProps) 
               {articleTags.map((tag: string) => (
                 <Link
                   key={tag}
-                  href={`/search?q=${encodeURIComponent(tag)}`}
+                  href={resolveTagHref(tag, category.slug)}
                   className="rounded-xl border border-[var(--border-color)] bg-white/[0.04] px-3 py-1 font-mono text-xs text-[var(--text-secondary)] transition-colors hover:border-gold-500/40 hover:bg-gold-500/10 hover:text-gold-200"
                 >
                   #{tag}

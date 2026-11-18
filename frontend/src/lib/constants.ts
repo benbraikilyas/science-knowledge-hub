@@ -91,10 +91,94 @@ export const CATEGORY_CONFIG: Record<string, { icon: string; color: string; grad
   },
 };
 
-const articleCountFor = (slug: string) =>
-  EDITORIAL_ARTICLES.filter((article) => article.category.slug === slug).length
-  + LATEST_NEWS_ARTICLES.filter((article) => article.category.slug === slug).length
-  + SCIENCE_BOOKS.filter((article) => article.category.slug === slug).length;
+// Read time from the text itself (about 220 words a minute). The hand-set estimates claimed
+// up to 30 minutes for pages that take two, which misleads readers.
+const withMeasuredReadTime = <T extends { content?: string; readTime: number }>(article: T): T => ({
+  ...article,
+  readTime: Math.max(1, Math.round((article.content ?? '').split(/\s+/).filter(Boolean).length / 220)),
+});
+
+// Sourced 2025–2026 news, original evergreen explainers, and verified public-domain books.
+export const DEMO_ARTICLES = [
+  ...LATEST_NEWS_ARTICLES,
+  ...[...EDITORIAL_ARTICLES, ...SCIENCE_BOOKS].sort(
+    (left, right) =>
+      new Date(right.publishedAt).getTime() - new Date(left.publishedAt).getTime()
+  ),
+].map(withMeasuredReadTime);
+
+type CategorizableArticle = (typeof DEMO_ARTICLES)[number];
+
+const CATEGORY_MATCHERS: Record<string, (article: CategorizableArticle) => boolean> = {
+  space: (a) =>
+    a.category.slug === 'space' ||
+    a.category.slug === 'astronomy' ||
+    a.category.slug === 'space-missions' ||
+    (a.tags ?? []).some((t) => /space|astronomy|cosmology|jwst|galaxy|mars|moon/i.test(t)),
+  astronomy: (a) =>
+    a.category.slug === 'astronomy' ||
+    a.category.slug === 'space' ||
+    (a.tags ?? []).some((t) => /astronomy|star|galaxy|telescope|constellation|cosmos|planet/i.test(t)),
+  physics: (a) =>
+    a.category.slug === 'physics' ||
+    a.category.slug === 'quantum-physics' ||
+    (a.tags ?? []).some((t) => /physics|relativity|gravitation|thermodynamics|optics|electromagnetism|mechanics/i.test(t)),
+  'quantum-physics': (a) =>
+    a.category.slug === 'quantum-physics' ||
+    (a.tags ?? []).some((t) => /quantum|entanglement|bell|qubit|planck|bohr|atomic|nuclear|lhc/i.test(t)) ||
+    /quantum|spectra|heat-radiation|alice-lead-to-gold|semiconductors/i.test(a.slug),
+  scientists: (a) =>
+    a.category.slug === 'scientists' ||
+    a.category.slug === 'history-of-science' ||
+    /apollo-11|bell-tests|instruments|origin-of-species|principia|relativity|sidereus-nuncius/i.test(a.slug),
+  'scientific-theories': (a) =>
+    a.category.slug === 'scientific-theories' ||
+    /relativity|dark-matter|origin-of-species|principia|heat-radiation|thermodynamics|science-and-hypothesis|new-physics|evol/i.test(a.slug),
+  'scientific-experiments': (a) =>
+    a.category.slug === 'scientific-experiments' ||
+    /bell-tests|instruments|candle|opticks|two-new-sciences|faraday|alice-lead-to-gold|beyond-epica|microns/i.test(a.slug),
+  biology: (a) =>
+    a.category.slug === 'biology' ||
+    (a.tags ?? []).some((t) => /biology|evolution|genetics|medicine|natural history|psychology|botany/i.test(t)),
+  'artificial-intelligence': (a) =>
+    a.category.slug === 'artificial-intelligence' ||
+    /transformer|semiconductors|deepseek|gemini|llama|claude|gpt|alphaevolve|muse|weathernext/i.test(a.slug),
+  technology: (a) =>
+    a.category.slug === 'technology' ||
+    /semiconductors|instruments|apollo-11|quantum-computing|hardware-standard|waymo|vulcan|atlas|ottava|spherex|cadre/i.test(a.slug),
+  'history-of-science': (a) =>
+    a.category.slug === 'history-of-science' ||
+    a.category.slug === 'scientists' ||
+    /history|classic|principia|sidereus|origin-of-species|euclid|candle|cosmos-physical/i.test(a.slug),
+  'space-missions': (a) =>
+    a.category.slug === 'space-missions' ||
+    /james-webb|mom-z14|spherex|cadre|apollo-11|desi/i.test(a.slug),
+  mathematics: (a) =>
+    a.category.slug === 'mathematics' ||
+    (a.tags ?? []).some((t) => /mathematics|geometry|calculus|algebra|statistics|logic|proof/i.test(t)) ||
+    /proof|euclid|mathematics|hypothesis|principia|statistical-mechanics|alphaevolve/i.test(a.slug),
+  'future-technologies': (a) =>
+    a.category.slug === 'future-technologies' ||
+    /quantum-computing|distributed-quantum|crispr|personalized-base-editing|gpt-5-5|figure-helix|atlas|srt-h|weathernext|hardware-standard/i.test(a.slug),
+  robotics: (a) => a.category.slug === 'robotics',
+  books: (a) => a.category.slug === 'books',
+};
+
+export function selectArticlesForCategory(slug: string): CategorizableArticle[] {
+  if (slug === 'books') {
+    return DEMO_ARTICLES.filter((a) => a.category.slug === 'books');
+  }
+  const primary = DEMO_ARTICLES.filter((a) => a.category.slug === slug);
+  const matcher = CATEGORY_MATCHERS[slug];
+  const secondary = matcher
+    ? DEMO_ARTICLES.filter((a) => a.category.slug !== slug && matcher(a))
+    : [];
+  const secondaryArticles = secondary.filter((a) => a.category.slug !== 'books');
+  const secondaryBooks = secondary.filter((a) => a.category.slug === 'books').slice(0, 4);
+  return [...primary, ...secondaryArticles, ...secondaryBooks];
+}
+
+const articleCountFor = (slug: string) => selectArticlesForCategory(slug).length;
 
 // Demo categories for development & static fallback
 export const DEMO_CATEGORIES: Category[] = [
@@ -115,22 +199,6 @@ export const DEMO_CATEGORIES: Category[] = [
   { id: '15', name: 'Future Technologies', slug: 'future-technologies', description: 'Separate demonstrated progress from speculation in technologies that may shape the coming decades.', icon: '🔮', color: '#34d399', articleCount: articleCountFor('future-technologies'), order: 15, isActive: true, createdAt: '', updatedAt: '' },
   { id: '16', name: 'Robotics', slug: 'robotics', description: 'Follow verified progress in humanoid, industrial, medical, autonomous, space, and soft robotics.', icon: '🦾', color: '#f97316', articleCount: articleCountFor('robotics'), order: 16, isActive: true, createdAt: '', updatedAt: '' },
 ];
-
-// Read time from the text itself (about 220 words a minute). The hand-set estimates claimed
-// up to 30 minutes for pages that take two, which misleads readers.
-const withMeasuredReadTime = <T extends { content?: string; readTime: number }>(article: T): T => ({
-  ...article,
-  readTime: Math.max(1, Math.round((article.content ?? '').split(/\s+/).filter(Boolean).length / 220)),
-});
-
-// Sourced 2025–2026 news, original evergreen explainers, and verified public-domain books.
-export const DEMO_ARTICLES = [
-  ...LATEST_NEWS_ARTICLES,
-  ...[...EDITORIAL_ARTICLES, ...SCIENCE_BOOKS].sort(
-    (left, right) =>
-      new Date(right.publishedAt).getTime() - new Date(left.publishedAt).getTime()
-  ),
-].map(withMeasuredReadTime);
 
 // Demo scientists are maintained separately because each profile includes
 // a biography, breakthroughs, sources, and discovery details.

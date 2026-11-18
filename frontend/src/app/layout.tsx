@@ -8,7 +8,7 @@ import Footer from '@/components/Footer';
 import CursorGlow from '@/components/CursorGlow';
 import CookieConsent from '@/components/CookieConsent';
 import SiteAnalytics from '@/components/SiteAnalytics';
-import { ADSENSE_ACCOUNT, SITE_DESCRIPTION, SITE_NAME, SITE_URL, absoluteUrl } from '@/lib/site';
+import { ADSENSE_ACCOUNT, CONTACT_EMAIL, EDITORIAL_TEAM, SITE_DESCRIPTION, SITE_NAME, SITE_URL, absoluteUrl } from '@/lib/site';
 import { imageObject } from '@/lib/image-seo';
 import './globals.css';
 
@@ -36,6 +36,11 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
+  alternates: {
+    types: {
+      'application/rss+xml': [{ url: '/feed.xml', title: `${SITE_NAME} RSS Feed` }],
+    },
+  },
   keywords: [
     'science', 'knowledge', 'space', 'astronomy', 'physics', 'quantum physics',
     'biology', 'artificial intelligence', 'robotics', 'science news', 'AI research',
@@ -89,16 +94,51 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const structuredData = {
     '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: SITE_NAME,
-    url: SITE_URL,
-    description: SITE_DESCRIPTION,
-    publisher: {
-      '@type': 'Organization',
-      name: SITE_NAME,
-      url: SITE_URL,
-      logo: imageObject('/brand-logo.webp', SITE_NAME),
-    },
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': `${SITE_URL}/#organization`,
+        name: SITE_NAME,
+        url: SITE_URL,
+        description: SITE_DESCRIPTION,
+        logo: imageObject('/brand-logo.webp', SITE_NAME),
+        publishingPrinciples: absoluteUrl('/editorial-policy'),
+        knowsAbout: [
+          'Space',
+          'Astronomy',
+          'Physics',
+          'Quantum Physics',
+          'Biology',
+          'Artificial Intelligence',
+          'Robotics',
+          'History of Science',
+          'Mathematics',
+        ],
+        contactPoint: {
+          '@type': 'ContactPoint',
+          contactType: 'editorial support',
+          email: CONTACT_EMAIL,
+          url: absoluteUrl('/contact'),
+          availableLanguage: ['en'],
+        },
+        member: {
+          '@type': 'Organization',
+          name: EDITORIAL_TEAM.displayName,
+          url: absoluteUrl(EDITORIAL_TEAM.href),
+        },
+      },
+      {
+        '@type': 'WebSite',
+        '@id': `${SITE_URL}/#website`,
+        name: SITE_NAME,
+        url: SITE_URL,
+        description: SITE_DESCRIPTION,
+        inLanguage: 'en',
+        publisher: {
+          '@id': `${SITE_URL}/#organization`,
+        },
+      },
+    ],
   };
 
   return (

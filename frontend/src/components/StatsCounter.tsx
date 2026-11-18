@@ -36,41 +36,19 @@ export default function StatsCounter({ stats }: StatsCounterProps) {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         '.stat-card',
-        { opacity: 0, y: 35, scale: 0.95 },
+        { y: 16 },
         {
-          opacity: 1,
           y: 0,
-          scale: 1,
-          duration: 0.8,
-          stagger: 0.1,
+          duration: 0.6,
+          stagger: 0.06,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: section,
-            start: 'top 80%',
+            start: 'top 88%',
             once: true,
           },
         }
       );
-
-      statItems.forEach((stat, index) => {
-        const el = countersRef.current[index];
-        if (!el) return;
-
-        const obj = { val: 0 };
-        gsap.to(obj, {
-          val: stat.value,
-          duration: 2.2,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: section,
-            start: 'top 80%',
-            once: true,
-          },
-          onUpdate: () => {
-            el.textContent = formatStat(Math.round(obj.val));
-          },
-        });
-      });
     }, sectionRef);
 
     return () => ctx.revert();

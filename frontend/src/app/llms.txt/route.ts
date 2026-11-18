@@ -1,56 +1,71 @@
-import { DEMO_ARTICLES } from '@/lib/constants';
-import { GUIDES } from '@/lib/guides';
-import { SCIENTIST_COLLECTIONS } from '@/lib/scientist-collections';
-import { getScientistDeepDive } from '@/lib/scientist-deep-dives';
+import { DEMO_CATEGORIES } from '@/lib/constants';
+import { EDITORIAL_ARTICLES } from '@/lib/editorial-articles';
+import { LATEST_NEWS_ARTICLES } from '@/lib/news-articles';
+import { SCIENCE_BOOKS } from '@/lib/books';
 import { DEMO_SCIENTISTS } from '@/lib/scientists';
-import { SITE_DESCRIPTION, SITE_NAME, absoluteUrl } from '@/lib/site';
+import { getScientistDeepDive } from '@/lib/scientist-deep-dives';
+import { GUIDES } from '@/lib/guides';
+import { LEARNING_PATHS } from '@/lib/learning-paths';
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL, absoluteUrl } from '@/lib/site';
 
-// A plain-text map of the site for AI assistants and answer engines (llmstxt.org format).
-// Built once as a plain file, so it also works on static hosting.
+// Built once as a static file so it works on both Vercel and static Cloudflare hosting.
 export const dynamic = 'force-static';
 
-type ListedArticle = { slug: string; title: string; excerpt?: string; content?: string; category?: { slug?: string } };
-
-const line = (title: string, path: string, note?: string) =>
-  `- [${title}](${absoluteUrl(path)})${note ? `: ${note.replace(/\s+/g, ' ').trim()}` : ''}`;
-
 export async function GET() {
-  const articles = (DEMO_ARTICLES as ListedArticle[]).filter((article) => article.content?.trim());
-  const books = articles.filter((article) => article.category?.slug === 'books');
-  const explainers = articles.filter((article) => article.category?.slug !== 'books');
-
-  const body = [
+  const lines: string[] = [
     `# ${SITE_NAME}`,
     '',
     `> ${SITE_DESCRIPTION}`,
     '',
-    'Original, sourced explainers on space, physics, biology, AI and robotics; in-depth biographies of 56 scientists, including 18 pioneers of the Islamic Golden Age; and reading guides to free public-domain science classics. Written and checked by the ScienceHub editorial team; sources are cited on every article.',
+    'Science Knowledge Hub is an independent educational platform providing source-cited science articles, 2025–2026 research updates, deep-dive scientist biographies, interactive physics calculators, guided learning paths, and legal public-domain science books.',
     '',
-    '## Scientist guides',
-    ...SCIENTIST_COLLECTIONS.map((collection) => line(collection.title, `/scientists/${collection.slug}`, collection.description)),
-    line('All scientist biographies', '/scientists'),
+    '## Core Sections & Policies',
+    `- [Home](${SITE_URL}/): Overview of featured explainers, categories, scientists, tools, and learning paths.`,
+    `- [All Science Articles](${absoluteUrl('/articles')}): Full directory of evergreen explainers and 2025–2026 research reports.`,
+    `- [Reading Guides](${absoluteUrl('/guides')}): Answer-first curated reading guides across science, AI, and free books.`,
+    `- [Scientists Directory](${absoluteUrl('/scientists')}): 56 deep-dive profiles of pioneers across physical sciences, life sciences, computing, and the Islamic Golden Age.`,
+    `- [Free Science Books Library](${absoluteUrl('/categories/books')}): ${SCIENCE_BOOKS.length} legal public-domain science classics with modern reading guides.`,
+    `- [Science Learning Paths](${absoluteUrl('/learn')}): ${LEARNING_PATHS.length} structured curricula from quick starts to deep dives.`,
+    `- [Interactive Science Tools Lab](${absoluteUrl('/tools')}): Educational calculators for light travel time, photon energy, relativistic time dilation, and escape velocity.`,
+    `- [Editorial Policy](${absoluteUrl('/editorial-policy')}): Source hierarchy, verification standards, and corrections policy.`,
+    `- [Sources & Credits](${absoluteUrl('/sources')}): Methodology, archive references, and image licensing.`,
+    `- [RSS Feed](${absoluteUrl('/feed.xml')}): Machine-readable RSS 2.0 feed of published articles.`,
     '',
-    '## Scientist biographies',
-    ...DEMO_SCIENTISTS.map((scientist) =>
-      line(scientist.name, `/scientists/${scientist.slug}`, getScientistDeepDive(scientist.slug)?.summary ?? scientist.breakthrough)),
+    '## Answer-First Reading Guides',
+    ...GUIDES.map(
+      (guide) => `- [${guide.title}](${absoluteUrl(`/guides/${guide.slug}`)}): ${guide.description}`
+    ),
     '',
-    '## Reading guides',
-    ...GUIDES.map((guide) => line(guide.title, `/guides/${guide.slug}`, guide.description)),
+    '## Evergreen Science Explainers',
+    ...EDITORIAL_ARTICLES.map(
+      (article) => `- [${article.title}](${absoluteUrl(`/articles/${article.slug}`)}): ${article.excerpt}`
+    ),
     '',
-    '## Science explainers and news',
-    ...explainers.map((article) => line(article.title, `/articles/${article.slug}`, article.excerpt)),
+    '## Sourced 2025–2026 Science, AI & Robotics Research Updates',
+    ...LATEST_NEWS_ARTICLES.map(
+      (article) => `- [${article.title}](${absoluteUrl(`/articles/${article.slug}`)}): ${article.excerpt}`
+    ),
     '',
-    '## Free science books (public domain)',
-    ...books.map((article) => line(article.title, `/articles/${article.slug}`, article.excerpt)),
+    '## Scientist Profiles & Biographies',
+    ...DEMO_SCIENTISTS.map((scientist) => {
+      const deepDive = getScientistDeepDive(scientist.slug);
+      const summary = deepDive?.summary || scientist.breakthrough || `${scientist.field} (${scientist.era})`;
+      return `- [${scientist.name}](${absoluteUrl(`/scientists/${scientist.slug}`)}): ${summary}`;
+    }),
     '',
-    '## About',
-    line('About the site', '/about'),
-    line('Editorial policy', '/editorial-policy'),
-    line('Sources and image credits', '/sources'),
+    '## Free Public-Domain Science Books (With Reading Guides)',
+    ...SCIENCE_BOOKS.map(
+      (book) => `- [${book.title} by ${book.author.displayName}](${absoluteUrl(`/articles/${book.slug}`)}): ${book.excerpt}`
+    ),
     '',
-  ].join('\n');
+    '## Scientific Categories',
+    ...DEMO_CATEGORIES.map(
+      (category) => `- [${category.name}](${absoluteUrl(`/categories/${category.slug}`)}): ${category.description}`
+    ),
+    '',
+  ];
 
-  return new Response(body, {
+  return new Response(lines.join('\n'), {
     headers: {
       'Content-Type': 'text/plain; charset=utf-8',
       'Cache-Control': 'public, max-age=3600',

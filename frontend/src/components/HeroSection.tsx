@@ -278,44 +278,44 @@ export default function HeroSection() {
 
       tl.fromTo(
         badgeRef.current,
-        { opacity: 0, y: -20, scale: 0.9 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.7, delay: 0.1 }
+        { y: -10 },
+        { y: 0, duration: 0.5 }
       )
         .fromTo(
           titleRef.current,
-          { opacity: 0, y: 35 },
-          { opacity: 1, y: 0, duration: 0.9 },
-          '-=0.4'
+          { y: 12 },
+          { y: 0, duration: 0.6 },
+          '-=0.3'
         )
         .fromTo(
           descRef.current,
-          { opacity: 0, y: 25 },
-          { opacity: 1, y: 0, duration: 0.8 },
-          '-=0.6'
+          { y: 10 },
+          { y: 0, duration: 0.5 },
+          '-=0.4'
         )
         .fromTo(
           ctaRef.current,
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.7 },
-          '-=0.5'
+          { y: 8 },
+          { y: 0, duration: 0.5 },
+          '-=0.4'
         )
         .fromTo(
           chipsRef.current,
-          { opacity: 0, y: 15 },
-          { opacity: 1, y: 0, duration: 0.7 },
-          '-=0.5'
+          { y: 6 },
+          { y: 0, duration: 0.5 },
+          '-=0.4'
         )
         .fromTo(
           visualWrapperRef.current,
-          { opacity: 0, scale: 0.85 },
-          { opacity: 1, scale: 1, duration: 1.1, ease: 'back.out(1.2)' },
-          '-=0.9'
+          { scale: 0.92 },
+          { scale: 1, duration: 0.9, ease: 'back.out(1.2)' },
+          '-=0.7'
         )
         .fromTo(
           '.hero-equation',
-          { opacity: 0, scale: 0.8 },
-          { opacity: 0.7, scale: 1, stagger: 0.1, duration: 0.8 },
-          '-=0.7'
+          { scale: 0.9 },
+          { scale: 1, stagger: 0.08, duration: 0.6 },
+          '-=0.5'
         );
 
       const visual = visualWrapperRef.current;

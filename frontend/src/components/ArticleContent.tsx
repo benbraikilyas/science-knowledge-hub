@@ -1,57 +1,215 @@
+import Link from 'next/link';
 import type { ReactNode } from 'react';
+import { ListTree } from 'lucide-react';
 
 interface ArticleContentProps {
   content: string;
+  currentSlug?: string;
 }
 
-const LINK_PATTERN = /\[([^\]]+)\]\((https:\/\/[^\s)]+)\)/g;
+const LINK_PATTERN = /\[([^\]]+)\]\(((?:https:\/\/|\/)[^\s)]+)\)/g;
 
-function renderInline(text: string): ReactNode[] {
+const CONTEXTUAL_ENTITIES: ReadonlyArray<{ pattern: RegExp; href: string }> = [
+  { pattern: /\bJames Webb Space Telescope\b/, href: '/articles/how-james-webb-space-telescope-reads-early-universe' },
+  { pattern: /\bquantum entanglement\b/i, href: '/articles/quantum-entanglement-without-faster-than-light-myth' },
+  { pattern: /\b(?:Bell’s inequality|Bell's inequality|Bell tests?)\b/, href: '/articles/how-bell-tests-turned-quantum-debate-into-data' },
+  { pattern: /\bgeneral relativity\b/i, href: '/articles/general-relativity-curved-spacetime-working-gps' },
+  { pattern: /\b(?:dark matter|dark energy)\b/i, href: '/articles/dark-matter-dark-energy-different-mysteries' },
+  { pattern: /\b(?:CRISPR|gene editing)\b/, href: '/articles/crispr-gene-editing-capabilities-limits' },
+  { pattern: /\b(?:transformer models|large language models)\b/i, href: '/articles/how-transformer-models-process-language-and-fail' },
+  { pattern: /\b(?:quantum computing|quantum computers)\b/i, href: '/articles/quantum-computing-after-hype-engineering-reality' },
+  { pattern: /\b(?:semiconductors|transistors)\b/i, href: '/articles/how-semiconductors-turn-physics-into-computing' },
+  { pattern: /\b(?:stellar evolution|neutron stars?|supernovae)\b/i, href: '/articles/how-stars-are-born-live-and-die' },
+  { pattern: /\b(?:electron microscopy|scientific instruments)\b/i, href: '/articles/how-instruments-changed-what-science-could-know' },
+  { pattern: /\bmathematical proofs?\b/i, href: '/articles/why-mathematical-proof-is-more-than-calculation' },
+  { pattern: /\bApollo 11\b/, href: '/articles/apollo-11-engineering-behind-first-moon-landing' },
+  { pattern: /\bDeepSeek-R1\b/, href: '/articles/deepseek-r1-open-weight-reasoning-model-2025' },
+  { pattern: /\bGemini 2\.5\b/, href: '/articles/gemini-2-5-thinking-model-reasoning-2025' },
+  { pattern: /\b(?:Llama 4|mixture-of-experts)\b/i, href: '/articles/llama-4-open-weight-multimodal-mixture-experts-2025' },
+  { pattern: /\b(?:Claude Opus 4|Claude 4)\b/, href: '/articles/claude-4-long-running-ai-agents-coding-2025' },
+  { pattern: /\b(?:Albert Einstein|Einstein)\b/, href: '/scientists/albert-einstein' },
+  { pattern: /\b(?:Isaac Newton|Newton)\b/, href: '/scientists/isaac-newton' },
+  { pattern: /\b(?:Charles Darwin|Darwin)\b/, href: '/scientists/charles-darwin' },
+  { pattern: /\b(?:Galileo Galilei|Galileo)\b/, href: '/scientists/galileo-galilei' },
+  { pattern: /\bMarie Curie\b/, href: '/scientists/marie-curie' },
+  { pattern: /\b(?:Michael Faraday|Faraday)\b/, href: '/scientists/michael-faraday' },
+  { pattern: /\bNiels Bohr\b/, href: '/scientists/niels-bohr' },
+  { pattern: /\bMax Planck\b/, href: '/scientists/max-planck' },
+  { pattern: /\b(?:Erwin Schrödinger|Schrödinger)\b/, href: '/scientists/erwin-schrodinger' },
+  { pattern: /\bAlan Turing\b/, href: '/scientists/alan-turing' },
+  { pattern: /\bClaude Shannon\b/, href: '/scientists/claude-shannon' },
+  { pattern: /\bAda Lovelace\b/, href: '/scientists/ada-lovelace' },
+  { pattern: /\bRosalind Franklin\b/, href: '/scientists/rosalind-franklin' },
+  { pattern: /\b(?:James Clerk Maxwell|Maxwell)\b/, href: '/scientists/james-clerk-maxwell' },
+  { pattern: /\b(?:Johannes Kepler|Kepler)\b/, href: '/scientists/johannes-kepler' },
+  { pattern: /\b(?:Nicolaus Copernicus|Copernicus)\b/, href: '/scientists/nicolaus-copernicus' },
+  { pattern: /\bAl-Khwarizmi\b/, href: '/scientists/al-khwarizmi' },
+  { pattern: /\bIbn al-Haytham\b/, href: '/scientists/ibn-al-haytham' },
+  { pattern: /\b(?:speed of light|time dilation|escape velocity)\b/i, href: '/tools' },
+];
+
+function slugifyHeading(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/[^a-z0-9\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-');
+}
+
+function linkPlainSegment(
+  segment: string,
+  keyPrefix: string,
+  currentHref: string | undefined,
+  usedHrefs: Set<string>,
+  maxAutoLinks: number
+): ReactNode[] {
+  if (!segment || usedHrefs.size >= maxAutoLinks) return [segment];
+
+  for (const entity of CONTEXTUAL_ENTITIES) {
+    if (usedHrefs.size >= maxAutoLinks) break;
+    if (entity.href === currentHref || usedHrefs.has(entity.href)) continue;
+
+    const match = entity.pattern.exec(segment);
+    if (!match || match.index === undefined) continue;
+
+    const before = segment.slice(0, match.index);
+    const matchedText = match[0];
+    const after = segment.slice(match.index + matchedText.length);
+    usedHrefs.add(entity.href);
+
+    return [
+      ...linkPlainSegment(before, `${keyPrefix}-b`, currentHref, usedHrefs, maxAutoLinks),
+      <Link
+        key={`${keyPrefix}-${entity.href}`}
+        href={entity.href}
+        className="font-medium text-gold-300 underline decoration-gold-500/35 underline-offset-4 transition-colors hover:text-gold-200"
+      >
+        {matchedText}
+      </Link>,
+      ...linkPlainSegment(after, `${keyPrefix}-a`, currentHref, usedHrefs, maxAutoLinks),
+    ];
+  }
+
+  return [segment];
+}
+
+function renderInline(
+  text: string,
+  options?: {
+    autoLink?: boolean;
+    currentHref?: string;
+    usedHrefs?: Set<string>;
+    maxAutoLinks?: number;
+  }
+): ReactNode[] {
   const nodes: ReactNode[] = [];
   let cursor = 0;
+  const autoLink = Boolean(options?.autoLink && options?.usedHrefs);
+  const usedHrefs = options?.usedHrefs ?? new Set<string>();
+  const maxAutoLinks = options?.maxAutoLinks ?? 5;
 
   for (const match of text.matchAll(LINK_PATTERN)) {
     const index = match.index ?? 0;
-    if (index > cursor) nodes.push(text.slice(cursor, index));
-    nodes.push(
-      <a
-        key={`${index}-${match[2]}`}
-        href={match[2]}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="font-medium text-gold-300 underline decoration-gold-500/40 underline-offset-4 hover:text-gold-200"
-      >
-        {match[1]}
-      </a>
-    );
+    if (index > cursor) {
+      const plain = text.slice(cursor, index);
+      if (autoLink) {
+        nodes.push(...linkPlainSegment(plain, `seg-${index}`, options?.currentHref, usedHrefs, maxAutoLinks));
+      } else {
+        nodes.push(plain);
+      }
+    }
+    const label = match[1];
+    const url = match[2];
+    if (url.startsWith('/')) {
+      usedHrefs.add(url.split('#')[0]);
+      nodes.push(
+        <Link
+          key={`${index}-${url}`}
+          href={url}
+          className="font-medium text-gold-300 underline decoration-gold-500/40 underline-offset-4 transition-colors hover:text-gold-200"
+        >
+          {label}
+        </Link>
+      );
+    } else {
+      nodes.push(
+        <a
+          key={`${index}-${url}`}
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-medium text-gold-300 underline decoration-gold-500/40 underline-offset-4 hover:text-gold-200"
+        >
+          {label}
+        </a>
+      );
+    }
     cursor = index + match[0].length;
   }
 
-  if (cursor < text.length) nodes.push(text.slice(cursor));
+  if (cursor < text.length) {
+    const tail = text.slice(cursor);
+    if (autoLink) {
+      nodes.push(...linkPlainSegment(tail, `tail-${cursor}`, options?.currentHref, usedHrefs, maxAutoLinks));
+    } else {
+      nodes.push(tail);
+    }
+  }
   return nodes;
 }
 
-export default function ArticleContent({ content }: ArticleContentProps) {
+export default function ArticleContent({ content, currentSlug }: ArticleContentProps) {
   const lines = content.split('\n');
   const nodes: ReactNode[] = [];
+  const currentHref = currentSlug ? `/articles/${currentSlug}` : undefined;
+  const usedHrefs = new Set<string>();
+  const usedHeadingIds = new Map<string, number>();
+
+  const uniqueHeadingId = (rawText: string) => {
+    const base = slugifyHeading(rawText) || 'section';
+    const count = usedHeadingIds.get(base) ?? 0;
+    usedHeadingIds.set(base, count + 1);
+    return count === 0 ? base : `${base}-${count + 1}`;
+  };
+
+  // Pre-scan H2 headings for the AEO Table of Contents (skip if fewer than 3 H2 headings)
+  const tocItems: { id: string; label: string }[] = [];
+  const tempHeadingIds = new Map<string, number>();
+  for (const rawLine of lines) {
+    const trimmed = rawLine.trim();
+    if (trimmed.startsWith('## ')) {
+      const label = trimmed.slice(3).replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').trim();
+      const base = slugifyHeading(label) || 'section';
+      const count = tempHeadingIds.get(base) ?? 0;
+      tempHeadingIds.set(base, count + 1);
+      const id = count === 0 ? base : `${base}-${count + 1}`;
+      tocItems.push({ id, label });
+    }
+  }
 
   for (let index = 0; index < lines.length; index += 1) {
     const line = lines[index].trim();
     if (!line) continue;
 
     if (line.startsWith('### ')) {
+      const headingText = line.slice(4);
+      const headingId = uniqueHeadingId(headingText);
       nodes.push(
-        <h3 key={index} className="mb-3 mt-8 text-xl font-bold text-[var(--text-primary)]">
-          {renderInline(line.slice(4))}
+        <h3 key={index} id={headingId} className="mb-3 mt-8 scroll-mt-28 text-xl font-bold text-[var(--text-primary)]">
+          {renderInline(headingText)}
         </h3>
       );
       continue;
     }
 
     if (line.startsWith('## ')) {
+      const headingText = line.slice(3);
+      const headingId = uniqueHeadingId(headingText);
       nodes.push(
-        <h2 key={index} className="mb-4 mt-10 text-2xl font-bold text-[var(--text-primary)] sm:text-3xl">
-          {renderInline(line.slice(3))}
+        <h2 key={index} id={headingId} className="mb-4 mt-10 scroll-mt-28 text-2xl font-bold text-[var(--text-primary)] sm:text-3xl">
+          {renderInline(headingText)}
         </h2>
       );
       continue;
@@ -78,7 +236,14 @@ export default function ArticleContent({ content }: ArticleContentProps) {
           {items.map((item, itemIndex) => (
             <li key={itemIndex} className="flex items-start gap-3 leading-relaxed text-[var(--text-secondary)]">
               <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400" />
-              <span>{renderInline(item)}</span>
+              <span>
+                {renderInline(item, {
+                  autoLink: true,
+                  currentHref,
+                  usedHrefs,
+                  maxAutoLinks: 5,
+                })}
+              </span>
             </li>
           ))}
         </ul>
@@ -88,10 +253,43 @@ export default function ArticleContent({ content }: ArticleContentProps) {
 
     nodes.push(
       <p key={index} className="mb-5 leading-8 text-[var(--text-secondary)]">
-        {renderInline(line)}
+        {renderInline(line, {
+          autoLink: true,
+          currentHref,
+          usedHrefs,
+          maxAutoLinks: 5,
+        })}
       </p>
     );
   }
 
-  return <div className="article-content">{nodes}</div>;
+  return (
+    <div className="article-content">
+      {tocItems.length >= 3 && (
+        <nav
+          aria-label="In this article"
+          className="mb-8 rounded-2xl border border-[var(--border-color)] bg-white/[0.02] p-5 sm:p-6"
+        >
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-gold-400">
+            <ListTree className="h-4 w-4" />
+            <span>In this article</span>
+          </div>
+          <ol className="mt-3 grid gap-2 text-sm sm:grid-cols-2">
+            {tocItems.map((item, idx) => (
+              <li key={item.id} className="flex items-baseline gap-2">
+                <span className="font-mono text-xs text-gold-400/80">{idx + 1}.</span>
+                <a
+                  href={`#${item.id}`}
+                  className="text-[var(--text-secondary)] transition-colors hover:text-gold-300 hover:underline"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+      )}
+      {nodes}
+    </div>
+  );
 }
