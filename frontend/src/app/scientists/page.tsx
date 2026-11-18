@@ -1,6 +1,8 @@
 import ScientistCard from '@/components/ScientistCard';
 import { fetchScientists } from '@/lib/api';
 import { DEMO_SCIENTISTS, mergeScientistProfiles } from '@/lib/scientists';
+import Link from 'next/link';
+import { SCIENTIST_COLLECTIONS } from '@/lib/scientist-collections';
 import type { ScientistGroup, ScientistListItem } from '@/lib/types';
 import { Users } from 'lucide-react';
 
@@ -22,8 +24,8 @@ async function getScientists(): Promise<ScientistListItem[]> {
 
 export const metadata = {
   alternates: { canonical: '/scientists' },
-  title: 'Scientists Directory',
-  description: 'Discover the brilliant minds who shaped our understanding of the universe.',
+  title: 'Famous Scientists and Their Discoveries: 56 Biographies',
+  description: 'Biographies of 56 scientists who changed the world, from al-Khwarizmi and Ibn Sina to Marie Curie, Einstein, Ada Lovelace and Alan Turing.',
 };
 
 const groupId = (label: string) => label.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-');
@@ -76,6 +78,19 @@ export default async function ScientistsPage() {
             <span><strong className="text-gold-300">{allScientists.filter((scientist) => scientist.group === 'Arab & Muslim Pioneers').length}</strong> Arab &amp; Muslim pioneers</span>
             <span><strong className="text-gold-300">{allScientists.filter((scientist) => scientist.group === 'Computing & Algorithms').length}</strong> computing pioneers</span>
           </div>
+
+          {/* Hand-written hub pages for the most searched groups */}
+          <nav aria-label="Scientist guides" className="mt-7 flex flex-wrap gap-3">
+            {SCIENTIST_COLLECTIONS.map((collection) => (
+              <Link
+                key={collection.slug}
+                href={`/scientists/${collection.slug}`}
+                className="rounded-xl border border-gold-500/40 bg-gold-500/10 px-4 py-2 text-sm font-semibold text-gold-200 transition-colors hover:bg-gold-500/20"
+              >
+                {collection.title} →
+              </Link>
+            ))}
+          </nav>
 
           {/* Group shortcuts: each jumps to its section below */}
           <nav aria-label="Scientist groups" className="mt-8 flex flex-wrap gap-2">

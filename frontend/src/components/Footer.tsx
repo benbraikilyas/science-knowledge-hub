@@ -12,6 +12,8 @@ const START_LINKS = [
   { label: 'Best Science Articles', href: '/guides/best-science-articles' },
   { label: 'Best Free Science Books', href: '/guides/best-free-science-books' },
   { label: 'Best AI Explainers', href: '/guides/best-ai-explainers' },
+  { label: 'Famous Muslim Scientists', href: '/scientists/muslim-scientists' },
+  { label: 'Famous Women Scientists', href: '/scientists/women-scientists' },
 ];
 
 export default function Footer() {

@@ -4,6 +4,7 @@ import { fetchScientist } from '@/lib/api';
 import SafeImage from '@/components/SafeImage';
 import { DEMO_SCIENTISTS } from '@/lib/scientists';
 import { getScientistDeepDive } from '@/lib/scientist-deep-dives';
+import { collectionsForScientist } from '@/lib/scientist-collections';
 import { pageTitle } from '@/lib/seo-copy';
 import { ArrowLeft, Award, Quote, BookOpen, CalendarDays, CircleHelp, Compass, ExternalLink, Lightbulb, SearchCheck, Sprout, Target } from 'lucide-react';
 import { absoluteUrl, SITE_NAME } from '@/lib/site';
@@ -58,7 +59,7 @@ export async function generateMetadata({ params }: ScientistDetailProps) {
     : undefined;
   return {
     title: deepDive
-      ? pageTitle(`${scientist.name}: Life, Discoveries and Legacy`, SITE_NAME)
+      ? pageTitle(`${scientist.name}: Biography, Discoveries and Facts`, SITE_NAME)
       : (scientist.name as string),
     description,
     alternates: { canonical: `/scientists/${slug}` },
@@ -396,6 +397,20 @@ export default async function ScientistDetailPage({ params }: ScientistDetailPro
                 </ul>
               </div>
             )}
+
+            {collectionsForScientist(slug).map((collection) => (
+              <Link
+                key={collection.slug}
+                href={`/scientists/${collection.slug}`}
+                className="group flex items-center justify-between rounded-2xl border border-gold-500/30 bg-gold-500/10 p-5 text-sm font-semibold text-[var(--text-primary)] transition-colors hover:border-gold-500/60 hover:text-gold-300"
+              >
+                <span>
+                  <span className="block text-[10px] uppercase tracking-[0.16em] text-[var(--text-secondary)]">Part of</span>
+                  {collection.title}
+                </span>
+                <Compass className="h-4 w-4 text-gold-400" />
+              </Link>
+            ))}
 
             {deepDive && (
               <nav aria-labelledby="read-next" className="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)]/60 p-6 backdrop-blur-xl">

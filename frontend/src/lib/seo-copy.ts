@@ -29,13 +29,13 @@ export const SEO_TITLES: Record<string, string> = {
   'water-phase-transition-soft-actuators-2025':
     'Water-Powered Soft Actuators Exceed 50 Newtons at 24 Volts',
   'alice-lead-to-gold-lhc-nuclear-transmutation-2025':
-    'ALICE Measures Fleeting Gold From Lead Nuclei at the LHC',
+    'CERN Turned Lead Into Gold: What the ALICE Experiment Found',
   'amazon-vulcan-force-feedback-warehouse-robot-2025':
     'Amazon Vulcan Adds Force Feedback to Picking and Stowing',
   'personalized-base-editing-infant-cps1-deficiency-2025':
-    'CRISPR Base Editing Treats an Infant With CPS1 Deficiency',
+    'Baby KJ: The First Personalized CRISPR Base Editing Treatment',
   'microns-mouse-visual-cortex-connectome-2025':
-    'MICrONS Links Half a Billion Synapses to Neural Activity',
+    'MICrONS Paper Explained: Mouse Visual Cortex Connectome',
   'llama-4-open-weight-multimodal-mixture-experts-2025':
     'Llama 4 Adds Mixture-of-Experts and Native Multimodality',
   'gemini-2-5-thinking-model-reasoning-2025':
@@ -49,7 +49,7 @@ export const SEO_TITLES: Record<string, string> = {
   'distributed-quantum-computing-optical-link-2025':
     'Two Trapped-Ion Modules Run a Distributed Quantum Algorithm',
   'iso-10218-2025-industrial-robot-safety-update':
-    'ISO 10218:2025 Rewrites Industrial Robot Safety Baseline',
+    'ISO 10218:2025 Explained: What Changed in Robot Safety',
   'beyond-epica-antarctic-oldest-ice-core-2025':
     'Beyond EPICA Reaches Antarctic Bedrock, 1.2M-Year Archive',
   'apollo-11-engineering-behind-first-moon-landing':
@@ -60,6 +60,10 @@ export const SEO_TITLES: Record<string, string> = {
     'How Semiconductors Turn Quantum Physics Into Computing',
   'science-and-hypothesis':
     'Science and Hypothesis by Henri Poincaré: Free Book Guide',
+  'quantum-entanglement-without-faster-than-light-myth':
+    'Is Quantum Entanglement Faster Than Light? Why It Isn’t',
+  'the-theory-of-heat-radiation':
+    'Max Planck’s The Theory of Heat Radiation: Free PDF & Guide',
 };
 
 export const SEO_DESCRIPTIONS: Record<string, string> = {
@@ -88,7 +92,7 @@ export const SEO_DESCRIPTIONS: Record<string, string> = {
   'water-phase-transition-soft-actuators-2025':
     'A peer-reviewed soft-robotics study revisited liquid-to-gas actuation with flexible heaters and closed-loop control, shown in a robotic hand and quadruped.',
   'personalized-base-editing-infant-cps1-deficiency-2025':
-    'A team built and delivered a liver-targeted CRISPR base editor for one infant with CPS1 deficiency, showing a rapid path for bespoke genetic medicines.',
+    'How a Philadelphia team designed a CRISPR base editor for one infant, KJ, with CPS1 deficiency in about six months, and what it means for rare diseases.',
   'llama-4-open-weight-multimodal-mixture-experts-2025':
     'Meta released Llama 4 Scout and Maverick with downloadable weights, multimodal input and mixture-of-experts design; licensing and hardware limits remain.',
   'gemini-2-5-thinking-model-reasoning-2025':
@@ -104,11 +108,19 @@ export const SEO_DESCRIPTIONS: Record<string, string> = {
   'distributed-quantum-computing-optical-link-2025':
     'Oxford researchers teleported logical gates between separate ion processors and ran a small algorithm, showing a modular route to larger quantum systems.',
   'iso-10218-2025-industrial-robot-safety-update':
-    'The first major revision since 2011 splits robot-maker and integrator duties and adds collaborative use, end effectors and safety cybersecurity.',
+    'ISO 10218-1 and -2:2025 replace the 2011 editions, split robot-maker and integrator duties, and add collaborative use, end effectors and cybersecurity.',
   'quantum-computing-after-hype-engineering-reality':
     'Quantum computers offer new methods, but useful machines need controlled qubits, error correction, suitable algorithms and honest classical comparisons.',
   'relativity-the-special-and-general-theory':
     'Albert Einstein’s own accessible account of special and general relativity, written for curious readers without advanced mathematics.',
+  'quantum-entanglement-without-faster-than-light-myth':
+    'Entangled particles share correlations no local model can copy, yet they cannot send a message faster than light. The physics, explained without the hype.',
+  'microns-mouse-visual-cortex-connectome-2025':
+    'Published in Nature in April 2025, MICrONS maps about half a billion synapses in a cubic millimetre of mouse cortex and links them to 75,000 recorded neurons.',
+  'alice-lead-to-gold-lhc-nuclear-transmutation-2025':
+    'Near-miss lead collisions at the LHC knock three protons out of lead nuclei. Run 2 produced about 86 billion fleeting gold nuclei: 29 picograms in total.',
+  'the-theory-of-heat-radiation':
+    'Read Max Planck’s classic on thermal radiation free as a Project Gutenberg PDF, with a plain-English guide to the problem that launched quantum theory.',
   'the-expression-of-the-emotions-in-man-and-animals':
     'Darwin’s pioneering study linking facial expression, biological communication and evolutionary continuity across species.',
 };

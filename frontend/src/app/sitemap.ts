@@ -13,6 +13,8 @@ const STATIC_ROUTES = [
   '/articles',
   '/categories',
   '/scientists',
+  '/scientists/muslim-scientists',
+  '/scientists/women-scientists',
   '/guides',
   '/learn',
   '/tools',
