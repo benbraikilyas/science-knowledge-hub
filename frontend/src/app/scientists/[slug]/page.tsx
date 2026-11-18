@@ -313,6 +313,9 @@ export default async function ScientistDetailPage({ params }: ScientistDetailPro
                       </div>
                     ))}
                   </div>
+                  <Link href="/science-myths" className="mt-4 inline-flex text-sm font-semibold text-gold-400 hover:text-gold-300">
+                    More myths about famous scientists →
+                  </Link>
                 </section>
 
                 <section className={SECTION}>

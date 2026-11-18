@@ -25,6 +25,7 @@ export async function GET() {
     `- [All Science Articles](${absoluteUrl('/articles')}): Full directory of evergreen explainers and 2025–2026 research reports.`,
     `- [Reading Guides](${absoluteUrl('/guides')}): Answer-first curated reading guides across science, AI, and free books.`,
     `- [Scientists Directory](${absoluteUrl('/scientists')}): 56 deep-dive profiles of pioneers across physical sciences, life sciences, computing, and the Islamic Golden Age.`,
+    `- [Science Myths Debunked](${absoluteUrl('/science-myths')}): Over 100 popular myths about famous scientists, each paired with what the historical evidence shows.`,
     ...SCIENTIST_COLLECTIONS.map(
       (collection) => `- [${collection.title}](${absoluteUrl(`/scientists/${collection.slug}`)}): ${collection.description}`
     ),
