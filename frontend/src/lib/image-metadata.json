@@ -19,6 +19,8 @@
     "creator": "Science Knowledge Hub",
     "creatorType": "Organization",
     "copyrightNotice": "© 2026 Science Knowledge Hub",
+    "license": "https://scienceknowledgehub.com/terms",
+    "acquireLicensePage": "https://scienceknowledgehub.com/contact",
     "width": 512,
     "height": 512,
     "encodingFormat": "image/webp"
@@ -1303,6 +1305,8 @@
     "creator": "Science Knowledge Hub",
     "creatorType": "Organization",
     "copyrightNotice": "© 2026 Science Knowledge Hub",
+    "license": "https://scienceknowledgehub.com/terms",
+    "acquireLicensePage": "https://scienceknowledgehub.com/contact",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1401,6 +1405,8 @@
     "creator": "Science Knowledge Hub",
     "creatorType": "Organization",
     "copyrightNotice": "© 2026 Science Knowledge Hub",
+    "license": "https://scienceknowledgehub.com/terms",
+    "acquireLicensePage": "https://scienceknowledgehub.com/contact",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1439,6 +1445,8 @@
     "creator": "Science Knowledge Hub",
     "creatorType": "Organization",
     "copyrightNotice": "© 2026 Science Knowledge Hub",
+    "license": "https://scienceknowledgehub.com/terms",
+    "acquireLicensePage": "https://scienceknowledgehub.com/contact",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1457,6 +1465,8 @@
     "creator": "Science Knowledge Hub",
     "creatorType": "Organization",
     "copyrightNotice": "© 2026 Science Knowledge Hub",
+    "license": "https://scienceknowledgehub.com/terms",
+    "acquireLicensePage": "https://scienceknowledgehub.com/contact",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1675,6 +1685,8 @@
     "creator": "Science Knowledge Hub",
     "creatorType": "Organization",
     "copyrightNotice": "© 2026 Science Knowledge Hub",
+    "license": "https://scienceknowledgehub.com/terms",
+    "acquireLicensePage": "https://scienceknowledgehub.com/contact",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1713,6 +1725,8 @@
     "creator": "Science Knowledge Hub",
     "creatorType": "Organization",
     "copyrightNotice": "© 2026 Science Knowledge Hub",
+    "license": "https://scienceknowledgehub.com/terms",
+    "acquireLicensePage": "https://scienceknowledgehub.com/contact",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1751,6 +1765,8 @@
     "creator": "Science Knowledge Hub",
     "creatorType": "Organization",
     "copyrightNotice": "© 2026 Science Knowledge Hub",
+    "license": "https://scienceknowledgehub.com/terms",
+    "acquireLicensePage": "https://scienceknowledgehub.com/contact",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1809,6 +1825,8 @@
     "creator": "Science Knowledge Hub",
     "creatorType": "Organization",
     "copyrightNotice": "© 2026 Science Knowledge Hub",
+    "license": "https://scienceknowledgehub.com/terms",
+    "acquireLicensePage": "https://scienceknowledgehub.com/contact",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -1827,6 +1845,8 @@
     "creator": "Science Knowledge Hub",
     "creatorType": "Organization",
     "copyrightNotice": "© 2026 Science Knowledge Hub",
+    "license": "https://scienceknowledgehub.com/terms",
+    "acquireLicensePage": "https://scienceknowledgehub.com/contact",
     "width": 600,
     "height": 900,
     "encodingFormat": "image/webp"
@@ -3015,11 +3035,12 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:JohnvonNeumann-LosAlamos.gif",
-    "creditText": "Los Alamos National Laboratory (LANL) — see source record for terms",
+    "creditText": "Los Alamos National Laboratory (LANL) — free use with attribution",
     "creator": "Los Alamos National Laboratory",
     "creatorType": "Organization",
-    "copyrightNotice": "Los Alamos National Laboratory — see the linked source record for the license",
+    "copyrightNotice": "Los Alamos National Laboratory; reuse permitted with attribution (see source record)",
     "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:JohnvonNeumann-LosAlamos.gif",
+    "license": "https://commons.wikimedia.org/wiki/File:JohnvonNeumann-LosAlamos.gif",
     "width": 490,
     "height": 639,
     "encodingFormat": "image/webp"
@@ -3497,6 +3518,8 @@
     "creator": "Science Knowledge Hub",
     "creatorType": "Organization",
     "copyrightNotice": "© 2026 Science Knowledge Hub",
+    "license": "https://scienceknowledgehub.com/terms",
+    "acquireLicensePage": "https://scienceknowledgehub.com/contact",
     "width": 1536,
     "height": 1024,
     "encodingFormat": "image/webp"

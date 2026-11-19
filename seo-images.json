@@ -18,7 +18,9 @@
     "creditText": "Science Knowledge Hub",
     "creator": "Science Knowledge Hub",
     "creatorType": "Organization",
-    "copyrightNotice": "© 2026 Science Knowledge Hub"
+    "copyrightNotice": "© 2026 Science Knowledge Hub",
+    "license": "https://scienceknowledgehub.com/terms",
+    "acquireLicensePage": "https://scienceknowledgehub.com/contact"
   },
   "/images/articles/alice-lead-to-gold-lhc-nuclear-transmutation-2025.webp": {
     "title": "Inside the ALICE experiment cavern at CERN's Large Hadron Collider",
@@ -1164,7 +1166,9 @@
     "creditText": "Science Knowledge Hub",
     "creator": "Science Knowledge Hub",
     "creatorType": "Organization",
-    "copyrightNotice": "© 2026 Science Knowledge Hub"
+    "copyrightNotice": "© 2026 Science Knowledge Hub",
+    "license": "https://scienceknowledgehub.com/terms",
+    "acquireLicensePage": "https://scienceknowledgehub.com/contact"
   },
   "/images/books/an-introduction-to-mathematics.webp": {
     "title": "An Introduction to Mathematics — title page (1911 edition)",
@@ -1247,7 +1251,9 @@
     "creditText": "Science Knowledge Hub",
     "creator": "Science Knowledge Hub",
     "creatorType": "Organization",
-    "copyrightNotice": "© 2026 Science Knowledge Hub"
+    "copyrightNotice": "© 2026 Science Knowledge Hub",
+    "license": "https://scienceknowledgehub.com/terms",
+    "acquireLicensePage": "https://scienceknowledgehub.com/contact"
   },
   "/images/books/euclids-elements-of-geometry.webp": {
     "title": "Euclid’s Elements of Geometry — title page (Oliver Byrne's 1847 coloured edition)",
@@ -1279,7 +1285,9 @@
     "creditText": "Science Knowledge Hub",
     "creator": "Science Knowledge Hub",
     "creatorType": "Organization",
-    "copyrightNotice": "© 2026 Science Knowledge Hub"
+    "copyrightNotice": "© 2026 Science Knowledge Hub",
+    "license": "https://scienceknowledgehub.com/terms",
+    "acquireLicensePage": "https://scienceknowledgehub.com/contact"
   },
   "/images/books/mans-place-in-nature-and-other-essays.webp": {
     "title": "Man's Place in Nature and Other Essays — book cover",
@@ -1294,7 +1302,9 @@
     "creditText": "Science Knowledge Hub",
     "creator": "Science Knowledge Hub",
     "creatorType": "Organization",
-    "copyrightNotice": "© 2026 Science Knowledge Hub"
+    "copyrightNotice": "© 2026 Science Knowledge Hub",
+    "license": "https://scienceknowledgehub.com/terms",
+    "acquireLicensePage": "https://scienceknowledgehub.com/contact"
   },
   "/images/books/on-the-origin-of-species.webp": {
     "title": "On the Origin of Species — title page",
@@ -1479,7 +1489,9 @@
     "creditText": "Science Knowledge Hub",
     "creator": "Science Knowledge Hub",
     "creatorType": "Organization",
-    "copyrightNotice": "© 2026 Science Knowledge Hub"
+    "copyrightNotice": "© 2026 Science Knowledge Hub",
+    "license": "https://scienceknowledgehub.com/terms",
+    "acquireLicensePage": "https://scienceknowledgehub.com/contact"
   },
   "/images/books/the-expression-of-the-emotions-in-man-and-animals.webp": {
     "title": "The Expression of the Emotions in Man and Animals — title page",
@@ -1511,7 +1523,9 @@
     "creditText": "Science Knowledge Hub",
     "creator": "Science Knowledge Hub",
     "creatorType": "Organization",
-    "copyrightNotice": "© 2026 Science Knowledge Hub"
+    "copyrightNotice": "© 2026 Science Knowledge Hub",
+    "license": "https://scienceknowledgehub.com/terms",
+    "acquireLicensePage": "https://scienceknowledgehub.com/contact"
   },
   "/images/books/the-new-physics-and-its-evolution.webp": {
     "title": "The New Physics and Its Evolution — title page",
@@ -1543,7 +1557,9 @@
     "creditText": "Science Knowledge Hub",
     "creator": "Science Knowledge Hub",
     "creatorType": "Organization",
-    "copyrightNotice": "© 2026 Science Knowledge Hub"
+    "copyrightNotice": "© 2026 Science Knowledge Hub",
+    "license": "https://scienceknowledgehub.com/terms",
+    "acquireLicensePage": "https://scienceknowledgehub.com/contact"
   },
   "/images/books/the-story-of-the-heavens.webp": {
     "title": "The Story of the Heavens — title page",
@@ -1592,7 +1608,9 @@
     "creditText": "Science Knowledge Hub",
     "creator": "Science Knowledge Hub",
     "creatorType": "Organization",
-    "copyrightNotice": "© 2026 Science Knowledge Hub"
+    "copyrightNotice": "© 2026 Science Knowledge Hub",
+    "license": "https://scienceknowledgehub.com/terms",
+    "acquireLicensePage": "https://scienceknowledgehub.com/contact"
   },
   "/images/books/treatise-on-thermodynamics-planck.webp": {
     "title": "Treatise on Thermodynamics — book cover",
@@ -1607,7 +1625,9 @@
     "creditText": "Science Knowledge Hub",
     "creator": "Science Knowledge Hub",
     "creatorType": "Organization",
-    "copyrightNotice": "© 2026 Science Knowledge Hub"
+    "copyrightNotice": "© 2026 Science Knowledge Hub",
+    "license": "https://scienceknowledgehub.com/terms",
+    "acquireLicensePage": "https://scienceknowledgehub.com/contact"
   },
   "/images/categories/physics.webp": {
     "title": "The Large Hadron Collider tunnel at CERN with a blue superconducting dipole magnet",
@@ -2661,11 +2681,12 @@
       "Science Knowledge Hub"
     ],
     "source": "https://commons.wikimedia.org/wiki/File:JohnvonNeumann-LosAlamos.gif",
-    "creditText": "Los Alamos National Laboratory (LANL) — see source record for terms",
+    "creditText": "Los Alamos National Laboratory (LANL) — free use with attribution",
     "creator": "Los Alamos National Laboratory",
     "creatorType": "Organization",
-    "copyrightNotice": "Los Alamos National Laboratory — see the linked source record for the license",
-    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:JohnvonNeumann-LosAlamos.gif"
+    "copyrightNotice": "Los Alamos National Laboratory; reuse permitted with attribution (see source record)",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:JohnvonNeumann-LosAlamos.gif",
+    "license": "https://commons.wikimedia.org/wiki/File:JohnvonNeumann-LosAlamos.gif"
   },
   "/images/scientists/katherine-johnson.webp": {
     "title": "Portrait of Katherine Johnson",
@@ -3088,6 +3109,8 @@
     "creditText": "Science Knowledge Hub",
     "creator": "Science Knowledge Hub",
     "creatorType": "Organization",
-    "copyrightNotice": "© 2026 Science Knowledge Hub"
+    "copyrightNotice": "© 2026 Science Knowledge Hub",
+    "license": "https://scienceknowledgehub.com/terms",
+    "acquireLicensePage": "https://scienceknowledgehub.com/contact"
   }
 }
