@@ -17,6 +17,7 @@ const STATIC_ROUTES = [
   '/scientists',
   '/scientists/muslim-scientists',
   '/scientists/women-scientists',
+  '/scientists/scientists-who-believed-in-god',
   '/science-myths',
   '/guides',
   '/learn',

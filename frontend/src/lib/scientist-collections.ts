@@ -6,6 +6,8 @@ export interface ScientistCollectionSection {
   heading: string;
   intro: string;
   slugs: string[];
+  /** Topic-specific notes per scientist (keyed by slug); shown instead of the generic contributions. */
+  notes?: Record<string, { short: string; text: string }>;
 }
 
 export interface ScientistCollection {
@@ -20,6 +22,8 @@ export interface ScientistCollection {
   answer: string;
   /** Heading of the summary table. */
   tableHeading: string;
+  /** When set, the table's last column and each card show this note (e.g. "Faith") instead of the breakthrough. */
+  noteLabel?: string;
   sections: ScientistCollectionSection[];
   context: { heading: string; paragraphs: string[] };
   myths: { myth: string; fact: string }[];
@@ -107,6 +111,7 @@ export const SCIENTIST_COLLECTIONS: ScientistCollection[] = [
     ],
     related: [
       { label: 'Learning path: the Islamic Golden Age', href: '/learn#golden-age' },
+      { label: 'Famous scientists who believed in God', href: '/scientists/scientists-who-believed-in-god' },
       { label: 'Famous women scientists', href: '/scientists/women-scientists' },
       { label: 'Why breakthroughs rarely belong to one person', href: '/articles/why-scientific-breakthroughs-rarely-belong-to-one-person' },
       { label: 'All scientist profiles', href: '/scientists' },
@@ -190,6 +195,155 @@ export const SCIENTIST_COLLECTIONS: ScientistCollection[] = [
       { label: 'All scientist profiles', href: '/scientists' },
     ],
     updatedAt: '2026-11-18',
+  },
+  {
+    slug: 'scientists-who-believed-in-god',
+    title: 'Famous Scientists Who Believed in God',
+    seoTitle: 'Famous Scientists Who Believed in God (16 Examples)',
+    description:
+      'Newton, Kepler, Faraday, Mendel, Ibn Sina and more: 16 famous scientists who believed in God, what their faith meant to their work, and views often misquoted.',
+    eyebrow: 'Science and faith',
+    answer:
+      'Many founders of modern science were religious. Copernicus was a church official, Kepler trained to be a Lutheran minister, Newton wrote more about theology than about physics, Mendel was an Augustinian friar and Faraday was an elder of a small Christian church. In the Islamic world, scientists such as Ibn al-Nafis, Ibn Rushd and Nasir al-Din al-Tusi were also scholars of religion or law. Their beliefs were far from identical, and some famous names, including Einstein and Darwin, are often presented as believers when their own words say otherwise.',
+    tableHeading: 'Scientists and their faith at a glance',
+    noteLabel: 'Faith',
+    sections: [
+      {
+        heading: 'Christian scientists of the Scientific Revolution',
+        intro: 'The astronomers and physicists who moved the Earth from the centre of the universe were, almost without exception, believing Christians.',
+        slugs: ['nicolaus-copernicus', 'galileo-galilei', 'johannes-kepler', 'isaac-newton'],
+        notes: {
+          'nicolaus-copernicus': {
+            short: 'Catholic; church administrator',
+            text: 'Copernicus spent his career as a canon, an administrator of the cathedral chapter of Frombork, and dedicated On the Revolutions of the Heavenly Spheres to Pope Paul III. His book was restricted only in 1616, seventy-three years after his death.',
+          },
+          'galileo-galilei': {
+            short: 'Catholic',
+            text: 'Galileo remained a Catholic all his life, and both of his daughters became nuns. In his 1615 Letter to the Grand Duchess Christina he argued, quoting Cardinal Baronius, that the Bible teaches how to go to heaven, not how the heavens go. His trial in 1633 turned on church authority and the reading of scripture as much as on astronomy.',
+          },
+          'johannes-kepler': {
+            short: 'Lutheran',
+            text: 'Kepler trained to become a Lutheran minister and believed that the mathematical order of the planets reflected the mind of their Creator. His conscience also cost him: he was barred from communion in his own church for refusing to accept a statement of doctrine he disagreed with.',
+          },
+          'isaac-newton': {
+            short: 'Christian, privately unorthodox',
+            text: 'Newton wrote more about theology and biblical prophecy than about physics, and the General Scholium added to the Principia in 1713 argues that the order of the solar system points to an intelligent Creator. Privately he rejected the doctrine of the Trinity, a view he kept hidden because it could have cost him his position.',
+          },
+        },
+      },
+      {
+        heading: 'Christian scientists of the 19th and 20th centuries',
+        intro: 'Faith remained common among leading scientists long after the Scientific Revolution, from the founders of electromagnetism to the father of genetics.',
+        slugs: ['michael-faraday', 'james-clerk-maxwell', 'gregor-mendel', 'charles-babbage', 'max-planck'],
+        notes: {
+          'michael-faraday': {
+            short: 'Sandemanian Christian',
+            text: 'Faraday belonged all his life to the Sandemanians, a small and strict Christian church, and served as one of its elders. He rarely mixed religion and science in his lectures, but believed that the laws he uncovered were the work of God.',
+          },
+          'james-clerk-maxwell': {
+            short: 'Presbyterian Christian',
+            text: 'Maxwell was a devout Christian throughout his life, and prayers he wrote survive among his papers. He was wary of using the science of the day to prove religious claims, because scientific theories change.',
+          },
+          'gregor-mendel': {
+            short: 'Augustinian friar',
+            text: 'Mendel was an Augustinian friar who ran his pea experiments in the garden of the abbey of St Thomas in Brno and was elected its abbot in 1868. The abbey supported scientific study and paid for his training at the University of Vienna.',
+          },
+          'charles-babbage': {
+            short: 'Christian',
+            text: 'Babbage wrote The Ninth Bridgewater Treatise (1837), arguing that natural laws could include apparent exceptions planned in advance by their Creator, much as his calculating engines could be set to change their sequence at a chosen step.',
+          },
+          'max-planck': {
+            short: 'Lutheran',
+            text: 'Planck served for many years as a churchwarden in his Lutheran parish and argued in his 1937 lecture Religion and Natural Science that science and religion do not conflict but answer different needs. He described his faith in very general terms and avoided defending particular doctrines.',
+          },
+        },
+      },
+      {
+        heading: 'Muslim scientists of the Islamic Golden Age',
+        intro: 'In the medieval Islamic world the same scholar often studied astronomy, medicine and religious law, and many saw the study of nature as reflection on creation.',
+        slugs: ['al-khwarizmi', 'ibn-sina', 'al-biruni', 'ibn-al-nafis', 'ibn-rushd', 'nasir-al-din-al-tusi', 'ibn-khaldun'],
+        notes: {
+          'al-khwarizmi': {
+            short: 'Muslim',
+            text: 'Al-Khwarizmi opened his book on algebra with praise of God and wrote it partly to solve practical problems of Islamic law, such as dividing inheritances, which fill a large part of the work.',
+          },
+          'ibn-sina': {
+            short: 'Muslim',
+            text: 'Ibn Sina knew the Quran by heart as a boy and spent his life trying to reconcile Aristotle’s philosophy with Islamic belief. Some of his conclusions, such as the eternity of the world, were sharply criticized by the theologian al-Ghazali.',
+          },
+          'al-biruni': {
+            short: 'Muslim',
+            text: 'Al-Biruni was a believing Muslim who wrote one of the earliest careful studies of another religion, his book on India, describing Hindu beliefs and science in their own terms and without ridicule.',
+          },
+          'ibn-al-nafis': {
+            short: 'Muslim; jurist',
+            text: 'Ibn al-Nafis was also a jurist of the Shafi’i school who taught law and hadith in Cairo. His philosophical novel, known in Latin as Theologus Autodidactus, uses the story of a man growing up alone on an island to discuss reason, revelation and the future of the world.',
+          },
+          'ibn-rushd': {
+            short: 'Muslim; judge',
+            text: 'Ibn Rushd served as chief judge of Córdoba and wrote a major handbook of Islamic law. In the Decisive Treatise he argued that the Quran itself calls believers to study nature and philosophy, and that true reasoning cannot contradict revelation.',
+          },
+          'nasir-al-din-al-tusi': {
+            short: 'Muslim; theologian',
+            text: 'Al-Tusi was a leading Shi’i theologian as well as an astronomer. His theological treatise Tajrid al-I’tiqad became one of the most widely commented texts of Islamic theology.',
+          },
+          'ibn-khaldun': {
+            short: 'Muslim; judge',
+            text: 'Ibn Khaldun served as a judge of the Maliki school in Cairo and wrote the Muqaddimah as a believing Muslim, yet insisted that history be explained through causes that can be checked, such as economics and social cohesion.',
+          },
+        },
+      },
+    ],
+    context: {
+      heading: 'Did science and religion really conflict?',
+      paragraphs: [
+        'The idea of a long war between science and religion became popular in the late 19th century through books such as John William Draper’s History of the Conflict between Religion and Science (1874) and Andrew Dickson White’s A History of the Warfare of Science with Theology in Christendom (1896). Most historians of science now see the relationship as more varied: there were real clashes, such as Galileo’s trial, but also long periods in which religious institutions funded observatories, universities and hospitals.',
+        'Religious scientists did not stop with the 19th century. The Belgian Catholic priest Georges Lemaître proposed in 1927 that the universe is expanding, the idea that grew into the Big Bang theory, and the Indian mathematician Srinivasa Ramanujan credited his family goddess, Namagiri, with inspiring his formulas. At the same time, many leading scientists past and present have been agnostics or atheists. This page records what individual scientists believed; it does not argue that science supports or rules out any faith.',
+      ],
+    },
+    myths: [
+      {
+        myth: 'Albert Einstein believed in God.',
+        fact: 'Einstein rejected a personal God who answers prayers. He spoke of “Spinoza’s God”, a sense of awe at the order of nature, and in a 1954 letter called the word God “the expression and product of human weaknesses”. He also disliked being called an atheist. His line “science without religion is lame, religion without science is blind” is genuine, but he used “religion” in that special sense.',
+      },
+      {
+        myth: 'Charles Darwin renounced evolution and became a believer on his deathbed.',
+        fact: 'The story was spread in 1915 by an evangelist, Lady Hope, and was denied by Darwin’s family, including his daughter Henrietta, who was with him at the end. In 1879 Darwin wrote that “agnostic” best described his state of mind.',
+      },
+      {
+        myth: 'Stephen Hawking believed in God because he wrote about knowing “the mind of God”.',
+        fact: 'The phrase at the end of A Brief History of Time was a metaphor for a complete theory of physics. Hawking later said plainly that he was not religious and that, in his view, science made a creator unnecessary.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'Did Isaac Newton believe in God?',
+        answer: 'Yes, deeply. He wrote extensively on theology and prophecy and saw the order of the universe as evidence of a Creator, but his beliefs were unorthodox: he privately rejected the doctrine of the Trinity.',
+      },
+      {
+        question: 'Did Albert Einstein believe in God?',
+        answer: 'Not in a personal God. Einstein described a feeling of awe at the rational order of nature, which he associated with the philosopher Spinoza’s idea of God, and he rejected both organized religion and the label atheist.',
+      },
+      {
+        question: 'Which Muslim scientists were also religious scholars?',
+        answer: 'Ibn al-Nafis was a jurist who taught law and hadith, Ibn Rushd and Ibn Khaldun served as judges of Islamic law, and Nasir al-Din al-Tusi wrote one of the most influential works of Shi’i theology.',
+      },
+      {
+        question: 'Who was the priest behind the Big Bang theory?',
+        answer: 'Georges Lemaître, a Belgian Catholic priest and physicist, who proposed in 1927 that the universe is expanding and later suggested it began from a single “primeval atom”.',
+      },
+      {
+        question: 'Are most scientists religious today?',
+        answer: 'Surveys find that scientists are on average less religious than the general public, but views vary widely between countries and fields, and many working scientists hold religious beliefs.',
+      },
+    ],
+    related: [
+      { label: 'Famous Muslim scientists and their inventions', href: '/scientists/muslim-scientists' },
+      { label: 'Science myths about famous scientists', href: '/science-myths' },
+      { label: 'Why breakthroughs rarely belong to one person', href: '/articles/why-scientific-breakthroughs-rarely-belong-to-one-person' },
+      { label: 'All scientist profiles', href: '/scientists' },
+    ],
+    updatedAt: '2026-11-19',
   },
 ];
 

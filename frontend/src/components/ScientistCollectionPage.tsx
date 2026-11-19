@@ -24,7 +24,14 @@ function member(slug: string) {
 
 export default function ScientistCollectionPage({ collection }: { collection: ScientistCollection }) {
   const pageUrl = absoluteUrl(`/scientists/${collection.slug}`);
-  const sections = collection.sections.map((section) => ({ ...section, members: section.slugs.map(member) }));
+  const sections = collection.sections.map((section) => ({
+    ...section,
+    members: section.slugs.map((slug) => ({ ...member(slug), note: section.notes?.[slug] })),
+  }));
+  if (collection.noteLabel) {
+    const missing = sections.flatMap((section) => section.members).filter((scientist) => !scientist.note);
+    if (missing.length) throw new Error(`Collection "${collection.slug}" has no ${collection.noteLabel} note for ${missing.map((s) => s.slug).join(', ')}`);
+  }
   const everyone = sections.flatMap((section) => section.members);
 
   const structuredData = {
@@ -107,7 +114,7 @@ export default function ScientistCollectionPage({ collection }: { collection: Sc
                   <th scope="col" className="py-2 pr-4 font-semibold">Scientist</th>
                   <th scope="col" className="py-2 pr-4 font-semibold">Lived</th>
                   <th scope="col" className="py-2 pr-4 font-semibold">Field</th>
-                  <th scope="col" className="py-2 font-semibold">Best known for</th>
+                  <th scope="col" className="py-2 font-semibold">{collection.noteLabel ?? 'Best known for'}</th>
                 </tr>
               </thead>
               <tbody>
@@ -118,7 +125,7 @@ export default function ScientistCollectionPage({ collection }: { collection: Sc
                     </th>
                     <td className="whitespace-nowrap py-3 pr-4">{lifespan(scientist.birthDate, scientist.deathDate)}</td>
                     <td className="py-3 pr-4">{scientist.field}</td>
-                    <td className="py-3">{scientist.breakthrough}</td>
+                    <td className="py-3">{scientist.note?.short ?? scientist.breakthrough}</td>
                   </tr>
                 ))}
               </tbody>
@@ -152,7 +159,12 @@ export default function ScientistCollectionPage({ collection }: { collection: Sc
                     </h3>
                     <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-gold-400">{scientist.field} · {scientist.nationality}</p>
                     <p className="mt-3 leading-relaxed">{scientist.summary}</p>
-                    {scientist.keyContributions.length > 0 && (
+                    {scientist.note && (
+                      <p className="mt-3 leading-relaxed">
+                        <strong className="text-[var(--text-primary)]">{collection.noteLabel ?? 'Note'}:</strong> {scientist.note.text}
+                      </p>
+                    )}
+                    {!scientist.note && scientist.keyContributions.length > 0 && (
                       <ul className="mt-3 list-disc space-y-1 pl-5 text-sm">
                         {scientist.keyContributions.slice(0, 2).map((item) => <li key={item}>{item}</li>)}
                       </ul>
