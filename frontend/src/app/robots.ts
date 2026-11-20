@@ -27,7 +27,8 @@ export default function robots(): MetadataRoute.Robots {
         disallow: DISALLOWED_PATHS,
       },
     ],
+    // No "Host:" line: it is not part of the robots.txt standard (RFC 9309), Google ignores it,
+    // and Bing's robots.txt tester reports it as an error.
     sitemap: `${SITE_URL}/sitemap.xml`,
-    host: SITE_URL,
   };
 }
