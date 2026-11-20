@@ -1,5 +1,6 @@
 import { getNewsArticleImage } from './news-article';
 import { SPACEX_EDITORIAL_ARTICLES } from './editorial-articles-spacex';
+import { IDEAS_EDITORIAL_ARTICLES } from './editorial-articles-ideas';
 
 // Original ScienceHub editorial articles.
 // Each article synthesizes multiple named sources and is written for this project.
@@ -671,4 +672,5 @@ The responsible outlook is neither dismissal nor certainty. Quantum information 
 - [U.S. Department of Energy: Quantum computing](https://www.energy.gov/science/doe-explainsquantum-computing)`,
   }),
   ...SPACEX_EDITORIAL_ARTICLES,
+  ...IDEAS_EDITORIAL_ARTICLES,
 ];

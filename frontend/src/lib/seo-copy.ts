@@ -72,6 +72,14 @@ export const SEO_TITLES: Record<string, string> = {
     'Why Starship Must Refuel in Orbit: The Rocket Equation',
   'how-spacex-lands-falcon-9-rockets-landing-burn-physics':
     'How SpaceX Lands Rockets: Falcon 9 Landing Physics Explained',
+  'who-invented-zero-history-of-zero':
+    'Who Invented Zero? The History of Zero From Babylon to India',
+  'house-of-wisdom-baghdad-history':
+    'House of Wisdom in Baghdad: History, Scholars and Legacy',
+  'scientific-theory-vs-law-vs-hypothesis':
+    'Theory vs Law vs Hypothesis: The Difference, With Examples',
+  'double-slit-experiment-explained':
+    'Double-Slit Experiment Explained Simply: The Observer Effect',
 };
 
 export const SEO_DESCRIPTIONS: Record<string, string> = {
@@ -137,6 +145,14 @@ export const SEO_DESCRIPTIONS: Record<string, string> = {
     'Starship reaches orbit nearly empty, and a Moon landing needs about 6 km/s more. The rocket equation, worked with real numbers, shows why it must refuel.',
   'how-spacex-lands-falcon-9-rockets-landing-burn-physics':
     'How a Falcon 9 booster flips, fires boostback, entry and landing burns and touches down on legs, with the math of why it cannot hover.',
+  'who-invented-zero-history-of-zero':
+    'No one person invented zero. How Babylonian, Maya and Indian mathematicians shaped it, Brahmagupta’s rules from 628 AD, and how it reached Europe.',
+  'house-of-wisdom-baghdad-history':
+    'What the House of Wisdom in Abbasid Baghdad really was, who worked there, what they translated and discovered, and what happened in 1258.',
+  'scientific-theory-vs-law-vs-hypothesis':
+    'A law describes what nature does, a theory explains why, and a hypothesis is a testable idea. Clear examples, and why theories never become laws.',
+  'double-slit-experiment-explained':
+    'Single electrons at two slits still build an interference pattern, until you record which slit they used. The experiment, the math and the observer myth.',
   'the-expression-of-the-emotions-in-man-and-animals':
     'Darwin’s pioneering study linking facial expression, biological communication and evolutionary continuity across species.',
 };

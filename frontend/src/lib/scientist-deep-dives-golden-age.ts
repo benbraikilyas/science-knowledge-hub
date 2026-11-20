@@ -28,7 +28,7 @@ export const GOLDEN_AGE_DEEP_DIVES: Record<string, ScientistDeepDive> = {
       { question: 'Where does the word algorithm come from?', answer: 'From the Latin form of al-Khwarizmi’s name, used in translations of his book on Indian numerals.' },
       { question: 'What was the House of Wisdom?', answer: 'A centre of learning in Abbasid Baghdad where scholars translated and extended Greek, Persian and Indian works in the 9th century.' },
     ],
-    related: ['/scientists/al-biruni', '/scientists/ada-lovelace', '/articles/why-mathematical-proof-is-more-than-calculation', '/learn#golden-age'],
+    related: ['/articles/who-invented-zero-history-of-zero', '/articles/house-of-wisdom-baghdad-history', '/scientists/al-biruni', '/scientists/ada-lovelace', '/articles/why-mathematical-proof-is-more-than-calculation', '/learn#golden-age'],
   },
 
   'ibn-al-haytham': {
@@ -248,7 +248,7 @@ export const GOLDEN_AGE_DEEP_DIVES: Record<string, ScientistDeepDive> = {
       { question: 'What is frequency analysis?', answer: 'A codebreaking method that counts how often each symbol appears in a secret message and matches the counts to the usual letter frequencies of a language.' },
       { question: 'Why is al-Kindi called the philosopher of the Arabs?', answer: 'He was among the first scholars to write philosophy in Arabic and to bring Greek philosophy into Islamic thought.' },
     ],
-    related: ['/scientists/claude-shannon', '/scientists/alan-turing', '/scientists/al-khwarizmi', '/learn#golden-age'],
+    related: ['/articles/house-of-wisdom-baghdad-history', '/scientists/claude-shannon', '/scientists/alan-turing', '/scientists/al-khwarizmi', '/learn#golden-age'],
   },
 
   'al-razi': {

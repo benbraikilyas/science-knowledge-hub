@@ -160,6 +160,14 @@ const NEWS_ARTICLE_IMAGES: Record<string, string> = {
     '/images/articles/apollo-11-engineering-behind-first-moon-landing.webp',
   'editorial-proof':
     '/images/articles/why-mathematical-proof-is-more-than-calculation.webp',
+  'editorial-history-of-zero':
+    '/images/articles/who-invented-zero-history-of-zero.webp',
+  'editorial-house-of-wisdom':
+    '/images/articles/house-of-wisdom-baghdad-history.webp',
+  'editorial-theory-law-hypothesis':
+    '/images/articles/scientific-theory-vs-law-vs-hypothesis.webp',
+  'editorial-double-slit':
+    '/images/articles/double-slit-experiment-explained.webp',
   'editorial-starship-catch':
     '/images/articles/how-spacex-caught-starship-flight-15-tower-catch.webp',
   'editorial-starship-vs-saturn-v':

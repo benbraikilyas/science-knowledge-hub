@@ -111,6 +111,8 @@ export const SCIENTIST_COLLECTIONS: ScientistCollection[] = [
     ],
     related: [
       { label: 'Learning path: the Islamic Golden Age', href: '/learn#golden-age' },
+      { label: 'The House of Wisdom in Abbasid Baghdad', href: '/articles/house-of-wisdom-baghdad-history' },
+      { label: 'Who invented zero?', href: '/articles/who-invented-zero-history-of-zero' },
       { label: 'Famous scientists who believed in God', href: '/scientists/scientists-who-believed-in-god' },
       { label: 'Famous women scientists', href: '/scientists/women-scientists' },
       { label: 'Why breakthroughs rarely belong to one person', href: '/articles/why-scientific-breakthroughs-rarely-belong-to-one-person' },

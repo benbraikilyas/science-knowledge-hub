@@ -40,6 +40,14 @@ export interface Guide {
 
 // One note per article or book, reused wherever it is picked.
 const NOTES: Record<string, string> = {
+  'who-invented-zero-history-of-zero':
+    'How a placeholder became a number: Babylonian scribes, Maya astronomers, Brahmagupta’s rules and the road through Baghdad to Europe.',
+  'house-of-wisdom-baghdad-history':
+    'What the Abbasid library in Baghdad really was, who translated and discovered there, and which famous stories are legend.',
+  'scientific-theory-vs-law-vs-hypothesis':
+    'Hypothesis, law and theory pinned down with real examples, plus why a theory never graduates into a law.',
+  'double-slit-experiment-explained':
+    'Single electrons that still make interference stripes, the math of the fringes, and what the observer really does.',
   'how-spacex-caught-starship-flight-15-tower-catch':
     'How a launch tower caught a Starship returning from orbit in November 2026, with the orbital math behind the 22.5-hour flight.',
   'starship-vs-saturn-v-size-thrust-payload':
@@ -193,7 +201,10 @@ export const GUIDES: Guide[] = [
           pick('general-relativity-curved-spacetime-working-gps'),
           pick('how-bell-tests-turned-quantum-debate-into-data'),
           pick('why-mathematical-proof-is-more-than-calculation'),
+          pick('scientific-theory-vs-law-vs-hypothesis'),
           pick('why-scientific-breakthroughs-rarely-belong-to-one-person'),
+          pick('house-of-wisdom-baghdad-history'),
+          pick('who-invented-zero-history-of-zero'),
         ],
       },
       {
@@ -434,6 +445,7 @@ export const GUIDES: Guide[] = [
       {
         heading: 'Start here',
         picks: [
+          pick('double-slit-experiment-explained'),
           pick('quantum-entanglement-without-faster-than-light-myth'),
           pick('how-bell-tests-turned-quantum-debate-into-data'),
           pick('quantum-computing-after-hype-engineering-reality'),

@@ -354,6 +354,52 @@
     "license": "https://creativecommons.org/publicdomain/mark/1.0/",
     "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Quantum_Computing;_Ion_Trapping_(5941055642).jpg"
   },
+  "/images/articles/double-slit-experiment-explained.webp": {
+    "title": "Green laser light after passing through two narrow slits, spreading into a row of bright and dark interference fringes",
+    "description": "Green laser light after passing through two narrow slits, spreading into a row of bright and dark interference fringes",
+    "alt": "Green laser light after passing through two narrow slits, spreading into a row of bright and dark interference fringes",
+    "keywords": [
+      "double-slit experiment",
+      "interference pattern",
+      "wave-particle duality",
+      "laser",
+      "quantum physics",
+      "science education",
+      "science article",
+      "educational image",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Young%27s_slits.jpg",
+    "creditText": "Graham Beards — CC BY-SA 4.0 (cropped)",
+    "creator": "Graham Beards",
+    "creatorType": "Person",
+    "copyrightNotice": "© Graham Beards, CC BY-SA 4.0",
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Young%27s_slits.jpg"
+  },
+  "/images/articles/electron-double-slit-buildup-tonomura.webp": {
+    "title": "Four stages of an electron double-slit experiment: scattered single dots that gradually build up into bands of interference",
+    "description": "Four stages of an electron double-slit experiment: scattered single dots that gradually build up into bands of interference",
+    "alt": "Four stages of an electron double-slit experiment: scattered single dots that gradually build up into bands of interference",
+    "keywords": [
+      "electron double-slit experiment",
+      "Tonomura",
+      "wave-particle duality",
+      "quantum mechanics",
+      "single electrons",
+      "science education",
+      "science article",
+      "educational image",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Double-slit_experiment_results_Tonomura_four.jpg",
+    "creditText": "Dr. Akira Tonomura and Wikimedia Commons user Belsazar — CC BY-SA 3.0",
+    "creator": "Akira Tonomura",
+    "creatorType": "Person",
+    "copyrightNotice": "© Akira Tonomura, CC BY-SA 3.0",
+    "license": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Double-slit_experiment_results_Tonomura_four.jpg"
+  },
   "/images/articles/eu-ai-act-general-purpose-ai-model-rules-2025.webp": {
     "title": "Berlaymont building, headquarters of the European Commission in Brussels",
     "description": "Berlaymont building, headquarters of the European Commission in Brussels",
@@ -602,6 +648,50 @@
     "creatorType": "Organization",
     "copyrightNotice": "© Oak Ridge National Laboratory, CC BY 2.0",
     "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Frontier_supercomputer_(15).jpg"
+  },
+  "/images/articles/gwalior-zero-inscription-876.webp": {
+    "title": "The rock-cut Chaturbhuj Temple at Gwalior Fort in Madhya Pradesh, India, whose inscription dated to 876 AD contains an early written zero",
+    "description": "The rock-cut Chaturbhuj Temple at Gwalior Fort in Madhya Pradesh, India, whose inscription dated to 876 AD contains an early written zero",
+    "alt": "The rock-cut Chaturbhuj Temple at Gwalior Fort in Madhya Pradesh, India, whose inscription dated to 876 AD contains an early written zero",
+    "keywords": [
+      "Chaturbhuj Temple",
+      "Gwalior Fort",
+      "zero inscription",
+      "Indian mathematics",
+      "history of zero",
+      "science education",
+      "science article",
+      "educational image",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:876_CE_monolithic_rock_Chaturbhuj_Hindu_Temple_Gwalior_Fort,_Zero_Inscription_2.jpg",
+    "creditText": "Varun Shiv Kapur — CC BY 2.0",
+    "creator": "Varun Shiv Kapur",
+    "creatorType": "Person",
+    "copyrightNotice": "© Varun Shiv Kapur, CC BY 2.0",
+    "license": "https://creativecommons.org/licenses/by/2.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:876_CE_monolithic_rock_Chaturbhuj_Hindu_Temple_Gwalior_Fort,_Zero_Inscription_2.jpg"
+  },
+  "/images/articles/house-of-wisdom-baghdad-history.webp": {
+    "title": "Scholars gathered in a library with books stacked on shelves, an illustration by Yahya al-Wasiti from a 1237 manuscript of the Maqamat of al-Hariri",
+    "description": "Scholars gathered in a library with books stacked on shelves, an illustration by Yahya al-Wasiti from a 1237 manuscript of the Maqamat of al-Hariri",
+    "alt": "Scholars gathered in a library with books stacked on shelves, an illustration by Yahya al-Wasiti from a 1237 manuscript of the Maqamat of al-Hariri",
+    "keywords": [
+      "House of Wisdom",
+      "Abbasid Baghdad",
+      "Islamic Golden Age",
+      "medieval library",
+      "Maqamat al-Hariri",
+      "science education",
+      "science article",
+      "educational image",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:A_Library_in_Golden_Islamic_Age.jpg",
+    "creditText": "Yahya ibn Mahmud al-Wasiti, 1237 — Public domain (cropped)",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:A_Library_in_Golden_Islamic_Age.jpg"
   },
   "/images/articles/how-bell-tests-turned-quantum-debate-into-data.webp": {
     "title": "Blue plaque for physicist John Stewart Bell at Queen's University Belfast",
@@ -1188,6 +1278,29 @@
     "license": "https://creativecommons.org/licenses/by-sa/4.0/",
     "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Saturn_V_of_Kennedy_Space_Center_2024a.jpg"
   },
+  "/images/articles/scientific-theory-vs-law-vs-hypothesis.webp": {
+    "title": "Charles Darwin’s 1837 notebook sketch of a branching tree of species, headed with the words “I think”",
+    "description": "Charles Darwin’s 1837 notebook sketch of a branching tree of species, headed with the words “I think”",
+    "alt": "Charles Darwin’s 1837 notebook sketch of a branching tree of species, headed with the words “I think”",
+    "keywords": [
+      "scientific theory",
+      "theory vs law",
+      "Darwin tree of life",
+      "theory of evolution",
+      "scientific hypothesis",
+      "science education",
+      "science article",
+      "educational image",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Darwin_Tree_1837_cropped.png",
+    "creditText": "Charles Darwin, 1837 — Public domain",
+    "creator": "Charles Darwin",
+    "creatorType": "Person",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Darwin_Tree_1837_cropped.png"
+  },
   "/images/articles/srt-h-autonomous-gallbladder-surgery-2025.webp": {
     "title": "Close-up of the wristed instrument tips of a robotic surgical system",
     "description": "Close-up of the wristed instrument tips of a robotic surgical system",
@@ -1282,6 +1395,27 @@
     "copyrightNotice": "© Steve Jurvetson, CC BY 2.0",
     "license": "https://creativecommons.org/licenses/by/2.0/",
     "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:SpaceX_Starship_before_IFT-5.jpg"
+  },
+  "/images/articles/thomas-young-two-slit-sketch.webp": {
+    "title": "Thomas Young’s diagram of waves spreading from two openings, A and B, and overlapping to form bright and dark bands at C, D, E and F",
+    "description": "Thomas Young’s diagram of waves spreading from two openings, A and B, and overlapping to form bright and dark bands at C, D, E and F",
+    "alt": "Thomas Young’s diagram of waves spreading from two openings, A and B, and overlapping to form bright and dark bands at C, D, E and F",
+    "keywords": [
+      "Thomas Young",
+      "double-slit experiment",
+      "wave interference",
+      "history of physics",
+      "light waves",
+      "science education",
+      "science article",
+      "educational image",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Young_diffraction.svg",
+    "creditText": "After Thomas Young (1807), vector version by Sakurambo — Public domain",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Young_diffraction.svg"
   },
   "/images/articles/water-phase-transition-soft-actuators-2025.webp": {
     "title": "Inflatable soft robotic arm on a laboratory desk",
@@ -1386,6 +1520,29 @@
     "creatorType": "Organization",
     "copyrightNotice": "© NASA, ESA, CSA, STScI, CC BY 4.0",
     "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:COSMOS_Field_MoM-z14_Galaxy_(NIRCam_compass_image)_(weic2603b).jpg"
+  },
+  "/images/articles/who-invented-zero-history-of-zero.webp": {
+    "title": "The 9th-century inscription in the Chaturbhuj Temple at Gwalior Fort, India, with the number 270 marked, one of the oldest dated written zeros",
+    "description": "The 9th-century inscription in the Chaturbhuj Temple at Gwalior Fort, India, with the number 270 marked, one of the oldest dated written zeros",
+    "alt": "The 9th-century inscription in the Chaturbhuj Temple at Gwalior Fort, India, with the number 270 marked, one of the oldest dated written zeros",
+    "keywords": [
+      "history of zero",
+      "Gwalior inscription",
+      "Chaturbhuj Temple",
+      "Indian numerals",
+      "who invented zero",
+      "science education",
+      "science article",
+      "educational image",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:0121521_Chaturbhuj_Temple,_Gwalior_Fort,_Madhya_Pradesh_37_(where_is_zero_in_this_Hindu_inscription).jpg",
+    "creditText": "Ms Sarah Welch, 2016 — CC0 1.0",
+    "creator": "Ms Sarah Welch",
+    "creatorType": "Person",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:0121521_Chaturbhuj_Temple,_Gwalior_Fort,_Madhya_Pradesh_37_(where_is_zero_in_this_Hindu_inscription).jpg"
   },
   "/images/articles/why-mathematical-proof-is-more-than-calculation.webp": {
     "title": "Oxyrhynchus papyrus fragment of Euclid's Elements with a geometric diagram",
