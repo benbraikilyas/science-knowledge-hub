@@ -9,6 +9,7 @@ export const LIGHT_YEAR = 9.460_730_472_580_8e15; // m
 export const PARSEC = 3.085_677_581_491_367e16; // m
 export const EARTH_MASS = 5.9722e24; // kg
 export const EARTH_MEAN_RADIUS = 6.371e6; // m
+export const STANDARD_GRAVITY = 9.806_65; // m/s², exact; converts specific impulse in seconds to exhaust speed
 
 export type DistanceUnit = 'km' | 'au' | 'light-year' | 'parsec';
 
@@ -99,3 +100,25 @@ export function calculateEscapeVelocity(massInEarths: number, radiusInEarths: nu
   };
 }
 
+// Tsiolkovsky rocket equation: ideal change in velocity from burning propellant,
+// with no gravity or drag losses. Masses only need consistent units, so tonnes are used.
+export function calculateRocketDeltaV(specificImpulseSeconds: number, initialMassTonnes: number, finalMassTonnes: number) {
+  requirePositive(specificImpulseSeconds, 'Specific impulse');
+  requirePositive(initialMassTonnes, 'Initial mass');
+  requirePositive(finalMassTonnes, 'Final mass');
+  if (finalMassTonnes >= initialMassTonnes) {
+    throw new RangeError('Final mass must be smaller than initial mass.');
+  }
+
+  const exhaustVelocityMps = specificImpulseSeconds * STANDARD_GRAVITY;
+  const massRatio = initialMassTonnes / finalMassTonnes;
+  const deltaVMps = exhaustVelocityMps * Math.log(massRatio);
+  return {
+    exhaustVelocityMps,
+    massRatio,
+    deltaVMps,
+    deltaVKps: deltaVMps / 1_000,
+    propellantTonnes: initialMassTonnes - finalMassTonnes,
+    propellantFraction: 1 - finalMassTonnes / initialMassTonnes,
+  };
+}

@@ -44,7 +44,8 @@ function parseContentSections(content: string): ParsedSection[] {
       continue;
     }
 
-    if (line.startsWith('### ') || line.startsWith('- ') || line.startsWith('> ')) {
+    // Headings, lists, quotes, figures, tables and formulas are not answer text.
+    if (/^(### |- |> |!\[|\||\$\$)/.test(line)) {
       continue;
     }
 
@@ -57,10 +58,11 @@ function parseContentSections(content: string): ParsedSection[] {
 }
 
 function headingToQuestion(heading: string, title: string): string {
+  // A heading that is already a question is used as written.
+  if (heading.trim().endsWith('?')) return heading.trim();
   const cleanHeading = heading.replace(/[.?!]+$/, '').trim();
-  if (cleanHeading.endsWith('?')) return cleanHeading;
 
-  if (/^(what|why|how|when|where|who|which)\b/i.test(cleanHeading)) {
+  if (/^(what|why|how|when|where|who|which|is|are|was|were|does|do|did|can|could|will|should)\b/i.test(cleanHeading)) {
     return `${cleanHeading}?`;
   }
 
@@ -184,6 +186,29 @@ const TAG_TO_HREF: Record<string, string> = {
   'history of science': '/categories/history-of-science',
   classics: '/categories/books',
   'apollo 11': '/articles/apollo-11-engineering-behind-first-moon-landing',
+  starship: '/articles/how-spacex-caught-starship-flight-15-tower-catch',
+  'starship flight 15': '/articles/how-spacex-caught-starship-flight-15-tower-catch',
+  'tower catch': '/articles/how-spacex-caught-starship-flight-15-tower-catch',
+  'super heavy': '/articles/how-spacex-caught-starship-flight-15-tower-catch',
+  'saturn v': '/articles/starship-vs-saturn-v-size-thrust-payload',
+  'rocket comparison': '/articles/starship-vs-saturn-v-size-thrust-payload',
+  'rocket equation': '/articles/why-starship-must-refuel-in-orbit-rocket-equation',
+  'delta-v': '/articles/why-starship-must-refuel-in-orbit-rocket-equation',
+  'specific impulse': '/articles/why-starship-must-refuel-in-orbit-rocket-equation',
+  'orbital refueling': '/articles/why-starship-must-refuel-in-orbit-rocket-equation',
+  'konstantin tsiolkovsky': '/articles/why-starship-must-refuel-in-orbit-rocket-equation',
+  'falcon 9': '/articles/how-spacex-lands-falcon-9-rockets-landing-burn-physics',
+  'rocket landing': '/articles/how-spacex-lands-falcon-9-rockets-landing-burn-physics',
+  hoverslam: '/articles/how-spacex-lands-falcon-9-rockets-landing-burn-physics',
+  'grid fins': '/articles/how-spacex-lands-falcon-9-rockets-landing-burn-physics',
+  'booster recovery': '/articles/how-spacex-lands-falcon-9-rockets-landing-burn-physics',
+  'reusable rockets': '/articles/how-spacex-lands-falcon-9-rockets-landing-burn-physics',
+  spacex: '/categories/space-missions',
+  'orbital mechanics': '/tools#escape-velocity',
+  'apollo program': '/articles/apollo-11-engineering-behind-first-moon-landing',
+  artemis: '/categories/space-missions',
+  thrust: '/articles/starship-vs-saturn-v-size-thrust-payload',
+  payload: '/articles/starship-vs-saturn-v-size-thrust-payload',
   'space missions': '/categories/space-missions',
   nasa: '/categories/space-missions',
   darwin: '/scientists/charles-darwin',

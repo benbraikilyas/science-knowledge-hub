@@ -10,12 +10,14 @@ import {
   Gauge,
   Info,
   Orbit,
+  Rocket,
   Sparkles,
 } from 'lucide-react';
 import {
   calculateEscapeVelocity,
   calculateLightTravelTime,
   calculatePhotonFromWavelength,
+  calculateRocketDeltaV,
   calculateTimeDilation,
   describeSpectrum,
   type DistanceUnit,
@@ -65,6 +67,9 @@ export default function ScienceToolsLab() {
   const [stationaryYears, setStationaryYears] = useState(10);
   const [massEarths, setMassEarths] = useState(1);
   const [radiusEarths, setRadiusEarths] = useState(1);
+  const [specificImpulse, setSpecificImpulse] = useState(350);
+  const [initialMass, setInitialMass] = useState(100);
+  const [finalMass, setFinalMass] = useState(20);
 
   const lightResult = useMemo(() => {
     try { return calculateLightTravelTime(distance, distanceUnit); } catch { return null; }
@@ -82,14 +87,19 @@ export default function ScienceToolsLab() {
     try { return calculateEscapeVelocity(massEarths, radiusEarths); } catch { return null; }
   }, [massEarths, radiusEarths]);
 
+  const rocketResult = useMemo(() => {
+    try { return calculateRocketDeltaV(specificImpulse, initialMass, finalMass); } catch { return null; }
+  }, [specificImpulse, initialMass, finalMass]);
+
   return (
     <div className="mx-auto max-w-[1550px] 2xl:max-w-[1720px] px-4 pb-24 sm:px-6 lg:px-10">
-      <div className="-mt-8 relative z-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="-mt-8 relative z-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
         {[
           { icon: Clock3, label: 'Light travel time', color: '#38bdf8', anchor: 'light-travel' },
           { icon: Atom, label: 'Photon energy', color: '#a78bfa', anchor: 'photon-energy' },
           { icon: Gauge, label: 'Time dilation', color: '#fbbf24', anchor: 'time-dilation' },
           { icon: Orbit, label: 'Escape velocity', color: '#34d399', anchor: 'escape-velocity' },
+          { icon: Rocket, label: 'Rocket equation', color: '#fb923c', anchor: 'rocket-equation' },
         ].map((tool) => {
           const Icon = tool.icon;
           return (
@@ -239,6 +249,47 @@ export default function ScienceToolsLab() {
             <ResultTile label="Radius used" value={escapeResult ? `${numberFormatter.format(escapeResult.radiusMeters / 1_000)} km` : '—'} />
           </div>
           <div className="mt-5 flex items-start gap-2 rounded-xl border border-emerald-500/20 bg-emerald-500/[0.06] p-3 text-xs leading-relaxed text-[var(--text-secondary)]"><Info className="mt-0.5 h-4 w-4 shrink-0 text-emerald-400" />This ideal model ignores atmosphere, rotation, terrain, drag, and propulsion after launch.</div>
+        </section>
+
+        <section id="rocket-equation" className="scroll-mt-28 rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)]/65 p-5 shadow-2xl backdrop-blur-xl sm:p-7">
+          <div className="flex items-start gap-4">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-orange-500/10 text-orange-400"><Rocket className="h-6 w-6" /></span>
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-orange-400">Rocketry</p>
+              <h2 className="mt-1 text-2xl font-extrabold text-[var(--text-primary)]">Rocket Equation (Δv)</h2>
+              <p className="mt-2 text-sm leading-relaxed text-[var(--text-secondary)]">Find the ideal change in velocity a rocket stage gains by burning its propellant, from engine efficiency and the ratio of full to empty mass.</p>
+            </div>
+          </div>
+
+          <div className="mt-6 grid gap-3 sm:grid-cols-3">
+            <label>
+              <span className="mb-2 block text-xs font-semibold text-[var(--text-secondary)]">Specific impulse (s)</span>
+              <input className={inputClass} type="number" min="0" step="any" value={specificImpulse} onChange={(event) => setSpecificImpulse(Number(event.target.value))} />
+            </label>
+            <label>
+              <span className="mb-2 block text-xs font-semibold text-[var(--text-secondary)]">Full mass m₀ (tonnes)</span>
+              <input className={inputClass} type="number" min="0" step="any" value={initialMass} onChange={(event) => setInitialMass(Number(event.target.value))} />
+            </label>
+            <label>
+              <span className="mb-2 block text-xs font-semibold text-[var(--text-secondary)]">Empty mass m_f (tonnes)</span>
+              <input className={inputClass} type="number" min="0" step="any" value={finalMass} onChange={(event) => setFinalMass(Number(event.target.value))} />
+            </label>
+          </div>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {[
+              { label: 'Kerosene engine, vacuum (≈ 310 s)', isp: 310 },
+              { label: 'Methane engine, vacuum (≈ 370 s)', isp: 370 },
+              { label: 'Hydrogen engine, vacuum (≈ 450 s)', isp: 450 },
+            ].map((preset) => <button key={preset.label} type="button" className={presetClass} onClick={() => setSpecificImpulse(preset.isp)}>{preset.label}</button>)}
+          </div>
+
+          <div className="mt-6 grid gap-3 sm:grid-cols-2" aria-live="polite">
+            <ResultTile label="Ideal Δv" value={rocketResult ? `${decimal(rocketResult.deltaVKps, 3)} km/s` : 'Full mass must exceed empty mass'} />
+            <ResultTile label="Exhaust velocity" value={rocketResult ? `${decimal(rocketResult.exhaustVelocityMps / 1_000, 3)} km/s` : '—'} detail="Isp × 9.80665 m/s²" />
+            <ResultTile label="Mass ratio m₀ / m_f" value={rocketResult ? decimal(rocketResult.massRatio, 3) : '—'} />
+            <ResultTile label="Propellant share of liftoff mass" value={rocketResult ? `${decimal(rocketResult.propellantFraction * 100, 1)} %` : '—'} />
+          </div>
+          <div className="mt-5 flex items-start gap-2 rounded-xl border border-orange-500/20 bg-orange-500/[0.06] p-3 text-xs leading-relaxed text-[var(--text-secondary)]"><Info className="mt-0.5 h-4 w-4 shrink-0 text-orange-400" />Ideal value for one stage: it ignores gravity and air drag. Reaching low Earth orbit takes roughly 9 to 10 km/s of Δv once those losses are counted, which is why real rockets use stages.</div>
         </section>
       </div>
 

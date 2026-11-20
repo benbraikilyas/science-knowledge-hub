@@ -40,6 +40,14 @@ export interface Guide {
 
 // One note per article or book, reused wherever it is picked.
 const NOTES: Record<string, string> = {
+  'how-spacex-caught-starship-flight-15-tower-catch':
+    'How a launch tower caught a Starship returning from orbit in November 2026, with the orbital math behind the 22.5-hour flight.',
+  'starship-vs-saturn-v-size-thrust-payload':
+    'A sourced side-by-side table of the two giants: height, thrust, payload, engines and what reusability costs.',
+  'why-starship-must-refuel-in-orbit-rocket-equation':
+    'The rocket equation worked through with real numbers, and why a Moon landing needs tanker flights that Apollo never did.',
+  'how-spacex-lands-falcon-9-rockets-landing-burn-physics':
+    'Boostback, entry and landing burns step by step, and the simple math of why a booster cannot hover.',
   'how-james-webb-space-telescope-reads-early-universe':
     'How infrared instruments, a segmented mirror and a cold orbit let Webb study light that has travelled for billions of years.',
   'how-stars-are-born-live-and-die':
@@ -370,6 +378,10 @@ export const GUIDES: Guide[] = [
         heading: 'Missions and engineering',
         picks: [
           pick('apollo-11-engineering-behind-first-moon-landing'),
+          pick('how-spacex-caught-starship-flight-15-tower-catch'),
+          pick('starship-vs-saturn-v-size-thrust-payload'),
+          pick('why-starship-must-refuel-in-orbit-rocket-equation'),
+          pick('how-spacex-lands-falcon-9-rockets-landing-burn-physics'),
           pick('nasa-spherex-launch-all-sky-infrared-survey-2025'),
           pick('nasa-cadre-cooperative-moon-rovers-2025'),
         ],

@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { ListTree } from 'lucide-react';
+import SafeImage from '@/components/SafeImage';
+import { getImageMetadata } from '@/lib/image-seo';
 
 interface ArticleContentProps {
   content: string;
@@ -8,6 +10,13 @@ interface ArticleContentProps {
 }
 
 const LINK_PATTERN = /\[([^\]]+)\]\(((?:https:\/\/|\/)[^\s)]+)\)/g;
+
+// A line that is only ![alt](/images/articles/file.webp "Caption") becomes a figure.
+// The credit line comes from the image catalog, so every photo keeps its attribution.
+const FIGURE_PATTERN = /^!\[([^\]]*)\]\((\/images\/articles\/[^\s)"]+)(?:\s+"([^"]*)")?\)$/;
+
+const tableCells = (row: string) => row.replace(/^\||\|$/g, '').split('|').map((cell) => cell.trim());
+const isTableSeparator = (row: string) => tableCells(row).every((cell) => /^:?-{3,}:?$/.test(cell));
 
 const CONTEXTUAL_ENTITIES: ReadonlyArray<{ pattern: RegExp; href: string }> = [
   { pattern: /\bJames Webb Space Telescope\b/, href: '/articles/how-james-webb-space-telescope-reads-early-universe' },
@@ -46,6 +55,10 @@ const CONTEXTUAL_ENTITIES: ReadonlyArray<{ pattern: RegExp; href: string }> = [
   { pattern: /\bAl-Khwarizmi\b/, href: '/scientists/al-khwarizmi' },
   { pattern: /\bIbn al-Haytham\b/, href: '/scientists/ibn-al-haytham' },
   { pattern: /\b(?:speed of light|time dilation|escape velocity)\b/i, href: '/tools' },
+  { pattern: /\bSaturn V\b/, href: '/articles/starship-vs-saturn-v-size-thrust-payload' },
+  { pattern: /\b(?:Tsiolkovsky rocket equation|rocket equation)\b/i, href: '/articles/why-starship-must-refuel-in-orbit-rocket-equation' },
+  { pattern: /\bFalcon 9\b/, href: '/articles/how-spacex-lands-falcon-9-rockets-landing-burn-physics' },
+  { pattern: /\bStarship\b/, href: '/articles/how-spacex-caught-starship-flight-15-tower-catch' },
 ];
 
 function slugifyHeading(text: string): string {
@@ -211,6 +224,90 @@ export default function ArticleContent({ content, currentSlug }: ArticleContentP
         <h2 key={index} id={headingId} className="mb-4 mt-10 scroll-mt-28 text-2xl font-bold text-[var(--text-primary)] sm:text-3xl">
           {renderInline(headingText)}
         </h2>
+      );
+      continue;
+    }
+
+    const figure = line.match(FIGURE_PATTERN);
+    if (figure) {
+      const [, alt, src, caption] = figure;
+      const metadata = getImageMetadata(src);
+      // Portrait photos (taller than wide) stay narrow so they do not fill the whole screen.
+      const portrait = Boolean(metadata?.width && metadata?.height && metadata.height > metadata.width);
+      nodes.push(
+        <figure key={index} className={portrait ? 'mx-auto my-8 max-w-sm' : 'my-8'}>
+          <div className="overflow-hidden rounded-2xl border border-[var(--border-color)] bg-[var(--bg-secondary)]">
+            <SafeImage
+              src={src}
+              alt={alt}
+              width={metadata?.width ?? 1280}
+              height={metadata?.height ?? 720}
+              className="h-auto w-full"
+              fallback={null}
+            />
+          </div>
+          {(caption || metadata?.creditText) && (
+            <figcaption className="mt-2 text-xs leading-relaxed text-[var(--text-secondary)]">
+              {caption}
+              {metadata?.creditText && (
+                <span className="opacity-80">{caption ? ' ' : ''}Credit: {metadata.creditText}</span>
+              )}
+            </figcaption>
+          )}
+        </figure>
+      );
+      continue;
+    }
+
+    // A line wrapped in $$ ... $$ is a displayed formula, written in plain Unicode.
+    if (line.startsWith('$$') && line.endsWith('$$') && line.length > 4) {
+      const formula = line.slice(2, -2).trim();
+      nodes.push(
+        <div
+          key={index}
+          role="math"
+          aria-label={formula}
+          className="my-6 overflow-x-auto rounded-xl border border-[var(--border-color)] bg-white/[0.03] px-5 py-4 text-center font-mono text-base text-[var(--text-primary)] sm:text-lg"
+        >
+          {formula}
+        </div>
+      );
+      continue;
+    }
+
+    // Pipe tables: a header row, a --- separator row and body rows.
+    if (line.startsWith('|')) {
+      const rows: string[] = [];
+      while (index < lines.length && lines[index].trim().startsWith('|')) {
+        rows.push(lines[index].trim());
+        index += 1;
+      }
+      index -= 1;
+      const header = tableCells(rows[0]);
+      const body = rows.slice(1).filter((row) => !isTableSeparator(row)).map(tableCells);
+      nodes.push(
+        <div key={`table-${index}`} className="my-8 overflow-x-auto rounded-2xl border border-[var(--border-color)]">
+          <table className="w-full min-w-[520px] text-left text-sm">
+            <thead className="bg-white/[0.04] text-xs uppercase tracking-wider text-[var(--text-secondary)]">
+              <tr>
+                {header.map((cell, cellIndex) => (
+                  <th key={cellIndex} scope="col" className="px-4 py-3 font-semibold">{renderInline(cell)}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {body.map((row, rowIndex) => (
+                <tr key={rowIndex} className="border-t border-[var(--border-color)] align-top">
+                  {row.map((cell, cellIndex) => cellIndex === 0 ? (
+                    <th key={cellIndex} scope="row" className="px-4 py-3 font-semibold text-[var(--text-primary)]">{renderInline(cell)}</th>
+                  ) : (
+                    <td key={cellIndex} className="px-4 py-3 text-[var(--text-secondary)]">{renderInline(cell)}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       );
       continue;
     }

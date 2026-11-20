@@ -1,4 +1,5 @@
 import { getNewsArticleImage } from './news-article';
+import { SPACEX_EDITORIAL_ARTICLES } from './editorial-articles-spacex';
 
 // Original ScienceHub editorial articles.
 // Each article synthesizes multiple named sources and is written for this project.
@@ -669,4 +670,5 @@ The responsible outlook is neither dismissal nor certainty. Quantum information 
 - [NIST: Post-quantum cryptography](https://www.nist.gov/cybersecurity/what-post-quantum-cryptography)
 - [U.S. Department of Energy: Quantum computing](https://www.energy.gov/science/doe-explainsquantum-computing)`,
   }),
+  ...SPACEX_EDITORIAL_ARTICLES,
 ];

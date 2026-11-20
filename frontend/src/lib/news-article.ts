@@ -160,6 +160,14 @@ const NEWS_ARTICLE_IMAGES: Record<string, string> = {
     '/images/articles/apollo-11-engineering-behind-first-moon-landing.webp',
   'editorial-proof':
     '/images/articles/why-mathematical-proof-is-more-than-calculation.webp',
+  'editorial-starship-catch':
+    '/images/articles/how-spacex-caught-starship-flight-15-tower-catch.webp',
+  'editorial-starship-vs-saturn-v':
+    '/images/articles/starship-vs-saturn-v-size-thrust-payload.webp',
+  'editorial-starship-refueling':
+    '/images/articles/why-starship-must-refuel-in-orbit-rocket-equation.webp',
+  'editorial-falcon-9-landing':
+    '/images/articles/how-spacex-lands-falcon-9-rockets-landing-burn-physics.webp',
   'editorial-quantum-computing':
     '/images/articles/quantum-computing-after-hype-engineering-reality.webp',
 };

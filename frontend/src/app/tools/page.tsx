@@ -6,7 +6,7 @@ import { absoluteUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Interactive Science Tools',
-  description: 'Free educational calculators for light travel time, photon energy, time dilation and escape velocity, with formulas, assumptions and sources.',
+  description: 'Free educational calculators for light travel time, photon energy, time dilation, escape velocity and the rocket equation (delta-v), with formulas and assumptions.',
   alternates: { canonical: '/tools' },
   openGraph: {
     title: 'Interactive Science Tools | ScienceHub',
@@ -38,6 +38,11 @@ const FORMULAS = [
     formula: 'vₑ = √(2GM / R)',
     explanation: 'The ideal escape speed depends on a body’s mass M and starting radius R. It follows from conserving mechanical energy in a spherical gravitational field.',
   },
+  {
+    title: 'Rocket equation (Tsiolkovsky)',
+    formula: 'Δv = Isp · g₀ · ln(m₀ / m_f)',
+    explanation: 'A stage’s ideal change in velocity grows with its exhaust speed (specific impulse times standard gravity, 9.80665 m/s²) and with the natural logarithm of its full-to-empty mass ratio. Because the logarithm grows slowly, each extra km/s needs much more propellant.',
+  },
 ];
 
 export default function ToolsPage() {
@@ -59,6 +64,7 @@ export default function ToolsPage() {
       'Photon wavelength, frequency, and energy converter',
       'Special-relativistic time dilation calculator',
       'Planetary escape velocity calculator',
+      'Rocket equation (delta-v) calculator',
     ],
   };
 

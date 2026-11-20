@@ -64,6 +64,14 @@ export const SEO_TITLES: Record<string, string> = {
     'Is Quantum Entanglement Faster Than Light? Why It Isn’t',
   'the-theory-of-heat-radiation':
     'Max Planck’s The Theory of Heat Radiation: Free PDF & Guide',
+  'how-spacex-caught-starship-flight-15-tower-catch':
+    'How SpaceX Caught Starship: Flight 15 Tower Catch Explained',
+  'starship-vs-saturn-v-size-thrust-payload':
+    'Starship vs Saturn V: Size, Thrust and Payload Compared',
+  'why-starship-must-refuel-in-orbit-rocket-equation':
+    'Why Starship Must Refuel in Orbit: The Rocket Equation',
+  'how-spacex-lands-falcon-9-rockets-landing-burn-physics':
+    'How SpaceX Lands Rockets: Falcon 9 Landing Physics Explained',
 };
 
 export const SEO_DESCRIPTIONS: Record<string, string> = {
@@ -121,6 +129,14 @@ export const SEO_DESCRIPTIONS: Record<string, string> = {
     'Near-miss lead collisions at the LHC knock three protons out of lead nuclei. Run 2 produced about 86 billion fleeting gold nuclei: 29 picograms in total.',
   'the-theory-of-heat-radiation':
     'Read Max Planck’s classic on thermal radiation free as a Project Gutenberg PDF, with a plain-English guide to the problem that launched quantum theory.',
+  'how-spacex-caught-starship-flight-15-tower-catch':
+    'On November 14, 2026, SpaceX’s tower caught Starship returning from orbit for the first time. How the catch worked, why the booster was lost, and the math.',
+  'starship-vs-saturn-v-size-thrust-payload':
+    'Starship V3 is 13 m taller than Saturn V, twice as heavy and 2.3 times as powerful. Compare height, thrust, payload, engines and reuse in one table.',
+  'why-starship-must-refuel-in-orbit-rocket-equation':
+    'Starship reaches orbit nearly empty, and a Moon landing needs about 6 km/s more. The rocket equation, worked with real numbers, shows why it must refuel.',
+  'how-spacex-lands-falcon-9-rockets-landing-burn-physics':
+    'How a Falcon 9 booster flips, fires boostback, entry and landing burns and touches down on legs, with the math of why it cannot hover.',
   'the-expression-of-the-emotions-in-man-and-animals':
     'Darwin’s pioneering study linking facial expression, biological communication and evolutionary continuity across species.',
 };
