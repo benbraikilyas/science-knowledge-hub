@@ -59,6 +59,7 @@ const CONTEXTUAL_ENTITIES: ReadonlyArray<{ pattern: RegExp; href: string }> = [
   { pattern: /\bHouse of Wisdom\b/, href: '/articles/house-of-wisdom-baghdad-history' },
   { pattern: /\b(?:double-slit experiment|two-slit experiment)\b/i, href: '/articles/double-slit-experiment-explained' },
   { pattern: /\bBrahmagupta\b/, href: '/articles/who-invented-zero-history-of-zero' },
+  { pattern: /\bRiemann hypothesis\b/i, href: '/articles/has-the-riemann-hypothesis-been-proved-claude-lean-2026' },
   { pattern: /\b(?:scientific theory|scientific law)\b/i, href: '/articles/scientific-theory-vs-law-vs-hypothesis' },
   { pattern: /\b(?:Tsiolkovsky rocket equation|rocket equation)\b/i, href: '/articles/why-starship-must-refuel-in-orbit-rocket-equation' },
   { pattern: /\bFalcon 9\b/, href: '/articles/how-spacex-lands-falcon-9-rockets-landing-burn-physics' },

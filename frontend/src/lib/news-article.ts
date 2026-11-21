@@ -160,6 +160,8 @@ const NEWS_ARTICLE_IMAGES: Record<string, string> = {
     '/images/articles/apollo-11-engineering-behind-first-moon-landing.webp',
   'editorial-proof':
     '/images/articles/why-mathematical-proof-is-more-than-calculation.webp',
+  'editorial-riemann-hypothesis-claim-2026':
+    '/images/articles/has-the-riemann-hypothesis-been-proved-claude-lean-2026.webp',
   'editorial-history-of-zero':
     '/images/articles/who-invented-zero-history-of-zero.webp',
   'editorial-house-of-wisdom':

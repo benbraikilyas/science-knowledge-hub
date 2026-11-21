@@ -74,6 +74,8 @@ export const SEO_TITLES: Record<string, string> = {
     'How SpaceX Lands Rockets: Falcon 9 Landing Physics Explained',
   'who-invented-zero-history-of-zero':
     'Who Invented Zero? The History of Zero From Babylon to India',
+  'has-the-riemann-hypothesis-been-proved-claude-lean-2026':
+    'Has the Riemann Hypothesis Been Proved? The Claim Explained',
   'house-of-wisdom-baghdad-history':
     'House of Wisdom in Baghdad: History, Scholars and Legacy',
   'scientific-theory-vs-law-vs-hypothesis':
@@ -145,6 +147,8 @@ export const SEO_DESCRIPTIONS: Record<string, string> = {
     'Starship reaches orbit nearly empty, and a Moon landing needs about 6 km/s more. The rocket equation, worked with real numbers, shows why it must refuel.',
   'how-spacex-lands-falcon-9-rockets-landing-burn-physics':
     'How a Falcon 9 booster flips, fires boostback, entry and landing burns and touches down on legs, with the math of why it cannot hover.',
+  'has-the-riemann-hypothesis-been-proved-claude-lean-2026':
+    'An Anthropic mathematician says he and Claude proved the Riemann hypothesis in Lean. What is claimed, what is checked, and why it matters.',
   'who-invented-zero-history-of-zero':
     'No one person invented zero. How Babylonian, Maya and Indian mathematicians shaped it, Brahmagupta’s rules from 628 AD, and how it reached Europe.',
   'house-of-wisdom-baghdad-history':

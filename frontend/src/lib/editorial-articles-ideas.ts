@@ -38,6 +38,112 @@ const makeArticle = (article: IdeasArticleInput) => ({
 
 export const IDEAS_EDITORIAL_ARTICLES = [
   makeArticle({
+    id: 'editorial-riemann-hypothesis-claim-2026',
+    title: 'Has the Riemann Hypothesis Been Proved? What We Know About the 2026 Claim',
+    slug: 'has-the-riemann-hypothesis-been-proved-claude-lean-2026',
+    excerpt:
+      'On November 20, 2026, mathematician Levent Alpöge said he and the AI system Claude had proved the Riemann hypothesis, releasing the proof as Lean code. What is claimed, what has been checked, and why it matters.',
+    category: mathematics,
+    tags: ['Riemann Hypothesis', 'Prime Numbers', 'Zeta Function', 'AI in Mathematics', 'Lean', 'Number Theory', 'Millennium Prize Problems'],
+    readTime: 9,
+    publishedAt: '2026-11-21T18:00:00Z',
+    content: `## Has the Riemann hypothesis been proved?
+
+Not yet, at least not in the way mathematicians use the word: on November 20, 2026, Anthropic mathematician Levent Alpöge announced that he and the AI system Claude had found a proof, and released it as computer-checkable Lean code, but as of November 21 no one has confirmed the full argument, and checking it properly could take months.
+
+Every few years someone announces a proof of the Riemann hypothesis, and mathematicians quietly go back to work. This time the reaction was different. Within a day, specialists had downloaded the code, compiled it and started arguing about details on public forums, and one of the most respected number theorists alive said he suspects it will turn out to be correct. That is unusual enough to be worth slowing down for, so here is what is actually known, kept separate from what is hoped.
+
+| Question | Status as of November 21, 2026 |
+| --- | --- |
+| What is claimed? | A proof of the Riemann hypothesis, and of the Generalized Riemann Hypothesis |
+| How was it released? | A four-page note plus Lean code split into 14 archive files |
+| Is there a human-readable proof? | Not yet; an AI-written informal version reportedly passed 250,000 pages and was not posted |
+| Does the code run? | Yes, according to MIT’s Andrew Sutherland and others who compiled it |
+| Does the code state exactly the right theorem? | That check was still under way |
+| Peer review | None so far |
+| Clay Millennium Prize | Not eligible yet: it requires journal publication and two years of acceptance |
+
+## What is the Riemann hypothesis, in plain words?
+
+The Riemann hypothesis is a prediction, made by the German mathematician Bernhard Riemann in 1859, that all the "nontrivial zeros" of a function called the zeta function lie on one straight line, and it matters because those zeros control how the prime numbers are spread out.
+
+The zeta function starts innocently, as an infinite sum:
+
+$$ ζ(s) = 1 + 1/2ˢ + 1/3ˢ + 1/4ˢ + … $$
+
+Put s = 2 and you get 1 + 1/4 + 1/9 + 1/16 + …, which Leonhard Euler showed in the 1730s adds up to exactly π²/6, about 1.6449. Euler also found the link to primes: the same sum can be rewritten as a product with one factor for every prime number, so anything you learn about zeta tells you something about primes.
+
+$$ ζ(s) = 1/(1 − 2⁻ˢ) × 1/(1 − 3⁻ˢ) × 1/(1 − 5⁻ˢ) × … $$
+
+Riemann’s leap, in a paper only eight pages long, was to let s be a complex number, with a real part and an imaginary part. The function then has some easy zeros at −2, −4, −6 and so on, and infinitely many harder ones in a narrow strip. Riemann suspected that every one of the hard ones has real part exactly ½, so they all sit on a single vertical line, now called the critical line. The first one sits at ½ + 14.1347i. Computers have since checked more than ten trillion of them, and every single one is on the line. But ten trillion is not all of them, and in mathematics only all of them counts.
+
+![Portrait photograph of Bernhard Riemann, a bearded man in a dark coat](/images/articles/bernhard-riemann-portrait.webp "Bernhard Riemann (1826 to 1866), whose eight-page paper of 1859 posed the problem.")
+
+## Why do prime numbers care about zeta zeros?
+
+The zeros work a little like the notes in a chord: together they decide how far the real count of primes drifts away from its smooth average, and the Riemann hypothesis says that drift is as small as it could possibly be.
+
+Primes look random up close, but they thin out in a very regular way. The prime number theorem, proved in 1896, says the number of primes up to x is roughly x divided by the natural logarithm of x. A sharper estimate, the logarithmic integral Li(x), does even better. Here is how they compare:
+
+| Up to x | Actual number of primes | x / ln x | Li(x) |
+| --- | --- | --- | --- |
+| 10 | 4 | 4.3 | 5.1 |
+| 100 | 25 | 21.7 | 29.1 |
+| 1,000 | 168 | 144.8 | 176.6 |
+| 1,000,000 | 78,498 | 72,382 | about 78,628 |
+
+Li(x) is impressively close, but how close will it stay as x grows? That is exactly what the zeros decide. If the Riemann hypothesis is true, the mathematician Lowell Schoenfeld showed in 1976 that the gap obeys a tight bound for every x of at least 2,657:
+
+$$ |π(x) − Li(x)| < √x × ln x / (8π) $$
+
+Here π(x) is the traditional symbol for the number of primes up to x, while the π on the right is the familiar 3.14159. For x of one million, the right-hand side is about 550, and the true gap is only about 130. Without the hypothesis, nobody can promise anything nearly that good. That is why so many results in number theory begin with the words "assuming the Riemann hypothesis": hundreds of theorems are waiting on it.
+
+![Plot of the size of the zeta function along the critical line, dipping to zero again and again](/images/articles/riemann-zeta-critical-line-zeros-plot.webp "The size of the zeta function along the critical line. Each point where the curve touches zero is one of the nontrivial zeros.")
+
+## What exactly did Alpöge and Claude claim?
+
+In a four-page note posted on his website on November 20, Alpöge wrote that he believes he has, working with Claude, discovered a proof of the Riemann hypothesis, and that the method "easily extends much further", to the Generalized Riemann Hypothesis, with the Extended Riemann Hypothesis expected "with more time".
+
+The note is unusually personal. Alpöge says the problem had been his private goal since his student days, and that "this time Claude far outpaced me near the finish line." His own contribution, he writes, was steering the work toward the right setting; after that, much of the technical machinery came from Claude, including in areas where he admits he has "little mastery". The strategy descends from Stepanov’s method, the technique behind a proof of the Riemann hypothesis for curves over finite fields, a simpler cousin of the real problem that was settled decades ago. The note’s own timeline runs from October 6, 2026 to November 16, the date it gives for the Generalized Riemann Hypothesis.
+
+What he did not release is a normal paper. He writes that posting "some massive unreadable travesty" of AI-generated text would be inappropriate, so he published only the Lean code, and he mentions in a footnote that the informal write-up ran past 250,000 pages. He says he intends to understand the argument properly, write it up and talk about it, and that he expects much shorter proofs to follow.
+
+## How can a computer check a proof that no one understands yet?
+
+Lean is a proof assistant: every step of a proof written in it must follow from basic axioms by rules the software checks mechanically, so if the code compiles and its final statement really is the Riemann hypothesis, the proof is correct even before any human can follow its ideas.
+
+That "if" carries a lot of weight, and it splits into two questions. The first is whether the code runs cleanly. Andrew Sutherland of MIT and others compiled it and reported that the Lean kernel accepted it using only the three standard axioms. "Honestly the chance that anything is fishy here is approximately zero," Sutherland said. The second question is whether the theorem stated at the end of all that code is genuinely the Riemann hypothesis, with no definitions quietly changed along the way. Kevin Buzzard of Imperial College London, who leads a long-running project to formalize the proof of Fermat’s Last Theorem in Lean, pointed out that this statement check, and a further check that the code exploits no bugs, were still pending.
+
+Even if both checks pass, mathematicians will want more than a verdict. A proof is supposed to explain why something is true. "Somewhat frustratingly, it looks like it will require quite a lot of work to really gain this understanding," said Oxford’s James Maynard, a Fields Medal winner, who also said: "If this fully checks out, it is clearly a historic milestone in mathematics." Youness Lamzouri of the University of Lorraine said checking and understanding it could take "months or even years".
+
+## Why are mathematicians still cautious?
+
+Because the Riemann hypothesis has attracted many confident claims that later collapsed, and because a proof is only accepted once experts have checked it, understood it and published it.
+
+Well-known mathematicians have announced proofs before, including Louis de Branges in manuscripts from the 2000s and Michael Atiyah in a 2018 lecture, and none was accepted. The current claim is different in one important way, the Lean code, but the process still has to run. It is also worth keeping two AI stories apart. In August 2026, Anthropic reported that a research version of Claude had raised the proven share of zeta zeros lying on the critical line from about 41.6 percent to roughly 67 percent, and said at the time that it did not expect those techniques to prove the full hypothesis. A share, however large, is not the same as all of them, which is what the new claim asserts.
+
+Then there is the coincidence. On the same day, Stanford mathematician Ravi Vakil posted a draft proof of the Generalized Riemann Hypothesis by Alessandro Masullo, which Masullo describes as the product of 12 years of work, and which Vakil stressed is "all human, with no AI". That draft is written for human readers, is not formalized in Lean, and has not been checked either. Two independent claims on one day is extraordinary, and experts will need time with both.
+
+## What happens next, and would it break internet encryption?
+
+Next comes careful checking: the Lean statement, then human understanding, then a written proof, journal publication and, eventually, the Clay Mathematics Institute’s judgment; and no, a proof would not break the encryption that protects your bank account.
+
+The Clay institute lists the Riemann hypothesis among its seven Millennium Prize Problems, each with a reward of one million US dollars, but its rules require a proof published in a qualifying journal and two years of general acceptance in the mathematics community, so nothing will happen quickly on that front. Meanwhile, a common worry is that solving the problem would expose the prime numbers behind modern cryptography. It would not. The hypothesis says the primes are spread out in a very regular way, which is what most mathematicians already believe and what cryptographers already assume. It does not hand anyone a fast way to factor large numbers into primes, which is what breaking that kind of encryption would require.
+
+The bigger change may be in how mathematics gets done. If this proof survives, it will be the clearest sign yet that AI systems can contribute deep new ideas, not just check routine steps or search for examples, a direction we have followed in pieces such as [AlphaEvolve and AI-driven algorithm discovery](/articles/alphaevolve-ai-agent-algorithm-discovery-2025). It would also sharpen an old question about what a proof is for. A result that is certified by a computer but understood by no one would be true, but not yet knowledge in the full human sense. For more on that tension, see [why mathematical proof is more than calculation](/articles/why-mathematical-proof-is-more-than-calculation), and for a much older story about a number that changed mathematics, read [who invented zero](/articles/who-invented-zero-history-of-zero). We will update this article as the checks come in.
+
+## References
+
+- [Levent Alpöge: Remark (the four-page announcement, PDF)](https://alpo.ge/remark.pdf)
+- [IBM Think: Anthropic mathematician claims AI helped solve a 167-year-old math mystery](https://www.ibm.com/think/news/anthropic-claude-riemann-hypothesis-math-proof)
+- [MLQ.ai: Levent Alpöge posts a claimed proof of the Riemann hypothesis made with Claude](https://mlq.ai/news/anthropic-mathematician-levent-alpoge-posts-a-claimed-proof-of-the-riemann-hypothesis-made-with-claude/)
+- [Science: AI may have solved math’s greatest mystery. Can humans understand the answer?](https://www.science.org/content/article/ai-may-have-solved-math-s-greatest-mystery-can-humans-understand-answer)
+- [Clay Mathematics Institute: The Riemann hypothesis](https://www.claymath.org/millennium/riemann-hypothesis/)
+- [MacTutor History of Mathematics: Bernhard Riemann biography](https://mathshistory.st-andrews.ac.uk/Biographies/Riemann/)
+- [Lean theorem prover](https://lean-lang.org/)`,
+  }),
+
+  makeArticle({
     id: 'editorial-history-of-zero',
     title: 'Who Invented Zero? The Long, Strange History of Nothing',
     slug: 'who-invented-zero-history-of-zero',

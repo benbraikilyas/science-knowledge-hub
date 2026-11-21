@@ -139,6 +139,32 @@
     "height": 1000,
     "encodingFormat": "image/webp"
   },
+  "/images/articles/bernhard-riemann-portrait.webp": {
+    "title": "Portrait photograph of the German mathematician Bernhard Riemann (1826 to 1866)",
+    "description": "Portrait photograph of the German mathematician Bernhard Riemann (1826 to 1866)",
+    "alt": "Portrait photograph of the German mathematician Bernhard Riemann (1826 to 1866)",
+    "keywords": [
+      "Bernhard Riemann",
+      "Riemann hypothesis",
+      "mathematician",
+      "history of mathematics",
+      "zeta function",
+      "science education",
+      "science article",
+      "educational image",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Portrait_of_Bernhard_Riemann_(1826-1866),_Mathematician_(2551069295).jpg",
+    "creditText": "Unidentified photographer, Smithsonian Institution Libraries — No known copyright restrictions",
+    "creator": "Smithsonian Institution",
+    "creatorType": "Organization",
+    "copyrightNotice": "No known copyright restrictions",
+    "license": "https://www.flickr.com/commons/usage/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Portrait_of_Bernhard_Riemann_(1826-1866),_Mathematician_(2551069295).jpg",
+    "width": 1026,
+    "height": 1300,
+    "encodingFormat": "image/webp"
+  },
   "/images/articles/beyond-epica-antarctic-oldest-ice-core-2025.webp": {
     "title": "Ice core section being processed at a field camp in Antarctica",
     "description": "Ice core section being processed at a field camp in Antarctica",
@@ -751,6 +777,30 @@
     "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:876_CE_monolithic_rock_Chaturbhuj_Hindu_Temple_Gwalior_Fort,_Zero_Inscription_2.jpg",
     "width": 975,
     "height": 1300,
+    "encodingFormat": "image/webp"
+  },
+  "/images/articles/has-the-riemann-hypothesis-been-proved-claude-lean-2026.webp": {
+    "title": "Graph of the real part (red) and imaginary part (blue) of the Riemann zeta function along the critical line, where both cross zero together at each zero",
+    "description": "Graph of the real part (red) and imaginary part (blue) of the Riemann zeta function along the critical line, where both cross zero together at each zero",
+    "alt": "Graph of the real part (red) and imaginary part (blue) of the Riemann zeta function along the critical line, where both cross zero together at each zero",
+    "keywords": [
+      "Riemann hypothesis",
+      "Riemann zeta function",
+      "critical line",
+      "zeta zeros",
+      "number theory",
+      "science education",
+      "science article",
+      "educational image",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:RiemannCriticalLine.svg",
+    "creditText": "Slonzor (Wikimedia Commons) — Public domain",
+    "copyrightNotice": "Public domain",
+    "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:RiemannCriticalLine.svg",
+    "width": 1600,
+    "height": 745,
     "encodingFormat": "image/webp"
   },
   "/images/articles/house-of-wisdom-baghdad-history.webp": {
@@ -1378,6 +1428,32 @@
     "copyrightNotice": "Public domain",
     "license": "https://creativecommons.org/publicdomain/zero/1.0/",
     "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Raptor-test-9-25-2016.jpg",
+    "width": 1600,
+    "height": 1067,
+    "encodingFormat": "image/webp"
+  },
+  "/images/articles/riemann-zeta-critical-line-zeros-plot.webp": {
+    "title": "Plot of the size of the Riemann zeta function along the critical line, dipping to zero at each nontrivial zero",
+    "description": "Plot of the size of the Riemann zeta function along the critical line, dipping to zero at each nontrivial zero",
+    "alt": "Plot of the size of the Riemann zeta function along the critical line, dipping to zero at each nontrivial zero",
+    "keywords": [
+      "Riemann zeta function",
+      "nontrivial zeros",
+      "critical line",
+      "Riemann hypothesis",
+      "complex analysis",
+      "science education",
+      "science article",
+      "educational image",
+      "Science Knowledge Hub"
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Mplwp_riemann_zeta0.5abs.svg",
+    "creditText": "Geek3 (Wikimedia Commons) — CC BY 3.0",
+    "creator": "Geek3",
+    "creatorType": "Person",
+    "copyrightNotice": "© Geek3, CC BY 3.0",
+    "license": "https://creativecommons.org/licenses/by/3.0/",
+    "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Mplwp_riemann_zeta0.5abs.svg",
     "width": 1600,
     "height": 1067,
     "encodingFormat": "image/webp"
